@@ -18,5 +18,5 @@ ln -sf ~/dotfiles/iTerm2/MyProfile.json ~/.config/iTerm2/MyProfile.json
 # neovim
 ln -sf ~/dotfiles/nvim/dein.toml ~/.config/nvim/dein.toml
 ln -sf ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
-ln -sf ~/dotfiles/nvim/ftplugin ~/.config/nvim/ftplugin
-ln -sf ~/dotfiles/nvim/lua ~/.config/nvim/lua
+ln -snf ~/dotfiles/nvim/ftplugin ~/.config/nvim/ftplugin
+ln -snf ~/dotfiles/nvim/lua ~/.config/nvim/lua
