@@ -75,7 +75,7 @@ setopt inc_append_history
 setopt share_history
 
 # ヒストリを呼び出してから実行する前に編集可能
-# setopt hist_verify
+setopt hist_verify
 
 # 重複コマンドを保存しない
 setopt hist_ignore_dups
@@ -105,7 +105,11 @@ setopt correct
 # 'cd -' [tab] で以前移動したディレクトリに移動する
 setopt pushd_ignore_dups
 
+# 明確なドットの指定なしで.から始まるファイルをマッチ
+setopt globdots
+
 # tab補完を便利にする
+# https://gihyo.jp/dev/serial/01/zsh-book/0005
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 # 移動した後は 'ls' する
@@ -117,7 +121,7 @@ function chpwd() { exa -a }
 export IGNORE_ELEMENTS="-E .git -E node_modules -E .cache -E .DS_Store -E .localized"
 export FZF_CTRL_T_COMMAND="fd --hidden --follow ${IGNORE_ELEMENTS}"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers,changes,header --line-range :100 {}'"
-export FZF_ALT_C_COMMAND="fd -t d --hidden --follow ${IGNORE_ELEMENTS}"
+export FZF_ALT_C_COMMAND="fd -t d --hidden --follow ${IGNORE_ELEMENTS} . '${HOME}'"
 export FZF_ALT_C_OPTS="--preview 'exa --long --all --git -I \".DS_Store|.localized\" {}'"
 
 ### Added by Zinit's installer
