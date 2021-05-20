@@ -1,0 +1,109 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# LSP
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+
+# tree-sitter
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+
+# Completion
+[[plugins]]
+repo = 'nvim-lua/completion-nvim'
+depends = 'nvim-lspconfig'
+
+[[plugins]]
+repo = 'steelsojka/completion-buffers'
+depends = 'completion-nvim'
+
+# fzf
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+depends = ['nvim-lspconfig', 'nvim-treesitter', 'plenary.nvim', 'popup.nvim']
+
+# snippets
+[[plugins]]
+repo = 'norcalli/snippets.nvim'
+
+# Symbol
+[[plugins]]
+repo = 'simrat39/symbols-outline.nvim'
+
+# colorscheme
+[[plugins]]
+repo = 'kyazdani42/blue-moon'
+hook_add = '''
+  autocmd MyAutoCmd VimEnter * nested colorscheme blue-moon
+  autocmd MyAutoCmd VimEnter * nested hi Whitespace guifg=#676e96 guibg=NONE
+  autocmd MyAutoCmd VimEnter * nested hi CursorLine gui=underline cterm=underline guibg=NONE
+'''
+
+# statusline
+[[plugins]]
+repo = 'hoob3rt/lualine.nvim'
+depends = 'nvim-web-devicons'
+
+# tabline
+[[plugins]]
+repo = 'akinsho/nvim-bufferline.lua'
+depends = 'nvim-web-devicons'
+
+# explorer
+[[plugins]]
+repo = 'kyazdani42/nvim-tree.lua'
+depends = 'nvim-web-devicons'
+
+# Display indent
+[[plugins]]
+repo = 'glepnir/indent-guides.nvim'
+
+# Search highilght
+[[plugins]]
+repo = 'kevinhwang91/nvim-hlslens'
+
+# Display color
+[[plugins]]
+repo = 'norcalli/nvim-colorizer.lua'
+
+# Motion
+[[plugins]]
+repo = 'phaazon/hop.nvim'
+
+# Surround
+[[plugins]]
+repo = 'blackCauldron7/surround.nvim'
+
+# lint/formatter
+[[plugins]]
+repo = 'lukas-reineke/format.nvim'
+
+# Brackets
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+depends = 'nvim-treesitter'
+
+# Comment
+[[plugins]]
+repo = 'glepnir/prodoc.nvim'
+
+# Git
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'lewis6991/gitsigns.nvim'
+depends = 'plenary.nvim'
+
+# emmet
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+# depends
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+[[plugins]]
+repo = 'nvim-lua/popup.nvim'
