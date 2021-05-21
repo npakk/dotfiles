@@ -26,6 +26,7 @@ depends = ['nvim-lspconfig', 'nvim-treesitter', 'plenary.nvim', 'popup.nvim']
 # snippets
 [[plugins]]
 repo = 'norcalli/snippets.nvim'
+depends = 'completion-nvim'
 
 # Symbol
 [[plugins]]
@@ -99,6 +100,10 @@ depends = 'plenary.nvim'
 # emmet
 [[plugins]]
 repo = 'mattn/emmet-vim'
+
+# Browser Autoreload
+[[plugins]]
+repo = 'tell-k/vim-browsereload-mac'
 
 # depends
 [[plugins]]

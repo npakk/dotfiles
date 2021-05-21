@@ -19,5 +19,10 @@ vim.g.nvim_tree_add_trailing = 0
 vim.g.nvim_tree_group_empty = 1
 vim.g.nvim_tree_lsp_diagnostics = 1
 vim.g.nvim_tree_special_files = { 'README.md', 'Makefile', 'MAKEFILE' }
+vim.g.nvim_tree_show_icons = {
+        git = 1,
+        folders = 1,
+        files = 1
+}
 
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })

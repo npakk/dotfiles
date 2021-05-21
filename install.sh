@@ -7,6 +7,10 @@ ln -sf ~/dotfiles/Brewfile ~/Brewfile
 ln -sf ~/dotfiles/.zshenv ~/.zshenv
 ln -sf ~/dotfiles/zsh/.zshrc ~/.config/zsh/.zshrc
 
+# git
+ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/git/ignore ~/.config/git/ignore
+
 # karabiner-elements
 ln -sf ~/dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 

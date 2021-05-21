@@ -1,7 +1,7 @@
 require'nvim-treesitter.configs'.setup {
   -- 設定された言語のparserがインストールされていない場合、
   -- インストールします。
-  ensure_installed = {'lua', 'toml'},
+  ensure_installed = 'maintained',
 
   highlight = {
     -- `false` の場合、highlight機能を動かしません。

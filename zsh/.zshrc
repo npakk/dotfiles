@@ -118,7 +118,7 @@ function chpwd() { exa -a }
 
 # fzf
 [ -f ~/.config/fzf/.fzf.zsh ] && source ~/.config/fzf/.fzf.zsh
-export IGNORE_ELEMENTS="-E .git -E node_modules -E .cache -E .DS_Store -E .localized"
+export IGNORE_ELEMENTS="-E .git -E node_modules -E .cache -E .DS_Store -E .localized -E .Trash"
 export FZF_CTRL_T_COMMAND="fd --hidden --follow ${IGNORE_ELEMENTS}"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers,changes,header --line-range :100 {}'"
 export FZF_ALT_C_COMMAND="fd -t d --hidden --follow ${IGNORE_ELEMENTS} . '${HOME}'"
