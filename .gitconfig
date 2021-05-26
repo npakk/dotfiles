@@ -3,3 +3,6 @@
 	s = status
 	b = branch
 	c = commit
+[user]
+	name = Npakk
+	email = npakk669@gmail.com
