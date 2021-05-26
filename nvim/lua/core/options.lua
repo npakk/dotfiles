@@ -1,4 +1,4 @@
-vim.o.termguicolors = true
+--[[ vim.o.termguicolors = true
 vim.o.encoding = 'utf-8'
 vim.o.backup = false
 vim.o.title = true
@@ -23,6 +23,7 @@ vim.wo.list = true
 vim.o.listchars = 'tab:| ,trail:･,eol:↲,extends:»,precedes:«,nbsp:%'
 vim.wo.signcolumn = 'auto'
 
+vim.o.nrformats = 'unsigned'
 vim.bo.nrformats = 'unsigned'
 vim.o.tabstop = 2
 vim.o.softtabstop = -1
@@ -34,7 +35,40 @@ vim.o.autoindent = true
 vim.o.smartindent = true
 vim.bo.autoindent = true
 vim.bo.smartindent = true
+vim.o.swapfile = false
 vim.bo.swapfile = false
+vim.o.matchpairs = vim.o.matchpairs .. ',<:>,「:」,『:』,（:）,【:】,《:》,〈:〉,［:］,‘:’,“:”'
 vim.bo.matchpairs = vim.bo.matchpairs .. ',<:>,「:」,『:』,（:）,【:】,《:》,〈:〉,［:］,‘:’,“:”'
 
-vim.cmd('set viminfo+=n~/.cache/nvim/.viminfo')
+vim.cmd('set viminfo+=n~/.cache/nvim/.viminfo') ]]
+
+vim.cmd([[
+set termguicolors
+set encoding=utf-8
+set nobackup
+set title
+set hidden
+set showmatch
+set matchtime=1
+set hlsearch
+set whichwrap=b,s,h,l,<,>,[,],~
+set completeopt=menuone,noinsert
+set wildmode=list,full
+set clipboard=unnamed
+set number
+set norelativenumber
+set cursorline
+set list
+set listchars=tab:\|\ ,trail:･,eol:↲,extends:»,precedes:«,nbsp:%
+set signcolumn=auto
+set nrformats=unsigned
+set tabstop=2
+set softtabstop=-1
+set shiftwidth=0
+set expandtab
+set autoindent
+set smartindent
+set noswapfile
+set matchpairs+=<:>,「:」,『:』,（:）,【:】,《:》,〈:〉,［:］,‘:’,“:”
+set viminfo+=n~/.cache/nvim/.viminfo
+]])

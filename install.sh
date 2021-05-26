@@ -23,4 +23,5 @@ ln -sf ~/dotfiles/iTerm2/MyProfile.json ~/.config/iTerm2/MyProfile.json
 ln -sf ~/dotfiles/nvim/dein.toml ~/.config/nvim/dein.toml
 ln -sf ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 ln -snf ~/dotfiles/nvim/ftplugin ~/.config/nvim/ftplugin
+ln -snf ~/dotfiles/nvim/after ~/.config/nvim/after
 ln -snf ~/dotfiles/nvim/lua ~/.config/nvim/lua
