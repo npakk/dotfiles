@@ -6,9 +6,6 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     -- `false` の場合、highlight機能を動かしません。
     enable = true,
-
-    -- highlightの機能を無効にする、filetypeを指定します。
-    disable = { "NvimTree" },
   },
 
   incremental_selection = {

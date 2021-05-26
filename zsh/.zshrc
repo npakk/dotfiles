@@ -41,10 +41,12 @@ eval "$(pyenv init -)"
 # export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/.bundle"
 
 # エイリアス
-alias vim='nvim'
 alias vi='nvim'
-alias ls='exa'
+alias ls='exa -a -F'
 alias find='fd'
+alias dc='docker-compose'
+alias dce='docker-compose exec'
+alias dcr='docker-compose run'
 
 # Vim風キーバインド
 bindkey -v
@@ -114,7 +116,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:
 
 # 移動した後は 'ls' する
 # function chpwd() { ls -A -F }
-function chpwd() { exa -a }
+function chpwd() { exa -a -F }
 
 # fzf
 [ -f ~/.config/fzf/.fzf.zsh ] && source ~/.config/fzf/.fzf.zsh

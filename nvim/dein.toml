@@ -87,7 +87,7 @@ depends = 'nvim-treesitter'
 
 # Comment
 [[plugins]]
-repo = 'glepnir/prodoc.nvim'
+repo = 'b3nj5m1n/kommentary'
 
 # Git
 [[plugins]]

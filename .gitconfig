@@ -1,2 +1,5 @@
 [alias]
 	co = checkout
+	s = status
+	b = branch
+	c = commit

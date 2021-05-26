@@ -1,7 +1,11 @@
 local u = require'snippets.utils'
 require'snippets'.snippets = {
   ruby = {
-    def = u.match_indentation('def $1\n  $0\nend')
+    require = u.match_indentation('require \'$1\'$0'),
+    class = u.match_indentation('class $1\n  $0\nend'),
+    def = u.match_indentation('def ${1|S.v:lower()}\n  $0\nend'),
+    ["do"] = u.match_indentation('do |$1|\n  $0\nend'),
+    test = [[hey? ${-1=vim.fn.input("what's up? ")} = ${-1}]]
   }
 }
 
