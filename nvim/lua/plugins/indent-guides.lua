@@ -3,7 +3,7 @@ require'indent_guides'.setup {
   indent_guides_auto_colors = 1;
   indent_start_level = 1;
   indent_enable = true;
-  indent_space_guides = enable;
+  indent_space_guides = true;
   indent_tab_guides = false;
   indent_soft_pattern = '\\s';
   exclude_filetypes = {'help','dashboard','dashpreview','NvimTree','vista','sagahover'};

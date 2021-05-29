@@ -13,3 +13,4 @@ vim.g.symbols_outline = {
     },
     lsp_blacklist = {},
 }
+vim.api.nvim_set_keymap('n', '<leader>a', ':SymbolsOutline<CR>', { noremap = true, silent =true })

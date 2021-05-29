@@ -28,7 +28,10 @@ eval "$(rbenv init -)"
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 # gem
 # export GEM_HOME="$XDG_DATA_HOME/.gem"

@@ -6,7 +6,8 @@ require'snippets'.snippets = {
     class = u.match_indentation('class $1\n  $0\nend'),
     module = u.match_indentation('module $1\n  $0\nend'),
     def = u.match_indentation('def $1\n  $0\nend'),
-    ["do"] = u.match_indentation('do |$1|\n  $0\nend'),
+    ["do"] = u.match_indentation('do$1\n  $0\nend'),
+    begin = u.match_indentation('begin\n  $0\nrescue $1\nensure\nend'),
   }
 }
 
