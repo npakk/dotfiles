@@ -17,7 +17,7 @@ ln -sf ~/dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 # iTerm2
 ln -sf ~/dotfiles/iTerm2/com.googlecode.iterm2.plist ~/.config/iTerm2/com.googlecode.iterm2.plist
 ln -sf ~/dotfiles/iTerm2/iceberg_bluemoon.itermcolors ~/.config/iTerm2/iceberg_bluemoon.itermcolors
-ln -sf ~/dotfiles/iTerm2/MyProfile.json ~/.config/iTerm2/MyProfile.json
+ln -sf ~/dotfiles/iTerm2/MyProfile.json ~/.config/iTerm2/MyiTerm.json
 
 # neovim
 ln -sf ~/dotfiles/nvim/dein.toml ~/.config/nvim/dein.toml
