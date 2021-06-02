@@ -14,8 +14,7 @@ vim.api.nvim_set_keymap('v', '<S-l>', 'g_', { noremap = true, silent = true })
 
 -- Paste multiple times
 -- https://kaminora.hatenablog.com/entry/2018/04/08/193154
-vim.api.nvim_set_keymap('x', 'p', '"0p', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', 'P', '"0P', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', 'p', '"_dP', { noremap = true, silent = true })
 
 -- Clear Search highlight
 vim.api.nvim_set_keymap('n', '<ESC><ESC>', '<cmd>noh<CR>', { noremap = true, silent = true })
