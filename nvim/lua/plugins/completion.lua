@@ -4,4 +4,4 @@ vim.g.completion_chain_complete_list = {
   },
 }
 vim.g.completion_enable_snippet = 'snippets.nvim'
-vim.cmd('autocmd BufEnter * lua require"completion".on_attach()')
+require'lspconfig'.solargraph.setup{on_attach=require'completion'.on_attach}
