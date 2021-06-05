@@ -47,6 +47,7 @@ fi
 alias vi='nvim'
 alias ls='exa -a -F'
 alias find='fd'
+alias g='git'
 alias dc='docker-compose'
 alias dce='docker-compose exec'
 alias dcr='docker-compose run'
