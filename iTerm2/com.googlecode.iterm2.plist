@@ -51178,7 +51178,7 @@
 					<key>algorithm</key>
 					<integer>0</integer>
 					<key>auto-rainbow style</key>
-					<integer>0</integer>
+					<integer>1</integer>
 					<key>font</key>
 					<string>.AppleSystemUIFont 12</string>
 					<key>remove empty components</key>
@@ -51952,19 +51952,19 @@
 					<key>algorithm</key>
 					<integer>0</integer>
 					<key>auto-rainbow style</key>
-					<integer>3</integer>
+					<integer>1</integer>
 					<key>background color</key>
 					<dict>
 						<key>Alpha Component</key>
 						<real>1</real>
 						<key>Blue Component</key>
-						<real>0.16862745583057404</real>
+						<real>0.0</real>
 						<key>Color Space</key>
 						<string>sRGB</string>
 						<key>Green Component</key>
-						<real>0.11764705926179886</real>
+						<real>0.0</real>
 						<key>Red Component</key>
-						<real>0.10588235408067703</real>
+						<real>0.0</real>
 					</dict>
 					<key>font</key>
 					<string>HackGen35NerdConsole-Bold 15</string>
@@ -52018,19 +52018,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52088,19 +52088,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52156,19 +52156,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52222,19 +52222,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52286,19 +52286,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52350,19 +52350,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52414,19 +52414,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52478,19 +52478,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52546,19 +52546,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52612,19 +52612,19 @@
 								<key>algorithm</key>
 								<integer>0</integer>
 								<key>auto-rainbow style</key>
-								<integer>3</integer>
+								<integer>1</integer>
 								<key>background color</key>
 								<dict>
 									<key>Alpha Component</key>
 									<real>1</real>
 									<key>Blue Component</key>
-									<real>0.16862745583057404</real>
+									<real>0.0</real>
 									<key>Color Space</key>
 									<string>sRGB</string>
 									<key>Green Component</key>
-									<real>0.11764705926179886</real>
+									<real>0.0</real>
 									<key>Red Component</key>
-									<real>0.10588235408067703</real>
+									<real>0.0</real>
 								</dict>
 								<key>font</key>
 								<string>HackGen35NerdConsole-Bold 15</string>
@@ -52738,7 +52738,7 @@
 	<key>SoundForEsc</key>
 	<false/>
 	<key>StatusBarPosition</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>StretchTabsToFillBar</key>
 	<true/>
 	<key>TabStyleWithAutomaticOption</key>
