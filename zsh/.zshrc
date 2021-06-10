@@ -45,7 +45,7 @@ fi
 
 # エイリアス
 alias vi='nvim'
-alias ls='exa -a -F'
+alias ls='exa -a -F -I ".DS_Store|.localized"'
 alias find='fd'
 alias g='git'
 alias dc='docker-compose'
@@ -120,7 +120,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:
 
 # 移動した後は 'ls' する
 # function chpwd() { ls -A -F }
-function chpwd() { exa -a -F }
+function chpwd() { exa -a -F -I ".DS_Store|.localized" }
 
 # fzf
 [ -f ~/.config/fzf/.fzf.zsh ] && source ~/.config/fzf/.fzf.zsh
