@@ -59,6 +59,7 @@ require('plugins/fugitive')
 require('plugins/gitsigns')
 require('plugins/emmet')
 require('plugins/autoreload')
+require('plugins/glow')
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
