@@ -8,6 +8,7 @@ brew "exa"
 brew "fd"
 brew "fzf"
 brew "git"
+brew "glow"
 brew "goenv", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
 brew "pyenv"
