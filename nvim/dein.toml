@@ -108,9 +108,6 @@ repo = 'tell-k/vim-browsereload-mac'
 # Markdown
 [[plugins]]
 repo = 'npxbr/glow.nvim'
-hook_add = '''
-  autocmd MyAutoCmd VimEnter * nested GlowInstall
-'''
 
 # depends
 [[plugins]]
