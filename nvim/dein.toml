@@ -105,6 +105,10 @@ repo = 'mattn/emmet-vim'
 [[plugins]]
 repo = 'tell-k/vim-browsereload-mac'
 
+# Markdown
+[[plugins]]
+repo = 'npxbr/glow.nvim'
+
 # depends
 [[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'

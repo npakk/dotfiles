@@ -12,13 +12,9 @@ typeset -gU PATH
 export PATH="/usr/local/bin/git:$PATH"
 
 # goenv
-# export GOENV_ROOT="$XDG_DATA_HOME/goenv"
-# export PATH="$GOENV_ROOT/bin:$PATH"
-# eval "$(goenv init -)"
-
-# go
-# export GOPATH="$HOME/go"
-# export PATH="$GOPATH/bin:$PATH"
+export GOENV_ROOT="$XDG_DATA_HOME/goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
 
 # rbenv
 export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
