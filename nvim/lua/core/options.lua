@@ -1,4 +1,5 @@
 --[[ vim.o.termguicolors = true
+vim.o.background = 'dark'
 vim.o.encoding = 'utf-8'
 vim.o.backup = false
 vim.o.title = true
@@ -44,6 +45,7 @@ vim.cmd('set viminfo+=n~/.cache/nvim/.viminfo') ]]
 
 vim.cmd([[
 set termguicolors
+set background=dark
 set encoding=utf-8
 set nobackup
 set title
