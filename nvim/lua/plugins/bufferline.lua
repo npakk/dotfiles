@@ -43,7 +43,7 @@ require'bufferline'.setup {
   }
 }
 
-vim.api.nvim_set_keymap('n', '<leader>H', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>L', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Down>', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Up>', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>t', ':BufferLinePick<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>x', ':lua require"bufferline".handle_close_buffer(vim.api.nvim_get_current_buf())<CR>', { noremap = true, silent = true })

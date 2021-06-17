@@ -40,8 +40,8 @@ vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', 'jj', '<ESC>', { noremap = true, silent = true })
 
 -- Tab switch buffer
-vim.api.nvim_set_keymap('n', '<TAB>', ':bnext<CR>', { noremap = true, silent =true })
-vim.api.nvim_set_keymap('n', '<S-TAB>', ':bprevious<CR>', { noremap = true, silent =true })
+vim.api.nvim_set_keymap('n', '<Right>', ':bnext<CR>', { noremap = true, silent =true })
+vim.api.nvim_set_keymap('n', '<Left>', ':bprevious<CR>', { noremap = true, silent =true })
 
 -- Move selected line
 vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv', { noremap = true, silent = true })
