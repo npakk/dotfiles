@@ -42,6 +42,7 @@ fi
 # エイリアス
 alias vi='nvim'
 alias ls='exa -a -F -I ".DS_Store|.localized"'
+alias ll='exa -a -F -l -I ".DS_Store|.localized"'
 alias find='fd'
 alias g='git'
 alias dc='docker-compose'

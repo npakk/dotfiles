@@ -10,6 +10,8 @@ brew "fzf"
 brew "git"
 brew "glow"
 brew "goenv", args: ["HEAD"]
+brew "luajit", args: ["HEAD"]
+brew "tree-sitter", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
 brew "pyenv"
 brew "pyenv-virtualenv"
