@@ -13,6 +13,7 @@ ln -sf ~/dotfiles/git/ignore ~/.config/git/ignore
 
 # karabiner-elements
 ln -sf ~/dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+ln -snf ~/dotfiles/karabiner/assets ~/.config/karabiner/assets
 
 # iTerm2
 ln -sf ~/dotfiles/iTerm2/com.googlecode.iterm2.plist ~/.config/iTerm2/com.googlecode.iterm2.plist
