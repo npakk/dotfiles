@@ -60,10 +60,6 @@ depends = 'nvim-web-devicons'
 [[plugins]]
 repo = 'glepnir/indent-guides.nvim'
 
-# Search highilght
-[[plugins]]
-repo = 'kevinhwang91/nvim-hlslens'
-
 # Display color
 [[plugins]]
 repo = 'norcalli/nvim-colorizer.lua'
@@ -74,7 +70,7 @@ repo = 'phaazon/hop.nvim'
 
 # Surround
 [[plugins]]
-repo = 'blackCauldron7/surround.nvim'
+repo = 'tpope/vim-surround'
 
 # lint/formatter
 [[plugins]]
@@ -101,13 +97,12 @@ depends = 'plenary.nvim'
 [[plugins]]
 repo = 'mattn/emmet-vim'
 
-# Browser Autoreload
-[[plugins]]
-repo = 'tell-k/vim-browsereload-mac'
-
 # Markdown
 [[plugins]]
 repo = 'npxbr/glow.nvim'
+
+[[plugins]]
+repo = 'mattn/vim-maketable'
 
 # depends
 [[plugins]]

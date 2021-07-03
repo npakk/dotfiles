@@ -1,76 +1,42 @@
---[[ vim.o.termguicolors = true
-vim.o.background = 'dark'
-vim.o.encoding = 'utf-8'
-vim.o.backup = false
-vim.o.title = true
-vim.o.hidden = true
-vim.o.showmatch = true
-vim.o.matchtime = 1
-vim.o.hlsearch = true
-vim.o.whichwrap = 'b,s,h,l,<,>,[,],~'
-vim.o.completeopt = 'menuone,noinsert'
-vim.o.wildmode = 'list,full'
-
+vim.opt.termguicolors = true
+vim.opt.background = 'dark'
+vim.opt.encoding= 'utf-8'
+vim.opt.backup = false
+vim.opt.title = true
+vim.opt.hidden = true
+vim.opt.showmatch = true
+vim.opt.matchtime = 1
+vim.opt.hlsearch = true
+vim.opt.whichwrap = 'b,s,h,l,<,>,[,],~'
+vim.opt.completeopt = { 'menuone', 'noinsert' }
+vim.opt.wildmode = { 'list', 'full' }
 if vim.fn.has('unix') == 1 then
-  vim.o.clipboard = "unnamedplus"
+  vim.opt.clipboard = 'unnamedplus'
 else
-  vim.o.clipboard = "unnamed"
+  vim.opt.clipboard = 'unnamed'
 end
 
-vim.wo.number = true
-vim.wo.relativenumber = false
-vim.wo.cursorline = true
-vim.wo.list = true
-vim.o.listchars = 'tab:| ,trail:･,eol:↲,extends:»,precedes:«,nbsp:%'
-vim.wo.signcolumn = 'auto'
+vim.opt.number = true
+vim.opt.relativenumber = false
+vim.opt.cursorline = true
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = '| ',
+  trail = '･',
+  eol = '↲',
+  extends = '»',
+  precedes = '«',
+  nbsp = '%',
+}
+vim.opt.signcolumn = 'auto'
 
-vim.o.nrformats = 'unsigned'
-vim.bo.nrformats = 'unsigned'
-vim.o.tabstop = 2
-vim.o.softtabstop = -1
-vim.o.shiftwidth = 0
-vim.bo.softtabstop = -1
-vim.bo.shiftwidth = 0
-vim.cmd('set expandtab') -- issue https://github.com/neovim/neovim/issues/12978
-vim.o.autoindent = true
-vim.o.smartindent = true
-vim.bo.autoindent = true
-vim.bo.smartindent = true
-vim.o.swapfile = false
-vim.bo.swapfile = false
-vim.o.matchpairs = vim.o.matchpairs .. ',<:>,「:」,『:』,（:）,【:】,《:》,〈:〉,［:］,‘:’,“:”'
-vim.bo.matchpairs = vim.bo.matchpairs .. ',<:>,「:」,『:』,（:）,【:】,《:》,〈:〉,［:］,‘:’,“:”'
-
-vim.cmd('set viminfo+=n~/.cache/nvim/.viminfo') ]]
-
-vim.cmd([[
-set termguicolors
-set background=dark
-set encoding=utf-8
-set nobackup
-set title
-set hidden
-set showmatch
-set matchtime=1
-set hlsearch
-set whichwrap=b,s,h,l,<,>,[,],~
-set completeopt=menuone,noinsert
-set wildmode=list,full
-set clipboard=unnamed
-set number
-set norelativenumber
-set cursorline
-set list
-set listchars=tab:\|\ ,trail:･,eol:↲,extends:»,precedes:«,nbsp:%
-set signcolumn=auto
-set nrformats=unsigned
-set tabstop=2
-set softtabstop=-1
-set shiftwidth=0
-set expandtab
-set autoindent
-set smartindent
-set noswapfile
-set matchpairs+=<:>,「:」,『:』,（:）,【:】,《:》,〈:〉,［:］,‘:’,“:”
-set viminfo+=n~/.cache/nvim/.viminfo
-]])
+vim.opt.nrformats = 'unsigned'
+vim.opt.tabstop = 2
+vim.opt.softtabstop = -1
+vim.opt.shiftwidth = 0
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.swapfile = false
+vim.opt.matchpairs:append { '<:>', '「:」', '『:』', '（:）', '【:】', '《:》', '〈:〉', '［:］', "':’", '“:”' }
+vim.opt.viminfo = "!,'300,<50,s10,h,n~/.cache/nvim/.viminfo"
