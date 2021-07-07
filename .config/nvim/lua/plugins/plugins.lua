@@ -89,9 +89,6 @@ local function init()
     end,
   }
 
-  -- show register
-  --use { 'tversteeg/registers.nvim', }
-
   -- show highlight vitual text
   use {
     'kevinhwang91/nvim-hlslens',
