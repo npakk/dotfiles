@@ -1,4 +1,4 @@
--- Enhansement autocommand to init.lua
+-- Enhansement autocommand
 vim.cmd('augroup MyAutoCmd')
 vim.cmd('autocmd!')
 vim.cmd('augroup END')
@@ -37,28 +37,10 @@ vim.g.loaded_perl_provider = 0
 vim.cmd('filetype off')
 vim.cmd('syntax off')
 
-require('core/options')
-require('core/keys')
-require('plugins/dein')
-require('plugins/lspconfig')
-require('plugins/treesitter')
-require('plugins/completion')
-require('plugins/telescope')
-require('plugins/snippets')
-require('plugins/symbols')
-require('plugins/lualine')
-require('plugins/bufferline')
-require('plugins/nvim-tree')
-require('plugins/indent-guides')
-require('plugins/colorizer')
-require('plugins/hop')
-require('plugins/format')
-require('plugins/autopairs')
-require('plugins/fugitive')
-require('plugins/gitsigns')
-require('plugins/emmet')
-require('plugins/autoreload')
-require('plugins/glow')
+require 'core.options'
+require 'core.mappings'
+require 'core.packer'
+require 'core.appearance'
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')

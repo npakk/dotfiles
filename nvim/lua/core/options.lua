@@ -1,3 +1,4 @@
+-- global
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
 vim.opt.encoding= 'utf-8'
@@ -16,6 +17,7 @@ else
   vim.opt.clipboard = 'unnamed'
 end
 
+-- window local
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.cursorline = true
@@ -23,13 +25,13 @@ vim.opt.list = true
 vim.opt.listchars = {
   tab = '| ',
   trail = '･',
-  eol = '↲',
   extends = '»',
   precedes = '«',
   nbsp = '%',
 }
 vim.opt.signcolumn = 'auto'
 
+-- buffer local
 vim.opt.nrformats = 'unsigned'
 vim.opt.tabstop = 2
 vim.opt.softtabstop = -1
@@ -38,5 +40,5 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.swapfile = false
-vim.opt.matchpairs:append { '<:>', '「:」', '『:』', '（:）', '【:】', '《:》', '〈:〉', '［:］', "':’", '“:”' }
-vim.opt.viminfo = "!,'300,<50,s10,h,n~/.cache/nvim/.viminfo"
+vim.opt.matchpairs:append { '<:>', '「:」', '『:』', '（:）', '【:】', '《:》', '〈:〉', '［:］', "':'", '“:”' }
+vim.opt.shada = { '!', "'1000", '<50', 's10', 'h', 'n~/.cache/nvim/.viminfo' }

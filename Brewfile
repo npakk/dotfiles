@@ -7,6 +7,8 @@ brew "bat"
 brew "exa"
 brew "fd"
 brew "fzf"
+brew "gh"
+brew "ghq"
 brew "git"
 brew "glow"
 brew "goenv", args: ["HEAD"]

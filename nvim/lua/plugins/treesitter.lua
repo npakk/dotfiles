@@ -1,135 +1,120 @@
-require'nvim-treesitter.configs'.setup {
-  -- 設定された言語のparserがインストールされていない場合、
-  -- インストールします。
-  ensure_installed = 'maintained',
+local M = {}
 
-  highlight = {
-    -- `false` の場合、highlight機能を動かしません。
-    enable = true,
-  },
+function M.config()
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = 'maintained',
+    ignore_install = {},
 
-  incremental_selection = {
-    enable = true,
-
-    keymaps = {
-      -- 範囲選択を開始します。
-      init_selection = "gnn",
-
-      -- 1つ上のnodeに選択範囲を拡大します。
-      node_incremental = "grn",
-
-      -- 1つ上のスコープに選択範囲を拡大します。
-      scope_incremental = "grc",
-
-      -- 1つ下のnodeに選択範囲を縮小します。
-      node_decremental = "grm",
+    -- highlight
+    highlight = {
+      enable = true,
+      custom_captures = {},
+      additional_vim_regex_highlighting = false,
     },
-  },
 
-  indent = {
-    enable = true,
-    disable = { "html" },
-  },
-
-  textobjects = {
-    -- `ip` や `ap` のようにtextobjectを選択します。
-    select = {
+    -- incremental_selection
+    incremental_selection = {
       enable = true,
       keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
-    },
-    -- 前後のtextobjectに移動します。
-    move = {
-      enable = true,
-      goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
-      },
-      goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
-      },
-      goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
+        init_selection = 'gnn',
+        node_incremental = 'grn',
+        scope_incremental = 'grc',
+        node_decremental = 'grm',
       },
     },
 
-    -- 関数の引数の位置を交換します。
-    swap = {
-      enable = true,
-      swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+    indent = { enable = true, },
+
+    -- refactor
+    refactor = {
+      highlight_definitions = { enable = true, },
+      highlight_current_scope = { enable = false },
+      smart_rename = {
+        enable = true,
+        keymaps = {
+          smart_rename = 'grr',
+        },
       },
-      swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
-      },
-    },
-
-    -- textobject全体をfloating windowを使って表示します。
-    lsp_interop = {
-      enable = true,
-      peek_definition_code = {
-        ["df"] = "@function.outer",
-        ["dF"] = "@class.outer",
-      },
-    },
-  },
-  refactor = {
-    -- カーソルの下にあるsymbolの定義位置に移動したり、
-    -- 定義されているsymbol一覧を表示します。
-    navigation = {
-      enable = true,
-      keymaps = {
-        -- 定義に移動します。
-        goto_definition = "gnd",
-
-        -- 定義一覧を表示します。
-        list_definitions = "gnD",
-
-        -- 定義一覧を本の目次のようにネストがわかるように表示します。
-        list_definitions_toc = "gO",
-
-        -- カーソル下のsymbolの前後の利用位置に移動します。
-        goto_next_usage = "<a-*>",
-        goto_previous_usage = "<a-#>",
+      navigation = {
+        enable = true,
+        keymaps = {
+          goto_definition = 'gnd',
+          list_definitions = 'gnD',
+          list_definitions_toc = 'gT',
+          goto_next_usage = '<a-*>',
+          goto_previous_usage = '<a-#>',
+        },
       },
     },
 
-    -- カーソルの下にあるsymbolをrenameします。
-    smart_rename = {
-      enable = true,
-      keymaps = {
-        -- `grr` でrename処理が開始できます。
-        smart_rename = "grr",
+    -- textobjects
+    textobjects = {
+      select = {
+        enable = true,
+        keymaps = {
+          ['af'] = '@function.outer',
+          ['if'] = '@function.inner',
+          ['aC'] = '@class.outer',
+          ['iC'] = '@class.inner',
+          ['ac'] = '@conditional.outer',
+          ['ic'] = '@conditional.inner',
+          ['ae'] = '@block.outer',
+          ['ie'] = '@block.inner',
+          ['al'] = '@loop.outer',
+          ['il'] = '@loop.inner',
+          ['iS'] = '@statement.inner',
+          ['aS'] = '@statement.outer',
+          ['am'] = '@call.outer',
+          ['im'] = '@call.inner',
+          ['ad'] = '@comment.outer',
+          ['id'] = '@comment.inner',
+        },
+      },
+
+      move = {
+        enable = true,
+        goto_next_start = {
+          [']m'] = '@function.outer',
+          [']]'] = '@class.outer',
+        },
+        goto_next_end = {
+          [']M'] = '@function.outer',
+          [']['] = '@class.outer',
+        },
+        goto_previous_start = {
+          ['[m'] = '@function.outer',
+          ['[['] = '@class.outer',
+        },
+        goto_previous_end = {
+          ['[M'] = '@function.outer',
+          ['[]'] = '@class.outer',
+        },
+      },
+
+      swap = {
+        enable = true,
+        swap_next = { ['<leader>a'] = '@parameter.inner', },
+        swap_previous = { ['<leader>A'] = '@parameter.inner', },
+      },
+
+      lsp_interop = {
+        enable = true,
+        peek_definition_code = {
+          ['df'] = '@function.outer',
+          ['dF'] = '@class.outer',
+        },
       },
     },
-    -- カーソルの下にあるsymbolをhighlightします。
-    highlight_definitions = { enable = true },
 
-    -- カーソルが存在するスコープ全体をhighlightします。
-    highlight_current_scope = { enable = true },
-  },
-  
-  -- 括弧の色をネストごとに変更します。
-  rainbow = {
-    enable = true
-  },
+    -- context commentstring
+    context_commentstring = { enable = true, enable_autocmd = false },
 
-  -- nvim-autopairsを有効化
-  autopairs = {
-    enable = true
-  },
+    -- rainbow
+    rainbow = { enable = true, extended_mode = true, max_file_lines = 1000 },
 
-  autotag = {
-    enable = true
+    -- autotag
+    autotag = { enable = true }
   }
-}
+end
+
+return M
