@@ -1,3 +1,5 @@
+vim.cmd [[packadd lspsaga.nvim]]
+
 --[[ Built-in LSP Appearance ]]
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -17,6 +19,8 @@ vim.fn.sign_define('LspDiagnosticsSignInformation', { text = "", texthl = "Ls
 vim.fn.sign_define('LspDiagnosticsSignHint', { text = "", texthl = "LspDiagnosticsDefaultHint" })
 
 local lspconfig = require('lspconfig')
+local lspsaga = require("lspsaga")
+lspsaga.init_lsp_saga()
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
 custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
