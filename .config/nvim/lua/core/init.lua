@@ -40,7 +40,7 @@ vim.cmd('syntax off')
 require 'core.options'
 require 'core.mappings'
 require 'core.packer'
-require 'core.appearance'
+require 'core.appearances'
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')
