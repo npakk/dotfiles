@@ -57,6 +57,8 @@ local function init()
   }
 
   -- Treesitter
+  -- TODO: No file content.
+  -- check this: https://github.com/kyazdani42/nvim-tree.lua/issues/495
   use {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufRead *',
@@ -178,6 +180,8 @@ local function init()
       vim.api.nvim_set_keymap('n', '<leader>w', '<cmd>HopWord<CR>', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>HopLine<CR>', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('x', '<leader>l', '<cmd>HopLine<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader><Space>', '<cmd>HopPattern<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('x', '<leader><Space>', '<cmd>HopPattern<CR>', { noremap = true, silent = true })
     end,
     config = function()
       require('hop').setup {
@@ -248,6 +252,26 @@ local function init()
           topdelete    = {hl = 'GitGutterDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
           changedelete = {hl = 'GitGutterChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
         },
+        keymaps = {
+          noremap = true,
+          buffer = true,
+          --[[ ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+          ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+
+          ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+          ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+          ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+          ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+          ['v <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+          ['n <leader>hR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+          ['n <leader>hp'] = '<cmd>lua require"gitsigns".prview_hunk()<CR>',
+          ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+
+          -- Text objects
+          ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+          ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>', ]]
+        },
+        sign_priority = 6,
       }
     end,
     requires = {
@@ -280,7 +304,11 @@ local function init()
   --]]
 
   -- colorscheme
-  use { 'kyazdani42/blue-moon', opt = true, }
+  -- use { 'kyazdani42/blue-moon', opt = true, }
+  use {
+    'tjdevries/gruvbuddy.nvim', opt = true, 
+    requires = { { 'tjdevries/colorbuddy.vim', opt = true, }, },
+  }
 
   -- statusline
   use {
@@ -289,7 +317,7 @@ local function init()
     config = function()
       require('lualine').setup {
         options = {
-          theme = 'nightfly',
+          theme = 'tomorrow',
         },
         extensions = { 'fugitive', 'nvim-tree' }
       }

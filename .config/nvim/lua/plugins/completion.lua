@@ -46,7 +46,7 @@ function M.config()
     elseif vim.fn['vsnip#available'](1) == 1 then
       return t '<Plug>(vsnip-expand-or-jump)'
     elseif check_back_space() then
-      return t '<Down>'
+      return t '<Tab>'
     else
       return vim.fn['compe#complete']()
     end
@@ -57,7 +57,7 @@ function M.config()
     elseif vim.fn['vsnip#jumpable'](-1) == 1 then
       return t '<Plug>(vsnip-jump-prev)'
     else
-      return t '<Up>'
+      return t '<S-Tab>'
     end
   end
   vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', { expr = true, noremap = true, silent = true })

@@ -39,6 +39,11 @@ fi
 # export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/.bundle"
 # export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/.bundle"
 
+# [[ Custom Function ]]
+function cd_ghq_on_fzf {
+  cd "$(ghq list -p | grep $(gh gist list | awk '{print $1, $2}' | fzf | awk '{print $1}'))"
+}
+
 # エイリアス
 alias vi='nvim'
 alias ls='exa -a -F -I ".DS_Store|.localized"'
@@ -49,6 +54,7 @@ alias g='git'
 alias dc='docker-compose'
 alias dce='docker-compose exec'
 alias dcr='docker-compose run'
+alias sd='cd_ghq_on_fzf'
 
 # Vim風キーバインド
 bindkey -v

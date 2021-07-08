@@ -5,13 +5,41 @@ local M = {}
   |                          Custom Pickers                              |
   ------------------------------------------------------------------------
   --]]
+function M.edit_nvim_config()
+  require('telescope.builtin').find_files {
+    find_command = M._find_command,
+    prompt_title = "~ dotfiles ~",
+    path_display = { 'absolute'},
+    cwd = "~/.config/nvim",
+
+    layout_strategy = "horizontal",
+    layout_config = { preview_width = 0.65 },
+  }
+end
+
+function M.edit_zsh_config()
+  require('telescope.builtin').find_files {
+    find_command = M._find_command,
+    prompt_title = "~ dotfiles ~",
+    path_display = { 'absolute'},
+    cwd = "~/.config/zsh",
+
+    file_ignore_patterns = { ".zcompdump", ".zcompcache", ".*.zwc", '.zcompcache', '.zinit', '.zsh_sessions', '.p10k.zsh' },
+    layout_strategy = "horizontal",
+    layout_config = { preview_width = 0.55 },
+  }
+end
+
 function M.fd()
-  require('telescope.builtin').find_files { find_command = M._find_command }
+  require('telescope.builtin').find_files {
+    find_command = M._find_command,
+    path_display = { 'absolute'},
+  }
 end
 
 function M.grep_string()
   require('telescope.builtin').grep_string {
-    shorten_path = true,
+    path_display = { 'shorten'},
     file_ignore_patterns = { 'packer_compiled.lua' },
     search = vim.fn.input('Grep String > '),
   }
@@ -19,14 +47,14 @@ end
 
 function M.grep_under_cursor()
   require('telescope.builtin').grep_string {
-    shorten_path = true,
+    path_display = { 'shorten'},
     file_ignore_patterns = { 'packer_compiled.lua' },
   }
 end
 
 function M.live_grep()
   require('telescope').extensions.fzf_writer.staged_grep {
-    shorten_path = true,
+    path_display = { 'shorten'},
     file_ignore_patterns = { 'packer_compiled.lua' },
   }
 end
@@ -40,7 +68,7 @@ end
 
 function M.buffers()
   require('telescope.builtin').buffers {
-    shorten_path = false,
+    path_display = { 'absolute'},
   }
 end
 
@@ -53,7 +81,7 @@ end
 function M.current_buffer_fuzzy_find()
   require('telescope.builtin').current_buffer_fuzzy_find {
     border = true,
-    shorten_path = false,
+    path_display = { 'absolute'},
   }
 end
 
@@ -136,6 +164,11 @@ function M.config()
         '--column',
         '--smart-case',
       },
+
+      layout_config = {
+        prompt_position = 'bottom',
+      },
+
       file_sorter = sorters.get_fzy_sorter,
 
       mappings = {
@@ -176,6 +209,9 @@ function M.config()
   telescope.load_extension('ghq')
 
   -- File Pickers
+  vim.api.nvim_set_keymap('n', '<leader>cn', "<cmd>lua require('plugins.telescope').pickers['edit_nvim_config']()<CR>", { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('n', '<leader>cz', "<cmd>lua require('plugins.telescope').pickers['edit_zsh_config']()<CR>", { noremap = true, silent = true})
+
   vim.api.nvim_set_keymap('n', '<leader>fd', "<cmd>lua require('plugins.telescope').pickers['fd']()<CR>", { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>fG', "<cmd>lua require('plugins.telescope').pickers['grep_string']()<CR>", { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>f*', "<cmd>lua require('plugins.telescope').pickers['grep_under_cursor']()<CR>", { noremap = true, silent = true })

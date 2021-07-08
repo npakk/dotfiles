@@ -4,11 +4,12 @@ function M.config()
   local wk = require('which-key')
   wk.setup {
     plugins = {
-      marks = true,
-      registers = true,
-
-
+      spelling = { enabled = true, suggestions = 60, },
+      presets = {
+        operators = false,
+      },
     },
+    window = { border = 'single', }
   }
 end
 

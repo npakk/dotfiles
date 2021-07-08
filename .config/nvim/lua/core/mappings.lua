@@ -28,6 +28,9 @@ vim.api.nvim_set_keymap('n', '<S-l>', 'g_', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<S-h>', '^', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<S-l>', 'g_', { noremap = true, silent = true })
 
+-- Enhancement Delete
+vim.api.nvim_set_keymap('i', '<C-l>', '<Delete>', { noremap = true, silent = true })
+
 -- Paste multiple times
 -- https://stackoverflow.com/questions/7163947/paste-multiple-times
 vim.api.nvim_set_keymap('x', 'p', 'pgvy', { noremap = true, silent = true })

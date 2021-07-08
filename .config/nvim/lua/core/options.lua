@@ -42,3 +42,6 @@ vim.opt.smartindent = true
 vim.opt.swapfile = false
 vim.opt.matchpairs:append { '<:>', '「:」', '『:』', '（:）', '【:】', '《:》', '〈:〉', '［:］', "':'", '“:”' }
 vim.opt.shada = { '!', "'1000", '<50', 's10', 'h', 'n~/.cache/nvim/.viminfo' }
+
+-- custom command
+vim.cmd[[command! CD cd %:h]]
