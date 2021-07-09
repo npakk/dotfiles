@@ -41,7 +41,12 @@ fi
 
 # [[ Custom Function ]]
 function cd_ghq_on_fzf {
-  cd "$(ghq list -p | grep $(gh gist list | awk '{print $1, $2}' | fzf | awk '{print $1}'))"
+  local dir="$(ghq list -p | grep $((gh gist list | awk '{print $1, $2}' ; ghq list -p | grep -v gist) | fzf | awk '{print $1}'))"
+  if [ -n "$dir" ]; then
+    cd "$dir"
+  else
+    echo "no such ghq directory"
+  fi
 }
 
 # エイリアス
@@ -55,6 +60,7 @@ alias dc='docker-compose'
 alias dce='docker-compose exec'
 alias dcr='docker-compose run'
 alias sd='cd_ghq_on_fzf'
+# alias sg='cd_ghq_on_fzf_gist'
 
 # Vim風キーバインド
 bindkey -v

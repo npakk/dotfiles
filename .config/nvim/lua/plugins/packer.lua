@@ -19,17 +19,10 @@ local function init()
   local use = packer.use
   packer.reset()
 
-  --[[
-  ------------------------------------------------------------------------
-  |                              Built-in Helper                         |
-  ------------------------------------------------------------------------
-  --]]
+  --[[ Built-in Helper ]]
 
-  -- Packer
   use { 'wbthomason/packer.nvim', opt = true, }
-
-  -- Neovim Lua power-up
-  use { 'tjdevries/astronauta.nvim', }
+  use { 'tjdevries/astronauta.nvim', } -- temporary stuff before it got merged upstream
 
   -- LSP
   use {
@@ -61,18 +54,8 @@ local function init()
   -- check this: https://github.com/kyazdani42/nvim-tree.lua/issues/495
   use {
     'nvim-treesitter/nvim-treesitter',
-    event = 'BufRead *',
     run = ':TSUpdate',
-    config = function()
-      for _, name in pairs {
-        'nvim-treesitter-refactor',
-        'nvim-treesitter-textobjects',
-        'nvim-ts-context-commentstring',
-        'nvim-ts-rainbow',
-        'nvim-ts-autotag',
-      } do vim.cmd('packadd ' .. name) end
-      require('plugins.treesitter').config()
-    end,
+    config = require('plugins.treesitter').config,
     requires = {
       { 'nvim-treesitter/nvim-treesitter-refactor', opt = true, },
       { 'nvim-treesitter/nvim-treesitter-textobjects', opt = true, },
@@ -110,27 +93,13 @@ local function init()
     config = require('plugins.which-key').config,
   }
 
-  --[[
-  ------------------------------------------------------------------------
-  |                              Enhancement                             |
-  ------------------------------------------------------------------------
-  --]]
+  --[[ Enhancement ]]
 
   -- FZF
   use {
     'nvim-telescope/telescope.nvim',
     setup = function() require('plugins.telescope').setup() end,
-    config = function()
-      for _, name in pairs {
-        'telescope-fzf-writer.nvim',
-        'telescope-fzy-native.nvim',
-        'telescope-frecency.nvim',
-        'sql.nvim',
-        'telescope-github.nvim',
-        'telescope-ghq.nvim',
-      } do vim.cmd('packadd ' .. name) end
-      require('plugins.telescope').config()
-    end,
+    config = require('plugins.telescope').config,
     requires = {
       { 'nvim-lua/plenary.nvim', },
       { 'nvim-lua/popup.nvim', },
@@ -159,6 +128,7 @@ local function init()
       vim.g.nvim_tree_hijack_netrw = 0
       vim.g.nvim_tree_group_empty = 1
       vim.g.nvim_tree_lsp_diagnostics = 1
+      vim.g.nvim_tree_update_cwd = 1
       vim.g.nvim_tree_show_icons = {
         git = 1,
         folders = 1,
@@ -210,7 +180,11 @@ local function init()
   -- Brackets
   use {
     'windwp/nvim-autopairs',
-    config = function() require('nvim-autopairs').setup() end,
+    config = function()
+      require('nvim-autopairs').setup {
+        check_ts = true,
+      }
+    end,
   }
 
   -- Emmet
@@ -255,7 +229,7 @@ local function init()
         keymaps = {
           noremap = true,
           buffer = true,
-          --[[ ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+          ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
           ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
 
           ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
@@ -269,7 +243,7 @@ local function init()
 
           -- Text objects
           ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-          ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>', ]]
+          ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
         },
         sign_priority = 6,
       }
@@ -297,14 +271,19 @@ local function init()
     end,
   }
 
-  --[[
-  ------------------------------------------------------------------------
-  |                              Appearance                              |
-  ------------------------------------------------------------------------
-  --]]
+  --[[ Appearance ]]
 
   -- colorscheme
-  -- use { 'kyazdani42/blue-moon', opt = true, }
+  use {
+    'npxbr/gruvbox.nvim',
+    opt = true,
+    requires = { 'rktjmp/lush.nvim', opt = true, }
+  }
+  use { 'kyazdani42/blue-moon', opt = true, }
+  use {
+    'marko-cerovac/material.nvim',
+    opt = true,
+  }
   use {
     'tjdevries/gruvbuddy.nvim', opt = true, 
     requires = { { 'tjdevries/colorbuddy.vim', opt = true, }, },

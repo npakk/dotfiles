@@ -1,18 +1,22 @@
 local M = {}
 
 function M.config()
+  vim.cmd [[packadd nvim-treesitter-refactor]]
+  vim.cmd [[packadd nvim-treesitter-textobjects]]
+  vim.cmd [[packadd nvim-ts-context-commentstring]]
+  vim.cmd [[packadd nvim-ts-rainbow]]
+  vim.cmd [[packadd nvim-ts-autotag]]
+
   require'nvim-treesitter.configs'.setup {
     ensure_installed = 'maintained',
     ignore_install = {},
 
-    -- highlight
     highlight = {
       enable = true,
       custom_captures = {},
       additional_vim_regex_highlighting = false,
     },
 
-    -- incremental_selection
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -25,7 +29,6 @@ function M.config()
 
     indent = { enable = true, },
 
-    -- refactor
     refactor = {
       highlight_definitions = { enable = true, },
       highlight_current_scope = { enable = false },
@@ -47,7 +50,6 @@ function M.config()
       },
     },
 
-    -- textobjects
     textobjects = {
       select = {
         enable = true,
@@ -106,14 +108,13 @@ function M.config()
       },
     },
 
-    -- context commentstring
     context_commentstring = { enable = true, enable_autocmd = false },
 
-    -- rainbow
     rainbow = { enable = true, extended_mode = true, max_file_lines = 1000 },
 
-    -- autotag
-    autotag = { enable = true }
+    autotag = { enable = true },
+
+    autopairs = { enable = true },
   }
 end
 

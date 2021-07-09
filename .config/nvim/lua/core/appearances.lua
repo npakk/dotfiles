@@ -1,17 +1,25 @@
-vim.cmd[[execute 'packadd ' . 'gruvbuddy.nvim']]
-vim.cmd[[execute 'colorscheme ' . 'gruvbuddy']]
+vim.cmd [[execute 'packadd ' . 'lush.nvim']]
+vim.cmd [[execute 'packadd ' . 'gruvbox.nvim']]
 
---[ colorscheme ]
+--[[ colorscheme ]]
+
+vim.cmd [[execute 'colorscheme ' . 'gruvbox']]
+--[[ require('material').set()
+vim.g.material_style = 'darker' ]]
+
 -- blue-moon
---vim.cmd[[autocmd MyAutoCmd VimEnter * nested hi Whitespace guifg=#676e96 guibg=NONE]]
+-- vim.cmd [[autocmd MyAutoCmd VimEnter * nested hi Whitespace guifg=#676e96 guibg=NONE]]
 
---[ colorbuddy theme ]
-vim.cmd('packadd colorbuddy.vim')
+--[[ colorbuddy ]]
+
+-- vim.cmd [[packadd colorbuddy.vim]]
 
 -- gruvbuddy
-require('colorbuddy').colorscheme('gruvbuddy')
+--[[ require('colorbuddy').colorscheme('gruvbuddy')
 local Color = require('colorbuddy').Color
-Color.new('yellow', '#e5d714')
+Color.new('yellow', '#e5d714') ]]
 
---[ custom cursor underline ]
-vim.cmd[[autocmd MyAutoCmd VimEnter * nested hi CursorLine gui=underline cterm=underline guibg=NONE]]
+--[[ Redefine default highlight ]]
+
+-- cursorline
+-- vim.cmd [[autocmd MyAutoCmd VimEnter * nested hi CursorLine gui=underline cterm=underline guibg=NONE]]

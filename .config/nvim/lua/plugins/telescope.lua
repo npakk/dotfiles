@@ -1,10 +1,7 @@
 local M = {}
 
-  --[[
-  ------------------------------------------------------------------------
-  |                          Custom Pickers                              |
-  ------------------------------------------------------------------------
-  --]]
+--[[ Custom Pickers ]]
+
 function M.edit_nvim_config()
   require('telescope.builtin').find_files {
     find_command = M._find_command,
@@ -102,11 +99,8 @@ M.pickers = setmetatable({}, {
   end,
 })
 
-  --[[
-  ------------------------------------------------------------------------
-  |                              Setup                                   |
-  ------------------------------------------------------------------------
-  --]]
+--[[ Setup ]]
+
 function M.setup()
   -- find command
   local ignore_globs = {
@@ -142,12 +136,16 @@ function M.setup()
 
 end
 
-  --[[
-  ------------------------------------------------------------------------
-  |                              Config                                  |
-  ------------------------------------------------------------------------
-  --]]
+--[[ Config ]]
+
 function M.config()
+  vim.cmd [[packadd telescope-fzf-writer.nvim]]
+  vim.cmd [[packadd telescope-fzy-native.nvim]]
+  vim.cmd [[packadd telescope-frecency.nvim]]
+  vim.cmd [[packadd sql.nvim]]
+  vim.cmd [[packadd telescope-github.nvim]]
+  vim.cmd [[packadd telescope-ghq.nvim]]
+
   local telescope = require('telescope')
   local actions = require('telescope.actions')
   local sorters = require('telescope.sorters')
