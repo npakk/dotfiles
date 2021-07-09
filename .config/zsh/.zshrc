@@ -40,6 +40,7 @@ fi
 # export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/.bundle"
 
 # [[ Custom Function ]]
+# ghq配下のリポジトリに移動する
 function cd_ghq_on_fzf {
   local dir="$(ghq list -p | grep $((gh gist list | awk '{print $1, $2}' ; ghq list -p | grep -v gist) | fzf | awk '{print $1}'))"
   if [ -n "$dir" ]; then
@@ -60,7 +61,6 @@ alias dc='docker-compose'
 alias dce='docker-compose exec'
 alias dcr='docker-compose run'
 alias sd='cd_ghq_on_fzf'
-# alias sg='cd_ghq_on_fzf_gist'
 
 # Vim風キーバインド
 bindkey -v
