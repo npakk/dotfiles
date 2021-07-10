@@ -42,9 +42,6 @@ vim.cmd [[augroup END]]
 -- cd cwd
 vim.cmd [[command CD cd %:h]]
 
--- cd zenn
-vim.cmd [[command CDZ cd ~/ghq/github.com/Npakk/zenn]]
-
 --[[ Settings ]]
 
 vim.cmd [[filetype off]]

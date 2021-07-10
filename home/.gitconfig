@@ -3,8 +3,9 @@
 	s = status
 	b = branch
 	c = commit
+	ps = push
 [user]
-	name = Npakk
+	name = npakk
 	email = npakk669@gmail.com
 [ghq]
 	root = ~/ghq

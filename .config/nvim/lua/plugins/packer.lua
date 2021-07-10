@@ -50,8 +50,6 @@ local function init()
   }
 
   -- Treesitter
-  -- TODO: No file content.
-  -- check this: https://github.com/kyazdani42/nvim-tree.lua/issues/495
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
@@ -116,6 +114,8 @@ local function init()
   }
 
   -- Explorer
+  -- TODO: No file content.
+  -- check this: https://github.com/kyazdani42/nvim-tree.lua/issues/495
   use {
     'kyazdani42/nvim-tree.lua',
     setup = function()
