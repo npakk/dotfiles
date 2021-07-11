@@ -915,23 +915,39 @@
                         ]
                     },
                     {
-                        "description": "Map fn + ESC to Grave Accent - Customize",
+                        "description": "Switch Escape for Tilde",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "escape",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ],
                                         "optional": [
-                                            "any"
+                                            "command",
+                                            "control",
+                                            "option",
+                                            "shift"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
                                         "key_code": "grave_accent_and_tilde"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
