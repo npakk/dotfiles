@@ -105,7 +105,9 @@
               ],
               "optional": [
                 "caps_lock",
-                "option"
+                "option",
+                "control",
+                "shift"
               ]
             }
           },
@@ -125,7 +127,9 @@
               ],
               "optional": [
                 "caps_lock",
-                "option"
+                "option",
+                "control",
+                "shift"
               ]
             }
           },
