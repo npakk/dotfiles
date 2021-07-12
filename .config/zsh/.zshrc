@@ -42,9 +42,6 @@ fi
 # [[ Custom Function ]]
 # ghq配下のリポジトリに移動する
 function cd_ghq_on_fzf {
-  # gistも含める
-  # local dir="$(ghq list -p | grep $((gh gist list | awk '{print $1, $2}' ; ghq list -p | grep -v gist) | fzf | awk '{print $1}'))"
-
   local dir="$(ghq list -p | fzf)"
   if [ -n "$dir" ]; then
     cd "$dir"
