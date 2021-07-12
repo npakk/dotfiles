@@ -27,7 +27,7 @@ local custom_on_attach = function()
   local nnoremap = k.nnoremap
   local vnoremap = k.vnoremap
   local tnoremap = k.tnoremap
-  
+
   local provider = require('lspsaga.provider')
   local codeaction = require('lspsaga.codeaction')
   local hover = require('lspsaga.hover')
@@ -65,8 +65,35 @@ local custom_capabilities = function()
   return capabilities
 end
 
+local sumneko_root = vim.fn.stdpath('cache') .. '/lspconfig/sumneko_lua/lua-language-server'
+
+lspconfig.sumneko_lua.setup{
+  cmd = {
+    sumneko_root .. '/bin/macOS/lua-language-server',
+    '-E',
+    sumneko_root .. '/main.lua',
+  },
+  on_attach = custom_on_attach(),
+  on_init = custom_on_init(),
+  capabilities = custom_capabilities(),
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
+      diagnostics = {
+        enable = true,
+        globals = {'vim'},
+      },
+      workspace = {
+        preloadFileSize = 400,
+      },
+    }
+  },
+}
+
 lspconfig.solargraph.setup{
   cmd = { 'solargraph', 'stdio' },
+  on_attach = custom_on_attach(),
+  on_init = custom_on_init(),
   capabilities = custom_capabilities(),
   filetypes = { 'ruby' },
   settings = {
@@ -81,6 +108,4 @@ lspconfig.solargraph.setup{
       symbols = true
     }
   },
-  on_attach = custom_on_attach(),
-  on_init = custom_on_init(),
 }
