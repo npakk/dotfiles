@@ -1,0 +1,3 @@
+[submodule "config/nvim/lsp/sumneko_lua/lua-language-server"]
+	path = config/nvim/lsp/sumneko_lua/lua-language-server
+	url = https://github.com/sumneko/lua-language-server

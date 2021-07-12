@@ -29,4 +29,4 @@ ln -sf ~/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
 ln -snf ~/dotfiles/config/nvim/after ~/.config/nvim/after
 ln -snf ~/dotfiles/config/nvim/lua ~/.config/nvim/lua
 ln -snf ~/dotfiles/config/nvim/snippets ~/.config/nvim/snippets
-ln -snf ~/dotfiles/config/nvim/lua/plugins/lspconfig ~/.config/nvim/lua/plugins/lspconfig
+ln -snf ~/dotfiles/config/nvim/lsp ~/.config/nvim/lsp

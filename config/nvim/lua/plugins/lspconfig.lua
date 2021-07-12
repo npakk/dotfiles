@@ -65,7 +65,7 @@ local custom_capabilities = function()
   return capabilities
 end
 
-local sumneko_root = vim.fn.stdpath('cache') .. '/lspconfig/sumneko_lua/lua-language-server'
+local sumneko_root = vim.fn.stdpath('config') .. '/lsp/sumneko_lua/lua-language-server'
 
 lspconfig.sumneko_lua.setup{
   cmd = {
