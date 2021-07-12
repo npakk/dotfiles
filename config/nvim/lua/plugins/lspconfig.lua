@@ -74,7 +74,6 @@ lspconfig.sumneko_lua.setup{
     sumneko_root .. '/main.lua',
   },
   on_attach = custom_on_attach(),
-  on_init = custom_on_init(),
   capabilities = custom_capabilities(),
   settings = {
     Lua = {
@@ -93,7 +92,6 @@ lspconfig.sumneko_lua.setup{
 lspconfig.solargraph.setup{
   cmd = { 'solargraph', 'stdio' },
   on_attach = custom_on_attach(),
-  on_init = custom_on_init(),
   capabilities = custom_capabilities(),
   filetypes = { 'ruby' },
   settings = {

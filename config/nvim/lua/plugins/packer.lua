@@ -68,7 +68,7 @@ local function init()
     'simrat39/symbols-outline.nvim',
     cmd = { 'SymbolsOutline' },
     setup = function()
-      vim.api.nvim_set_keymap('n', '<leader>a', ':SymbolsOutline<CR>', { noremap = true, silent =true })
+      vim.api.nvim_set_keymap('n', '<leader>s', ':SymbolsOutline<CR>', { noremap = true, silent =true })
     end,
   }
 
@@ -113,6 +113,13 @@ local function init()
     },
   }
 
+  -- Formatter
+  use {
+    'mhartington/formatter.nvim',
+    cmd = { 'Format', },
+    config = require('plugins.formatter').config,
+  }
+
   -- Explorer
   -- TODO: No file content.
   -- check this: https://github.com/kyazdani42/nvim-tree.lua/issues/495
@@ -128,7 +135,7 @@ local function init()
       vim.g.nvim_tree_hijack_netrw = 0
       vim.g.nvim_tree_group_empty = 1
       vim.g.nvim_tree_lsp_diagnostics = 1
-      vim.g.nvim_tree_update_cwd = 0
+      vim.g.nvim_tree_update_cwd = 1
       vim.g.nvim_tree_show_icons = {
         git = 1,
         folders = 1,

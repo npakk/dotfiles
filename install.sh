@@ -30,3 +30,5 @@ ln -snf ~/dotfiles/config/nvim/after ~/.config/nvim/after
 ln -snf ~/dotfiles/config/nvim/lua ~/.config/nvim/lua
 ln -snf ~/dotfiles/config/nvim/snippets ~/.config/nvim/snippets
 ln -snf ~/dotfiles/config/nvim/lsp ~/.config/nvim/lsp
+ln -snf ~/dotfiles/config/nvim/formatter ~/.config/nvim/formatter
+ln -sf ~/dotfiles/config/nvim/.stylua ~/.config/nvim/.stylua
