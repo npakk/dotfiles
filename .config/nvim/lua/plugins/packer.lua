@@ -128,7 +128,7 @@ local function init()
       vim.g.nvim_tree_hijack_netrw = 0
       vim.g.nvim_tree_group_empty = 1
       vim.g.nvim_tree_lsp_diagnostics = 1
-      vim.g.nvim_tree_update_cwd = 1
+      vim.g.nvim_tree_update_cwd = 0
       vim.g.nvim_tree_show_icons = {
         git = 1,
         folders = 1,
