@@ -16,6 +16,7 @@ brew "goenv", args: ["HEAD"]
 brew "luajit", args: ["HEAD"]
 brew "tree-sitter", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
+brew "ninja"
 brew "pyenv"
 brew "pyenv-virtualenv"
 brew "rbenv"
