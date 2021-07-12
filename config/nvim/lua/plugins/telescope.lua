@@ -9,6 +9,7 @@ function M.edit_nvim_config()
     path_display = { 'absolute'},
     cwd = "~/.config/nvim",
 
+    file_ignore_patterns = { 'lsp/', },
     layout_strategy = "horizontal",
     layout_config = { preview_width = 0.65 },
   }
