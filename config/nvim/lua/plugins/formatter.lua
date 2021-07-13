@@ -1,5 +1,12 @@
 local M = {}
 
+function M.setup()
+  local k = require("astronauta.keymap")
+  local nnoremap = k.nnoremap
+
+  nnoremap { 'gF', '<cmd>Format<CR>', { silent = true }}
+end
+
 function M.config()
   local stylua_root = vim.fn.stdpath('config') .. '/formatter/JohnnyMorganz-lua/StyLua/'
   local stylua = function()
@@ -26,11 +33,6 @@ function M.config()
       lua        = { stylua },
     },
   })
-
-  local k = require("astronauta.keymap")
-  local nnoremap = k.nnoremap
-
-  nnoremap { 'gF', '<cmd>Format<CR>', { silent = true }}
 end
 
 return M

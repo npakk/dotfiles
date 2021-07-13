@@ -117,6 +117,7 @@ local function init()
   use {
     'mhartington/formatter.nvim',
     cmd = { 'Format', },
+    setup = require('plugins.formatter').setup,
     config = require('plugins.formatter').config,
   }
 

@@ -65,16 +65,41 @@ local custom_capabilities = function()
   return capabilities
 end
 
-local sumneko_root = vim.fn.stdpath('config') .. '/lsp/sumneko_lua/lua-language-server'
+local textlint = {
+  lintCommand = "yarn -s run textlint -f unix --stdin --stdin-filename ${INPUT}",
+  lintIgnoreExitCode = true,
+  lintStdin = true,
+  lintFormats = { "%f:%l:%c: %m [%trror/%r]" },
+}
 
+lspconfig.efm.setup{
+  cmd = { 'efm-langserver', },
+  on_attach = function(client)
+    client.resolved_capabilities.rename = false
+    client.resolved_capabilities.hover = false
+    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.completion = false
+  end,
+  on_init = custom_on_init,
+  filetypes = { 'markdown' },
+  settings = {
+    rootMarkers = { ".textlintrc", },
+    languages = {
+      markdown = { textlint, },
+    },
+  },
+}
+
+local sumneko_root = vim.fn.stdpath('config') .. '/lsp/sumneko_lua/lua-language-server'
 lspconfig.sumneko_lua.setup{
   cmd = {
     sumneko_root .. '/bin/macOS/lua-language-server',
     '-E',
     sumneko_root .. '/main.lua',
   },
-  on_attach = custom_on_attach(),
-  capabilities = custom_capabilities(),
+  on_attach = custom_on_attach,
+  on_init = custom_on_init,
+  capabilities = custom_capabilities,
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
@@ -91,8 +116,9 @@ lspconfig.sumneko_lua.setup{
 
 lspconfig.solargraph.setup{
   cmd = { 'solargraph', 'stdio' },
-  on_attach = custom_on_attach(),
-  capabilities = custom_capabilities(),
+  on_attach = custom_on_attach,
+  on_init = custom_on_init,
+  capabilities = custom_capabilities,
   filetypes = { 'ruby' },
   settings = {
     solargraph = {
