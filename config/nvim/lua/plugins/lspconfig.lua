@@ -58,12 +58,8 @@ local custom_on_init = function()
   print("Language Server Protocol started!")
 end
 
-local custom_capabilities = function()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-  return capabilities
-end
+local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
+custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local textlint = {
   lintCommand = "yarn -s run textlint -f unix --stdin --stdin-filename ${INPUT}",
@@ -80,6 +76,7 @@ lspconfig.efm.setup{
     client.resolved_capabilities.document_formatting = true
     client.resolved_capabilities.completion = false
   end,
+  on_attach = custom_on_attach,
   on_init = custom_on_init,
   filetypes = { 'markdown' },
   settings = {

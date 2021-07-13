@@ -4,14 +4,14 @@
 touch "${HOME}/.hushlogin"
 
 # Homebrew
-ln -sf ~/dotfiles/HOME/Brewfile ~/Brewfile
+ln -sf ~/dotfiles/home/Brewfile ~/Brewfile
 
 # zsh
-ln -sf ~/dotfiles/HOME/.zshenv ~/.zshenv
+ln -sf ~/dotfiles/home/.zshenv ~/.zshenv
 ln -sf ~/dotfiles/config/zsh/.zshrc ~/.config/zsh/.zshrc
 
 # git
-ln -sf ~/dotfiles/HOME/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/home/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/config/git/ignore ~/.config/git/ignore
 
 # github cli
@@ -32,3 +32,9 @@ ln -snf ~/dotfiles/config/nvim/snippets ~/.config/nvim/snippets
 ln -snf ~/dotfiles/config/nvim/lsp ~/.config/nvim/lsp
 ln -snf ~/dotfiles/config/nvim/formatter ~/.config/nvim/formatter
 ln -sf ~/dotfiles/config/nvim/.stylua ~/.config/nvim/.stylua
+
+# efm-langserver
+ln -sf ~/dotfiles/home/.textlintrc ~/.textlintrc
+
+# rubocop
+ln -sf ~/dotfiles/home/.rubocop.yml ~/.rubocop.yml
