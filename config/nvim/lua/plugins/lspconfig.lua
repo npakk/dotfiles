@@ -62,23 +62,23 @@ local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
 custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local textlint = {
-  lintCommand = "yarn -s run textlint -f unix --stdin --stdin-filename ${INPUT}",
+  lintCommand = "textlint -f unix --stdin --stdin-filename ${INPUT}",
   lintIgnoreExitCode = true,
   lintStdin = true,
   lintFormats = { "%f:%l:%c: %m [%trror/%r]" },
 }
 
 lspconfig.efm.setup{
-  cmd = { 'efm-langserver', },
-  on_attach = function(client)
-    client.resolved_capabilities.rename = false
-    client.resolved_capabilities.hover = false
-    client.resolved_capabilities.document_formatting = true
-    client.resolved_capabilities.completion = false
-  end,
   on_attach = custom_on_attach,
   on_init = custom_on_init,
-  filetypes = { 'markdown' },
+  init_options = {
+    rename = false,
+    hover = false,
+    documentFormatting = true,
+    codeAction = true,
+    completion = true,
+  },
+  filetypes = { 'markdown', },
   settings = {
     rootMarkers = { ".textlintrc", },
     languages = {
@@ -87,7 +87,7 @@ lspconfig.efm.setup{
   },
 }
 
-local sumneko_root = vim.fn.stdpath('config') .. '/lsp/sumneko_lua/lua-language-server'
+local sumneko_root = vim.fn.stdpath('config') .. '/lua/modules/lua-language-server'
 lspconfig.sumneko_lua.setup{
   cmd = {
     sumneko_root .. '/bin/macOS/lua-language-server',

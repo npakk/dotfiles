@@ -8,10 +8,10 @@ function M.setup()
 end
 
 function M.config()
-  local stylua_root = vim.fn.stdpath('config') .. '/formatter/JohnnyMorganz-lua/StyLua/'
+  local stylua_root = vim.fn.stdpath('config') .. '/lua/modules/StyLua/'
   local stylua = function()
     return {
-      exe   = stylua_root .. "stylua --config-path ~/.config/nvim/.stylua -",
+      exe   = stylua_root .. "stylua --config-path ~/.config/nvim/lua/modules/StyLua/.stylua -",
       stdin = true,
     }
   end

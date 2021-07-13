@@ -269,7 +269,6 @@ local function init()
       vim.api.nvim_set_keymap('n', '<leader>p', ':Glow<CR>', { noremap = true, silent = true })
     end,
   }
-
   use {
     'mattn/vim-maketable',
     cmd = { 'MakeTable', 'UnmakeTable', },
@@ -278,6 +277,11 @@ local function init()
       vim.api.nvim_set_keymap('n', '<leader>tu', ':UnmakeTable<CR>', { noremap = true, silent = true })
     end,
   }
+  use {
+    'skanehira/gyazo.vim',
+    cmd = { 'GyazoUpload', },
+  }
+
 
   --[[ Appearance ]]
 

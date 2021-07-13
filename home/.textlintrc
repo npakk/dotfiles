@@ -9,8 +9,8 @@
     "preset-jtf-style": true,
     "prh": {
       "rulePaths": [
-        "node_modules/prh/prh-rules/media/WEB+DB_PRESS.yml",
-        "node_modules/prh/prh-rules/media/techbooster.yml"
+        "~/.local/share/yarn/global/node_modules/prh/prh-rules/media/WEB+DB_PRESS.yml",
+        "~/.local/share/yarn/global/node_modules/prh/prh-rules/media/techbooster.yml"
       ]
     }
   }
