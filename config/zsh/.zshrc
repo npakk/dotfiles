@@ -5,6 +5,7 @@ typeset -gU PATH
 export PATH="/usr/local/bin/git:$PATH"
 
 # goenv
+export GOPATH=$HOME/go
 export GOENV_ROOT="$XDG_DATA_HOME/goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"

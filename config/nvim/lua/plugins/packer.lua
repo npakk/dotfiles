@@ -279,7 +279,6 @@ local function init()
   }
   use {
     'skanehira/gyazo.vim',
-    cmd = { 'GyazoUpload', },
   }
 
 
