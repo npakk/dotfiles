@@ -22,7 +22,6 @@ local inoremap = k.inoremap
 local vnoremap = k.vnoremap
 local xnoremap = k.xnoremap
 local nmap = k.nmap
-local xmap = k.xmap
 
 -- ignore word-wrap
 nnoremap({ "j", "gj", { silent = true } })
