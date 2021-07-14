@@ -26,7 +26,10 @@ vim.fn.sign_define(
   "LspDiagnosticsSignInformation",
   { text = "", texthl = "LspDiagnosticsDefaultInformation" }
 )
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "", texthl = "LspDiagnosticsDefaultHint" })
+vim.fn.sign_define(
+  "LspDiagnosticsSignHint",
+  { text = "", texthl = "LspDiagnosticsDefaultHint" }
+)
 
 local lspconfig = require("lspconfig")
 local lspsaga = require("lspsaga")
@@ -71,17 +74,21 @@ local custom_on_attach = function()
   nnoremap({ "cd", diagnostic.show_line_diagnostics, { silent = true } })
   nnoremap({ "[e", diagnostic.lsp_jump_diagnostic_prev, { silent = true } })
   nnoremap({ "]e", diagnostic.lsp_jump_diagnostic_next, { silent = true } })
-  nnoremap({ "]e", diagnostic.lsp_jump_diagnostic_next, { silent = true } })
   nnoremap({ "<A-d>", floaterm.open_float_terminal, { silent = true } })
   tnoremap({ "<A-d>", floaterm.close_float_terminal, { silent = true } })
 end
 
 local custom_on_init = function()
-  print("Language Server Protocol started!")
+  print('Language Server Protocol started!')
 end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
 custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local stylua = {
+  formatCommand = vim.fn.stdpath("config") .. "/lua/modules/StyLua/stylua --config-path " .. vim.fn.stdpath("config") .. "/lua/modules/StyLua/.stylua -",
+  formatStdin = true,
+}
 
 local textlint = {
   lintCommand = "textlint -f unix --stdin --stdin-filename ${INPUT}",
@@ -95,15 +102,21 @@ lspconfig.efm.setup({
   on_init = custom_on_init,
   init_options = {
     rename = false,
-    hover = false,
+    hover = true,
     documentFormatting = true,
+    documentSymbol = true,
     codeAction = true,
     completion = true,
   },
-  filetypes = { "markdown" },
+  filetypes = {
+    "lua",
+    "markdown"
+  },
   settings = {
-    rootMarkers = { ".textlintrc" },
+    -- efm work on anyway: https://github.com/mattn/efm-langserver/issues/125
+    rootMarkers = { vim.loop.cwd() },
     languages = {
+      lua = { stylua },
       markdown = { textlint },
     },
   },

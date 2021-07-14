@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
 
-# create .hushlogin
+# don't show terminal last login message
 touch "${HOME}/.hushlogin"
+
+# gyazo token for gyazo.vim
+touch "${HOME}/.gyazo_token"
 
 # Homebrew
 ln -sf ~/dotfiles/home/Brewfile ~/Brewfile
@@ -29,6 +32,7 @@ ln -sf ~/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
 ln -snf ~/dotfiles/config/nvim/after ~/.config/nvim/after
 ln -snf ~/dotfiles/config/nvim/lua ~/.config/nvim/lua
 ln -snf ~/dotfiles/config/nvim/snippets ~/.config/nvim/snippets
+ln -sf ~/dotfiles/config/nvim/.stylua ~/.config/nvim/.stylua
 
 # efm-langserver
 ln -sf ~/dotfiles/home/.textlintrc ~/.textlintrc
