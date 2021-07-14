@@ -279,6 +279,10 @@ local function init()
   }
   use {
     'skanehira/gyazo.vim',
+    cmd = { 'GyazoUpload', },
+    setup = function()
+      vim.g.gyazo_insert_markdown_url = 1
+    end,
   }
 
 
@@ -291,14 +295,6 @@ local function init()
     requires = { 'rktjmp/lush.nvim', opt = true, }
   }
   use { 'kyazdani42/blue-moon', opt = true, }
-  use {
-    'marko-cerovac/material.nvim',
-    opt = true,
-  }
-  use {
-    'tjdevries/gruvbuddy.nvim', opt = true, 
-    requires = { { 'tjdevries/colorbuddy.vim', opt = true, }, },
-  }
 
   -- statusline
   use {
@@ -307,7 +303,7 @@ local function init()
     config = function()
       require('lualine').setup {
         options = {
-          theme = 'tomorrow',
+          theme = 'gruvbox',
         },
         extensions = { 'fugitive', 'nvim-tree' }
       }
