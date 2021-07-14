@@ -4,14 +4,14 @@ function M.setup()
   local k = require("astronauta.keymap")
   local nnoremap = k.nnoremap
 
-  nnoremap { 'gF', '<cmd>Format<CR>', { silent = true }}
+  nnoremap({ "gF", "<cmd>Format<CR>", { silent = true } })
 end
 
 function M.config()
-  local stylua_root = vim.fn.stdpath('config') .. '/lua/modules/StyLua/'
+  local stylua_root = vim.fn.stdpath("config") .. "/lua/modules/StyLua/"
   local stylua = function()
     return {
-      exe   = stylua_root .. "stylua --config-path ~/.config/nvim/lua/modules/StyLua/.stylua -",
+      exe = stylua_root .. "stylua --config-path ~/.config/nvim/lua/modules/StyLua/.stylua -",
       stdin = true,
     }
   end
@@ -30,7 +30,7 @@ function M.config()
       php        = { prettier },
       rust       = { rustfmt },
       go         = { gofmt }, ]]
-      lua        = { stylua },
+      lua = { stylua },
     },
   })
 end
