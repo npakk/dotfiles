@@ -153,6 +153,15 @@ local function init()
     },
   })
 
+  -- Formatter
+  use({
+    "mhartington/formatter.nvim",
+    event = { "BufWritePre *.lua" },
+    cmd = { "Format" },
+    setup = require("plugins.formatter").setup,
+    config = require("plugins.formatter").config,
+  })
+
   -- Explorer
   -- TODO: No file content.
   -- check this: https://github.com/kyazdani42/nvim-tree.lua/issues/495

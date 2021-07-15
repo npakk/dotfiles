@@ -36,6 +36,3 @@ ln -sf ~/dotfiles/config/nvim/.stylua ~/.config/nvim/.stylua
 
 # textlint
 ln -sf ~/dotfiles/home/.textlintrc ~/.textlintrc
-
-# rubocop
-ln -sf ~/dotfiles/home/.rubocop.yml ~/.rubocop.yml

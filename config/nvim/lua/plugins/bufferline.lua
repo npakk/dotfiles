@@ -20,7 +20,6 @@ function M.setup()
     { noremap = true, silent = true }
   )
   vim.api.nvim_set_keymap("n", "<Up>", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("n", "<leader>x", ":bd<CR>", { noremap = true, silent = true })
   vim.api.nvim_set_keymap(
     "n",
     "<leader><Right>",
@@ -42,7 +41,7 @@ function M.config()
       number_style = "",
       mappings = true,
       diagnostics = "nvim_lsp",
-      diagnostics_indicator = function(count, level, diagnostics_dict)
+      diagnostics_indicator = function(_, _, diagnostics_dict)
         local s = " "
         for e, n in pairs(diagnostics_dict) do
           local sym = e == "error" and " " or (e == "warning" and " " or "")

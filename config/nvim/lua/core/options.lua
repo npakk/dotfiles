@@ -11,7 +11,9 @@ vim.opt.matchtime = 1
 vim.opt.hlsearch = true
 vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
-vim.opt.wildmode = { "list", "full" }
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.wildmode = { "full", "lastused", "list" }
 if vim.fn.has("unix") == 1 then
   vim.opt.clipboard = "unnamedplus"
 else

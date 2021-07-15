@@ -35,9 +35,14 @@ vim.g.loaded_perl_provider = 0
 
 -- TODO: Defining autocommands
 -- check this: https://github.com/neovim/neovim/pull/12378
-vim.cmd([[augroup MyAutoCmd]])
-vim.cmd([[autocmd!]])
-vim.cmd([[augroup END]])
+vim.api.nvim_exec(
+  [[
+  augroup MyAutoCmd
+  autocmd!
+  augroup END
+  ]],
+  true
+)
 
 -- cd cwd
 vim.cmd([[command CD cd %:h]])
