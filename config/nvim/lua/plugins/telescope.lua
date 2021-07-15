@@ -226,192 +226,78 @@ function M.config()
   telescope.load_extension("gh")
   telescope.load_extension("ghq")
 
-  -- File Pickers
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>cn",
-    [[<cmd>lua require("plugins.telescope").pickers["edit_nvim_config"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>cz",
-    [[<cmd>lua require("plugins.telescope").pickers["edit_zsh_config"]()<CR>]],
-    { noremap = true, silent = true }
-  )
+  -- mappings
+  local set_keymap = function(key, f, options, buffer)
+    local mode = "n"
+    local rhs = string.format(
+      "<cmd>lua require('plugins.telescope').pickers['%s'](%s)<CR>",
+      f,
+      options and vim.inspect(options, { newline = "" }) or ""
+    )
+    local map_opts = { noremap = true, silent = true }
+    if buffer then
+      vim.api.nvim_buf_set_keymap(0, mode, key, rhs, map_opts)
+    else
+      vim.api.nvim_set_keymap(mode, key, rhs, map_opts)
+    end
+  end
 
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fd",
-    [[<cmd>lua require("plugins.telescope").pickers["fd"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fG",
-    [[<cmd>lua require("plugins.telescope").pickers["grep_string"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>f*",
-    [[<cmd>lua require("plugins.telescope").pickers["grep_under_cursor"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fg",
-    [[<cmd>lua require("plugins.telescope").pickers["live_grep"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fe",
-    [[<cmd>lua require("plugins.telescope").pickers["file_browser"]()<CR>]],
-    { noremap = true, silent = true }
-  )
+  local map_extension = function(key, e, f, options)
+    local mode = "n"
+    local rhs = string.format(
+      "<cmd>lua require('telescope').extensions['%s']['%s'](%s)<CR>",
+      e,
+      f,
+      options and vim.inspect(options, { newline = "" }) or ""
+    )
+    local opts = { noremap = true, silent = true }
+    vim.api.nvim_set_keymap(mode, key, rhs, opts)
+  end
+
+  -- Command line
+  vim.api.nvim_set_keymap("c", "<C-r><C-r>", "<Plug>(TelescopeFuzzyCommandSearch)", { nowait = true })
+
+  -- File Pickers
+  set_keymap("<leader>cn", "edit_nvim_config")
+  set_keymap("<leader>cz", "edit_zsh_config")
+
+  set_keymap("<leader>fd", "fd")
+  set_keymap("<leader>fG", "grep_string")
+  set_keymap("<leader>f*", "grep_under_cursor")
+  set_keymap("<leader>fg", "live_grep")
+  set_keymap("<leader>fe", "file_browser")
 
   -- Vim Pickers
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fb",
-    [[<cmd>lua require("plugins.telescope").pickers["buffers"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fo",
-    [[<cmd>lua require("plugins.telescope").pickers["oldfiles"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fh",
-    [[<cmd>lua require("plugins.telescope").pickers["help_tags"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ff",
-    [[<cmd>lua require("plugins.telescope").pickers["current_buffer_fuzzy_find"]()<CR>]],
-    { noremap = true, silent = true }
-  )
+  set_keymap("<leader>fb", "buffers")
+  set_keymap("<leader>fo", "oldfiles")
+  set_keymap("<leader>fh", "help_tags")
+  set_keymap("<leader>ff", "current_buffer_fuzzy_find")
 
   -- Git Pickers
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggc",
-    [[<cmd>lua require("plugins.telescope").pickers["git_commits"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggC",
-    [[<cmd>lua require("plugins.telescope").pickers["git_bcommits"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggb",
-    [[<cmd>lua require("plugins.telescope").pickers["git_branches"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggs",
-    [[<cmd>lua require("plugins.telescope").pickers["git_status"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggS",
-    [[<cmd>lua require("plugins.telescope").pickers["git_stash"]()<CR>]],
-    { noremap = true, silent = true }
-  )
+  set_keymap("<leader>ggc", "git_commits", { initial_mode = "normal" })
+  set_keymap("<leader>ggC", "git_bcommits", { initial_mode = "normal" })
+  set_keymap("<leader>ggb", "git_branches", { initial_mode = "normal" })
+  set_keymap("<leader>ggs", "git_status", { initial_mode = "normal" })
+  set_keymap("<leader>ggS", "git_stash", { initial_mode = "normal" })
 
   -- GitHub Pickers
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggi",
-    [[<cmd>lua require("plugins.telescope").pickers["gh_issues"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggp",
-    [[<cmd>lua require("plugins.telescope").pickers["gh_pull_request"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggg",
-    [[<cmd>lua require("plugins.telescope").pickers["gh_gist"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggr",
-    [[<cmd>lua require("plugins.telescope").pickers["gh_run"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ggq",
-    [[<cmd>lua require("plugins.telescope").pickers["ghq_list"]()<CR>]],
-    { noremap = true, silent = true }
-  )
+  set_keymap("<leader>ghi", "gh_issues")
+  set_keymap("<leader>ghp", "gh_pull_request")
+  set_keymap("<leader>ghg", "gh_gist")
+  set_keymap("<leader>ghr", "gh_run")
+  set_keymap("<leader>ghq", "ghq_list")
 
   -- LSP Pickers
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>flr",
-    [[<cmd>lua require("plugins.telescope").pickers["lsp_references"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fla",
-    [[<cmd>lua require("plugins.telescope").pickers["lsp_code_actions"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fld",
-    [[<cmd>lua require("plugins.telescope").pickers["lsp_definitions"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fls",
-    [[<cmd>lua require("plugins.telescope").pickers["lsp_document_symbols"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>flS",
-    [[<cmd>lua require("plugins.telescope").pickers["lsp_workspace_symbols"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fld",
-    [[<cmd>lua require("plugins.telescope").pickers["lsp_document_diagnostics"]()<CR>]],
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>flD",
-    [[<cmd>lua require("plugins.telescope").pickers["lsp_workspace_diagnostics"]()<CR>]],
-    { noremap = true, silent = true }
-  )
+  set_keymap("<leader>lr", "lsp_references")
+  set_keymap("<leader>la", "lsp_code_actions")
+  set_keymap("<leader>ld", "lsp_definitions")
+  set_keymap("<leader>ls", "lsp_document_symbols")
+  set_keymap("<leader>lS", "lsp_workspace_symbols")
+  set_keymap("<leader>ld", "lsp_document_diagnostics")
+  set_keymap("<leader>lD", "lsp_workspace_diagnostics")
 
   -- Treesitter Pickers
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader>ft",
-    [[<cmd>lua require("plugins.telescope").pickers["treesitter"]()<CR>]],
-    { noremap = true, silent = true }
-  )
+  set_keymap("<leader>ft", "treesitter")
 end
 
 return M

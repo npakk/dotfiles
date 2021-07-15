@@ -4,7 +4,7 @@ function M.setup()
   local k = require("astronauta.keymap")
   local nnoremap = k.nnoremap
 
-  nnoremap({ "gF", "<cmd>Format<CR>", { silent = true } })
+  nnoremap({ "gF", [[<cmd>Format<CR>]], { silent = true } })
 end
 
 function M.config()

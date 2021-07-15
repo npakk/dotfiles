@@ -1,37 +1,13 @@
 local M = {}
 
 function M.setup()
-  vim.api.nvim_set_keymap(
-    "n",
-    "<Right>",
-    ":BufferLineCycleNext<CR>",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<Left>",
-    ":BufferLineCyclePrev<CR>",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<Down>",
-    ":BufferLineMovePrev<CR>",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap("n", "<Up>", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader><Right>",
-    ":BufferLineCloseRight<CR>",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<leader><Left>",
-    ":BufferLineCloseLeft<CR>",
-    { noremap = true, silent = true }
-  )
+  local kopts = { noremap = true, silent = true }
+  vim.api.nvim_set_keymap("n", "<Right>", [[:BufferLineCycleNext<CR>]], kopts)
+  vim.api.nvim_set_keymap("n", "<Left>", [[:BufferLineCyclePrev<CR>]], kopts)
+  vim.api.nvim_set_keymap("n", "<Down>", [[:BufferLineMovePrev<CR>]], kopts)
+  vim.api.nvim_set_keymap("n", "<Up>", [[:BufferLineMoveNext<CR>]], kopts)
+  vim.api.nvim_set_keymap("n", "<leader><Right>", [[:BufferLineCloseRight<CR>]], kopts)
+  vim.api.nvim_set_keymap("n", "<leader><Left>", [[:BufferLineCloseLeft<CR>]], kopts)
 end
 
 function M.config()

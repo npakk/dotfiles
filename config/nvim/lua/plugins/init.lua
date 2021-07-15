@@ -18,15 +18,18 @@ end
 
 --[[ Commands ]]
 
--- configfile auto compile
-vim.cmd([[autocmd BufWritePost packer.lua PackerCompile]])
-
 -- packadd packer when needed
-vim.cmd([[command! PackerInstall packadd packer.nvim | lua require("plugins.packer").install()]])
-vim.cmd([[command! PackerUpdate packadd packer.nvim | lua require("plugins.packer").update()]])
-vim.cmd([[command! PackerSync packadd packer.nvim | lua require("plugins.packer").sync()]])
-vim.cmd([[command! PackerClean packadd packer.nvim | lua require("plugins.packer").clean()]])
-vim.cmd([[command! PackerCompile packadd packer.nvim | lua require("plugins.packer").compile()]])
+vim.api.nvim_exec(
+  [[
+  autocmd BufWritePost packer.lua source <afile> | PackerCompile
+  command! PackerInstall packadd packer.nvim | lua require("plugins.packer").install()
+  command! PackerUpdate packadd packer.nvim | lua require("plugins.packer").update()
+  command! PackerSync packadd packer.nvim | lua require("plugins.packer").sync()
+  command! PackerClean packadd packer.nvim | lua require("plugins.packer").clean()
+  command! PackerCompile packadd packer.nvim | lua require("plugins.packer").compile()
+  ]],
+  true
+)
 
 --[[ Plugins ]]
 

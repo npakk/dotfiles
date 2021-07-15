@@ -1,3 +1,8 @@
-vim.cmd([[execute "packadd lush.nvim"]])
-vim.cmd([[execute "packadd gruvbox.nvim"]])
-vim.cmd([[execute "colorscheme gruvbox"]])
+vim.api.nvim_exec(
+  [[
+  packadd lush.nvim
+  packadd gruvbox.nvim
+  colorscheme gruvbox
+  ]],
+  true
+)

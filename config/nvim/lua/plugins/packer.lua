@@ -35,6 +35,16 @@ local function init()
     },
   })
 
+  -- Debug Adapter Protocol client implementation for Neovim
+  use({
+    "mfussenegger/nvim-dap",
+    ft = { "python" },
+    requires = {
+      { "theHamsta/nvim-dap-virtual-text", opt = true },
+    },
+    config = require("plugins.dap").config,
+  })
+
   -- Completion
   use({
     "hrsh7th/nvim-compe",
@@ -70,12 +80,7 @@ local function init()
     "simrat39/symbols-outline.nvim",
     cmd = { "SymbolsOutline" },
     setup = function()
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>s",
-        ":SymbolsOutline<CR>",
-        { noremap = true, silent = true }
-      )
+      vim.api.nvim_set_keymap("n", "<leader>s", [[:SymbolsOutline<CR>]], { noremap = true, silent = true })
     end,
   })
 
@@ -95,37 +100,28 @@ local function init()
         [[<cmd>execute("normal! " . v:count1 . "N")<CR><cmd>lua require"hlslens".start()<CR>]],
         { noremap = true, silent = true }
       )
-      vim.api.nvim_set_keymap(
-        "x",
-        "*",
-        [[*<cmd>lua require"hlslens".start()<CR>]],
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "#",
-        [[#<cmd>lua require"hlslens".start()<CR>]],
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "x",
-        "g*",
-        [[g*<cmd>lua require"hlslens".start()<CR>]],
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "x",
-        "g#",
-        [[g#<cmd>lua require"hlslens".start()<CR>]],
-        { noremap = true, silent = true }
-      )
+      vim.api.nvim_set_keymap("x", "*", [[*<cmd>lua require"hlslens".start()<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "#", [[#<cmd>lua require"hlslens".start()<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("x", "g*", [[g*<cmd>lua require"hlslens".start()<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("x", "g#", [[g#<cmd>lua require"hlslens".start()<CR>]], { noremap = true, silent = true })
     end,
   })
 
   -- show keybindings
   use({
     "folke/which-key.nvim",
-    config = require("plugins.which-key").config,
+    config = function()
+      local wk = require("which-key")
+      wk.setup({
+        plugins = {
+          spelling = { enabled = true, suggestions = 60 },
+          presets = {
+            operators = false,
+          },
+        },
+        window = { border = "single" },
+      })
+    end,
   })
 
   --[[ Enhancement ]]
@@ -185,12 +181,7 @@ local function init()
         folder_arrows = 0,
       }
 
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>e",
-        ":NvimTreeToggle<CR>",
-        { noremap = true, silent = true }
-      )
+      vim.api.nvim_set_keymap("n", "<leader>e", [[:NvimTreeToggle<CR>]], { noremap = true, silent = true })
     end,
     requires = {
       { "kyazdani42/nvim-web-devicons" },
@@ -201,36 +192,11 @@ local function init()
   use({
     "phaazon/hop.nvim",
     setup = function()
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>w",
-        "<cmd>HopWord<CR>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>l",
-        "<cmd>HopLine<CR>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "x",
-        "<leader>l",
-        "<cmd>HopLine<CR>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader><Space>",
-        "<cmd>HopPattern<CR>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "x",
-        "<leader><Space>",
-        "<cmd>HopPattern<CR>",
-        { noremap = true, silent = true }
-      )
+      vim.api.nvim_set_keymap("n", "<leader>w", [[<cmd>HopWord<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>i", [[<cmd>HopLine<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("x", "<leader>i", [[<cmd>HopLine<CR>]], { noremap = true, silent = true })
+      -- vim.api.nvim_set_keymap("n", "<leader><Space>", [[<cmd>HopPattern<CR>]], { noremap = true, silent = true })
+      -- vim.api.nvim_set_keymap("x", "<leader><Space>", [[<cmd>HopPattern<CR>]], { noremap = true, silent = true })
     end,
     config = function()
       require("hop").setup({
@@ -279,15 +245,15 @@ local function init()
   use({
     "tpope/vim-fugitive",
     setup = function()
-      vim.api.nvim_set_keymap("n", "<leader>gs", ":vert Git<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>ga", ":Gwrite<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gm", ":GRename ", { noremap = true })
-      vim.api.nvim_set_keymap("n", "<leader>gr", ":Gread<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gR", ":GRemove<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gd", ":Gdiff<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gb", ":Gblame<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gl", ":Glog<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gw", ":GBrowse<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>gs", [[:vert Git<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>ga", [[:Gwrite<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>gm", [[:GRename<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>gr", [[:Gread<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>gR", [[:GRemove<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>gd", [[:Gdiff<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>gb", [[:Gblame<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>gl", [[:Glog<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>gw", [[:GBrowse<CR>]], { noremap = true, silent = true })
     end,
     requires = {
       { "tpope/vim-rhubarb" },
@@ -328,13 +294,13 @@ local function init()
         keymaps = {
           noremap = true,
           buffer = true,
-          ["n ]c"] = {
+          ["n ]g"] = {
             expr = true,
-            [[&diff ? "]c" : "<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>"]],
+            [[&diff ? "]h" : "<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>"]],
           },
-          ["n [c"] = {
+          ["n [g"] = {
             expr = true,
-            [[&diff ? "[c" : "<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>"]],
+            [[&diff ? "[h" : "<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>"]],
           },
 
           ["n <leader>hs"] = [[<cmd>lua require"gitsigns".stage_hunk()<CR>]],
@@ -363,25 +329,15 @@ local function init()
     "npxbr/glow.nvim",
     cmd = { "Glow" },
     setup = function()
-      vim.api.nvim_set_keymap("n", "<leader>p", ":Glow<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>p", [[:Glow<CR>]], { noremap = true, silent = true })
     end,
   })
   use({
     "mattn/vim-maketable",
     cmd = { "MakeTable", "UnmakeTable" },
     setup = function()
-      vim.api.nvim_set_keymap(
-        "x",
-        "<leader>tt",
-        ":MakeTable!<CR>",
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>tu",
-        ":UnmakeTable<CR>",
-        { noremap = true, silent = true }
-      )
+      vim.api.nvim_set_keymap("x", "<leader>tt", [[:MakeTable!<CR>]], { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>tu", [[:UnmakeTable<CR>]], { noremap = true, silent = true })
     end,
   })
   use({
