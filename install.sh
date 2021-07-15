@@ -34,7 +34,7 @@ ln -snf ~/dotfiles/config/nvim/lua ~/.config/nvim/lua
 ln -snf ~/dotfiles/config/nvim/snippets ~/.config/nvim/snippets
 ln -sf ~/dotfiles/config/nvim/.stylua ~/.config/nvim/.stylua
 
-# efm-langserver
+# textlint
 ln -sf ~/dotfiles/home/.textlintrc ~/.textlintrc
 
 # rubocop

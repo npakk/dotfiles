@@ -68,6 +68,7 @@ local custom_on_attach = function()
     end,
     { silent = true },
   })
+  nnoremap({ "gF", [[<cmd>lua vim.lsp.buf.formatting()<CR>]], { silent = true } })
   nnoremap({ "gs", sig_help.signature_help, { silent = true } })
   nnoremap({ "gr", rename.rename, { silent = true } })
   nnoremap({ "gd", provider.preview_definition, { silent = true } })
@@ -86,7 +87,7 @@ local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
 custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local stylua = {
-  formatCommand = vim.fn.stdpath("config") .. "/lua/modules/StyLua/stylua --config-path " .. vim.fn.stdpath("config") .. "/lua/modules/StyLua/.stylua -",
+  formatCommand = vim.fn.stdpath("config") .. "/lua/modules/StyLua/stylua --config-path " .. vim.fn.stdpath("config") .. "/.stylua -",
   formatStdin = true,
 }
 
