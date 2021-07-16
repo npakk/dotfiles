@@ -400,7 +400,9 @@ local function init()
   use({
     "norcalli/nvim-colorizer.lua",
     config = function()
-      require("colorizer").setup()
+      require("colorizer").setup({
+        "!markdown",
+      })
     end,
   })
 end
