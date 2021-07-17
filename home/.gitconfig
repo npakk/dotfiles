@@ -9,3 +9,5 @@
 	email = npakk669@gmail.com
 [ghq]
 	root = ~/ghq
+[color]
+	ui = auto
