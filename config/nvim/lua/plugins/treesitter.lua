@@ -27,7 +27,12 @@ function M.config()
       },
     },
 
-    indent = { enable = true },
+    indent = {
+      enable = true,
+      disable = {
+        "ruby",
+      },
+    },
 
     refactor = {
       highlight_definitions = { enable = true },

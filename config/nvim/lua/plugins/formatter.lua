@@ -8,6 +8,10 @@ function M.setup()
 end
 
 function M.config()
+  -- TODO: silent monkey patch
+  -- check this: https://github.com/mhartington/formatter.nvim/issues/48
+  require("formatter.util").print = function() end
+
   local stylua_root = vim.fn.stdpath("config") .. "/lua/modules/StyLua/"
   local stylua = function()
     return {
@@ -38,7 +42,7 @@ function M.config()
     [[
     augroup FormatAutogroup
     autocmd!
-    autocmd BufWritePre *.js,*.rs,*.lua FormatWrite
+    autocmd BufWritePost *.js,*.rs,*.lua FormatWrite
     augroup END
     ]],
     true
