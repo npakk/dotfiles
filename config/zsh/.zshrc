@@ -55,6 +55,7 @@ alias dc='docker-compose'
 alias dce='docker-compose exec'
 alias dcr='docker-compose run'
 alias sd='cd_ghq_on_fzf'
+alias info='info --vi-keys'
 
 # Vim風キーバインド
 bindkey -v
