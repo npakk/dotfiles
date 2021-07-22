@@ -296,11 +296,11 @@ local function init()
           buffer = true,
           ["n ]g"] = {
             expr = true,
-            [[&diff ? "]h" : "<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>"]],
+            [[&diff ? "]g" : "<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>"]],
           },
           ["n [g"] = {
             expr = true,
-            [[&diff ? "[h" : "<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>"]],
+            [[&diff ? "[g" : "<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>"]],
           },
 
           ["n <leader>hs"] = [[<cmd>lua require"gitsigns".stage_hunk()<CR>]],
