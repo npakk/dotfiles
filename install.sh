@@ -6,6 +6,9 @@ touch "${HOME}/.hushlogin"
 # gyazo token for gyazo.vim
 touch "${HOME}/.gyazo_token"
 
+# Biscuit
+ln -sf ~/dotfiles/home/biscuit.json ~/biscuit.json
+
 # Homebrew
 ln -sf ~/dotfiles/home/Brewfile ~/Brewfile
 
