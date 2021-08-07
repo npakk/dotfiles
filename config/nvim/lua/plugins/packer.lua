@@ -340,13 +340,6 @@ local function init()
       vim.api.nvim_set_keymap("n", "<leader>tu", [[:UnmakeTable<CR>]], { noremap = true, silent = true })
     end,
   })
-  use({
-    "skanehira/gyazo.vim",
-    cmd = { "GyazoUpload" },
-    setup = function()
-      vim.g.gyazo_insert_markdown_url = 1
-    end,
-  })
 
   --[[ Appearance ]]
 

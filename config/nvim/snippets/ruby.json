@@ -208,5 +208,11 @@
       "{P"
     ],
     "body": "{ ${1:|${2:variable}| }$0 "
+  },
+  "require": {
+    "prefix": [
+      "require"
+    ],
+    "body": "require '$0'"
   }
 }
