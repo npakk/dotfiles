@@ -14,9 +14,13 @@ function M.config()
       spell = true,
       calc = true,
       emoji = true,
-      nvim_lsp = true,
+      nvim_lsp = {
+        priority = 100,
+      },
       nvim_lua = true,
-      vsnip = true,
+      vsnip = {
+        priority = 1000,
+      },
       snippets_nvim = false,
       treesitter = true,
     },
