@@ -3,9 +3,6 @@
 # don't show terminal last login message
 touch "${HOME}/.hushlogin"
 
-# gyazo token for gyazo.vim
-touch "${HOME}/.gyazo_token"
-
 # Homebrew
 ln -sf ~/dotfiles/home/Brewfile ~/Brewfile
 
