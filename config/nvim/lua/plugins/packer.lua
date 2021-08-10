@@ -126,7 +126,7 @@ local function init()
 
   --[[ Enhancement ]]
 
-  -- FZF
+  -- fzf
   use({
     "nvim-telescope/telescope.nvim",
     setup = function()
