@@ -350,6 +350,7 @@ local function init()
     requires = { "rktjmp/lush.nvim", opt = true },
   })
   use({ "kyazdani42/blue-moon", opt = true })
+  use({ "christianchiarulli/nvcode-color-schemes.vim", opt = true })
 
   -- statusline
   use({
