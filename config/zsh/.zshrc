@@ -56,7 +56,7 @@ alias dce='docker-compose exec'
 alias dcr='docker-compose run'
 alias sd='cd_ghq_on_fzf'
 alias info='info --vi-keys'
-alias rtty='rtty run zsh -p 8080 -v --font "HackGen35Nerd Console" --font-size 20'
+alias rtty='rtty run zsh -p 8080 -v --font "HackGen35Nerd Console" --font-size 18'
 
 # Vim風キーバインド
 bindkey -v
