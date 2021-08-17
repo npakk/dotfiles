@@ -8,6 +8,10 @@
     {
       "pattern": "https?://typingx0.net/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://localhost:8080/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
