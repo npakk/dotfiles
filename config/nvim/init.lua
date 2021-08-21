@@ -1,3 +1,6 @@
+-- TODO: UTF-8 issue
+-- check this: https://github.com/neovim/neovim/issues/14542
+
 --[[ Provider ]]
 
 -- Python2
