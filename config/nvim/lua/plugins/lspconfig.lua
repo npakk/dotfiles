@@ -38,14 +38,13 @@ local custom_on_attach = function(bufnr)
   vim.api.nvim_set_keymap("t", "<A-d>", [[<C-\><C-n>:Lspsaga close_floaterm<CR>]], kopts)
   vim.api.nvim_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<CR>]], kopts)
   vim.api.nvim_set_keymap("n", "gD", [[<cmd>lua vim.lsp.buf.declaration()<CR>]], kopts)
-  -- vim.api.nvim_set_keymap("n", "gFL", [[<cmd>lua vim.lsp.buf.formatting()<CR>]], kopts)
 
   vim.api.nvim_exec(
     [[
-    augroup user_plugin_lspconfig
-    autocmd! * <buffer>
-    augroup END
-    ]],
+   augroup user_plugin_lspconfig
+   autocmd! * <buffer>
+   augroup END
+   ]],
     true
   )
 
@@ -55,7 +54,11 @@ local custom_on_attach = function(bufnr)
 
   local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
   if vim.tbl_contains(ft_auto_format, filetype) then
-    vim.cmd([[autocmd user_plugin_lspconfig BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+    -- ↓ available format only filetype
+    vim.api.nvim_set_keymap("n", "gF", [[<cmd>lua vim.lsp.buf.formatting()<CR>]], kopts)
+
+    -- ↓ format on save
+    -- vim.cmd([[autocmd user_plugin_lspconfig BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
   end
 end
 
