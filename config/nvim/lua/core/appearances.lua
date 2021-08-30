@@ -6,6 +6,7 @@ vim.api.nvim_exec(
   ]],
   true
 )
+-- nvcode
 -- vim.api.nvim_exec(
 --   [[
 --   let g:nvcode_termcolors=256
