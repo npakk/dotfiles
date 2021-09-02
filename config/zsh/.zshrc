@@ -52,7 +52,7 @@ function cd_ghq_on_fzf {
 }
 
 # エイリアス
-alias vi='nvim'
+alias v='nvim'
 alias ls='exa -a -F -I ".DS_Store|.localized"'
 alias ll='exa -a -F -l -I ".DS_Store|.localized"'
 alias find='fd'
@@ -64,7 +64,7 @@ alias dcr='docker-compose run'
 alias sd='cd_ghq_on_fzf'
 alias info='info --vi-keys'
 alias lg='lazygit'
-alias rtty='rtty run zsh -p 8080 -v --font "HackGen35Nerd Console" --font-size 18'
+alias rty='rtty run zsh -p 8080 -v --font "HackGen35Nerd Console" --font-size 18'
 
 # Vim風キーバインド
 bindkey -v
@@ -133,7 +133,6 @@ setopt globdots
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 # 移動した後は 'ls' する
-# function chpwd() { ls -A -F }
 function chpwd() { exa -a -F -I ".DS_Store|.localized" }
 
 # fzf
