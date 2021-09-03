@@ -100,7 +100,7 @@ local function init()
   -- show highlight vitual text
   use({
     "kevinhwang91/nvim-hlslens",
-    config = function()
+    setup = function()
       vim.api.nvim_set_keymap(
         "n",
         "n",
