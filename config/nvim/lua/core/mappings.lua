@@ -16,59 +16,55 @@ vim.g.mapleader = " "
 -----------------------------------------------------------------------------
 --]]
 
-local k = require("astronauta.keymap")
-local nnoremap = k.nnoremap
-local inoremap = k.inoremap
-local vnoremap = k.vnoremap
-local xnoremap = k.xnoremap
-local nmap = k.nmap
+local api = vim.api
+local kopts = { noremap = true, silent = true }
 
 -- ignore word-wrap
-nnoremap({ "j", "gj", { silent = true } })
-nnoremap({ "gj", "j", { silent = true } })
-nnoremap({ "k", "gk", { silent = true } })
-nnoremap({ "gk", "k", { silent = true } })
+api.nvim_set_keymap("n", "gj", "j", kopts)
+api.nvim_set_keymap("n", "j", "gj", kopts)
+api.nvim_set_keymap("n", "gk", "k", kopts)
+api.nvim_set_keymap("n", "k", "gk", kopts)
 
 -- Move to start/end of line
-nnoremap({ "<S-h>", "^", { silent = true } })
-nnoremap({ "<S-l>", "g_", { silent = true } })
-vnoremap({ "<S-h>", "^", { silent = true } })
-vnoremap({ "<S-l>", "g_", { silent = true } })
+api.nvim_set_keymap("n", "<S-h>", "^", kopts)
+api.nvim_set_keymap("n", "<S-l>", "g_", kopts)
+api.nvim_set_keymap("v", "<S-h>", "^", kopts)
+api.nvim_set_keymap("v", "<S-l>", "g_", kopts)
 
 -- Enhancement Delete
-inoremap({ "<C-l>", "<Delete>", { silent = true } })
+api.nvim_set_keymap("i", "<C-l>", "<Delete>", kopts)
 
 -- Paste multiple times
 -- https://stackoverflow.com/questions/7163947/paste-multiple-times
-xnoremap({ "p", "pgvy", { silent = true } })
+api.nvim_set_keymap("x", "p", "pgvy", kopts)
 
 -- Clear Search highlight
-nnoremap({ "<ESC><ESC>", ":noh<CR>", { silent = true } })
+api.nvim_set_keymap("n", "<ESC><ESC>", ":noh<CR>", kopts)
 
 -- better window movement
-nmap({ "<C-h>", "<C-w>h", { silent = true } })
-nmap({ "<C-j>", "<C-w>j", { silent = true } })
-nmap({ "<C-k>", "<C-w>k", { silent = true } })
-nmap({ "<C-l>", "<C-w>l", { silent = true } })
+api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { silent = true })
+api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { silent = true })
+api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { silent = true })
+api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { silent = true })
 
 -- window create
-nmap({ "<C-a>", "<C-w>v", { silent = true } })
-nmap({ "<C-s>", "<C-w>s", { silent = true } })
+api.nvim_set_keymap("n", "<C-a>", "<C-w>v", { silent = true })
+api.nvim_set_keymap("n", "<C-s>", "<C-w>s", { silent = true })
 
 -- window close
-nmap({ "<C-q>", "<C-w>c", { silent = true } })
+api.nvim_set_keymap("n", "<C-q>", "<C-w>c", { silent = true })
 
 -- better indenting
-vnoremap({ "<", "<gv", { silent = true } })
-vnoremap({ ">", ">gv", { silent = true } })
+api.nvim_set_keymap("v", "<", "<gv", kopts)
+api.nvim_set_keymap("v", ">", ">gv", kopts)
 
 -- add line not insert
-nnoremap({ "go", "o<ESC>", { silent = true } })
-nnoremap({ "gO", "O<ESC>", { silent = true } })
+api.nvim_set_keymap("n", "go", "o<ESC>", kopts)
+api.nvim_set_keymap("n", "gO", "O<ESC>", kopts)
 
 -- I hate escape
-inoremap({ "jj", "<ESC>", { silent = true } })
+api.nvim_set_keymap("i", "jj", "<ESC>", kopts)
 
 -- Move selected line
-xnoremap({ "J", ":move '>+1<CR>gv", { silent = true } })
-xnoremap({ "K", ":move '<-2<CR>gv", { silent = true } })
+api.nvim_set_keymap("x", "J", ":move '>+1<CR>gv", kopts)
+api.nvim_set_keymap("x", "K", ":move '<-2<CR>gv", kopts)

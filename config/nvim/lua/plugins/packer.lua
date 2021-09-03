@@ -22,7 +22,6 @@ local function init()
   --[[ Built-in Helper ]]
 
   use({ "wbthomason/packer.nvim", opt = true })
-  use({ "tjdevries/astronauta.nvim" }) -- temporary stuff before it got merged upstream
 
   -- LSP
   use({
