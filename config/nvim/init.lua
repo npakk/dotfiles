@@ -52,6 +52,8 @@ vim.cmd([[command CD cd %:h]])
 
 --[[ Settings ]]
 
+vim.cmd("lan en_US")
+
 vim.cmd([[filetype off]])
 vim.cmd([[syntax off]])
 
