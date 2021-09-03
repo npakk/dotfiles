@@ -38,10 +38,11 @@ local function init()
   use({
     "mfussenegger/nvim-dap",
     ft = { "python" },
+    setup = require("plugins.dap").setup,
+    config = require("plugins.dap").config,
     requires = {
       { "theHamsta/nvim-dap-virtual-text", opt = true },
     },
-    config = require("plugins.dap").config,
   })
 
   -- Completion

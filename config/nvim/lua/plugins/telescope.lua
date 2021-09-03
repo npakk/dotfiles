@@ -298,6 +298,12 @@ function M.config()
 
   -- Treesitter Pickers
   set_keymap("<leader>ft", "treesitter")
+
+  -- dap
+  map_extension("<Space>dc", "dap", "commands")
+  map_extension("<Space>dC", "dap", "configurations")
+  map_extension("<Space>dl", "dap", "list_breakpoints")
+  map_extension("<Space>dv", "dap", "variables;")
 end
 
 return M
