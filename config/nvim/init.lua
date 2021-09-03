@@ -59,7 +59,7 @@ vim.cmd([[syntax off]])
 
 require("core.options")
 require("core.mappings")
-require("plugins.init")
+require("core.init")
 require("core.appearances")
 
 vim.cmd([[filetype plugin indent on]])
