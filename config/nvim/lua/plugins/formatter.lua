@@ -1,4 +1,4 @@
-jjjjjjlocal M = {}
+local M = {}
 
 function M.setup()
   vim.api.nvim_set_keymap("n", "gF", [[<cmd>Format<CR>]], { noremap = true, silent = true })
