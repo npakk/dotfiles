@@ -100,24 +100,7 @@ local function init()
   -- show highlight vitual text
   use({
     "kevinhwang91/nvim-hlslens",
-    setup = function()
-      vim.api.nvim_set_keymap(
-        "n",
-        "n",
-        [[<cmd>execute("normal! " . v:count1 . "n")<CR><cmd>lua require"hlslens".start()<CR>]],
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap(
-        "n",
-        "N",
-        [[<cmd>execute("normal! " . v:count1 . "N")<CR><cmd>lua require"hlslens".start()<CR>]],
-        { noremap = true, silent = true }
-      )
-      vim.api.nvim_set_keymap("x", "*", [[*<cmd>lua require"hlslens".start()<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "#", [[#<cmd>lua require"hlslens".start()<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("x", "g*", [[g*<cmd>lua require"hlslens".start()<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("x", "g#", [[g#<cmd>lua require"hlslens".start()<CR>]], { noremap = true, silent = true })
-    end,
+    setup = require("plugins.hlslens").setup,
   })
 
   -- show keybindings
@@ -176,26 +159,7 @@ local function init()
   -- check this: https://github.com/kyazdani42/nvim-tree.lua/issues/495
   use({
     "kyazdani42/nvim-tree.lua",
-    setup = function()
-      vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache", ".DS_Store", ".localized" }
-      vim.g.nvim_tree_gitignore = 1
-      vim.g.nvim_tree_auto_ignore_ft = ""
-      vim.g.nvim_tree_git_hl = 1
-      vim.g.nvim_tree_width_allow_resize = 0
-      vim.g.nvim_tree_disable_netrw = 0
-      vim.g.nvim_tree_hijack_netrw = 0
-      vim.g.nvim_tree_group_empty = 1
-      vim.g.nvim_tree_lsp_diagnostics = 1
-      vim.g.nvim_tree_update_cwd = 1
-      vim.g.nvim_tree_show_icons = {
-        git = 1,
-        folders = 1,
-        files = 1,
-        folder_arrows = 0,
-      }
-
-      vim.api.nvim_set_keymap("n", "<leader>e", [[:NvimTreeToggle<CR>]], { noremap = true, silent = true })
-    end,
+    setup = require("plugins.nvim-tree").setup,
     requires = {
       { "kyazdani42/nvim-web-devicons" },
     },
