@@ -55,10 +55,10 @@ local custom_on_attach = function(bufnr)
   local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
   if vim.tbl_contains(ft_auto_format, filetype) then
     -- ↓ available format only filetype
-    vim.api.nvim_set_keymap("n", "gF", [[<cmd>lua vim.lsp.buf.formatting()<CR>]], kopts)
+    -- vim.api.nvim_set_keymap("n", "gF", [[<cmd>lua vim.lsp.buf.formatting()<CR>]], kopts)
 
     -- ↓ format on save
-    -- vim.cmd([[autocmd user_plugin_lspconfig BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+    vim.cmd([[autocmd user_plugin_lspconfig BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
   end
 end
 
