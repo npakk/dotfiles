@@ -26,7 +26,7 @@ function M.config()
   require("bufferline").setup({
     options = {
       numbers = function(opts)
-        return string.format("%s|%s", opts.ordinal, opts.raise(opts.id))
+        return string.format("%s", opts.raise(opts.id))
       end,
       diagnostics = "nvim_lsp",
       diagnostics_indicator = function(_, _, diagnostics_dict)
