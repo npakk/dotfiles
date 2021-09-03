@@ -47,18 +47,32 @@ local function init()
 
   -- Completion
   use({
-    "hrsh7th/nvim-compe",
+    "hrsh7th/nvim-cmp",
     event = { "InsertEnter *" },
+    setup = require("plugins.completion").setup,
     config = require("plugins.completion").config,
     requires = {
-      {
-        "hrsh7th/vim-vsnip",
-        event = { "InsertCharPre *" },
-        setup = function()
-          vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
-        end,
-      },
+      { "onsails/lspkind-nvim", opt = true },
     },
+  })
+  use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-vsnip", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" })
+  use({ "octaltree/cmp-look", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+  use({ "tzachar/cmp-tabnine", after = "nvim-cmp", run = "./install.sh" })
+  use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
+  use({ "f3fora/cmp-spell", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-emoji", after = "nvim-cmp" })
+
+  -- Snippets
+  use({
+    "hrsh7th/vim-vsnip",
+    event = { "InsertCharPre *" },
+    setup = function()
+      vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
+    end,
   })
 
   -- Treesitter

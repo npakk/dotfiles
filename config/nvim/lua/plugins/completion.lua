@@ -1,42 +1,22 @@
 local M = {}
 
+function M.setup() end
+
 function M.config()
-  require("compe").setup({
-    enabled = true,
-    autocomplete = true,
-    debug = false,
-    min_length = 1,
-    preselect = "always",
-    source = {
-      path = true,
-      buffer = true,
-      tags = true,
-      spell = true,
-      calc = true,
-      emoji = true,
-      nvim_lsp = {
-        priority = 100,
-      },
-      nvim_lua = true,
-      vsnip = {
-        priority = 1000,
-      },
-      snippets_nvim = false,
-      treesitter = true,
-    },
-  })
+  -- references
+  -- https://alpha2phi.medium.com/new-neovim-completion-plugins-you-should-try-b5e1a3661623
 
-  --[[ Key Mappings ]]
+  vim.cmd([[packadd lspkind-nvim]])
 
-  -- autopairs integration nvim-compe
-  -- https://github.com/windwp/nvim-autopairs#mapping-cr
-  require("nvim-autopairs.completion.compe").setup({
+  -- autopairs integration nvim-cmp
+  require("nvim-autopairs.completion.cmp").setup({
     map_cr = true,
     map_complete = true,
+    auto_select = true,
   })
 
-  -- use tab navigation
-  -- https://github.com/hrsh7th/nvim-compe#how-to-use-tab-to-navigate-completion-menu
+  local cmp = require("cmp")
+
   local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
   end
@@ -44,37 +24,89 @@ function M.config()
     local col = vim.fn.col(".") - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
   end
-  _G.tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-      return t("<Down>")
-    elseif vim.fn["vsnip#available"](1) == 1 then
-      return t("<Plug>(vsnip-expand-or-jump)")
-    elseif check_back_space() then
-      return t("<Tab>")
-    else
-      return vim.fn["compe#complete"]()
-    end
-  end
-  _G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-      return t("<Up>")
-    elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-      return t("<Plug>(vsnip-jump-prev)")
-    else
-      return t("<S-Tab>")
-    end
-  end
-  local kopts = { expr = true, noremap = true, silent = true }
-  vim.api.nvim_set_keymap("i", "<Tab>", [[v:lua.tab_complete()]], { expr = true })
-  vim.api.nvim_set_keymap("s", "<Tab>", [[v:lua.tab_complete()]], { expr = true })
-  vim.api.nvim_set_keymap("i", "<S-Tab>", [[v:lua.s_tab_complete()]], { expr = true })
-  vim.api.nvim_set_keymap("s", "<S-Tab>", [[v:lua.s_tab_complete()]], { expr = true })
 
-  vim.api.nvim_set_keymap("i", "<C-Space>", [[compe#complete()]], kopts)
-  vim.api.nvim_set_keymap("i", "<CR>", [[compe#confirm(luaeval("require('nvim-autopairs').autopairs_cr()"))]], kopts)
-  vim.api.nvim_set_keymap("i", "<C-e>", [[compe#close("<C-e>")]], kopts)
-  vim.api.nvim_set_keymap("i", "<C-f>", [[compe#scroll({ 'delta': +4 })]], kopts)
-  vim.api.nvim_set_keymap("i", "<C-d>", [[compe#scroll({ 'delta': -4 })]], kopts)
+  cmp.setup({
+    formatting = {
+      format = function(entry, vim_item)
+        vim_item.kind = require("lspkind").presets.default[vim_item.kind]
+        vim_item.menu = ({
+          buffer = "[Buffer]",
+          nvim_lsp = "[LSP]",
+          vsnip = "[vsnip]",
+          nvim_lua = "[Lua]",
+          look = "[Look]",
+          path = "[Path]",
+          cmp_tabnine = "[TabNine]",
+          calc = "[Calc]",
+          spell = "[Spell]",
+          emoji = "[Emoji]",
+        })[entry.source.name]
+        return vim_item
+      end,
+    },
+    completion = {
+      get_trigger_characters = function(trigger_characters)
+        return vim.tbl_filter(function(char)
+          return char ~= " "
+        end, trigger_characters)
+      end,
+    },
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    mapping = {
+      ["<C-p>"] = cmp.mapping.select_prev_item(),
+      ["<C-n>"] = cmp.mapping.select_next_item(),
+      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-e>"] = cmp.mapping.abort(),
+      ["<CR>"] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }),
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if vim.fn.pumvisible() == 1 then
+          vim.fn.feedkeys(t("<C-n>"), "n")
+        elseif vim.fn["vsnip#available"]() == 1 then
+          vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)"), "")
+        elseif check_back_space() then
+          vim.fn.feedkeys(t("<Tab>"), "n")
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if vim.fn.pumvisible() == 1 then
+          vim.fn.feedkeys(t("<C-p>"), "n")
+        elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+          vim.fn.feedkeys(t("<Plug>(vsnip-jump-prev)"), "")
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
+    },
+    sources = {
+      { name = "buffer" },
+      { name = "nvim_lsp" },
+      { name = "vsnip" },
+      { name = "nvim_lua" },
+      { name = "look" },
+      { name = "path" },
+      { name = "cmp_tabnine" },
+      { name = "calc" },
+      { name = "spell" },
+      { name = "emoji" },
+    },
+  })
 end
 
 return M
