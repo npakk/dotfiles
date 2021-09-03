@@ -167,11 +167,13 @@ local function init()
   use({
     "phaazon/hop.nvim",
     setup = function()
-      vim.api.nvim_set_keymap("n", "<leader>w", [[<cmd>HopWord<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>i", [[<cmd>HopLine<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("x", "<leader>i", [[<cmd>HopLine<CR>]], { noremap = true, silent = true })
-      -- vim.api.nvim_set_keymap("n", "<leader><Space>", [[<cmd>HopPattern<CR>]], { noremap = true, silent = true })
-      -- vim.api.nvim_set_keymap("x", "<leader><Space>", [[<cmd>HopPattern<CR>]], { noremap = true, silent = true })
+      local api = vim.api
+      local kopts = { noremap = true, silent = true }
+      api.nvim_set_keymap("n", "<leader>w", [[<cmd>HopWord<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>i", [[<cmd>HopLine<CR>]], kopts)
+      api.nvim_set_keymap("x", "<leader>i", [[<cmd>HopLine<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader><Space>", [[<cmd>HopPattern<CR>]], kopts)
+      api.nvim_set_keymap("x", "<leader><Space>", [[<cmd>HopPattern<CR>]], kopts)
     end,
     config = function()
       require("hop").setup({
@@ -220,15 +222,17 @@ local function init()
   use({
     "tpope/vim-fugitive",
     setup = function()
-      vim.api.nvim_set_keymap("n", "<leader>gs", [[:vert Git<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>ga", [[:Gwrite<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gm", [[:GRename<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gr", [[:Gread<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gR", [[:GRemove<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gd", [[:Gdiff<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gb", [[:Gblame<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gl", [[:Glog<CR>]], { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>gw", [[:GBrowse<CR>]], { noremap = true, silent = true })
+      local api = vim.api
+      local kopts = { noremap = true, silent = true }
+      api.nvim_set_keymap("n", "<leader>gs", [[:vert Git<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>ga", [[:Gwrite<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>gm", [[:GRename<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>gr", [[:Gread<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>gR", [[:GRemove<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>gd", [[:Gdiff<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>gb", [[:Gblame<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>gl", [[:Glog<CR>]], kopts)
+      api.nvim_set_keymap("n", "<leader>gw", [[:GBrowse<CR>]], kopts)
     end,
     requires = {
       { "tpope/vim-rhubarb" },

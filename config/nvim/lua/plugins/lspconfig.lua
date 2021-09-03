@@ -21,25 +21,26 @@ local lspsaga = require("lspsaga")
 lspsaga.init_lsp_saga()
 
 local custom_on_attach = function(bufnr)
+  local api = vim.api
   local kopts = { noremap = true, silent = true }
-  vim.api.nvim_set_keymap("n", "gh", [[:Lspsaga lsp_finder<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "ga", [[:Lspsaga code_action<CR>]], kopts)
-  vim.api.nvim_set_keymap("v", "ga", [[:Lspsaga range_code_action<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "K", [[:Lspsaga hover_doc<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "<C-f>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "<C-b>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "gs", [[:Lspsaga signature_help<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "gr", [[:Lspsaga rename<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "gd", [[:Lspsaga preview_definition<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "gp", [[:Lspsaga show_line_diagnostics<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "]e", [[:Lspsaga diagnostic_jump_next<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "[e", [[:Lspsaga diagnostic_jump_prev<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "<A-d>", [[:Lspsaga open_floaterm<CR>]], kopts)
-  vim.api.nvim_set_keymap("t", "<A-d>", [[<C-\><C-n>:Lspsaga close_floaterm<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<CR>]], kopts)
-  vim.api.nvim_set_keymap("n", "gD", [[<cmd>lua vim.lsp.buf.declaration()<CR>]], kopts)
+  api.nvim_set_keymap("n", "gh", [[:Lspsaga lsp_finder<CR>]], kopts)
+  api.nvim_set_keymap("n", "ga", [[:Lspsaga code_action<CR>]], kopts)
+  api.nvim_set_keymap("v", "ga", [[:Lspsaga range_code_action<CR>]], kopts)
+  api.nvim_set_keymap("n", "K", [[:Lspsaga hover_doc<CR>]], kopts)
+  api.nvim_set_keymap("n", "<C-f>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>]], kopts)
+  api.nvim_set_keymap("n", "<C-b>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>]], kopts)
+  api.nvim_set_keymap("n", "gs", [[:Lspsaga signature_help<CR>]], kopts)
+  api.nvim_set_keymap("n", "gr", [[:Lspsaga rename<CR>]], kopts)
+  api.nvim_set_keymap("n", "gd", [[:Lspsaga preview_definition<CR>]], kopts)
+  api.nvim_set_keymap("n", "gp", [[:Lspsaga show_line_diagnostics<CR>]], kopts)
+  api.nvim_set_keymap("n", "]e", [[:Lspsaga diagnostic_jump_next<CR>]], kopts)
+  api.nvim_set_keymap("n", "[e", [[:Lspsaga diagnostic_jump_prev<CR>]], kopts)
+  api.nvim_set_keymap("n", "<A-d>", [[:Lspsaga open_floaterm<CR>]], kopts)
+  api.nvim_set_keymap("t", "<A-d>", [[<C-\><C-n>:Lspsaga close_floaterm<CR>]], kopts)
+  api.nvim_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<CR>]], kopts)
+  api.nvim_set_keymap("n", "gD", [[<cmd>lua vim.lsp.buf.declaration()<CR>]], kopts)
 
-  vim.api.nvim_exec(
+  api.nvim_exec(
     [[
    augroup user_plugin_lspconfig
    autocmd! * <buffer>
