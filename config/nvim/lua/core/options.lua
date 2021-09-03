@@ -23,7 +23,6 @@ end
 --[[ window-local ]]
 
 vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.list = true
 vim.opt.listchars = {
@@ -34,6 +33,7 @@ vim.opt.listchars = {
   nbsp = "%",
 }
 vim.opt.signcolumn = "auto"
+vim.opt.spell = true
 
 --[[ buffer-local ]]
 
