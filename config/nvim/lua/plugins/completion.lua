@@ -1,7 +1,5 @@
 local M = {}
 
-function M.setup() end
-
 function M.config()
   -- references
   -- https://alpha2phi.medium.com/new-neovim-completion-plugins-you-should-try-b5e1a3661623

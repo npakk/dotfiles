@@ -49,7 +49,6 @@ local function init()
   use({
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter *" },
-    setup = require("plugins.completion").setup,
     config = require("plugins.completion").config,
     requires = {
       { "onsails/lspkind-nvim", opt = true },
