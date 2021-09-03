@@ -17,6 +17,10 @@ ln -sf ~/dotfiles/config/git/ignore ~/.config/git/ignore
 # github cli
 ln -sf ~/dotfiles/config/gh/config.yml ~/.config/gh/config.yml
 
+# lazygit
+ln -sf ~/dotfiles/config/lazygit/config.yml ~/.config/lazygit/config.yml
+ln -sf ~/dotfiles/config/lazygit/state.yml ~/.config/lazygit/state.yml
+
 # karabiner-elements
 ln -sf ~/dotfiles/config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 ln -snf ~/dotfiles/config/karabiner/assets ~/.config/karabiner/assets
