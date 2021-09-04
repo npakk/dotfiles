@@ -204,9 +204,21 @@ local function init()
   -- Brackets
   use({
     "windwp/nvim-autopairs",
+    setup = function ()
+      vim.api.nvim_set_keymap("i", "<C-h>", "<BS>", { silent = true })
+    end,
     config = function()
       require("nvim-autopairs").setup({
         check_ts = true,
+        fast_wrap = {
+          map = '<C-e>',
+          chars = { '{', '[', '(', '"', "'" },
+          pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
+          end_key = '$',
+          keys = 'qwertyuiopzxcvbnmasdfghjkl',
+          check_comma = true,
+          hightlight = 'Search'
+        },
       })
     end,
   })
