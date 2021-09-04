@@ -20,9 +20,6 @@ function M.setup()
   api.nvim_set_keymap("n", "<leader><Left>", [[:BufferLineCloseLeft<CR>]], kopts)
 end
 
--- numbers = "ordinal",
--- number_style = "",
--- mappings = true,
 function M.config()
   require("bufferline").setup({
     options = {
@@ -33,7 +30,7 @@ function M.config()
       diagnostics_indicator = function(_, _, diagnostics_dict)
         local s = " "
         for e, n in pairs(diagnostics_dict) do
-          local sym = e == "error" and " " or (e == "warning" and " " or "")
+          local sym = e == "error" and " " or (e == "warning" and " " or " ")
           s = s .. n .. sym
         end
         return s
