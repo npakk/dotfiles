@@ -52,13 +52,6 @@ local function init()
     config = require("plugins.completion").config,
     requires = {
       { "onsails/lspkind-nvim", opt = true },
-      {
-        "hrsh7th/vim-vsnip",
-        opt = true,
-        setup = function()
-          vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
-        end,
-      },
     },
   })
   use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
@@ -71,6 +64,15 @@ local function init()
   use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
   use({ "f3fora/cmp-spell", after = "nvim-cmp" })
   use({ "hrsh7th/cmp-emoji", after = "nvim-cmp" })
+
+  -- Snippet
+  use({
+    "hrsh7th/vim-vsnip",
+    event = { "InsertEnter *" },
+    setup = function()
+      vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
+    end,
+  })
 
   -- Treesitter
   use({

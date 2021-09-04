@@ -5,7 +5,6 @@ function M.config()
   -- https://alpha2phi.medium.com/new-neovim-completion-plugins-you-should-try-b5e1a3661623
 
   vim.cmd([[packadd lspkind-nvim]])
-  vim.cmd([[packadd vim-vsnip]])
 
   -- autopairs integration nvim-cmp
   require("nvim-autopairs.completion.cmp").setup({
