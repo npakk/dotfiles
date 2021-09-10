@@ -3,3 +3,9 @@ git:
 os:
   editCommand: 'nvim'
   editCommandTemplate: '{{editor}} {{filename}} +{{line}} '
+customCommands:
+  - key: "C"
+    command: "git cz commit"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true
