@@ -32,11 +32,11 @@ function M.config()
     keymaps = {
       noremap = true,
       buffer = true,
-      ["n ]g"] = {
+      ["n ]h"] = {
         expr = true,
         [[&diff ? "]g" : "<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>"]],
       },
-      ["n [g"] = {
+      ["n [h"] = {
         expr = true,
         [[&diff ? "[g" : "<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>"]],
       },
