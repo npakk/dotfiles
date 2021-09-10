@@ -58,3 +58,4 @@ vim.opt.matchpairs:append({
   "“:”",
 })
 vim.opt.shada = { "!", "'1000", "<50", "s10", "h", "n~/.cache/nvim/.viminfo" }
+vim.opt.iskeyword:remove({ "_" })
