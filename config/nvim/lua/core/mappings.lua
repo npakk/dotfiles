@@ -68,3 +68,6 @@ api.nvim_set_keymap("i", "jj", "<ESC>", kopts)
 -- Move selected line
 api.nvim_set_keymap("x", "J", ":move '>+1<CR>gv", kopts)
 api.nvim_set_keymap("x", "K", ":move '<-2<CR>gv", kopts)
+
+-- Confirm quit
+api.nvim_set_keymap("n", "<leader>q", ":confirm qa<CR>", kopts)
