@@ -321,11 +321,16 @@ local function init()
 
   -- Indent
   use({
-    "glepnir/indent-guides.nvim",
+    "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("indent_guides").setup({
-        indent_guides_auto_colors = 1,
-      })
+      vim.cmd [[highlight IndentBlanklineContextChar guifg=#5A5450 gui=nocombine]]
+      vim.cmd [[highlight IndentBlanklineIndent1 guifg=#3B3735 blend=nocombine]]
+      require("indent_blankline").setup {
+        char_highlight_list = {
+          "IndentBlanklineIndent1",
+        },
+        show_current_context = true,
+      }
     end,
   })
 
