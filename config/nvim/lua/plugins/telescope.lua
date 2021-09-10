@@ -5,7 +5,7 @@ local M = {}
 function M.edit_nvim_config()
   require("telescope.builtin").find_files({
     find_command = M._find_command,
-    prompt_title = "~ dotfiles ~",
+    prompt_title = "~ nvim config ~",
     path_display = { "absolute" },
     cwd = "~/.config/nvim",
 
@@ -18,7 +18,7 @@ end
 function M.edit_zsh_config()
   require("telescope.builtin").find_files({
     find_command = M._find_command,
-    prompt_title = "~ dotfiles ~",
+    prompt_title = "~ zsh config ~",
     path_display = { "absolute" },
     cwd = "~/.config/zsh",
 
@@ -31,6 +31,19 @@ function M.edit_zsh_config()
       ".zsh_sessions",
       ".p10k.zsh",
     },
+    layout_strategy = "horizontal",
+    layout_config = { preview_width = 0.55 },
+  })
+end
+
+function M.edit_dotfiles()
+  require("telescope.builtin").find_files({
+    find_command = M._find_command,
+    prompt_title = "~ dotfiles ~",
+    path_display = { "absolute" },
+    cwd = "~/dotfiles",
+
+    file_ignore_patterns = {},
     layout_strategy = "horizontal",
     layout_config = { preview_width = 0.55 },
   })
@@ -260,6 +273,7 @@ function M.config()
   -- File Pickers
   set_keymap("<leader>cn", "edit_nvim_config")
   set_keymap("<leader>cz", "edit_zsh_config")
+  set_keymap("<leader>cd", "edit_dotfiles")
 
   set_keymap("<leader>fd", "fd")
   set_keymap("<leader>fG", "grep_string")
@@ -274,18 +288,18 @@ function M.config()
   set_keymap("<leader>ff", "current_buffer_fuzzy_find")
 
   -- Git Pickers
-  set_keymap("<leader>ggc", "git_commits", { initial_mode = "normal" })
-  set_keymap("<leader>ggC", "git_bcommits", { initial_mode = "normal" })
-  set_keymap("<leader>ggb", "git_branches", { initial_mode = "normal" })
-  set_keymap("<leader>ggs", "git_status", { initial_mode = "normal" })
-  set_keymap("<leader>ggS", "git_stash", { initial_mode = "normal" })
+  set_keymap("<leader>gc", "git_commits", { initial_mode = "normal" })
+  set_keymap("<leader>gC", "git_bcommits", { initial_mode = "normal" })
+  set_keymap("<leader>gb", "git_branches", { initial_mode = "normal" })
+  set_keymap("<leader>gs", "git_status", { initial_mode = "normal" })
+  set_keymap("<leader>gS", "git_stash", { initial_mode = "normal" })
 
   -- GitHub Pickers
-  set_keymap("<leader>ghi", "gh_issues")
-  set_keymap("<leader>ghp", "gh_pull_request")
-  set_keymap("<leader>ghg", "gh_gist")
-  set_keymap("<leader>ghr", "gh_run")
-  set_keymap("<leader>ghq", "ghq_list")
+  set_keymap("<leader>gi", "gh_issues")
+  set_keymap("<leader>gp", "gh_pull_request")
+  set_keymap("<leader>gg", "gh_gist")
+  set_keymap("<leader>gr", "gh_run")
+  set_keymap("<leader>gq", "ghq_list")
 
   -- LSP Pickers
   set_keymap("<leader>lr", "lsp_references")
