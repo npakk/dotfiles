@@ -32,7 +32,7 @@ api.nvim_set_keymap("v", "<S-h>", "^", kopts)
 api.nvim_set_keymap("v", "<S-l>", "g_", kopts)
 
 -- Enhancement Delete
-api.nvim_set_keymap("i", "<C-l>", "<Delete>", kopts)
+api.nvim_set_keymap("i", "<C-d>", "<Delete>", kopts)
 
 -- Paste multiple times
 -- https://stackoverflow.com/questions/7163947/paste-multiple-times
