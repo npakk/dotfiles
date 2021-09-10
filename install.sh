@@ -31,6 +31,9 @@ ln -sf ~/dotfiles/config/iTerm2/com.googlecode.iterm2.plist ~/.config/iTerm2/com
 # Alacritty
 ln -sf ~/dotfiles/config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
+# tmux
+ln -sf ~/dotfiles/home/.tmux.conf ~/.tmux.conf
+
 # neovim
 ln -sf ~/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
 ln -snf ~/dotfiles/config/nvim/after ~/.config/nvim/after
