@@ -7,6 +7,20 @@
 [user]
 	name = npakk
 	email = npakk669@gmail.com
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[delta]
+  syntax-theme = gruvbox-dark
+  navigate = true
+  line-numbers = true
+  side-by-side = false
+  minus-style = syntax "#482323"
+  plus-style = syntax "#2b3c2b"
+[interactive]
+  diffFilter = delta --color-only
 [ghq]
 	root = ~/ghq
 [color]

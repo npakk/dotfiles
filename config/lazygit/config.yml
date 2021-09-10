@@ -1,8 +1,11 @@
 git:
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
+  paging:
+    colorArg: always
+    pager: delta --theme=gruvbox-dark --paging=never
 os:
   editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} {{filename}} +{{line}} '
+  editCommandTemplate: '{{editor}} {{filename}} +{{line}}'
 customCommands:
   - key: "C"
     command: "git cz commit"
