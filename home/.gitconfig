@@ -1,12 +1,20 @@
+[user]
+	name = npakk
+	email = npakk669@gmail.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[diff]
+  alogorithm = histogram
+[color]
+	ui = auto
 [alias]
 	co = checkout
 	s = status
 	b = branch
 	c = commit
 	ps = push
-[user]
-	name = npakk
-	email = npakk669@gmail.com
 [pager]
   diff = delta
   log = delta
@@ -23,7 +31,3 @@
   diffFilter = delta --color-only
 [ghq]
 	root = ~/ghq
-[color]
-	ui = auto
-[init]
-	defaultBranch = main
