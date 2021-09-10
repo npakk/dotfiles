@@ -242,14 +242,14 @@ local function init()
     setup = function()
       local api = vim.api
       local kopts = { noremap = true, silent = true }
-      api.nvim_set_keymap("n", "<leader>gs", [[:vert Git<CR>]], kopts)
-      api.nvim_set_keymap("n", "<leader>ga", [[:Gwrite<CR>]], kopts)
-      api.nvim_set_keymap("n", "<leader>gm", [[:GRename<CR>]], kopts)
-      api.nvim_set_keymap("n", "<leader>gr", [[:Gread<CR>]], kopts)
-      api.nvim_set_keymap("n", "<leader>gR", [[:GRemove<CR>]], kopts)
-      api.nvim_set_keymap("n", "<leader>gd", [[:Gdiff<CR>]], kopts)
-      api.nvim_set_keymap("n", "<leader>gb", [[:Gblame<CR>]], kopts)
-      api.nvim_set_keymap("n", "<leader>gl", [[:Glog<CR>]], kopts)
+      -- api.nvim_set_keymap("n", "<leader>gs", [[:vert Git<CR>]], kopts)
+      -- api.nvim_set_keymap("n", "<leader>ga", [[:Gwrite<CR>]], kopts)
+      -- api.nvim_set_keymap("n", "<leader>gm", [[:GRename<CR>]], kopts)
+      -- api.nvim_set_keymap("n", "<leader>gr", [[:Gread<CR>]], kopts)
+      -- api.nvim_set_keymap("n", "<leader>gR", [[:GRemove<CR>]], kopts)
+      -- api.nvim_set_keymap("n", "<leader>gd", [[:Gdiff<CR>]], kopts)
+      -- api.nvim_set_keymap("n", "<leader>gb", [[:Gblame<CR>]], kopts)
+      -- api.nvim_set_keymap("n", "<leader>gl", [[:Glog<CR>]], kopts)
       api.nvim_set_keymap("n", "<leader>gw", [[:GBrowse<CR>]], kopts)
     end,
     requires = {
