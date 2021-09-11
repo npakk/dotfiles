@@ -9,6 +9,7 @@ ln -sf ~/dotfiles/home/Brewfile ~/Brewfile
 # zsh
 ln -sf ~/dotfiles/home/.zshenv ~/.zshenv
 ln -sf ~/dotfiles/config/zsh/.zshrc ~/.config/zsh/.zshrc
+ln -snf ~/dotfiles/config/zsh/autoload ~/.config/zsh/autoload
 
 # git
 ln -sf ~/dotfiles/home/.gitconfig ~/.gitconfig

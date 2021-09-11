@@ -1,0 +1,6 @@
+local dir="$(ghq list -p | fzf)"
+if [ -n "$dir" ]; then
+  cd "$dir"
+else
+  echo "no such ghq directory"
+fi

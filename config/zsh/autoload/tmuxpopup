@@ -1,0 +1,8 @@
+local width="95%"
+local height="90%"
+local session=$(tmux display-message -p -F "#{session_name}")
+if [ $(echo $session | grep 'popup') ]; then
+  tmux detach
+else
+  tmux popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E "tmux attach -t popup || tmux new -s popup"
+fi
