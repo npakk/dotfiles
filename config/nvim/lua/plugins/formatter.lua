@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  vim.api.nvim_set_keymap("n", "gF", [[<cmd>Format<CR>]], { noremap = true, silent = true })
+  -- vim.api.nvim_set_keymap("n", "gF", [[<cmd>Format<CR>]], { noremap = true, silent = true })
 end
 
 function M.config()
