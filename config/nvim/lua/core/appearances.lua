@@ -10,3 +10,5 @@ vim.cmd([[
 hi clear SpellBad
 hi clear SpellCap
 ]])
+
+vim.cmd("hi! Normal ctermbg=none ctermfg=none guifg=none guibg=none")
