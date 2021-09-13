@@ -61,13 +61,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  decorations: buttonless
-
-  # Background opacity
-  #
-  # Window opacity as a floating point number from `0.0` to `1.0`.
-  # The value `0.0` is completely transparent and `1.0` is opaque.
-  #opacity: 1.0
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -181,7 +175,7 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Tomorrow Night)
+# Colors (Gruvbox Material Dark Medium)
 colors:
   primary:
     background: '0x282828'
@@ -207,6 +201,8 @@ colors:
     cyan:    '0x89b482'
     white:   '0xdfbf8e'
 
+# Colors (Tomorrow Night)
+#colors:
   # Default colors
   #primary:
   #  background: '#1d1f21'
@@ -229,7 +225,7 @@ colors:
   # affected cell, or hexadecimal colors like #ff00ff.
   cursor:
     text: CellBackground
-    cursor: "#EBDBB2"
+    cursor: "#4e7093"
 
   # Vi mode cursor colors
   #
@@ -342,13 +338,6 @@ colors:
   #
   #indexed_colors: []
 
-  # Transparent cell backgrounds
-  #
-  # Whether or not `window.opacity` applies to all cell backgrounds or only to
-  # the default background. When set to `true` all cells will be transparent
-  # regardless of their background color.
-  #transparent_background_colors: false
-
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
@@ -390,17 +379,23 @@ colors:
   #
   #command: None
 
+# Background opacity
+#
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
+background_opacity: 0.95
+
 selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  save_to_clipboard: true
+  save_to_clipboard: false
 
-#cursor:
+cursor:
   # Cursor style
-  #style:
+  style:
     # Cursor shape
     #
     # Values for `shape`:
@@ -416,7 +411,7 @@ selection:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    #blinking: Off
+    blinking: Always
 
   # Vi mode cursor style
   #
@@ -540,19 +535,13 @@ shell:
 #   - Right
 #   - Numeric identifier such as `5`
 #
-# - `action` (see key bindings for actions not exclusive to mouse mode)
-#
-# - Mouse exclusive actions:
-#
-#   - ExpandSelection
-#       Expand the selection to the current mouse cursor location.
+# - `action` (see key bindings)
 #
 # And optionally:
 #
 # - `mods` (see key bindings)
 #mouse_bindings:
-#  - { mouse: Right,             action: ExpandSelection }
-#  - { mouse: Middle, mode: ~Vi, action: PasteSelection  }
+#  - { mouse: Middle, action: PasteSelection }
 
 # Key bindings
 #
