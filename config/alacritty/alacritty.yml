@@ -225,7 +225,7 @@ colors:
   # affected cell, or hexadecimal colors like #ff00ff.
   cursor:
     text: CellBackground
-    cursor: "#4e7093"
+    cursor: "#0ca4bc"
 
   # Vi mode cursor colors
   #
