@@ -30,7 +30,7 @@ local function init()
       require("plugins.lspconfig")
     end,
     requires = {
-      { "glepnir/lspsaga.nvim", opt = true },
+      { "tami5/lspsaga.nvim", opt = true },
     },
   })
 
