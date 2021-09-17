@@ -20,7 +20,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 local lspconfig = require("lspconfig")
 local lspsaga = require("lspsaga")
 lspsaga.init_lsp_saga({
-  use_saga_diagnostic_sign = true,
   code_action_icon = "",
   code_action_prompt = {
     enable = true,
