@@ -1,8 +1,9 @@
 -- colorscheme
 vim.cmd([[
-packadd lush.nvim
-packadd gruvbox.nvim
-colorscheme gruvbox
+packadd gruvbox-material
+let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_transparent_background = 1
+colorscheme gruvbox-material
 ]])
 
 -- clear spell highlight
@@ -10,5 +11,3 @@ vim.cmd([[
 hi clear SpellBad
 hi clear SpellCap
 ]])
-
-vim.cmd("hi! Normal ctermbg=none ctermfg=none guifg=none guibg=none")

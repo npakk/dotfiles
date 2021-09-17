@@ -286,9 +286,8 @@ local function init()
 
   -- colorscheme
   use({
-    "npxbr/gruvbox.nvim",
+    "sainnhe/gruvbox-material",
     opt = true,
-    requires = { "rktjmp/lush.nvim", opt = true },
   })
 
   -- statusline
