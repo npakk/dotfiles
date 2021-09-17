@@ -17,6 +17,14 @@ function M.setup()
     files = 1,
     folder_arrows = 0,
   }
+  vim.g.nvim_tree_icons = {
+    lsp = {
+      error = "",
+      warning = "",
+      info = "",
+      hint = "",
+    },
+  }
 
   vim.api.nvim_set_keymap("n", "<leader>e", [[:NvimTreeToggle<CR>]], { noremap = true, silent = true })
 end
