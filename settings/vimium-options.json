@@ -3,7 +3,7 @@
   "exclusionRules": [
     {
       "pattern": "https?://www.youtube.com/*",
-      "passKeys": "<,>,m,/"
+      "passKeys": "<,>,m,t,/"
     },
     {
       "pattern": "https?://typingx0.net/*",

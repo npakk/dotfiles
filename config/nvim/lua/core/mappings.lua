@@ -26,13 +26,18 @@ api.nvim_set_keymap("n", "gk", "k", kopts)
 api.nvim_set_keymap("n", "k", "gk", kopts)
 
 -- Move to start/end of line
-api.nvim_set_keymap("n", "<S-h>", "^", kopts)
-api.nvim_set_keymap("n", "<S-l>", "g_", kopts)
-api.nvim_set_keymap("v", "<S-h>", "^", kopts)
-api.nvim_set_keymap("v", "<S-l>", "g_", kopts)
+api.nvim_set_keymap("n", "<C-a>", "^", kopts)
+api.nvim_set_keymap("n", "<C-e>", "g_", kopts)
+api.nvim_set_keymap("v", "<C-a>", "^", kopts)
+api.nvim_set_keymap("v", "<C-e>", "g_", kopts)
+api.nvim_set_keymap("i", "<C-a>", "<C-o>^", kopts)
+api.nvim_set_keymap("i", "<C-e>", "<C-o>$", kopts)
 
--- Enhancement Delete
-api.nvim_set_keymap("i", "<C-d>", "<Delete>", kopts)
+-- Move to start/end of word
+api.nvim_set_keymap("n", "<S-h>", "b", kopts)
+api.nvim_set_keymap("n", "<S-l>", "w", kopts)
+api.nvim_set_keymap("v", "<S-h>", "b", kopts)
+api.nvim_set_keymap("v", "<S-l>", "w", kopts)
 
 -- Paste multiple times
 -- https://stackoverflow.com/questions/7163947/paste-multiple-times
@@ -48,7 +53,7 @@ api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { silent = true })
 api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { silent = true })
 
 -- window create
-api.nvim_set_keymap("n", "<C-a>", "<C-w>v", { silent = true })
+api.nvim_set_keymap("n", "<C-x>", "<C-w>v", { silent = true })
 api.nvim_set_keymap("n", "<C-s>", "<C-w>s", { silent = true })
 
 -- window close
@@ -71,3 +76,9 @@ api.nvim_set_keymap("x", "K", ":move '<-2<CR>gv", kopts)
 
 -- Confirm quit
 api.nvim_set_keymap("n", "<leader>q", ":confirm qa<CR>", kopts)
+
+-- Backspace
+api.nvim_set_keymap("i", "<C-h>", "<BS>", { silent = true })
+
+-- Delete
+api.nvim_set_keymap("i", "<C-d>", "<Delete>", kopts)

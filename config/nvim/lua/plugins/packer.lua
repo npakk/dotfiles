@@ -172,6 +172,7 @@ local function init()
       local api = vim.api
       local kopts = { noremap = true, silent = true }
       api.nvim_set_keymap("n", "<leader>w", [[<cmd>HopWord<CR>]], kopts)
+      api.nvim_set_keymap("x", "<leader>w", [[<cmd>HopWord<CR>]], kopts)
       api.nvim_set_keymap("n", "<leader>i", [[<cmd>HopLine<CR>]], kopts)
       api.nvim_set_keymap("x", "<leader>i", [[<cmd>HopLine<CR>]], kopts)
       api.nvim_set_keymap("n", "<leader><Space>", [[<cmd>HopPattern<CR>]], kopts)
@@ -209,13 +210,12 @@ local function init()
   use({
     "windwp/nvim-autopairs",
     setup = function ()
-      vim.api.nvim_set_keymap("i", "<C-h>", "<BS>", { silent = true })
     end,
     config = function()
       require("nvim-autopairs").setup({
         check_ts = true,
         fast_wrap = {
-          map = '<C-e>',
+          map = '<M-e>',
           chars = { '{', '[', '(', '"', "'" },
           pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
           end_key = '$',
@@ -230,9 +230,9 @@ local function init()
   -- Emmet
   use({
     "mattn/emmet-vim",
-    key = { { "i", "<C-z>" } },
+    key = { { "i", "<C-y>" } },
     setup = function()
-      vim.g.user_emmet_leader_key = "<C-z>"
+      vim.g.user_emmet_leader_key = "<C-y>"
     end,
   })
 
@@ -297,7 +297,7 @@ local function init()
     config = function()
       require("lualine").setup({
         options = {
-          theme = "gruvbox",
+          theme = "gruvbox_material",
         },
         extensions = { "fugitive", "nvim-tree" },
       })
