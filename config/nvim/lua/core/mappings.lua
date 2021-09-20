@@ -26,18 +26,10 @@ api.nvim_set_keymap("n", "gk", "k", kopts)
 api.nvim_set_keymap("n", "k", "gk", kopts)
 
 -- Move to start/end of line
-api.nvim_set_keymap("n", "<C-a>", "^", kopts)
-api.nvim_set_keymap("n", "<C-e>", "g_", kopts)
-api.nvim_set_keymap("v", "<C-a>", "^", kopts)
-api.nvim_set_keymap("v", "<C-e>", "g_", kopts)
-api.nvim_set_keymap("i", "<C-a>", "<C-o>^", kopts)
-api.nvim_set_keymap("i", "<C-e>", "<C-o>$", kopts)
-
--- Move to start/end of word
-api.nvim_set_keymap("n", "<S-h>", "b", kopts)
-api.nvim_set_keymap("n", "<S-l>", "w", kopts)
-api.nvim_set_keymap("v", "<S-h>", "b", kopts)
-api.nvim_set_keymap("v", "<S-l>", "w", kopts)
+api.nvim_set_keymap("n", "<S-h>", "^", kopts)
+api.nvim_set_keymap("n", "<S-l>", "g_", kopts)
+api.nvim_set_keymap("v", "<S-h>", "^", kopts)
+api.nvim_set_keymap("v", "<S-l>", "g_", kopts)
 
 -- Paste multiple times
 -- https://stackoverflow.com/questions/7163947/paste-multiple-times
@@ -53,7 +45,7 @@ api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { silent = true })
 api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { silent = true })
 
 -- window create
-api.nvim_set_keymap("n", "<C-x>", "<C-w>v", { silent = true })
+api.nvim_set_keymap("n", "<C-g>", "<C-w>v", { silent = true })
 api.nvim_set_keymap("n", "<C-s>", "<C-w>s", { silent = true })
 
 -- window close
@@ -64,8 +56,8 @@ api.nvim_set_keymap("v", "<", "<gv", kopts)
 api.nvim_set_keymap("v", ">", ">gv", kopts)
 
 -- add line not insert
-api.nvim_set_keymap("n", "go", "o<ESC>", kopts)
-api.nvim_set_keymap("n", "gO", "O<ESC>", kopts)
+api.nvim_set_keymap("n", "go", "o<ESC>k", kopts)
+api.nvim_set_keymap("n", "gO", "O<ESC>j", kopts)
 
 -- I hate escape
 api.nvim_set_keymap("i", "jj", "<ESC>", kopts)
