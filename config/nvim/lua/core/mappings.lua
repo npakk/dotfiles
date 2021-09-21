@@ -56,8 +56,8 @@ api.nvim_set_keymap("v", "<", "<gv", kopts)
 api.nvim_set_keymap("v", ">", ">gv", kopts)
 
 -- add line not insert
-api.nvim_set_keymap("n", "go", "o<ESC>k", kopts)
-api.nvim_set_keymap("n", "gO", "O<ESC>j", kopts)
+api.nvim_set_keymap("n", "go", "o<ESC>", kopts)
+api.nvim_set_keymap("n", "gO", "O<ESC>", kopts)
 
 -- I hate escape
 api.nvim_set_keymap("i", "jj", "<ESC>", kopts)
