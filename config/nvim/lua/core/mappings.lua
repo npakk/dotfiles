@@ -51,6 +51,12 @@ api.nvim_set_keymap("n", "<C-s>", "<C-w>s", { silent = true })
 -- window close
 api.nvim_set_keymap("n", "<C-q>", "<C-w>c", { silent = true })
 
+-- window sizing
+api.nvim_set_keymap("n", "<S-Right>", "<C-w>>", { silent = true })
+api.nvim_set_keymap("n", "<S-Left>", "<C-w><", { silent = true })
+api.nvim_set_keymap("n", "<S-Up>", "<C-w>+", { silent = true })
+api.nvim_set_keymap("n", "<S-Down>", "<C-w>-", { silent = true })
+
 -- better indenting
 api.nvim_set_keymap("v", "<", "<gv", kopts)
 api.nvim_set_keymap("v", ">", ">gv", kopts)
