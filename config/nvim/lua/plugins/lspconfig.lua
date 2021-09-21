@@ -12,53 +12,54 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWar
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticHint" })
 
--- vim.cmd([[packadd lspsaga.nvim]])
--- local lspsaga = require("lspsaga")
--- lspsaga.init_lsp_saga({
---   use_saga_diagnostic_sign = true,
---   error_sign = "",
---   warn_sign = "",
---   hint_sign = "",
---   infor_sign = "",
---   code_action_icon = "",
---   code_action_prompt = {
---     enable = true,
---     sign = false,
---     virtual_text = true,
---   },
--- })
+vim.cmd([[packadd lspsaga.nvim]])
+local lspsaga = require("lspsaga")
+lspsaga.init_lsp_saga({
+  use_saga_diagnostic_sign = true,
+  error_sign = "",
+  warn_sign = "",
+  hint_sign = "",
+  infor_sign = "",
+  code_action_icon = "",
+  code_action_prompt = {
+    enable = true,
+    sign = false,
+    virtual_text = true,
+  },
+})
 
 local lspconfig = require("lspconfig")
 
 local custom_on_attach = function(bufnr)
   local api = vim.api
   local kopts = { noremap = true, silent = true }
-  -- api.nvim_set_keymap("n", "gh", [[:Lspsaga lsp_finder<CR>]], kopts)
+  api.nvim_set_keymap("n", "gh", [[:Lspsaga lsp_finder<CR>]], kopts)
   -- api.nvim_set_keymap("n", "ga", [[:Lspsaga code_action<CR>]], kopts)
   -- api.nvim_set_keymap("v", "ga", [[:Lspsaga range_code_action<CR>]], kopts)
   -- api.nvim_set_keymap("n", "K", [[:Lspsaga hover_doc<CR>]], kopts)
-  -- api.nvim_set_keymap("n", "<C-f>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>]], kopts)
-  -- api.nvim_set_keymap("n", "<C-b>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>]], kopts)
+  api.nvim_set_keymap("n", "<C-f>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>]], kopts)
+  api.nvim_set_keymap("n", "<C-b>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>]], kopts)
   -- api.nvim_set_keymap("n", "gs", [[:Lspsaga signature_help<CR>]], kopts)
-  -- api.nvim_set_keymap("n", "gr", [[:Lspsaga rename<CR>]], kopts)
-  -- api.nvim_set_keymap("n", "gd", [[:Lspsaga preview_definition<CR>]], kopts)
+  api.nvim_set_keymap("n", "gr", [[:Lspsaga rename<CR>]], kopts)
+  api.nvim_set_keymap("n", "gD", [[:Lspsaga preview_definition<CR>]], kopts)
   -- api.nvim_set_keymap("n", "gp", [[:Lspsaga show_line_diagnostics<CR>]], kopts)
   -- api.nvim_set_keymap("n", "]e", [[:Lspsaga diagnostic_jump_next<CR>]], kopts)
   -- api.nvim_set_keymap("n", "[e", [[:Lspsaga diagnostic_jump_prev<CR>]], kopts)
 
-  api.nvim_set_keymap("n", "gh", [[<cmd>lua vim.lsp.buf.references()<CR>]], kopts)
+  -- api.nvim_set_keymap("n", "gh", [[<cmd>lua vim.lsp.buf.references()<CR>]], kopts)
   api.nvim_set_keymap("n", "ga", [[<cmd>lua vim.lsp.buf.code_action()<CR>]], kopts)
   api.nvim_set_keymap("n", "K", [[<cmd>lua vim.lsp.buf.hover()<CR>]], kopts)
   api.nvim_set_keymap("n", "gs", [[<cmd>lua vim.lsp.buf.signature_help()<CR>]], kopts)
-  api.nvim_set_keymap("n", "gr", [[<cmd>lua vim.lsp.buf.rename()<CR>]], kopts)
+  -- api.nvim_set_keymap("n", "gr", [[<cmd>lua vim.lsp.buf.rename()<CR>]], kopts)
   api.nvim_set_keymap("n", "gd", [[<cmd>lua vim.lsp.buf.definition()<CR>]], kopts)
-  api.nvim_set_keymap("n", "gt", [[<cmd>lua vim.lsp.buf.type_definition()<CR>]], kopts)
   api.nvim_set_keymap("n", "gp", [[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>]], kopts)
   api.nvim_set_keymap("n", "]e", [[<cmd>lua vim.lsp.diagnostic.goto_next()<CR>]], kopts)
   api.nvim_set_keymap("n", "[e", [[<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]], kopts)
+
+  api.nvim_set_keymap("n", "gt", [[<cmd>lua vim.lsp.buf.type_definition()<CR>]], kopts)
   api.nvim_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<CR>]], kopts)
-  api.nvim_set_keymap("n", "gD", [[<cmd>lua vim.lsp.buf.declaration()<CR>]], kopts)
-  api.nvim_set_keymap("n", "gp", [[<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>]], kopts)
+  api.nvim_set_keymap("n", "gl", [[<cmd>lua vim.lsp.buf.declaration()<CR>]], kopts)
+  api.nvim_set_keymap("n", "gP", [[<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>]], kopts)
   api.nvim_set_keymap("n", "<leader>Wa", [[<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>]], kopts)
   api.nvim_set_keymap("n", "<leader>Wr", [[<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>]], kopts)
   api.nvim_set_keymap(
