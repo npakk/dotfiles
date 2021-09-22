@@ -361,7 +361,7 @@ local function init()
     config = function()
       require("tmux").setup({
         copy_sync = {
-          enable = true,
+          enable = false,
           redirect_to_clipboard = false,
           sync_clipboard = false,
         },
@@ -370,8 +370,8 @@ local function init()
         },
         resize = {
           enable_default_keybindings = false,
-          resize_step_x = 5,
-          resize_step_y = 5,
+          resize_step_x = 3,
+          resize_step_y = 3,
         }
       })
     end

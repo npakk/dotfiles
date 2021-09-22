@@ -268,7 +268,7 @@ function M.config()
   end
 
   -- Command line
-  vim.api.nvim_set_keymap("c", "<C-r>", "<Plug>(TelescopeFuzzyCommandSearch)", { nowait = true })
+  vim.api.nvim_set_keymap("c", "<C-r><C-r>", "<Plug>(TelescopeFuzzyCommandSearch)", { nowait = true })
 
   -- File Pickers
   set_keymap("<leader>cn", "edit_nvim_config")

@@ -14,6 +14,7 @@ vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wildmode = { "full", "lastused", "list" }
+vim.opt.scrolloff = 5
 if vim.fn.has("unix") == 1 then
   vim.opt.clipboard = "unnamedplus"
 else
