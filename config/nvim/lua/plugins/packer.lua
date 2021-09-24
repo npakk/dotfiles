@@ -424,8 +424,8 @@ local function init()
         autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
         autocmd WinLeave,BufLeave,BufWinLeave,FocusLost * silent! lua require('scrollbar').clear()
         augroup end
-        let g:scrollbar_max_size = 3
-        let g:scrollbar_min_size = 1
+        let g:scrollbar_max_size = 10
+        let g:scrollbar_min_size = 3
         let g:scrollbar_right_offset = 0
         let g:scrollbar_shape = {
         \ 'head': '▲',
