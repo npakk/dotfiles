@@ -282,6 +282,39 @@ local function init()
     end,
   })
 
+  use({
+    "aserowy/tmux.nvim",
+    setup = function()
+      local api = vim.api
+      local kopts = { noremap = true, silent = true }
+      api.nvim_set_keymap("n", "<M-h>", [[<cmd>lua require("tmux").move_left()<cr>]], kopts)
+      api.nvim_set_keymap("n", "<M-j>", [[<cmd>lua require("tmux").move_bottom()<cr>]], kopts)
+      api.nvim_set_keymap("n", "<M-k>", [[<cmd>lua require("tmux").move_top()<cr>]], kopts)
+      api.nvim_set_keymap("n", "<M-l>", [[<cmd>lua require("tmux").move_right()<cr>]], kopts)
+      api.nvim_set_keymap("n", "<M-Left>", [[<cmd>lua require("tmux").resize_left()<cr>]], kopts)
+      api.nvim_set_keymap("n", "<M-Down>", [[<cmd>lua require("tmux").resize_bottom()<cr>]], kopts)
+      api.nvim_set_keymap("n", "<M-Up>", [[<cmd>lua require("tmux").resize_top()<cr>]], kopts)
+      api.nvim_set_keymap("n", "<M-Right>", [[<cmd>lua require("tmux").resize_right()<cr>]], kopts)
+    end,
+    config = function()
+      require("tmux").setup({
+        copy_sync = {
+          enable = false,
+          redirect_to_clipboard = false,
+          sync_clipboard = false,
+        },
+        navigation = {
+          enable_default_keybindings = false,
+        },
+        resize = {
+          enable_default_keybindings = false,
+          resize_step_x = 3,
+          resize_step_y = 3,
+        }
+      })
+    end
+  })
+
   --[[ Appearance ]]
 
   -- colorscheme
@@ -342,39 +375,6 @@ local function init()
         "!markdown";
       })
     end,
-  })
-
-  use({
-    "aserowy/tmux.nvim",
-    setup = function()
-      local api = vim.api
-      local kopts = { noremap = true, silent = true }
-      api.nvim_set_keymap("n", "<M-h>", [[<cmd>lua require("tmux").move_left()<cr>]], kopts)
-      api.nvim_set_keymap("n", "<M-j>", [[<cmd>lua require("tmux").move_bottom()<cr>]], kopts)
-      api.nvim_set_keymap("n", "<M-k>", [[<cmd>lua require("tmux").move_top()<cr>]], kopts)
-      api.nvim_set_keymap("n", "<M-l>", [[<cmd>lua require("tmux").move_right()<cr>]], kopts)
-      api.nvim_set_keymap("n", "<M-Left>", [[<cmd>lua require("tmux").resize_left()<cr>]], kopts)
-      api.nvim_set_keymap("n", "<M-Down>", [[<cmd>lua require("tmux").resize_bottom()<cr>]], kopts)
-      api.nvim_set_keymap("n", "<M-Up>", [[<cmd>lua require("tmux").resize_top()<cr>]], kopts)
-      api.nvim_set_keymap("n", "<M-Right>", [[<cmd>lua require("tmux").resize_right()<cr>]], kopts)
-    end,
-    config = function()
-      require("tmux").setup({
-        copy_sync = {
-          enable = false,
-          redirect_to_clipboard = false,
-          sync_clipboard = false,
-        },
-        navigation = {
-          enable_default_keybindings = false,
-        },
-        resize = {
-          enable_default_keybindings = false,
-          resize_step_x = 3,
-          resize_step_y = 3,
-        }
-      })
-    end
   })
 end
 
