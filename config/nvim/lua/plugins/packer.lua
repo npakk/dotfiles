@@ -120,6 +120,41 @@ local function init()
     end,
   })
 
+  -- auto-resizing window
+  use({
+    "beauwilliams/focus.nvim",
+    config = function()
+      require("focus").setup()
+    end,
+  })
+
+  -- join-line using textobject
+  use({
+    "AckslD/nvim-revJ.lua",
+    config = function()
+      vim.cmd([[
+      packadd vim-textobj-user
+      packadd vim-textobj-parameter
+      ]])
+      require("revj").setup{
+        brackets = {first = '([{<', last = ')]}>'},
+        new_line_before_last_bracket = true,
+        add_seperator_for_last_parameter = true,
+        enable_default_keymaps = false,
+        keymaps = {
+          operator = '<Leader>J',
+          line = '<Leader>j',
+          visual = '<Leader>j',
+        },
+        parameter_mapping = ',',
+      }
+    end,
+    requires = {
+      { "kana/vim-textobj-user", opt = true },
+      { "sgur/vim-textobj-parameter", opt = true },
+    },
+  })
+
   --[[ Enhancement ]]
 
   -- fzf
@@ -377,28 +412,30 @@ local function init()
     end,
   })
 
-  -- cursor line
+  -- scroll bar
   use({
-    "edluffy/specs.nvim",
-    config = function()
-      require('specs').setup({
-        show_jumps  = true,
-        min_jump = 1,
-        popup = {
-          delay_ms = 0, -- delay before popup displays
-          inc_ms = 10, -- time increments used for fade/resize effects
-          blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
-          width = 10,
-          winhl = "PMenu",
-          fader = require('specs').exp_fader,
-          resizer = require('specs').shrink_resizer
-        },
-        ignore_filetypes = {},
-        ignore_buftypes = {
-          nofile = true,
-        },
-      })
-    end,
+    "Xuyuanp/scrollbar.nvim",
+    setup = function()
+      vim.cmd(
+        [[
+        augroup your_config_scrollbar_nvim
+        autocmd!
+        autocmd CursorMoved,VimResized,QuitPre * silent! lua require('scrollbar').show()
+        autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+        autocmd WinLeave,BufLeave,BufWinLeave,FocusLost * silent! lua require('scrollbar').clear()
+        augroup end
+        let g:scrollbar_max_size = 3
+        let g:scrollbar_min_size = 1
+        let g:scrollbar_right_offset = 0
+        let g:scrollbar_shape = {
+        \ 'head': '▲',
+        \ 'body': '|',
+        \ 'tail': '▼',
+        \ }
+        ]],
+        true
+      )
+    end
   })
 end
 
