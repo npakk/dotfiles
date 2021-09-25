@@ -858,7 +858,7 @@
                         ]
                     },
                     {
-                        "description": "右シフトを単体で押したときに、英数・かなをトグルで切り替える。- Customize",
+                        "description": "fnを単体で押したときに、英数・かなをトグルで切り替える。- Customize",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -872,7 +872,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "right_shift",
+                                    "key_code": "fn",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -884,7 +884,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_shift",
+                                        "key_code": "fn",
                                         "lazy": true
                                     }
                                 ],
@@ -895,7 +895,7 @@
                                 ],
                                 "to_if_held_down": [
                                     {
-                                        "key_code": "right_shift"
+                                        "key_code": "fn"
                                     }
                                 ],
                                 "type": "basic"
@@ -912,7 +912,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "right_shift",
+                                    "key_code": "fn",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -924,7 +924,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_shift",
+                                        "key_code": "fn",
                                         "lazy": true
                                     }
                                 ],
@@ -935,7 +935,7 @@
                                 ],
                                 "to_if_held_down": [
                                     {
-                                        "key_code": "right_shift"
+                                        "key_code": "fn"
                                     }
                                 ],
                                 "type": "basic"
@@ -1004,6 +1004,16 @@
                             "to": [
                                 {
                                     "key_code": "right_option"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "right_shift"
+                            },
+                            "to": [
+                                {
+                                    "apple_vendor_top_case_key_code": "keyboard_fn"
                                 }
                             ]
                         }
