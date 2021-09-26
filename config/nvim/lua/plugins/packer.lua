@@ -308,6 +308,7 @@ local function init()
       vim.api.nvim_set_keymap("n", "<leader>p", [[:Glow<CR>]], { noremap = true, silent = true })
     end,
   })
+
   use({
     "mattn/vim-maketable",
     cmd = { "MakeTable", "UnmakeTable" },
