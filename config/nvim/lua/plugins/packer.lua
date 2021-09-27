@@ -190,8 +190,6 @@ local function init()
   })
 
   -- Explorer
-  -- TODO: No file content.
-  -- check this: https://github.com/kyazdani42/nvim-tree.lua/issues/495
   use({
     "kyazdani42/nvim-tree.lua",
     setup = require("plugins.nvim-tree").setup,
