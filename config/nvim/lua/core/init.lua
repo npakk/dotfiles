@@ -31,6 +31,6 @@ vim.api.nvim_exec(
   true
 )
 
---[[ Plugins ]]
+--[[ Packer ]]
 
 require("plugins.packer")
