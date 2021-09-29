@@ -239,7 +239,7 @@ function M.config()
   telescope.load_extension("gh")
   telescope.load_extension("ghq")
 
-  -- mappings
+  -- Mappings
   local set_keymap = function(key, f, options, buffer)
     local mode = "n"
     local rhs = string.format(
