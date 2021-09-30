@@ -12,6 +12,7 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWar
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticHint" })
 
+--[[ lspsaga settings ]]
 -- vim.cmd([[packadd lspsaga.nvim]])
 -- local lspsaga = require("lspsaga")
 -- lspsaga.init_lsp_saga({
