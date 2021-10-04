@@ -34,7 +34,7 @@ local function init()
     },
   })
 
-  -- Debug Adapter Protocol client implementation for Neovim
+  -- Debug Adapter Protocol client implementation
   use({
     "mfussenegger/nvim-dap",
     ft = { "python" },
