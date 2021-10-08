@@ -411,7 +411,7 @@ local function init()
     end,
   })
 
-  -- scroll bar
+  -- Scroll bar
   use({
     "Xuyuanp/scrollbar.nvim",
     setup = function()
