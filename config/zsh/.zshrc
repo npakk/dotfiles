@@ -114,7 +114,7 @@ setopt list_packed
 # コマンドのスペルチェックをする
 setopt correct
 
-# 補完の可能性のあるものを列挙し、最初にマッチしたものをすぐに挿入
+# 補完の可能性があるものを列挙し、最初にマッチしたものをすぐに挿入
 setopt menu_complete
 
 # Ctrl-dで終了しない
