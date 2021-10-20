@@ -136,18 +136,18 @@ local function init()
       packadd vim-textobj-user
       packadd vim-textobj-parameter
       ]])
-      require("revj").setup{
-        brackets = {first = '([{<', last = ')]}>'},
+      require("revj").setup({
+        brackets = { first = "([{<", last = ")]}>" },
         new_line_before_last_bracket = true,
         add_seperator_for_last_parameter = true,
         enable_default_keymaps = false,
         keymaps = {
-          operator = '<Leader>J',
-          line = '<Leader>j',
-          visual = '<Leader>j',
+          operator = "<Leader>J",
+          line = "<Leader>j",
+          visual = "<Leader>j",
         },
-        parameter_mapping = ',',
-      }
+        parameter_mapping = ",",
+      })
     end,
     requires = {
       { "kana/vim-textobj-user", opt = true },
@@ -193,6 +193,7 @@ local function init()
   use({
     "kyazdani42/nvim-tree.lua",
     setup = require("plugins.nvim-tree").setup,
+    config = require("plugins.nvim-tree").config,
     requires = {
       { "kyazdani42/nvim-web-devicons" },
     },
@@ -242,19 +243,18 @@ local function init()
   -- Brackets
   use({
     "windwp/nvim-autopairs",
-    setup = function ()
-    end,
+    setup = function() end,
     config = function()
       require("nvim-autopairs").setup({
         check_ts = true,
         fast_wrap = {
-          map = '<M-e>',
-          chars = { '{', '[', '(', '"', "'" },
-          pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
-          end_key = '$',
-          keys = 'qwertyuiopzxcvbnmasdfghjkl',
+          map = "<M-e>",
+          chars = { "{", "[", "(", '"', "'" },
+          pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+          end_key = "$",
+          keys = "qwertyuiopzxcvbnmasdfghjkl",
           check_comma = true,
-          hightlight = 'Search'
+          hightlight = "Search",
         },
       })
     end,
@@ -344,9 +344,9 @@ local function init()
           enable_default_keybindings = false,
           resize_step_x = 3,
           resize_step_y = 3,
-        }
+        },
       })
-    end
+    end,
   })
 
   --[[ Appearance ]]
@@ -389,14 +389,14 @@ local function init()
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      vim.cmd [[highlight IndentBlanklineContextChar guifg=#5A5450 gui=nocombine]]
-      vim.cmd [[highlight IndentBlanklineIndent1 guifg=#3B3735 blend=nocombine]]
-      require("indent_blankline").setup {
+      vim.cmd([[highlight IndentBlanklineContextChar guifg=#5A5450 gui=nocombine]])
+      vim.cmd([[highlight IndentBlanklineIndent1 guifg=#3B3735 blend=nocombine]])
+      require("indent_blankline").setup({
         char_highlight_list = {
           "IndentBlanklineIndent1",
         },
         show_current_context = true,
-      }
+      })
     end,
   })
 
@@ -405,8 +405,8 @@ local function init()
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({
-        "*";
-        "!markdown";
+        "*",
+        "!markdown",
       })
     end,
   })
@@ -434,7 +434,7 @@ local function init()
         ]],
         true
       )
-    end
+    end,
   })
 end
 
