@@ -8,6 +8,7 @@ ln -sf ~/dotfiles/home/Brewfile ~/Brewfile
 
 # zsh
 mkdir -p ~/.config/zsh
+mkdir -p ~/.cache/zsh
 ln -sf ~/dotfiles/home/.zshenv ~/.zshenv
 ln -sf ~/dotfiles/config/zsh/.zshrc ~/.config/zsh/.zshrc
 ln -snf ~/dotfiles/config/zsh/autoload ~/.config/zsh/autoload
