@@ -13,6 +13,10 @@ ln -sf ~/dotfiles/config/zsh/.zshrc ~/.config/zsh/.zshrc
 ln -snf ~/dotfiles/config/zsh/autoload ~/.config/zsh/autoload
 ln -sf ~/dotfiles/config/zsh/.p10k.zsh ~/.config/zsh/.p10k.zsh
 
+# fzf
+mkdir -p ~/.config/fzf
+ln -sf ~/dotfiles/config/fzf/.fzf.zsh ~/.config/fzf/.fzf.zsh
+
 # git
 mkdir -p ~/.config/git
 ln -sf ~/dotfiles/home/.gitconfig ~/.gitconfig
