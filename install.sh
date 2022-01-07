@@ -11,6 +11,7 @@ mkdir -p ~/.config/zsh
 ln -sf ~/dotfiles/home/.zshenv ~/.zshenv
 ln -sf ~/dotfiles/config/zsh/.zshrc ~/.config/zsh/.zshrc
 ln -snf ~/dotfiles/config/zsh/autoload ~/.config/zsh/autoload
+ln -sf ~/dotfiles/config/zsh/.p10k.zsh ~/.config/zsh/.p10k.zsh
 
 # git
 mkdir -p ~/.config/git
