@@ -105,7 +105,10 @@ local function init()
 
   -- show keybindings
   use({
-    "folke/which-key.nvim",
+    -- Use which-key fork until issue is fixed. here https://github.com/folke/which-key.nvim/issues/226
+    -- "folke/which-key.nvim",
+    "zeertzjq/which-key.nvim",
+    branch = "patch-1",
     config = function()
       local wk = require("which-key")
       wk.setup({
@@ -364,7 +367,7 @@ local function init()
     config = function()
       require("lualine").setup({
         options = {
-          theme = "gruvbox_material",
+          theme = "gruvbox-material",
         },
         extensions = { "fugitive", "nvim-tree" },
       })

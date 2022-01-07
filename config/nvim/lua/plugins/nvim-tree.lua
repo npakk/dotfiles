@@ -1,8 +1,6 @@
 local M = {}
 
 function M.setup()
-  vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache", ".DS_Store", ".localized" }
-  vim.g.nvim_tree_gitignore = 1
   vim.g.nvim_tree_git_hl = 1
   vim.g.nvim_tree_group_empty = 1
   vim.g.nvim_tree_show_icons = {
@@ -46,6 +44,15 @@ function M.config()
     system_open = {
       cmd = nil,
       args = {},
+    },
+    filters = {
+      dotfiles = false,
+      custom = { ".git", "node_modules", ".cache", ".DS_Store", ".localized" },
+    },
+    git = {
+      enable = true,
+      ignore = true,
+      timeout = 500,
     },
     view = {
       width = 30,

@@ -31,7 +31,7 @@ lspsaga.init_lsp_saga({
 
 local lspconfig = require("lspconfig")
 
-local custom_on_attach = function(bufnr)
+local custom_on_attach = function(client, bufnr)
   local api = vim.api
   local kopts = { noremap = true, silent = true }
   api.nvim_set_keymap("n", "gh", [[:Lspsaga lsp_finder<CR>]], kopts)
