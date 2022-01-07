@@ -1,10 +1,29 @@
 #!/usr/bin/env zsh
 
-# don't show terminal last login message
-touch "${HOME}/.hushlogin"
-
 # Homebrew
 ln -sf ~/dotfiles/home/Brewfile ~/Brewfile
+
+echo "Do you want to run the installation process?(y/N): "
+if read -q; then
+  if ! command -v brew &> /dev/null; then
+    /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
+  brew bundle dump --force
+
+  # fzf
+  $(brew --prefix)/opt/fzf/install
+
+  # SF Mono square
+  open "$(brew --prefix sfmono-square)/share/fonts"
+  read -p "Open font files,install it. Press [Enter] key to continue."
+
+  # tmux
+  read -p "If you want to install tmux's plugin, press [prefix] + I. Press [Enter] key to continue."
+fi
+
+# don't show terminal last login message
+touch "${HOME}/.hushlogin"
 
 # zsh
 mkdir -p ~/.config/zsh
@@ -58,3 +77,5 @@ ln -sf ~/dotfiles/config/nvim/.stylua ~/.config/nvim/.stylua
 
 # textlint
 ln -sf ~/dotfiles/home/.textlintrc ~/.textlintrc
+
+echo "done."
