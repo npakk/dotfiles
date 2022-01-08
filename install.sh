@@ -6,20 +6,23 @@ ln -sf ~/dotfiles/home/Brewfile ~/Brewfile
 echo "Do you want to run the installation process?(y/N): "
 if read -q; then
   if ! command -v brew &> /dev/null; then
-    /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
-  brew bundle dump --force
+  brew bundle
 
   # fzf
   $(brew --prefix)/opt/fzf/install
 
   # SF Mono square
   open "$(brew --prefix sfmono-square)/share/fonts"
-  read -p "Open font files,install it. Press [Enter] key to continue."
+  read "?Open font files by Finder, Install it. Press [Enter] key to continue."
 
-  # tmux
-  read -p "If you want to install tmux's plugin, press [prefix] + I. Press [Enter] key to continue."
+  # tpm
+  if ! [ -e ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+  echo "Don't forget installing tmux's plugin on tmux."
 fi
 
 # don't show terminal last login message
