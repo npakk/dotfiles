@@ -12,6 +12,10 @@
     {
       "pattern": "https?://localhost:8080/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://trello.com/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
