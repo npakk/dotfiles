@@ -55,6 +55,7 @@ autoload -Uz tmuxpopup
 
 # エイリアス
 alias v='nvim'
+alias j='z'
 alias ls='exa -a -F -I ".DS_Store|.localized"'
 alias ll='exa -a -F -l -I ".DS_Store|.localized"'
 alias find='fd'
@@ -165,6 +166,9 @@ setopt pushd_ignore_dups
 
 # 明確なドットの指定なしで.から始まるファイルをマッチ
 setopt globdots
+
+# z
+. `brew --prefix`/etc/profile.d/z.sh
 
 # fzf
 [ -f ~/.config/fzf/.fzf.zsh ] && source ~/.config/fzf/.fzf.zsh
