@@ -85,18 +85,19 @@ if read -q && echo; then
   if ! gem list | grep -q "neovim"; then
     echo "[neovim provider - ruby]start"
     gem install neovim
-    read "?[neovim provider]put ruby version \"$(rbenv install --list-all | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)\" to neovim init.lua. Press [Enter] key to continue."
     echo "[neovim provider - ruby]finish"
   fi
 
-  if ! pyenv activate py2 &> /dev/null && pip list &> /dev/null | grep -q "neovim"; then
+  pyenv activate py2
+  if ! pip list 2> /dev/null | grep -q "neovim"; then
     echo "[neovim provider - python2]start"
     pyenv activate py2
     pip install neovim
     echo "[neovim provider - python2]finish"
   fi
 
-  if ! pyenv activate py3 &> /dev/null && pip list &> /dev/null | grep -q "neovim"; then
+  pyenv activate py3
+  if ! pip list 2> /dev/null | grep -q "neovim"; then
     echo "[neovim provider - python3]start"
     pyenv activate py3
     pip install neovim
