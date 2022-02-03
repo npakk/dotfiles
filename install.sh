@@ -37,7 +37,7 @@ if read -q && echo; then
   fi
 
   # goenv
-  if ! command -v goenv versions &> /dev/null; then
+  if [ -z "$(echo $(goenv versions | sed "/system/d"))" ]; then
     echo "[goenv]start"
     goenv install $(goenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
     goenv global $(goenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
