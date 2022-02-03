@@ -9,7 +9,7 @@ function M.config()
   -- check this: https://github.com/mhartington/formatter.nvim/issues/48
   require("formatter.util").print = function() end
 
-  local stylua_root = vim.fn.stdpath("config") .. "/lua/modules/StyLua/"
+  local stylua_root = "~/.cargo/bin/"
   local stylua = function()
     return {
       exe = stylua_root .. "stylua --config-path ~/.config/nvim/.stylua -",
@@ -35,15 +35,12 @@ function M.config()
     },
   })
 
-  vim.api.nvim_exec(
-    [[
-    augroup FormatAutogroup
+  vim.cmd([[
+    augroup MyFormatAutoCmd
     autocmd!
-    autocmd BufWritePost *.js,*.rs,*.lua FormatWrite
+    autocmd BufWritePost *.lua FormatWrite
     augroup END
-    ]],
-    true
-  )
+  ]])
 end
 
 return M

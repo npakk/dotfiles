@@ -9,8 +9,6 @@ brew "python@3.9"
 brew "glib"
 brew "commitizen"
 brew "docui"
-brew "efm-langserver"
-brew "emscripten"
 brew "exa"
 brew "fd"
 brew "fzf"
@@ -22,10 +20,9 @@ brew "glow"
 brew "goenv", args: ["HEAD"]
 brew "lazygit"
 brew "luajit", args: ["HEAD"]
+brew "n"
 brew "tree-sitter", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
-brew "ninja"
-brew "php"
 brew "pyenv"
 brew "pyenv-virtualenv"
 brew "ruby-build"

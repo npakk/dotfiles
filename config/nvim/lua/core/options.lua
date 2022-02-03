@@ -40,6 +40,10 @@ vim.opt.spell = true
 --[[ buffer-local ]]
 
 vim.opt.nrformats = "unsigned"
+vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+vim.cmd([[
+  autocmd MyAutoCmd BufWinEnter * set formatoptions-=cro
+]])
 vim.opt.tabstop = 2
 vim.opt.softtabstop = -1
 vim.opt.shiftwidth = 0

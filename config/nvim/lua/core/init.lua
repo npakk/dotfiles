@@ -19,17 +19,14 @@ end
 --[[ Commands ]]
 
 -- packadd packer when needed
-vim.api.nvim_exec(
-  [[
-  autocmd BufWritePost packer.lua source <afile> | PackerCompile
+vim.cmd([[
+  autocmd MyAutoCmd BufWritePost packer.lua source <afile> | PackerCompile
   command! PackerInstall packadd packer.nvim | lua require("plugins.packer").install()
   command! PackerUpdate packadd packer.nvim | lua require("plugins.packer").update()
   command! PackerSync packadd packer.nvim | lua require("plugins.packer").sync()
   command! PackerClean packadd packer.nvim | lua require("plugins.packer").clean()
   command! PackerCompile packadd packer.nvim | lua require("plugins.packer").compile()
-  ]],
-  true
-)
+]])
 
 --[[ Packer ]]
 

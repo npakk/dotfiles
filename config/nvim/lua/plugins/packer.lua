@@ -24,14 +24,16 @@ local function init()
   use({ "wbthomason/packer.nvim", opt = true })
 
   -- LSP
+  use({ "williamboman/nvim-lsp-installer" })
   use({
     "neovim/nvim-lspconfig",
     config = function()
-      require("plugins.lspconfig")
+      require("plugins.lsp")
     end,
     requires = {
       { "tami5/lspsaga.nvim", opt = true },
     },
+    after = "nvim-lsp-installer",
   })
 
   -- Debug Adapter Protocol client
@@ -49,7 +51,9 @@ local function init()
   use({
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter *" },
-    config = require("plugins.completion").config,
+    config = function()
+      require("plugins.completion")
+    end,
     requires = {
       { "onsails/lspkind-nvim", opt = true },
     },
@@ -78,7 +82,9 @@ local function init()
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    config = require("plugins.treesitter").config,
+    config = function()
+      require("plugins.treesitter")
+    end,
     requires = {
       { "nvim-treesitter/nvim-treesitter-refactor", opt = true },
       { "nvim-treesitter/nvim-treesitter-textobjects", opt = true },
@@ -100,7 +106,9 @@ local function init()
   -- show highlight vitual text
   use({
     "kevinhwang91/nvim-hlslens",
-    setup = require("plugins.hlslens").setup,
+    setup = function()
+      require("plugins.hlslens")
+    end,
   })
 
   -- show keybindings
@@ -181,6 +189,14 @@ local function init()
       { "nvim-telescope/telescope-github.nvim", opt = true },
       { "nvim-telescope/telescope-ghq.nvim", opt = true },
     },
+  })
+
+  -- Linter
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require("plugins.linter")
+    end,
   })
 
   -- Formatter
@@ -295,7 +311,9 @@ local function init()
 
   use({
     "lewis6991/gitsigns.nvim",
-    config = require("plugins.gitsigns").config,
+    config = function()
+      require("plugins.gitsigns")
+    end,
     requires = {
       { "nvim-lua/plenary.nvim" },
     },

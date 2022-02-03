@@ -17,10 +17,9 @@ export GOENV_ROOT="$XDG_DATA_HOME/goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 
-# rbenv
-export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
+# rustup
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export PATH="$CARGO_HOME/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
@@ -30,15 +29,24 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# rbenv
+export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+
 # gem
-export GEM_HOME="$XDG_DATA_HOME/.gem"
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME/.gem"
+# export GEM_HOME="$XDG_DATA_HOME/.gem"
+# export GEM_SPEC_CACHE="$XDG_CACHE_HOME/.gem"
 
 # bundler
-export BUNDLE_USER_HOME="$HOME/.bundle"
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/.bundle"
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/.bundle"
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/.bundle"
+# export BUNDLE_USER_HOME="$HOME/.bundle"
+# export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/.bundle"
+# export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/.bundle"
+# export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/.bundle"
+
+# n
+export N_PREFIX="$XDG_DATA_HOME/n"
+export PATH="$N_PREFIX/bin:$PATH"
 
 # 文字コード
 export LANG=ja_JP.UTF-8
@@ -203,3 +211,5 @@ zinit light zsh-users/zsh-autosuggestions
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#676e96,bg=cyan,bold,underline"
+
+alias luamake=/Users/npakk/.config/nvim/lua-language-server/3rd/luamake/luamake

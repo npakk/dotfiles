@@ -18,8 +18,8 @@ else
 end
 
 -- Ruby
-if vim.fn.executable(vim.env.RBENV_ROOT .. "/versions/3.0.1/bin/neovim-ruby-host") == 1 then
-  vim.g.ruby_host_prog = vim.env.RBENV_ROOT .. "/versions/3.0.1/bin/neovim-ruby-host"
+if vim.fn.executable(vim.env.RBENV_ROOT .. "/shims/neovim-ruby-host") == 1 then
+  vim.g.ruby_host_prog = vim.env.RBENV_ROOT .. "/shims/neovim-ruby-host"
 else
   vim.g.loaded_ruby_provider = 0
 end
@@ -38,14 +38,15 @@ vim.g.loaded_perl_provider = 0
 
 -- TODO: Defining autocommands
 -- check this: https://github.com/neovim/neovim/pull/12378
-vim.api.nvim_exec(
-  [[
+-- and this: https://github.com/neovim/neovim/pull/14661
+vim.cmd([[
   augroup MyAutoCmd
   autocmd!
   augroup END
-  ]],
-  true
-)
+  augroup MyFormatAutoCmd
+  autocmd!
+  augroup END
+]])
 
 -- cd cwd
 vim.cmd([[command CD cd %:h]])
