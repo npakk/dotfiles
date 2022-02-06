@@ -62,6 +62,7 @@ autoload -Uz cd_ghq_on_fzf
 autoload -Uz tmuxpopup
 
 # エイリアス
+alias rm='trash'
 alias v='nvim'
 alias j='z'
 alias ls='exa -a -F -I ".DS_Store|.localized"'
@@ -205,6 +206,8 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
+zinit wait'1' lucid light-mode as"program" pick"src/trash" for morgant/tools-osx
+zinit wait'1' lucid light-mode as"program" pick"src/ql" for morgant/tools-osx
 ###
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
