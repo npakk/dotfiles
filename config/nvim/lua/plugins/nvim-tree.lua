@@ -65,7 +65,7 @@ function M.config()
       },
       number = true,
       relativenumber = true,
-      signcolumn = "yes",
+      signcolumn = "auto",
     },
   })
 end
