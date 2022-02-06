@@ -34,7 +34,7 @@ vim.opt.listchars = {
   precedes = "«",
   nbsp = "%",
 }
-vim.opt.signcolumn = "auto"
+vim.opt.signcolumn = "yes"
 vim.opt.spell = true
 
 --[[ buffer-local ]]

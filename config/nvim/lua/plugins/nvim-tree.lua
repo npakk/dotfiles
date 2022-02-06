@@ -26,7 +26,7 @@ function M.config()
       auto_open = true,
     },
     hijack_cursor = false,
-    update_cwd = true,
+    update_cwd = false,
     diagnostics = {
       enable = true,
       icons = {
@@ -63,6 +63,9 @@ function M.config()
         custom_only = false,
         list = {},
       },
+      number = true,
+      relativenumber = true,
+      signcolumn = "yes",
     },
   })
 end
