@@ -194,6 +194,7 @@ local function init()
   -- Linter
   use({
     "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufEnter *.md,*.txt,*.py" },
     config = function()
       require("plugins.linter")
     end,
@@ -202,7 +203,7 @@ local function init()
   -- Formatter
   use({
     "mhartington/formatter.nvim",
-    event = { "BufWritePre *.lua" },
+    event = { "BufWritePre *.py,*.lua" },
     cmd = { "Format" },
     setup = require("plugins.formatter").setup,
     config = require("plugins.formatter").config,

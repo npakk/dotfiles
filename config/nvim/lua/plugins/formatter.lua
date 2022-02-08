@@ -9,6 +9,22 @@ function M.config()
   -- check this: https://github.com/mhartington/formatter.nvim/issues/48
   require("formatter.util").print = function() end
 
+  local isort = function()
+    return {
+      exe = "isort",
+      args = { "-q", "-" },
+      stdin = true,
+    }
+  end
+
+  local black = function()
+    return {
+      exe = "black",
+      args = { "-q", "-" },
+      stdin = true,
+    }
+  end
+
   local stylua_root = "~/.cargo/bin/"
   local stylua = function()
     return {
@@ -31,6 +47,7 @@ function M.config()
       php        = { prettier },
       rust       = { rustfmt },
       go         = { gofmt }, ]]
+      python = { isort, black },
       lua = { stylua },
     },
   })
@@ -38,7 +55,7 @@ function M.config()
   vim.cmd([[
     augroup MyFormatAutoCmd
     autocmd!
-    autocmd BufWritePost *.lua FormatWrite
+    autocmd BufWritePost *.py,*.lua FormatWrite
     augroup END
   ]])
 end

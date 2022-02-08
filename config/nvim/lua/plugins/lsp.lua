@@ -91,23 +91,6 @@ lsp_installer.on_server_ready(function(server)
   }
 
   local enhance_server_opts = {
-    ["sumneko_lua"] = function()
-      return vim.tbl_deep_extend("force", opts, {
-        filetypes = { "lua" },
-        settings = {
-          Lua = {
-            runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
-            diagnostics = {
-              enable = true,
-              globals = { "vim" },
-            },
-            workspace = {
-              preloadFileSize = 400,
-            },
-          },
-        },
-      })
-    end,
     ["solargraph"] = function()
       return vim.tbl_deep_extend("force", opts, {
         filetypes = { "ruby" },
@@ -121,6 +104,23 @@ lsp_installer.on_server_ready(function(server)
             hover = true,
             references = true,
             symbols = true,
+          },
+        },
+      })
+    end,
+    ["sumneko_lua"] = function()
+      return vim.tbl_deep_extend("force", opts, {
+        filetypes = { "lua" },
+        settings = {
+          Lua = {
+            runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
+            diagnostics = {
+              enable = true,
+              globals = { "vim" },
+            },
+            workspace = {
+              preloadFileSize = 400,
+            },
           },
         },
       })
