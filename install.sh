@@ -156,7 +156,6 @@ ln -sf ~/dotfiles/config/gh/config.yml ~/.config/gh/config.yml
 # lazygit
 mkdir -p ~/.config/lazygit
 ln -sf ~/dotfiles/config/lazygit/config.yml ~/.config/lazygit/config.yml
-ln -sf ~/dotfiles/config/lazygit/state.yml ~/.config/lazygit/state.yml
 
 # karabiner-elements
 mkdir -p ~/.config/karabiner
