@@ -21,6 +21,7 @@ brew "git-delta"
 brew "glow"
 brew "goenv", args: ["HEAD"]
 brew "lazygit"
+brew "luajit"
 brew "n"
 brew "tree-sitter", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]

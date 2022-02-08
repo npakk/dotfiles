@@ -113,7 +113,7 @@ lsp_installer.on_server_ready(function(server)
         filetypes = { "lua" },
         settings = {
           Lua = {
-            runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
+            runtime = { version = "LuaJIT", path = "/usr/local/bin/luajit" },
             diagnostics = {
               enable = true,
               globals = { "vim" },
