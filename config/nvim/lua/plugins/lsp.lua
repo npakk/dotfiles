@@ -90,6 +90,10 @@ lsp_installer.on_server_ready(function(server)
     capabilities = custom_capabilities,
   }
 
+  local runtime_path = vim.split(package.path, ";")
+  table.insert(runtime_path, "lua/?.lua")
+  table.insert(runtime_path, "lua/?/init.lua")
+
   local enhance_server_opts = {
     ["solargraph"] = function()
       return vim.tbl_deep_extend("force", opts, {
@@ -113,7 +117,7 @@ lsp_installer.on_server_ready(function(server)
         filetypes = { "lua" },
         settings = {
           Lua = {
-            runtime = { version = "LuaJIT", path = "/usr/local/bin/luajit" },
+            runtime = { version = "LuaJIT", path = runtime_path },
             diagnostics = {
               enable = true,
               globals = { "vim" },
