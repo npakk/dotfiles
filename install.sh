@@ -125,6 +125,13 @@ if read -q && echo; then
     echo "[stylua]finish"
   fi
 
+  # gcloud cli
+  if ! gcloud config list 2> /dev/null  | grep -q "account"; then
+    echo "[gcloud]start"
+    gcloud init
+    echo "[gcloud]finish"
+  fi
+
 else
   echo
 fi
