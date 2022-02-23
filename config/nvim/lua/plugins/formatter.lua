@@ -9,6 +9,14 @@ function M.config()
   -- check this: https://github.com/mhartington/formatter.nvim/issues/48
   require("formatter.util").print = function() end
 
+  local prettier = function()
+    return {
+      exe = "yarn -s run prettier",
+      args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote" },
+      stdin = true,
+    }
+  end
+
   local isort = function()
     return {
       exe = "isort",
@@ -37,7 +45,6 @@ function M.config()
     logging = false,
     filetype = {
       --[[ typescriptreact = { prettier },
-      javascript = { prettier },
       typescript = { prettier },
       svelte     = { prettier },
       css        = { prettier },
@@ -47,6 +54,7 @@ function M.config()
       php        = { prettier },
       rust       = { rustfmt },
       go         = { gofmt }, ]]
+      javascript = { prettier },
       python = { isort, black },
       lua = { stylua },
     },
@@ -55,7 +63,7 @@ function M.config()
   vim.cmd([[
     augroup MyFormatAutoCmd
     autocmd!
-    autocmd BufWritePost *.py,*.lua FormatWrite
+    autocmd BufWritePost *.js,*.py,*.lua FormatWrite
     augroup END
   ]])
 end

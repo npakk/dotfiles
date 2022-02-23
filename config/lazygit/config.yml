@@ -4,7 +4,7 @@ git:
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
   paging:
     colorArg: always
-    pager: delta --theme=gruvbox-dark --paging=never
+    pager: delta --syntax-theme=gruvbox-dark --paging=never
 os:
   editCommand: 'nvim'
   editCommandTemplate: '{{editor}} {{filename}} +{{line}}'

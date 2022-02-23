@@ -73,6 +73,9 @@ local lsp_installer = require("nvim-lsp-installer")
 local servers = {
   "sumneko_lua",
   "solargraph",
+  "jedi_language_server",
+  "eslint",
+  "tsserver",
 }
 
 for _, name in pairs(servers) do
@@ -90,42 +93,34 @@ lsp_installer.on_server_ready(function(server)
     capabilities = custom_capabilities,
   }
 
-  local runtime_path = vim.split(package.path, ";")
-  table.insert(runtime_path, "lua/?.lua")
-  table.insert(runtime_path, "lua/?/init.lua")
-
   local enhance_server_opts = {
     ["solargraph"] = function()
       return vim.tbl_deep_extend("force", opts, {
-        filetypes = { "ruby" },
         settings = {
           solargraph = {
-            completion = true,
-            definitions = true,
             diagnostics = true,
-            folding = true,
             formatting = true,
-            hover = true,
-            references = true,
-            symbols = true,
           },
         },
       })
     end,
     ["sumneko_lua"] = function()
       return vim.tbl_deep_extend("force", opts, {
-        filetypes = { "lua" },
         settings = {
           Lua = {
-            runtime = { version = "LuaJIT", path = runtime_path },
+            runtime = { version = "LuaJIT" },
             diagnostics = {
-              enable = true,
               globals = { "vim" },
             },
-            workspace = {
-              preloadFileSize = 400,
-            },
           },
+        },
+      })
+    end,
+    ["eslint"] = function()
+      return vim.tbl_deep_extend("force", opts, {
+        settings = {
+          format = false,
+          packageManager = "yarn",
         },
       })
     end,

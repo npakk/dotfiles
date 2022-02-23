@@ -113,10 +113,7 @@ local function init()
 
   -- show keybindings
   use({
-    -- Use which-key fork until issue is fixed. here https://github.com/folke/which-key.nvim/issues/226
-    -- "folke/which-key.nvim",
-    "zeertzjq/which-key.nvim",
-    branch = "patch-1",
+    "folke/which-key.nvim",
     config = function()
       local wk = require("which-key")
       wk.setup({
@@ -203,7 +200,7 @@ local function init()
   -- Formatter
   use({
     "mhartington/formatter.nvim",
-    event = { "BufWritePre *.py,*.lua" },
+    event = { "BufWritePre *.js,*.py,*.lua" },
     cmd = { "Format" },
     setup = require("plugins.formatter").setup,
     config = require("plugins.formatter").config,
