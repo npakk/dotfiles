@@ -47,7 +47,7 @@ if read -q && echo; then
   # rustup
   if ! command -v rustup &> /dev/null; then
     echo "[rustup]start"
-    curl https://sh.rustup.rs -sSf | sh
+    curl https://sh.rustup.rs -sSf | RUSTUP_INIT_SKIP_PATH_CHECK=yes sh
     echo "[rustup]finish"
   fi
 
@@ -58,6 +58,8 @@ if read -q && echo; then
     pyenv install $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
     pyenv virtualenv $(pyenv install --list | grep "^\s*[2][0-9.]*[0-9]\s*$" | tail -1) py2
     pyenv virtualenv $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1) py3
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
     pyenv activate py2
     pip install --upgrade pip
     pyenv activate py3
@@ -191,4 +193,6 @@ ln -sf ~/dotfiles/config/nvim/.stylua ~/.config/nvim/.stylua
 # textlint
 ln -sf ~/dotfiles/home/.textlintrc ~/.textlintrc
 
+source ~/.zshenv
+source ~/.config/zsh/.zshrc
 echo "complete."

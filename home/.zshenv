@@ -8,4 +8,3 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # autoload
 export FPATH="$ZDOTDIR/autoload/:$FPATH"
-. "$HOME/.cargo/env"
