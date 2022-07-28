@@ -1,15 +1,6 @@
 local M = {}
 
 function M.setup()
-  vim.g.nvim_tree_git_hl = 1
-  vim.g.nvim_tree_group_empty = 1
-  vim.g.nvim_tree_show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 0,
-  }
-
   vim.api.nvim_set_keymap("n", "<leader>e", [[:NvimTreeToggle<CR>]], { noremap = true, silent = true })
 end
 
@@ -19,12 +10,7 @@ function M.config()
     hijack_netrw = false,
     open_on_setup = false,
     ignore_ft_on_setup = {},
-    auto_close = false,
     open_on_tab = false,
-    update_to_buf_dir = {
-      enable = false,
-      auto_open = true,
-    },
     hijack_cursor = false,
     update_cwd = false,
     diagnostics = {
@@ -54,11 +40,23 @@ function M.config()
       ignore = true,
       timeout = 500,
     },
+    renderer = {
+      group_empty = true,
+      highlight_git = true,
+      icons = {
+        show = {
+          file = true,
+          folder = true,
+          folder_arrow = false,
+          git = true,
+        },
+      },
+    },
     view = {
+      adaptive_size = true,
       width = 30,
       height = 30,
       side = "left",
-      auto_resize = true,
       mappings = {
         custom_only = false,
         list = {},
@@ -66,6 +64,11 @@ function M.config()
       number = true,
       relativenumber = true,
       signcolumn = "auto",
+    },
+    actions = {
+      open_file = {
+        quit_on_open = true,
+      },
     },
   })
 end
