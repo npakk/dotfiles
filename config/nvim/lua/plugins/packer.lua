@@ -106,6 +106,9 @@ local function init()
   -- show highlight vitual text
   use({
     "kevinhwang91/nvim-hlslens",
+    config = function()
+      require("hlslens").setup()
+    end,
     setup = function()
       require("plugins.hlslens")
     end,
