@@ -1,0 +1,65 @@
+{
+  "title": "CTRL+c to COPY for mac - Customize",
+  "rules": [
+    {
+      "description": "Copy to CTRL+c",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": "control"
+            }
+          },
+          "to": [
+            {
+              "key_code": "c",
+              "modifiers": "command"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Cut to CTRL+x",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": "control"
+            }
+          },
+          "to": [
+            {
+              "key_code": "x",
+              "modifiers": "command"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Paste to CTRL+v",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "v",
+            "modifiers": {
+              "mandatory": "control"
+            }
+          },
+          "to": [
+            {
+              "key_code": "v",
+              "modifiers": "command"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
