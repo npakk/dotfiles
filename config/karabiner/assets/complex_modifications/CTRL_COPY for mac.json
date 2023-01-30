@@ -17,6 +17,14 @@
               "key_code": "c",
               "modifiers": "command"
             }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^org\\.alacritty"
+              ]
+            }
           ]
         }
       ]
@@ -37,6 +45,14 @@
               "key_code": "x",
               "modifiers": "command"
             }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^org\\.alacritty"
+              ]
+            }
           ]
         }
       ]
@@ -56,6 +72,42 @@
             {
               "key_code": "v",
               "modifiers": "command"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^org\\.alacritty"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "SelectAll to CTRL+a",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "a",
+            "modifiers": {
+              "mandatory": "control"
+            }
+          },
+          "to": [
+            {
+              "key_code": "a",
+              "modifiers": "command"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^org\\.alacritty"
+              ]
             }
           ]
         }
