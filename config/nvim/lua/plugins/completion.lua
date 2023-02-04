@@ -30,8 +30,8 @@ cmp.setup({
     format = function(entry, vim_item)
       vim_item.kind = require("lspkind").presets.default[vim_item.kind]
       vim_item.menu = ({
-        buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
+        buffer = "[Buffer]",
         vsnip = "[vsnip]",
         nvim_lua = "[Lua]",
         look = "[Look]",
@@ -95,8 +95,8 @@ cmp.setup({
     }),
   },
   sources = {
-    { name = "buffer" },
     { name = "nvim_lsp" },
+    { name = "buffer" },
     { name = "vsnip" },
     { name = "nvim_lua" },
     { name = "look" },
