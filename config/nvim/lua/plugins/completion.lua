@@ -30,13 +30,12 @@ cmp.setup({
     format = function(entry, vim_item)
       vim_item.kind = require("lspkind").presets.default[vim_item.kind]
       vim_item.menu = ({
+        vsnip = "[vsnip]",
         nvim_lsp = "[LSP]",
         buffer = "[Buffer]",
-        vsnip = "[vsnip]",
         nvim_lua = "[Lua]",
-        look = "[Look]",
-        path = "[Path]",
         cmp_tabnine = "[TabNine]",
+        path = "[Path]",
         calc = "[Calc]",
         spell = "[Spell]",
         emoji = "[Emoji]",
@@ -95,13 +94,12 @@ cmp.setup({
     }),
   },
   sources = {
+    { name = "vsnip" },
     { name = "nvim_lsp" },
     { name = "buffer" },
-    { name = "vsnip" },
     { name = "nvim_lua" },
-    { name = "look" },
-    { name = "path" },
     { name = "cmp_tabnine" },
+    { name = "path" },
     { name = "calc" },
     { name = "spell" },
     { name = "emoji" },
