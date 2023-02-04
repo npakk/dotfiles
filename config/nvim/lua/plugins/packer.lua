@@ -97,7 +97,9 @@ local function init()
   -- Symbols
   use({
     "simrat39/symbols-outline.nvim",
-    cmd = { "SymbolsOutline" },
+    config = function()
+      require("symbols-outline").setup()
+    end,
     setup = function()
       vim.api.nvim_set_keymap("n", "<leader>s", [[:SymbolsOutline<CR>]], { noremap = true, silent = true })
     end,
