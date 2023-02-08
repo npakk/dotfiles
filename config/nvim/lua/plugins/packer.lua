@@ -326,6 +326,9 @@ local function init()
   use({
     "npxbr/glow.nvim",
     cmd = { "Glow" },
+    config = function()
+      require("glow").setup()
+    end,
     setup = function()
       vim.api.nvim_set_keymap("n", "<leader>p", [[:Glow<CR>]], { noremap = true, silent = true })
     end,
