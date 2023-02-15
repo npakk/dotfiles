@@ -1174,7 +1174,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.alacritty"
+                                            "^org\\.alacritty",
+                                            "^com\\.microsoft\\.Excel"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
