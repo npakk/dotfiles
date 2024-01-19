@@ -20,14 +20,6 @@ if read -q && echo; then
     echo "[fzf]finish"
   fi
 
-  # SF Mono Square
-  if ! system_profiler SPFontsDataType | grep -q "SF Mono Square"; then
-    echo "[SF Mono Square]start"
-    open "$(brew --prefix sfmono-square)/share/fonts"
-    read "?[SF Mono Square]Open font files by Finder, Install it. Press [Enter] key to continue."
-    echo "[SF Mono Square]finish"
-  fi
-
   # tpm
   if ! [ -e ~/.tmux/plugins/tpm ]; then
     echo "[tpm]start"
