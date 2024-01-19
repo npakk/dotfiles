@@ -1,3 +1,8 @@
+--[[ Mason settings ]]
+vim.cmd([[packadd mason.nvim]])
+local mason = require("mason").setup()
+vim.cmd([[packadd mason-lspconfig.nvim]])
+
 --[[ Lspsaga settings ]]
 vim.cmd([[packadd lspsaga.nvim]])
 local lspsaga = require("lspsaga")
@@ -66,65 +71,3 @@ end
 
 local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
 custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
-
---[[ nvim-lsp-installer settings ]]
-local lsp_installer = require("nvim-lsp-installer")
-
-local servers = {
-  "sumneko_lua",
-  "solargraph",
-  "jedi_language_server",
-  "eslint",
-  "tsserver",
-}
-
-for _, name in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found and not server:is_installed() then
-    print("Installing " .. name)
-    server:install()
-  end
-end
-
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = custom_on_attach,
-    on_init = custom_on_init,
-    capabilities = custom_capabilities,
-  }
-
-  local enhance_server_opts = {
-    ["solargraph"] = function()
-      return vim.tbl_deep_extend("force", opts, {
-        settings = {
-          solargraph = {
-            diagnostics = true,
-            formatting = true,
-          },
-        },
-      })
-    end,
-    ["sumneko_lua"] = function()
-      return vim.tbl_deep_extend("force", opts, {
-        settings = {
-          Lua = {
-            runtime = { version = "LuaJIT" },
-            diagnostics = {
-              globals = { "vim" },
-            },
-          },
-        },
-      })
-    end,
-    ["eslint"] = function()
-      return vim.tbl_deep_extend("force", opts, {
-        settings = {
-          format = false,
-          packageManager = "yarn",
-        },
-      })
-    end,
-  }
-
-  server:setup(enhance_server_opts[server.name] and enhance_server_opts[server.name]() or opts)
-end)

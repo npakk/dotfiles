@@ -24,7 +24,6 @@ local function init()
   use({ "wbthomason/packer.nvim", opt = true })
 
   -- LSP
-  use({ "williamboman/nvim-lsp-installer" })
   use({
     "neovim/nvim-lspconfig",
     config = function()
@@ -32,8 +31,9 @@ local function init()
     end,
     requires = {
       { "tami5/lspsaga.nvim", opt = true },
+      { "williamboman/mason.nvim", opt = true },
+      { "williamboman/mason-lspconfig.nvim", opt = true },
     },
-    after = "nvim-lsp-installer",
   })
 
   -- Debug Adapter Protocol client
