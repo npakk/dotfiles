@@ -110,7 +110,7 @@ require("nvim-treesitter.configs").setup({
     },
   },
 
-  context_commentstring = { enable = true, enable_autocmd = false },
+  context_commentstring = { enable_autocmd = false },
 
   rainbow = { enable = true, extended_mode = true, max_file_lines = 1000 },
 

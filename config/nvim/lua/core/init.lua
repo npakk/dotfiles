@@ -13,7 +13,11 @@ if not string.find(vim.o.runtimepath, "/packer.nvim") then
   if not (vim.fn.isdirectory(packer_dir) == 1) then
     os.execute("git clone https://github.com/wbthomason/packer.nvim " .. packer_dir)
   end
-  vim.o.runtimepath = packer_dir .. "," .. vim.o.runtimepath
+  vim.o.runtimepath = vim.env.XDG_CONFIG_HOME
+    .. "/nvim/plugin/packer_compiled.lua,"
+    .. packer_dir
+    .. ","
+    .. vim.o.runtimepath
 end
 
 --[[ Commands ]]

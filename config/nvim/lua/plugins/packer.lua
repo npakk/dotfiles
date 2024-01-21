@@ -418,12 +418,7 @@ local function init()
     config = function()
       vim.cmd([[highlight IndentBlanklineContextChar guifg=#5A5450 gui=nocombine]])
       vim.cmd([[highlight IndentBlanklineIndent1 guifg=#3B3735 blend=nocombine]])
-      require("indent_blankline").setup({
-        char_highlight_list = {
-          "IndentBlanklineIndent1",
-        },
-        show_current_context = true,
-      })
+      require("ibl").setup()
     end,
   })
 
