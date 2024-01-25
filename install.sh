@@ -169,7 +169,7 @@ ln -sf ~/dotfiles/config/iTerm2/com.googlecode.iterm2.plist ~/.config/iTerm2/com
 
 # Alacritty
 mkdir -p ~/.config/alacritty
-ln -sf ~/dotfiles/config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -sf ~/dotfiles/config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 # tmux
 ln -sf ~/dotfiles/home/.tmux.conf ~/.tmux.conf
