@@ -2,6 +2,14 @@
 vim.cmd([[packadd mason.nvim]])
 local mason = require("mason").setup()
 vim.cmd([[packadd mason-lspconfig.nvim]])
+local mason_lspconfig = require("mason-lspconfig").setup()
+local lspconfig = require("lspconfig")
+
+-- mason_lspconfig.setup_handlers({
+--   function(server_name)
+--     lspconfig[server_name].setup({})
+--   end,
+-- })
 
 --[[ Lspsaga settings ]]
 vim.cmd([[packadd lspsaga.nvim]])
