@@ -12,6 +12,10 @@ if read -q && echo; then
   fi
 
   brew bundle --file "$HOME/Brewfile"
+  brew bundle cleanup --force --file "$HOME/Brewfile"
+  brew update
+  brew upgrade
+  brew cleanup
 
   # fzf
   if ! echo $PATH | grep -q "fzf"; then
@@ -114,7 +118,7 @@ if read -q && echo; then
   fi
 
   # git-cz
-  if ! command -v "git cz" &> /dev/null; then
+  if ! command -v git-cz &> /dev/null; then
     echo "[git-cz]start"
     yarn global add git-cz
     echo "[git-cz]finish"
