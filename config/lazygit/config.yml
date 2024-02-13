@@ -1,16 +1,17 @@
 gui:
   showFileTree: false
 git:
-  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
+  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --'
   paging:
     colorArg: always
-    pager: delta --syntax-theme=gruvbox-dark --paging=never
+    pager: delta --syntax-theme='Solarized (dark)' --paging=never
 os:
   editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} {{filename}} +{{line}}'
+  editCommandTemplate: '{{editor}} --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
+promptToReturnFromSubprocess: false
 customCommands:
-  - key: "C"
-    command: "git cz commit"
-    context: "files"
-    loadingText: "opening commitizen commit tool"
+  - key: 'C'
+    command: 'git cz commit'
+    context: 'files'
+    loadingText: 'opening git-cz commit tool'
     subprocess: true

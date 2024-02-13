@@ -1,5 +1,4 @@
--- TODO: UTF-8 issue
--- check this: https://github.com/neovim/neovim/issues/14542
+vim.loader.enable()
 
 --[[ Provider ]]
 
@@ -36,20 +35,8 @@ vim.g.loaded_perl_provider = 0
 
 --[[ Commands ]]
 
--- TODO: Defining autocommands
--- check this: https://github.com/neovim/neovim/pull/12378
--- and this: https://github.com/neovim/neovim/pull/14661
-vim.cmd([[
-  augroup MyAutoCmd
-  autocmd!
-  augroup END
-  augroup MyFormatAutoCmd
-  autocmd!
-  augroup END
-]])
-
--- cd cwd
-vim.cmd([[command CD cd %:h]])
+vim.api.nvim_create_augroup("MyAutoCmd", { clear = true })
+vim.cmd([[command CD cd %:h]]) -- cd cwd
 
 --[[ Settings ]]
 
@@ -59,9 +46,8 @@ vim.cmd([[filetype off]])
 vim.cmd([[syntax off]])
 
 require("core.options")
-require("core.mappings")
-require("core.init")
-require("core.appearances")
+require("core.keymaps")
+require("core.lazy")
 
 vim.cmd([[filetype plugin indent on]])
 vim.cmd([[syntax on]])

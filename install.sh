@@ -21,9 +21,9 @@ if read -q && echo; then
   fi
 
   # tpm
-  if ! [ -e ~/.tmux/plugins/tpm ]; then
+  if ! [ -e ~/.local/share/tmux/plugins/tpm ]; then
     echo "[tpm]start"
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm
     echo "[tpm]Don't forget installing tmux's plugin on tmux. Open tmux, press {prefix} + I."
     echo "[tpm]finish"
   fi
@@ -40,6 +40,7 @@ if read -q && echo; then
   if ! command -v rustup &> /dev/null; then
     echo "[rustup]start"
     curl https://sh.rustup.rs -sSf | RUSTUP_INIT_SKIP_PATH_CHECK=yes sh
+    rustup update stable
     echo "[rustup]finish"
   fi
 
@@ -112,11 +113,11 @@ if read -q && echo; then
     echo "[textlint]finish"
   fi
 
-  # stylua
-  if ! command -v stylua &> /dev/null; then
-    echo "[stylua]start"
-    cargo install stylua
-    echo "[stylua]finish"
+  # git-cz
+  if ! command -v "git cz" &> /dev/null; then
+    echo "[git-cz]start"
+    yarn global add git-cz
+    echo "[git-cz]finish"
   fi
 
   # gcloud cli
@@ -172,15 +173,20 @@ mkdir -p ~/.config/alacritty
 ln -sf ~/dotfiles/config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 # tmux
-ln -sf ~/dotfiles/home/.tmux.conf ~/.tmux.conf
+mkdir -p ~/.config/tmux
+ln -sf ~/dotfiles/config/tmux/tmux.conf ~/.config/tmux/tmux.conf
+ln -sf ~/dotfiles/config/tmux/default.session.conf ~/.config/tmux/default.session.conf
 
 # neovim
 mkdir -p ~/.config/nvim
 ln -sf ~/dotfiles/config/nvim/init.lua ~/.config/nvim/init.lua
 ln -snf ~/dotfiles/config/nvim/after ~/.config/nvim/after
+ln -snf ~/dotfiles/config/nvim/spell ~/.config/nvim/spell
 ln -snf ~/dotfiles/config/nvim/lua ~/.config/nvim/lua
 ln -snf ~/dotfiles/config/nvim/snippets ~/.config/nvim/snippets
-ln -sf ~/dotfiles/config/nvim/.stylua ~/.config/nvim/.stylua
+ln -sf ~/dotfiles/config/nvim/stylua.toml ~/.config/nvim/stylua.toml
+ln -sf ~/dotfiles/config/nvim/selene.toml ~/.config/nvim/selene.toml
+ln -sf ~/dotfiles/config/nvim/vim.toml ~/.config/nvim/vim.toml
 
 # textlint
 ln -sf ~/dotfiles/home/.textlintrc ~/.textlintrc

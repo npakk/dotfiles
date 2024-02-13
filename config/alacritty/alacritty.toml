@@ -3,69 +3,70 @@ TERM = "alacritty"
 
 [window]
 dynamic_padding = true
-decorations = "buttonless"
+decorations = "None"
 opacity = 1
+startup_mode = "Maximized"
 option_as_alt = "Both"
 
 [font]
-size = 23
+size = 20
 
 [font.normal]
-family = "Cica"
+family = "HackGen Console NF"
 style = "Regular"
 
 [font.bold]
-family = "Cica"
+family = "HackGen Console NF"
 style = "Bold"
 
 [font.italic]
-family = "Cica"
+family = "HackGen Console NF"
 style = "Italic"
 
 [font.bold_italic]
-family = "Cica"
+family = "HackGen Console NF"
 style = "Bold Italic"
 
 [colors.primary]
-background = "#282828"
-foreground = "#dfbf8e"
+background = "0x16171E"
+foreground = "0xD1D2D3"
 
 [colors.cursor]
-text = "CellBackground"
-cursor = "#ddc7a1"
+text = "0xFEFFFF"
+cursor = "0xc7c7c7"
 
 [colors.normal]
-black = "#665c54"
-red = "#ea6962"
-green = "#a9b665"
-yellow = "#e78a4e"
-blue = "#7daea3"
-magenta = "#d3869b"
-cyan = "#89b482"
-white = "#dfbf8e"
+black = "0x000000"
+red = "0xE68E8E"
+green = "0x83AC8E"
+yellow = "0xF5B78A"
+blue = "0x9BB8DC"
+magenta = "0xBAACE2"
+cyan = "0x00C5C7"
+white = "0xC7C7C7"
 
 [colors.bright]
-black = "#928374"
-red = "#ea6962"
-green = "#a9b665"
-yellow = "#e3a84e"
-blue = "#7daea3"
-magenta = "#d3869b"
-cyan = "#89b482"
-white = "#dfbf8e"
+black = "0x676767"
+red = "0xFF6D67"
+green = "0x5FF967"
+yellow = "0xFEFB67"
+blue = "0x6871FF"
+magenta = "0xFF76FF"
+cyan = "0x5FFDFF"
+white = "0xFEFFFF"
 
 [selection]
 save_to_clipboard = false
 
 [cursor.style]
-blinking = "Always"
+blinking = "Off"
 
 [shell]
 program = "/usr/local/bin/zsh"
 args = [
   "-l",
   "-c",
-  "/usr/local/bin/tmux a -t 0 || /usr/local/bin/tmux"
+  "/usr/local/bin/tmux a -t default || /usr/local/bin/tmux new -s default\\; source ~/.config/tmux/default.session.conf"
 ]
 
 [mouse]

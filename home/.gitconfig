@@ -21,7 +21,7 @@
   reflog = delta
   show = delta
 [delta]
-  syntax-theme = gruvbox-dark
+  syntax-theme = Solarized (dark)
   navigate = true
   line-numbers = true
   side-by-side = false

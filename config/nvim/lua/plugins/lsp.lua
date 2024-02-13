@@ -1,81 +1,104 @@
---[[ Mason settings ]]
-vim.cmd([[packadd mason.nvim]])
-local mason = require("mason").setup()
-vim.cmd([[packadd mason-lspconfig.nvim]])
-local mason_lspconfig = require("mason-lspconfig").setup()
-local lspconfig = require("lspconfig")
+return {
+  {
+    "williamboman/mason.nvim",
+    dependencies = {
+      { "neovim/nvim-lspconfig" },
+      { "williamboman/mason-lspconfig.nvim" },
+      { "hrsh7th/cmp-nvim-lsp" },
+    },
+    event = { "BufReadPre", "BufNewFile" },
+    keys = { { "gr", "<cmd>lua vim.lsp.buf.rename()<CR>" } },
+    config = function()
+      local mason = require("mason")
+      local lspconfig = require("lspconfig")
+      local mason_lspconfig = require("mason-lspconfig")
 
--- mason_lspconfig.setup_handlers({
---   function(server_name)
---     lspconfig[server_name].setup({})
---   end,
--- })
+      mason.setup()
+      mason_lspconfig.setup({
+        ensure_installed = {
+          "lua_ls",
+          "pyright",
+        },
+      })
 
---[[ Lspsaga settings ]]
-vim.cmd([[packadd lspsaga.nvim]])
-local lspsaga = require("lspsaga")
-lspsaga.init_lsp_saga({
-  use_saga_diagnostic_sign = true,
-  error_sign = "",
-  warn_sign = "",
-  hint_sign = "",
-  infor_sign = "",
-  code_action_icon = "",
-  code_action_prompt = {
-    enable = true,
-    sign = false,
-    virtual_text = true,
+      mason_lspconfig.setup_handlers({
+        function(server_name)
+          lspconfig[server_name].setup({
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+          })
+        end,
+        ["lua_ls"] = function()
+          lspconfig.lua_ls.setup({
+            handlers = {
+              ["textDocument/publishDiagnostics"] = function() end,
+              ["textDocument/formatting"] = function() end,
+            },
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim" },
+                },
+                workspace = {
+                  checkThirdParty = false,
+                },
+              },
+            },
+          })
+        end,
+      })
+    end,
   },
-})
+  {
+    "jay-babu/mason-null-ls.nvim",
+    dependencies = {
+      { "williamboman/mason.nvim" },
+      { "nvimtools/none-ls.nvim" },
+    },
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local mason_package = require("mason-core.package")
+      local mason_registry = require("mason-registry")
+      local null_ls = require("null-ls")
 
-local custom_on_attach = function(client, bufnr)
-  local api = vim.api
-  local kopts = { noremap = true, silent = true }
+      require("mason-null-ls").setup({
+        ensure_installed = {
+          "black",
+          "flake8",
+          "isort",
+          "selene",
+          "stylua",
+        },
+      })
 
-  --[[ Lspsaga key-settings ]]
-  api.nvim_set_keymap("n", "gh", [[:Lspsaga lsp_finder<CR>]], kopts)
-  api.nvim_set_keymap("n", "ga", [[:Lspsaga code_action<CR>]], kopts)
-  api.nvim_set_keymap("v", "ga", [[:Lspsaga range_code_action<CR>]], kopts)
-  api.nvim_set_keymap("n", "K", [[:Lspsaga hover_doc<CR>]], kopts)
-  api.nvim_set_keymap("n", "<C-f>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>]], kopts)
-  api.nvim_set_keymap("n", "<C-b>", [[<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>]], kopts)
-  api.nvim_set_keymap("n", "gs", [[:Lspsaga signature_help<CR>]], kopts)
-  api.nvim_set_keymap("n", "gr", [[:Lspsaga rename<CR>]], kopts)
-  api.nvim_set_keymap("n", "gD", [[:Lspsaga preview_definition<CR>]], kopts)
-  api.nvim_set_keymap("n", "gp", [[:Lspsaga show_line_diagnostics<CR>]], kopts)
-  api.nvim_set_keymap("n", "]e", [[:Lspsaga diagnostic_jump_next<CR>]], kopts)
-  api.nvim_set_keymap("n", "[e", [[:Lspsaga diagnostic_jump_prev<CR>]], kopts)
+      local null_sources = {}
 
-  api.nvim_set_keymap("n", "gt", [[<cmd>lua vim.lsp.buf.type_definition()<CR>]], kopts)
-  api.nvim_set_keymap("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<CR>]], kopts)
-  api.nvim_set_keymap("n", "gl", [[<cmd>lua vim.lsp.buf.declaration()<CR>]], kopts)
-  api.nvim_set_keymap("n", "gP", [[<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>]], kopts)
-  api.nvim_set_keymap("n", "<leader>Wa", [[<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>]], kopts)
-  api.nvim_set_keymap("n", "<leader>Wr", [[<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>]], kopts)
-  api.nvim_set_keymap(
-    "n",
-    "<leader>Wl",
-    [[<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>]],
-    kopts
-  )
+      for _, package in ipairs(mason_registry.get_installed_packages()) do
+        local package_categories = package.spec.categories[1]
+        if package_categories == mason_package.Cat.Formatter then
+          table.insert(null_sources, null_ls.builtins.formatting[package.name])
+        end
+        if package_categories == mason_package.Cat.Linter then
+          table.insert(null_sources, null_ls.builtins.diagnostics[package.name])
+        end
+      end
 
-  local ft_auto_format = {
-    "ruby",
-  }
-
-  local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
-  if vim.tbl_contains(ft_auto_format, filetype) then
-    -- ↓ available format only filetype
-    -- vim.api.nvim_set_keymap("n", "gF", [[<cmd>lua vim.lsp.buf.formatting()<CR>]], kopts)
-
-    -- ↓ format on save
-    vim.cmd([[autocmd MyFormatAutoCmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
-  end
-end
-
-local custom_on_init = function()
-  print("Language Server Protocol started!")
-end
-
-local custom_capabilities = vim.lsp.protocol.make_client_capabilities()
-custom_capabilities.textDocument.completion.completionItem.snippetSupport = true
+      -- format on save
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+      null_ls.setup({
+        sources = null_sources,
+        on_attach = function(client, bufnr)
+          if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              group = augroup,
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
+          end
+        end,
+      })
+    end,
+  },
+}

@@ -1,0 +1,7 @@
+{
+  "example": {
+    "prefix": "test",
+    "body": ["local ${1:var} = require(\"${2:module}\")"],
+    "description": "example snippets"
+  }
+}
