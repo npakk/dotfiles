@@ -8,8 +8,13 @@ return {
     },
   },
   {
+    "numToStr/Comment.nvim",
+    event = "BufReadPost",
+    opts = {},
+  },
+  {
     "kylechui/nvim-surround",
-    event = "BufEnter",
+    event = "BufReadPost",
     opts = {},
     --[[
         Old text                    Command         New text
@@ -24,28 +29,9 @@ return {
     --]]
   },
   {
-    "ggandor/leap.nvim",
-    dependencies = {
-      { "tpope/vim-repeat" },
-    },
-    keys = {
-      { "s", "<Plug>(leap-forward-to)" },
-      { "S", "<Plug>(leap-backward)" },
-      { "gs", "<Plug>(leap-from-window)" },
-    },
-  },
-  {
-    "numToStr/Comment.nvim",
-    event = "BufEnter",
+    "smjonas/inc-rename.nvim",
+    keys = { { "gr", ":IncRename " } },
     opts = {},
-  },
-  {
-    "Wansmer/treesj",
-    dependencies = {
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-    keys = { { "<leader>j", "<cmd>TSJToggle<CR>" } },
-    opts = { use_default_keymaps = false },
   },
   {
     "L3MON4D3/LuaSnip",
@@ -60,12 +46,10 @@ return {
     dependencies = {
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-cmdline" },
-      { "hrsh7th/cmp-emoji" },
-      { "saadparwaiz1/cmp_luasnip" },
       { "hrsh7th/cmp-nvim-lsp" },
-      { "hrsh7th/cmp-nvim-lsp-document-symbol" },
       { "hrsh7th/cmp-nvim-lua" },
       { "hrsh7th/cmp-path" },
+      { "saadparwaiz1/cmp_luasnip" },
       { "onsails/lspkind.nvim" },
       { "windwp/nvim-autopairs" },
       { "L3MON4D3/LuaSnip" },
@@ -88,7 +72,6 @@ return {
               buffer = "[Buffer]",
               nvim_lua = "[Lua]",
               path = "[Path]",
-              emoji = "[Emoji]",
             })[entry.source.name]
             return vim_item
           end,
@@ -130,7 +113,6 @@ return {
           { name = "nvim_lua" },
           { name = "nvim_lsp" },
           { name = "path" },
-          { name = "emoji" },
         },
       })
 

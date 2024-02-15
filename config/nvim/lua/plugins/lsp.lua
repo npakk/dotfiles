@@ -6,8 +6,7 @@ return {
       { "williamboman/mason-lspconfig.nvim" },
       { "hrsh7th/cmp-nvim-lsp" },
     },
-    event = { "BufReadPre", "BufNewFile" },
-    keys = { { "gr", "<cmd>lua vim.lsp.buf.rename()<CR>" } },
+    event = { "BufReadPre" },
     config = function()
       local mason = require("mason")
       local lspconfig = require("lspconfig")
@@ -54,7 +53,7 @@ return {
       { "williamboman/mason.nvim" },
       { "nvimtools/none-ls.nvim" },
     },
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre" },
     config = function()
       local mason_package = require("mason-core.package")
       local mason_registry = require("mason-registry")
@@ -70,6 +69,7 @@ return {
         },
       })
 
+      -- set mason sources to null-ls
       local null_sources = {}
 
       for _, package in ipairs(mason_registry.get_installed_packages()) do

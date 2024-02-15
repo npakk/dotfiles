@@ -5,11 +5,12 @@ vim.opt.background = "dark"
 vim.opt.encoding = "utf-8"
 vim.opt.backup = false
 vim.opt.title = true
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 vim.opt.hidden = true
 vim.opt.showmatch = true
 vim.opt.matchtime = 1
 vim.opt.hlsearch = true
+vim.opt.incsearch = true
 vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.ignorecase = true
@@ -68,3 +69,4 @@ vim.opt.matchpairs:append({
   "“:”",
 })
 vim.opt.shada = { "!", "'1000", "<50", "s10", "h", "n~/.cache/nvim/.viminfo" }
+vim.opt.undofile = true

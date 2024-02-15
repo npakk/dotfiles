@@ -5,7 +5,7 @@ TERM = "alacritty"
 dynamic_padding = true
 decorations = "None"
 opacity = 1
-startup_mode = "Maximized"
+startup_mode = "Windowed"
 option_as_alt = "Both"
 
 [font]

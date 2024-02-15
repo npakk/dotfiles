@@ -14,30 +14,28 @@ return {
           "query",
           "vimdoc",
         },
+        sync_install = false,
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
         textobjects = {
           swap = {
             enable = true,
-            swap_next = { ["<leader>a"] = "@parameter.inner" },
-            swap_previous = { ["<leader>A"] = "@parameter.inner" },
-          },
-          lsp_interop = {
-            enable = true,
-            peek_definition_code = {
-              ["<leader>df"] = "@function.outer",
-              ["<leader>dc"] = "@class.outer",
-            },
+            swap_next = { ["<leader>s"] = "@parameter.inner" },
+            swap_previous = { ["<leader>S"] = "@parameter.inner" },
           },
         },
       })
     end,
   },
   {
-    "stevearc/aerial.nvim",
+    "Wansmer/treesj",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
+      { "nvim-treesitter/nvim-treesitter" },
     },
-    keys = { { "<leader>o", "<cmd>AerialToggle!<CR>" } },
-    opts = {},
+    keys = { { "<leader>j", "<cmd>TSJToggle<CR>" } },
+    opts = { use_default_keymaps = false },
   },
 }
