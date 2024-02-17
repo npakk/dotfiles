@@ -1,38 +1,51 @@
 return {
   {
-    "windwp/nvim-autopairs",
+    "github/copilot.vim",
     event = "InsertEnter",
-    opts = {
-      check_ts = true,
-      map_c_h = true,
-    },
-  },
-  {
-    "numToStr/Comment.nvim",
-    event = "BufReadPost",
-    opts = {},
-  },
-  {
-    "kylechui/nvim-surround",
-    event = "BufReadPost",
-    opts = {},
-    --[[
-        Old text                    Command         New text
-    --------------------------------------------------------------------------------
-        surr*ound_words             ysiw)           (surround_words)
-        *make strings               ys$"            "make strings"
-        [delete ar*ound me!]        ds]             delete around me!
-        remove <b>HTML t*ags</b>    dst             remove HTML tags
-        'change quot*es'            cs'"            "change quotes"
-        <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
-        delete(functi*on calls)     dsf             function calls
-    --]]
   },
   {
     "smjonas/inc-rename.nvim",
-    keys = { { "gr", ":IncRename " } },
+    cmd = "IncRename",
     opts = {},
   },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    cmd = "Refactor",
+  },
+  {
+    "Wansmer/treesj",
+    dependencies = {
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+    keys = { { "<leader>j", "<cmd>TSJToggle<CR>", desc = "TreesJ" } },
+    opts = { use_default_keymaps = false },
+  },
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   event = "InsertEnter",
+  --   opts = { check_ts = true, map_c_h = true },
+  -- },
+  -- {
+  --   "numToStr/Comment.nvim",
+  --   event = "BufReadPost",
+  --   opts = {},
+  -- },
+  -- {
+  --   "kylechui/nvim-surround",
+  --   event = "BufReadPost",
+  --   opts = {},
+  --   --[[
+  --      Old text                    Command         New text
+  --  --------------------------------------------------------------------------------
+  --      surr*ound_words             ysiw)           (surround_words)
+  --      *make strings               ys$"            "make strings"
+  --      [delete ar*ound me!]        ds]             delete around me!
+  --      remove <b>HTML t*ags</b>    dst             remove HTML tags
+  --      'change quot*es'            cs'"            "change quotes"
+  --      <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+  --      delete(functi*on calls)     dsf             function calls
+  --  --]]
+  -- },
   {
     "L3MON4D3/LuaSnip",
     config = function()
@@ -51,16 +64,16 @@ return {
       { "hrsh7th/cmp-path" },
       { "saadparwaiz1/cmp_luasnip" },
       { "onsails/lspkind.nvim" },
-      { "windwp/nvim-autopairs" },
+      -- { "windwp/nvim-autopairs" },
       { "L3MON4D3/LuaSnip" },
     },
-    event = "InsertEnter",
+    event = { "InsertEnter" },
     config = function()
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      -- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
       local luasnip = require("luasnip")
 
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+      -- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
       cmp.setup({
         formatting = {

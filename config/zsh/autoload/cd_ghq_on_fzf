@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 local dir="$(ghq list -p | fzf)"
 if [ -n "$dir" ]; then
   cd "$dir"

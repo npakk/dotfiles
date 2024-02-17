@@ -6,7 +6,7 @@ return {
       { "williamboman/mason-lspconfig.nvim" },
       { "hrsh7th/cmp-nvim-lsp" },
     },
-    event = { "BufReadPre" },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local mason = require("mason")
       local lspconfig = require("lspconfig")
@@ -53,7 +53,7 @@ return {
       { "williamboman/mason.nvim" },
       { "nvimtools/none-ls.nvim" },
     },
-    event = { "BufReadPre" },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local mason_package = require("mason-core.package")
       local mason_registry = require("mason-registry")

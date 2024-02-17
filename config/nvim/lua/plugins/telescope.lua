@@ -3,67 +3,73 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-lua/plenary.nvim" },
-      { "nvim-tree/nvim-web-devicons" },
-      {
-        "nvim-telescope/telescope-file-browser.nvim",
-        keys = {
-          { "<leader>f", "<cmd>Telescope file_browser<CR>" },
-        },
-        config = function()
-          require("telescope").load_extension("file_browser")
-        end,
-      },
       {
         "debugloop/telescope-undo.nvim",
         keys = {
-          { "<leader>U", "<cmd>Telescope undo<CR>" },
+          { "<leader>u", "<cmd>Telescope undo<CR>", desc = "Telescope undo" },
         },
         config = function()
           require("telescope").load_extension("undo")
         end,
       },
+      {
+        "nvim-telescope/telescope-ghq.nvim",
+        keys = {
+          { "<leader>gq", "<cmd>Telescope ghq list<CR>", desc = "Telescope ghq list" },
+        },
+        config = function()
+          require("telescope").load_extension("ghq")
+        end,
+      },
     },
+    -- stylua: ignore
     keys = {
-      { "<C-r><C-r>", "<Plug>(TelescopeFuzzyCommandSearch)", mode = { "c" }, { nowait = true } },
-      {
-        "<leader>cd",
-        function()
-          require("telescope.builtin").find_files({
-            find_command = require("plugins.modules.telescope")._find_command,
-            prompt_title = "~ dotfiles ~",
-            path_display = { "absolute" },
-            cwd = "~/dotfiles",
-
-            file_ignore_patterns = {},
-            layout_strategy = "horizontal",
-            layout_config = { preview_width = 0.55 },
-          })
-        end,
-        { noremap = true, silent = true },
-      },
-      {
-        "<leader>g",
-        function()
-          require("telescope.builtin").live_grep({
-            path_display = { "shorten" },
-            file_ignore_patterns = {},
-          })
-        end,
-        { noremap = true, silent = true },
-      },
-      {
-        "<leader>H",
-        function()
-          require("telescope.builtin").help_tags({ show_version = true })
-        end,
-        { noremap = true, silent = true },
-      },
+      { "<leader>cd", "<cmd>lua require('telescope.builtin').find_files({cwd = '~/dotfiles', hidden = true})<CR>", desc = "Telescope dotfiles" },
+      { "<leader>f",  "<cmd>Telescope find_files<CR>",                                                             desc = "Telescope find_files" },
+      { "<leader>g",  "<cmd>Telescope live_grep<CR>",                                                              desc = "Telescope live_grep" },
+      { "<leader>h",  "<cmd>Telescope help_tags<CR>",                                                              desc = "Telescope help_tags" },
     },
-    init = function()
-      require("plugins.modules.telescope").setup()
-    end,
     config = function()
-      require("plugins.modules.telescope").config()
+      local telescope = require("telescope")
+      local actions = require("telescope.actions")
+
+      telescope.setup({
+        defaults = {
+          layout_strategy = "horizontal",
+          layout_config = {
+            horizontal = {
+              prompt_position = "top",
+              preview_width = 0.5,
+            },
+            width = 0.8,
+            height = 0.8,
+            preview_cutoff = 120,
+          },
+          sorting_strategy = "ascending",
+          winblend = 0,
+          file_ignore_patterns = {
+            "^.git/",
+          },
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--follow",
+          },
+          mappings = {
+            n = {
+              ["q"] = actions.close,
+              ["<C-n>"] = actions.move_selection_next,
+              ["<C-p>"] = actions.move_selection_previous,
+            },
+          },
+        },
+      })
     end,
   },
 }

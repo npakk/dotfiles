@@ -39,12 +39,14 @@ alias dc='docker-compose'
 alias dce='docker-compose exec'
 alias dcr='docker-compose run'
 alias sd='cd_ghq_on_fzf'
+alias swf='switch_fontsize'
 alias info='info --vi-keys'
 alias lg='lazygit'
 alias rty='rtty run zsh -p 8080 -v --font "HackGen35Nerd Console" --font-size 18'
 
 autoload -Uz cd_ghq_on_fzf
 autoload -Uz tmuxpopup
+autoload -Uz switch_fontsize
 
 # 移動した後は 'ls' する
 function chpwd() { eza -a -F -I ".DS_Store|.localized" }

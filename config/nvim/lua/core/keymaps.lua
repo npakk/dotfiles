@@ -16,52 +16,49 @@ vim.g.mapleader = " "
 -----------------------------------------------------------------------------
 --]]
 
-local set_keymap = function(mode, key, rhs, options, _buffer)
-  local opts = table.insert({ noremap = true, silent = true, buffer = _buffer }, options)
-  vim.keymap.set(mode, key, rhs, opts)
-end
+local opts = { noremap = true, silent = true }
 
 -- ignore word-wrap
-set_keymap("n", "gj", "j")
-set_keymap("n", "j", "gj")
-set_keymap("n", "gk", "k")
-set_keymap("n", "k", "gk")
+vim.keymap.set("n", "gj", "j", opts)
+vim.keymap.set("n", "j", "gj", opts)
+vim.keymap.set("n", "gk", "k", opts)
+vim.keymap.set("n", "k", "gk", opts)
 
 -- Move to start/end of line
-set_keymap("n", "<S-h>", "^")
-set_keymap("n", "<S-l>", "g_")
-set_keymap("v", "<S-h>", "^")
-set_keymap("v", "<S-l>", "g_")
+vim.keymap.set("n", "<S-h>", "^", opts)
+vim.keymap.set("n", "<S-l>", "g_", opts)
+vim.keymap.set("v", "<S-h>", "^", opts)
+vim.keymap.set("v", "<S-l>", "g_", opts)
 
 -- Paste multiple times
-set_keymap("x", "p", "pgvy")
+vim.keymap.set("x", "p", "pgvy", opts)
 
 -- Clear Search highlight
-set_keymap("n", "<ESC><ESC>", "<cmd>noh<CR>")
+vim.keymap.set("n", "<ESC><ESC>", "<cmd>noh<CR>", opts)
 
 -- window close
-set_keymap("n", "<C-q>", "<C-w>c")
+vim.keymap.set("n", "<C-q>", "<C-w>c", opts)
 
 -- better indenting
-set_keymap("v", "<", "<gv")
-set_keymap("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 -- add line not insert
-set_keymap("n", "go", "o<ESC>")
-set_keymap("n", "gO", "O<ESC>")
+vim.keymap.set("n", "go", "o<ESC>", opts)
+vim.keymap.set("n", "gO", "O<ESC>", opts)
 
 -- I hate escape
-set_keymap("i", "jj", "<ESC>")
+vim.keymap.set("i", "jj", "<ESC>", opts)
 
 -- Move selected line
-set_keymap("x", "J", ":move '>+1<CR>gv")
-set_keymap("x", "K", ":move '<-2<CR>gv")
+vim.keymap.set("x", "J", ":move '>+1<CR>gv", opts)
+vim.keymap.set("x", "K", ":move '<-2<CR>gv", opts)
 
 -- Confirm quit
-set_keymap("n", "<leader>q", ":confirm qa<CR>")
+vim.keymap.set("n", "<leader>q", "<cmd>confirm qa<CR>", { noremap = true, silent = true, desc = "Confirm Quit" })
 
 -- Backspace
-set_keymap("i", "<C-h>", "<BS>")
+vim.keymap.set("i", "<C-h>", "<BS>", opts)
 
 -- Delete
-set_keymap("i", "<C-d>", "<Delete>")
+vim.keymap.set("i", "<C-d>", "<Delete>", opts)

@@ -30,12 +30,4 @@ return {
       })
     end,
   },
-  {
-    "Wansmer/treesj",
-    dependencies = {
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-    keys = { { "<leader>j", "<cmd>TSJToggle<CR>" } },
-    opts = { use_default_keymaps = false },
-  },
 }
