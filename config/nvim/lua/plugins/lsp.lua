@@ -61,9 +61,7 @@ return {
 
       require("mason-null-ls").setup({
         ensure_installed = {
-          "black",
-          "flake8",
-          "isort",
+          "ruff-lsp",
           "selene",
           "stylua",
         },

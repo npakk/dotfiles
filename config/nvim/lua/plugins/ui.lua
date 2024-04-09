@@ -33,27 +33,27 @@ return {
   --   keys = { { "<leader>e", "<cmd>NvimTreeToggle<CR>" } },
   --   opts = {},
   -- },
-  -- {
-  --   "lewis6991/gitsigns.nvim",
-  --   event = "BufReadPre",
-  --   keys = {
-  --     { "]c", "<cmd>lua require('gitsigns').next_hunk()<CR>", desc = "Next Hunk" },
-  --     { "[c", "<cmd>lua require('gitsigns').prev_hunk()<CR>", desc = "Previous Hunk" },
-  --     { "<leader>hr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", desc = "Reset Hunk" },
-  --     { "<leader>hR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", desc = "Reset Buffer" },
-  --     { "<leader>hp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", desc = "Preview Hunk" },
-  --     { "<leader>hb", "<cmd>lua require('gitsigns').blame_line({ full = true })<CR>", desc = "Blame Line" },
-  --     { "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>", desc = "Diff This" },
-  --   },
-  --   opts = {},
-  -- },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
+    keys = {
+      { "]c", "<cmd>lua require('gitsigns').next_hunk()<CR>", desc = "Next Hunk" },
+      { "[c", "<cmd>lua require('gitsigns').prev_hunk()<CR>", desc = "Previous Hunk" },
+      { "<leader>hr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", desc = "Reset Hunk" },
+      { "<leader>hR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", desc = "Reset Buffer" },
+      { "<leader>hp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", desc = "Preview Hunk" },
+      { "<leader>hb", "<cmd>lua require('gitsigns').blame_line({ full = true })<CR>", desc = "Blame Line" },
+      { "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>", desc = "Diff This" },
+    },
+    opts = {},
+  },
   {
     "folke/zen-mode.nvim",
     keys = {
       { "<leader>z", "<cmd>ZenMode<CR>", desc = "Zen Mode" },
     },
-    opts = { plugins = { tmux = true } },
-    -- opts = { plugins = { gitsigns = true, tmux = true } },
+    -- opts = { plugins = { tmux = true } },
+    opts = { plugins = { gitsigns = true, tmux = true } },
   },
   {
     "folke/trouble.nvim",
