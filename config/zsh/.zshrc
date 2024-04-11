@@ -28,7 +28,7 @@ setopt pushd_ignore_dups    # 重複するディレクトリはpushdに記録し
 setopt globdots             # 明確なドットの指定なしで.から始まるファイルをマッチ
 
 alias rm='trash'
-alias v='nvim --listen /tmp/nvim-server.pipe'
+alias v='nvim'
 alias j='z'
 alias ls='eza -a -F -I ".DS_Store|.localized"'
 alias ll='eza -a -F -l -I ".DS_Store|.localized"'

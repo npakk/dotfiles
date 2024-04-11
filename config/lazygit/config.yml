@@ -6,8 +6,7 @@ git:
     colorArg: always
     pager: delta --syntax-theme='Solarized (dark)' --paging=never
 os:
-  editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} --server /tmp/nvim-server.pipe --remote-tab "$(pwd)/{{filename}}"'
+  editPreset: 'nvim'
 promptToReturnFromSubprocess: false
 customCommands:
   - key: 'C'
