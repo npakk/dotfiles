@@ -1134,6 +1134,39 @@
       ]
     },
     {
+      "description": "右シフトを単体で押したときにかな、左右シフトを押したときに英数を切り替える。- Customize",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_shift",
+            "modifiers": {
+              "mandatory": [
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "japanese_eisuu",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_shift"
+          },
+          "to": {
+            "key_code": "japanese_kana"
+          }
+        }
+      ]
+    },
+    {
       "description": "Ctrl+oを押したときに、英数キーも送信する（vim用） - Customize",
       "manipulators": [
         {
