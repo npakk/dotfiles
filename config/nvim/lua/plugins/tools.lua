@@ -25,7 +25,7 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>a", function() require("harpoon"):list():append() end,                                 desc = "Add Mark" },
+      { "<leader>a", function() require("harpoon"):list():add() end,                                    desc = "Add Mark" },
       { "<C-e>",     function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = "Quick Menu" },
     },
     opts = {},
