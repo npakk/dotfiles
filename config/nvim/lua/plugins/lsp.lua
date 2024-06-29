@@ -16,7 +16,7 @@ return {
       mason_lspconfig.setup({
         ensure_installed = {
           "lua_ls",
-          "pyright",
+          "ruff",
         },
       })
 
@@ -24,6 +24,16 @@ return {
         function(server_name)
           lspconfig[server_name].setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            on_attach = function(client, bufnr)
+              if client.supports_method("textDocument/formatting") then
+                vim.api.nvim_create_autocmd("BufWritePre", {
+                  buffer = bufnr,
+                  callback = function()
+                    vim.lsp.buf.format({ async = false })
+                  end,
+                })
+              end
+            end,
           })
         end,
         ["lua_ls"] = function()
@@ -31,16 +41,6 @@ return {
             handlers = {
               ["textDocument/publishDiagnostics"] = function() end,
               ["textDocument/formatting"] = function() end,
-            },
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim" },
-                },
-                workspace = {
-                  checkThirdParty = false,
-                },
-              },
             },
           })
         end,
@@ -61,7 +61,6 @@ return {
 
       require("mason-null-ls").setup({
         ensure_installed = {
-          "ruff-lsp",
           "selene",
           "stylua",
         },
@@ -71,6 +70,9 @@ return {
       local null_sources = {}
 
       for _, package in ipairs(mason_registry.get_installed_packages()) do
+        if package.name == "ruff" then
+          goto continue
+        end
         local package_categories = package.spec.categories[1]
         if package_categories == mason_package.Cat.Formatter then
           table.insert(null_sources, null_ls.builtins.formatting[package.name])
@@ -78,6 +80,7 @@ return {
         if package_categories == mason_package.Cat.Linter then
           table.insert(null_sources, null_ls.builtins.diagnostics[package.name])
         end
+        ::continue::
       end
 
       -- format on save

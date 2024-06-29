@@ -1146,14 +1146,9 @@
               ]
             }
           },
-          "to": [
-            {
-              "key_code": "japanese_eisuu",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ]
+          "to": {
+              "key_code": "japanese_eisuu"
+          }
         },
         {
           "type": "basic",
