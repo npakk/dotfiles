@@ -62,3 +62,6 @@ vim.keymap.set("i", "<C-h>", "<BS>", opts)
 
 -- Delete
 vim.keymap.set("i", "<C-d>", "<Delete>", opts)
+
+-- Code Action
+vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)

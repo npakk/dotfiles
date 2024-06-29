@@ -16,6 +16,7 @@ return {
       mason_lspconfig.setup({
         ensure_installed = {
           "lua_ls",
+          "pyright",
           "ruff",
         },
       })
@@ -41,6 +42,20 @@ return {
             handlers = {
               ["textDocument/publishDiagnostics"] = function() end,
               ["textDocument/formatting"] = function() end,
+            },
+          })
+        end,
+        ["pyright"] = function()
+          lspconfig.pyright.setup({
+            settings = {
+              pyright = {
+                disableOrganizeImports = true,
+              },
+              python = {
+                analysis = {
+                  ignore = { "*" },
+                },
+              },
             },
           })
         end,

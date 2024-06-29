@@ -57,9 +57,13 @@ return {
   },
   {
     "folke/trouble.nvim",
+    cmd = "Trouble",
     keys = {
-      { "<leader>t", "<cmd>TroubleToggle<CR>", desc = "Trouble" },
+      { "<leader>t", "<cmd>Trouble diagnostics toggle focus=true<CR>", desc = "Trouble diagnostics" },
+      { "<leader>o", "<cmd>Trouble symbols toggle focus=true<CR>", desc = "Trouble symbols" },
+      { "<leader>l", "<cmd>Trouble lsp toggle focus=true<CR>", desc = "Trouble lsp" },
     },
+    opts = {},
   },
   {
     "folke/todo-comments.nvim",
