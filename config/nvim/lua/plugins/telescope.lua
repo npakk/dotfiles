@@ -12,15 +12,6 @@ return {
           require("telescope").load_extension("undo")
         end,
       },
-      {
-        "nvim-telescope/telescope-ghq.nvim",
-        keys = {
-          { "<leader>gq", "<cmd>Telescope ghq list<CR>", desc = "Telescope ghq list" },
-        },
-        config = function()
-          require("telescope").load_extension("ghq")
-        end,
-      },
     },
     -- stylua: ignore
     keys = {

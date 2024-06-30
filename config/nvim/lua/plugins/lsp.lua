@@ -59,6 +59,13 @@ return {
             },
           })
         end,
+        ["ruff"] = function()
+          lspconfig.ruff.setup({
+            on_attach = function(client, bufnr)
+              client.server_capabilities.hoverProvider = false
+            end,
+          })
+        end,
       })
     end,
   },
@@ -114,6 +121,14 @@ return {
             })
           end
         end,
+      })
+
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+          end,
+        },
       })
     end,
   },
