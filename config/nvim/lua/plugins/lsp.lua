@@ -25,16 +25,6 @@ return {
         function(server_name)
           lspconfig[server_name].setup({
             capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            on_attach = function(client, bufnr)
-              if client.supports_method("textDocument/formatting") then
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                  buffer = bufnr,
-                  callback = function()
-                    vim.lsp.buf.format({ async = false })
-                  end,
-                })
-              end
-            end,
           })
         end,
         ["lua_ls"] = function()
@@ -65,6 +55,38 @@ return {
               client.server_capabilities.hoverProvider = false
             end,
           })
+        end,
+      })
+
+      -- diagnotics format
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+          end,
+        },
+        float = {
+          format = function(diagnostic)
+            return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+          end,
+        },
+      })
+
+      -- format on save
+      vim.api.nvim_create_autocmd({ "LspAttach" }, {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client == nil then
+            return
+          end
+          if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = args.buf,
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
+          end
         end,
       })
     end,
@@ -109,26 +131,18 @@ return {
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       null_ls.setup({
         sources = null_sources,
-        on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format({ async = false })
-              end,
-            })
-          end
-        end,
-      })
-
-      vim.diagnostic.config({
-        virtual_text = {
-          format = function(diagnostic)
-            return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
-          end,
-        },
+        -- on_attach = function(client, bufnr)
+        --   if client.supports_method("textDocument/formatting") then
+        --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        --     vim.api.nvim_create_autocmd("BufWritePre", {
+        --       group = augroup,
+        --       buffer = bufnr,
+        --       callback = function()
+        --         vim.lsp.buf.format({ async = false })
+        --       end,
+        --     })
+        --   end
+        -- end,
       })
     end,
   },

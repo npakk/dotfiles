@@ -3,7 +3,7 @@
 local t=~/dotfiles/config/alacritty/alacritty.toml
 local fontsize="$(cat "$t" | grep 'size = ')"
 if [[ $fontsize == "size = 20" ]]; then
-  gsed -i 's/size = 20/size = 14/g' $t
+  gsed -i 's/size = 20/size = 15/g' $t
 else
-  gsed -i 's/size = 14/size = 20/g' $t
+  gsed -i 's/size = 15/size = 20/g' $t
 fi
