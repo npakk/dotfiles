@@ -61,7 +61,7 @@ return {
     keys = {
       { "<leader>t", "<cmd>Trouble diagnostics toggle focus=true<CR>", desc = "Trouble diagnostics" },
       { "<leader>o", "<cmd>Trouble symbols toggle focus=true<CR>", desc = "Trouble symbols" },
-      { "gr", "<cmd>Trouble lsp toggle focus=true<CR>", desc = "Trouble lsp" },
+      { "<leader>r", "<cmd>Trouble lsp toggle focus=true<CR>", desc = "Trouble lsp" },
     },
     opts = {},
   },
