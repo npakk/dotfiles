@@ -63,8 +63,5 @@ vim.keymap.set("i", "<C-h>", "<BS>", opts)
 -- Delete
 vim.keymap.set("i", "<C-d>", "<Delete>", opts)
 
--- Code Action
-vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-
 -- Diagnotic open float
-vim.keymap.set("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+vim.keymap.set("n", "gre", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
