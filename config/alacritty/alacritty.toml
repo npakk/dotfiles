@@ -9,7 +9,7 @@ startup_mode = "Windowed"
 option_as_alt = "Both"
 
 [font]
-size = 15
+size = 18
 
 [font.normal]
 family = "HackGen Console NF"
