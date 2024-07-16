@@ -61,6 +61,11 @@ return {
             },
           },
         },
+        extensions = {
+          undo = {
+            initial_mode = "normal",
+          },
+        },
       })
     end,
   },
