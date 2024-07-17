@@ -42,4 +42,26 @@ return {
       { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
+  {
+    "epwalsh/obsidian.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    keys = {
+      {
+        "<leader>m",
+        "<cmd>ObsidianQuickSwitch<CR>",
+        desc = "Telescope obsidian",
+      },
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "default",
+          path = "~/Documents/default",
+        },
+      },
+    },
+  },
 }
