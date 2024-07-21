@@ -48,6 +48,7 @@ return {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope.nvim" },
     },
+    cmd = { "ObsidianToday", "ObsidianNew", "ObsidianCheck" },
     keys = {
       {
         "<leader>m",
@@ -62,6 +63,34 @@ return {
           path = "~/Documents/default",
         },
       },
+      new_notes_location = "current_dir",
+      daily_notes = {
+        folder = "dailies",
+        template = "daily.md",
+      },
+      templates = {
+        folder = "templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+      },
+      completion = {
+        nvim_cmp = true,
+        min_chars = 2,
+      },
+      follow_url_func = function(url)
+        vim.fn.jobstart({ "open", url })
+      end,
+      note_id_func = function(title)
+        if title ~= nil then
+          return title:gsub(" ", "-")
+        else
+          local suffix = ""
+          for _ = 1, 4 do
+            suffix = suffix .. string.char(math.random(65, 90))
+          end
+          return tostring(os.time()) .. "-" .. suffix
+        end
+      end,
     },
   },
 }

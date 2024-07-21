@@ -204,6 +204,10 @@ export PATH="$CARGO_HOME/bin:$PATH"
 # git
 export PATH="/usr/local/bin/git:$PATH"
 
+# sbin
+# for brew warning. see https://qiita.com/FrogWoman/items/7c0fdaa7550dc5895a33
+export PATH="/usr/local/sbin:$PATH"
+
 # z
 . `brew --prefix`/etc/profile.d/z.sh
 

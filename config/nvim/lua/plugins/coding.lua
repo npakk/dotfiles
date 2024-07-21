@@ -1,8 +1,8 @@
 return {
-  {
-    "github/copilot.vim",
-    event = "InsertEnter",
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   event = "InsertEnter",
+  -- },
   {
     "smjonas/inc-rename.nvim",
     cmd = "IncRename",
