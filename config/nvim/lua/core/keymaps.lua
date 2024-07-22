@@ -66,5 +66,6 @@ vim.keymap.set("i", "<C-d>", "<Delete>", opts)
 -- Diagnotic open float
 vim.keymap.set("n", "gre", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
--- Open netrw on active buffer
-vim.keymap.set("c", "E", "Ex")
+-- Open netrw
+vim.keymap.set("n", "<leader>e", "<cmd>e .<CR>", opts)
+vim.keymap.set("n", "<leader>E", "<cmd>Ex<CR>", opts)
