@@ -4,8 +4,8 @@ TERM = "alacritty"
 [window]
 dynamic_padding = true
 decorations = "None"
-opacity = 1
-startup_mode = "Windowed"
+opacity = 0.9
+startup_mode = "maximized"
 option_as_alt = "Both"
 
 [font]

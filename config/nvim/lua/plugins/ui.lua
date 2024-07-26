@@ -6,6 +6,13 @@ return {
       vim.cmd([[colorscheme iceberg]])
     end,
   },
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false,
+    config = function()
+      require("transparent").setup()
+    end,
+  },
   -- {
   --   "hoob3rt/lualine.nvim",
   --   event = "VimEnter",
