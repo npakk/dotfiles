@@ -71,7 +71,7 @@ return {
       { "folke/trouble.nvim" },
     },
     keys = {
-      { "<leader>T", "<cmd>TodoTrouble<CR>", desc = "Todo" },
+      { "<leader>T", "<cmd>TodoTrouble focus=true<CR>", desc = "Todo" },
     },
     opts = {},
   },
