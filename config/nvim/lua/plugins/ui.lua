@@ -13,11 +13,11 @@ return {
       require("transparent").setup()
     end,
   },
-  -- {
-  --   "hoob3rt/lualine.nvim",
-  --   event = "VimEnter",
-  --   opts = { options = { icons_enabled = false, theme = "iceberg_dark" } },
-  -- },
+  {
+    "hoob3rt/lualine.nvim",
+    event = "VimEnter",
+    opts = { options = { icons_enabled = false, theme = "iceberg_dark" } },
+  },
   {
     "aserowy/tmux.nvim",
     keys = {
