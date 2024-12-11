@@ -1,0 +1,22 @@
+[include]
+	path = ~/.gitconfig.local
+[core]
+	editor = nvim
+	pager = delta
+[init]
+	defaultBranch = main
+[diff]
+	alogorithm = histogram
+[color]
+	ui = auto
+[delta]
+	syntax-theme = Solarized (dark)
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+	minus-style = syntax "#482323"
+	plus-style = syntax "#2b3c2b"
+[interactive]
+	diffFilter = delta --color-only
+[ghq]
+	root = ~/ghq
