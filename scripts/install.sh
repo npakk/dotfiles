@@ -2,7 +2,12 @@
 
 # Homebrew
 echo "[Homebrew]start"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! type brew &> /dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo >> $XDG_CONFIG_HOME/zsh/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $XDG_CONFIG_HOME/zsh/.zprofile/zsh/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 brew bundle --file "$HOME/dotfiles/Brewfile"
 echo "[Homebrew]finish"
 

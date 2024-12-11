@@ -61,5 +61,9 @@ save_to_clipboard = true
 [cursor.style]
 blinking = "Off"
 
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l"]
+
 [mouse]
 hide_when_typing = false

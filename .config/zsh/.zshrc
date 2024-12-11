@@ -43,13 +43,13 @@ export HISTSIZE=1000
 export SAVEHIST=100000
 
 # z
-. "$XDG_DATA_HOME/z/path/to/z.sh"
+. "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
 
 # zsh-autosuggestions
-source "$XDG_DATA_HOME/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # zsh-syntax-highlighting
-source "$XDG_DATA_HOME/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # GitHub CLI completion
 gh completion -s zsh > "$XDG_DATA_HOME/zsh/completions/_gh"
@@ -139,6 +139,9 @@ bindkey '^k' kill-line-or-up-pane
 bindkey '^l' clear-screen-or-right-pane
 bindkey '^h' backspace-or-left-pane
 bindkey '^j' accept-line-or-down-pane
+
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
 
 # goenv
 export GOPATH=$HOME/go

@@ -7,4 +7,4 @@ export ZDOTDIR="$HOME/.config/zsh"
 export FPATH="$ZDOTDIR/autoload/:$FPATH"
 export FPATH="$XDG_DATA_HOME/zsh/completions:${FPATH}"
 # zsh-completions
-export FPATH="$XDG_DATA_HOME/zsh/zsh-completions/src:${FPATH}"
+export FPATH="$HOMEBREW_PREFIX/share/zsh-completions:${FPATH}"
