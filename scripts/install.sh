@@ -4,9 +4,6 @@
 echo "[Homebrew]start"
 if ! type brew &> /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo >> $HOME/.config/zsh/.zprofile
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.config/zsh/.zprofile
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 brew bundle --file "$HOME/dotfiles/Brewfile"
 echo "[Homebrew]finish"
