@@ -12,6 +12,7 @@ brew "jq"
 brew "lazygit"
 brew "luajit"
 brew "n"
+brew "utf8proc", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
 brew "poetry"
 brew "pyenv"
@@ -19,7 +20,6 @@ brew "rbenv"
 brew "ripgrep"
 brew "starship"
 brew "tmux"
-brew "utf8proc", args: ["HEAD"]
 brew "z"
 brew "zsh"
 brew "zsh-autosuggestions"
