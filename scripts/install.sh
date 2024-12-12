@@ -36,12 +36,12 @@ fi
 if [ -z "$(echo $(pyenv versions | sed "/system/d"))" ]; then
   echo "[pyenv]start"
   pyenv install $(pyenv install --list | grep "^\s*[2][0-9.]*[0-9]\s*$" | tail -1)
-  pyenv install $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1) pyenv virtualenv $(pyenv install --list | grep "^\s*[2][0-9.]*[0-9]\s*$" | tail -1) py2 pyenv virtualenv $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1) py3 eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-  pyenv activate py2
-  pip install --upgrade pip
-  pyenv activate py3
-  pip install --upgrade pip
+  # pyenv install $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1) pyenv virtualenv $(pyenv install --list | grep "^\s*[2][0-9.]*[0-9]\s*$" | tail -1) py2 pyenv virtualenv $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1) py3 eval "$(pyenv init -)"
+  # eval "$(pyenv virtualenv-init -)"
+  # pyenv activate py2
+  # pip install --upgrade pip
+  # pyenv activate py3
+  # pip install --upgrade pip
   echo "[pyenv]finish"
 fi
 
