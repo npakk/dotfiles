@@ -2,29 +2,16 @@ vim.loader.enable()
 
 --[[ Provider ]]
 
--- -- Python2
--- if vim.fn.executable(vim.env.PYENV_ROOT .. "/versions/py2/bin/python") == 1 then
---   vim.g.python_host_prog = vim.env.PYENV_ROOT .. "/versions/py2/bin/python"
--- else
---   vim.g.loaded_python_provider = 0
--- end
---
--- -- Python3
--- if vim.fn.executable(vim.env.PYENV_ROOT .. "/versions/py3/bin/python") == 1 then
---   vim.g.python3_host_prog = vim.env.PYENV_ROOT .. "/versions/py3/bin/python"
--- else
---   vim.g.loaded_python3_provider = 0
--- end
 -- Python2
-if vim.fn.executable(vim.env.PYENV_ROOT .. "/shims/python2") == 1 then
-  vim.g.python_host_prog = vim.env.PYENV_ROOT .. "/shims/python2"
+if vim.fn.executable(vim.env.PYENV_ROOT .. "/versions/py2/bin/python") == 1 then
+  vim.g.python_host_prog = vim.env.PYENV_ROOT .. "/versions/py2/bin/python"
 else
   vim.g.loaded_python_provider = 0
 end
 
 -- Python3
-if vim.fn.executable(vim.env.PYENV_ROOT .. "/shims/python3") == 1 then
-  vim.g.python3_host_prog = vim.env.PYENV_ROOT .. "/shims/python3"
+if vim.fn.executable(vim.env.PYENV_ROOT .. "/versions/py3/bin/python") == 1 then
+  vim.g.python3_host_prog = vim.env.PYENV_ROOT .. "/versions/py3/bin/python"
 else
   vim.g.loaded_python3_provider = 0
 end
