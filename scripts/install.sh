@@ -5,7 +5,7 @@ echo "[Homebrew]start"
 if ! type brew &> /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-brew bundle --file "$HOME/dotfiles/Brewfile"
+/opt/homebrew/bin/brew bundle --file "$HOME/dotfiles/Brewfile"
 echo "[Homebrew]finish"
 
 # tpm
