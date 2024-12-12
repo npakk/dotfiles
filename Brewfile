@@ -10,7 +10,6 @@ brew "git-delta"
 brew "goenv", args: ["HEAD"]
 brew "jq"
 brew "lazygit"
-brew "luajit"
 brew "n"
 brew "utf8proc", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
