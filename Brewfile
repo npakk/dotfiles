@@ -15,6 +15,7 @@ brew "utf8proc", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
 brew "poetry"
 brew "pyenv"
+brew "pyenv-virtualenv"
 brew "rbenv"
 brew "ripgrep"
 brew "starship"
