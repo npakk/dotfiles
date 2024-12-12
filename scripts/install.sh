@@ -1,5 +1,17 @@
 #!/bin/zsh
 
+# don't show terminal last login message
+touch "$HOME/.hushlogin"
+
+# zsh
+mkdir -p $HOME/.cache/zsh $HOME/.local/state/zsh $HOME/.local/share/zsh/completions
+ln -sf $HOME/dotfiles/.zshenv $HOME/.zshenv
+ln -sf $HOME/dotfiles/.gitconfig $HOME/.gitconfig
+ln -snf $HOME/dotfiles/.config $HOME/.config
+
+source $HOME/.zshenv
+source $HOME/.config/zsh/.zshrc
+
 # Homebrew
 echo "[Homebrew]start"
 if ! type brew &> /dev/null; then
@@ -64,7 +76,7 @@ fi
 if ! type lua &> /dev/null; then
   echo "[lua5.1 luarocks]start"
   curl -LO https://www.lua.org/ftp/lua-5.1.5.tar.gz
-  curl -LO https://luarocks.github.io/luarocks/releases/luarocks-3.11.1.tar.git-cz
+  curl -LO https://luarocks.github.io/luarocks/releases/luarocks-3.11.1.tar.gz
   tar -zxf lua-5.1.5.tar.gz
   tar -zxf luarocks-3.11.1.tar.gz
   cd lua-5.1.5
@@ -86,18 +98,18 @@ if ! gem list | grep -q "neovim"; then
   echo "[neovim provider - ruby]finish"
 fi
 
-pyenv activate py2
+# pyenv activate py2
 if ! pip list 2> /dev/null | grep -q "neovim"; then
   echo "[neovim provider - python2]start"
-  pyenv activate py2
+  # pyenv activate py2
   pip install neovim
   echo "[neovim provider - python2]finish"
 fi
 
-pyenv activate py3
+# pyenv activate py3
 if ! pip list 2> /dev/null | grep -q "neovim"; then
   echo "[neovim provider - python3]start"
-  pyenv activate py3
+  # pyenv activate py3
   pip install neovim
   echo "[neovim provider - python3]finish"
 fi
@@ -115,15 +127,4 @@ if ! command -v git-cz &> /dev/null; then
   echo "[git-cz]finish"
 fi
 
-# don't show terminal last login message
-touch "$HOME/.hushlogin"
-
-# zsh
-mkdir -p $HOME/.cache/zsh $HOME/.local/state/zsh $HOME/.local/share/zsh/completions
-ln -sf $HOME/dotfiles/.zshenv $HOME/.zshenv
-ln -sf $HOME/dotfiles/.gitconfig $HOME/.gitconfig
-ln -snf $HOME/dotfiles/.config $HOME/.config
-
-source $HOME/.zshenv
-source $HOME/.config/zsh/.zshrc
 echo "complete."

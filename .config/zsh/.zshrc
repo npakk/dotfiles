@@ -163,7 +163,7 @@ pyenv() {
   eval "$(pyenv init --path)"
   if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    # eval "$(pyenv virtualenv-init -)"
   fi
   $0 "$@"
 }
@@ -196,9 +196,6 @@ export PATH="$N_PREFIX/bin:$PATH"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$HOME/.cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
-
-# # git
-# export PATH="/usr/local/bin/git:$PATH"
 
 # fzf
 source <(fzf --zsh)
