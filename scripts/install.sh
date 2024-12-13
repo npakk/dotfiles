@@ -20,12 +20,11 @@ fi
 /opt/homebrew/bin/brew bundle --file "$HOME/dotfiles/Brewfile"
 echo "[Homebrew]finish"
 
-# tpm
-if ! [ -e ~/.local/share/tmux/plugins/tpm ]; then
-  echo "[tpm]start"
-  git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm
-  echo "[tpm]Don't forget installing tmux's plugin on tmux. Open tmux, press {prefix} + I."
-  echo "[tpm]finish"
+# tmux theme
+if ! [ -e ~/.local/share/tmux/plugins/iceberg-dark ]; then
+  echo "[tmux theme]start"
+  git clone https://github.com/gkeep/iceberg-dark.git "$HOME/.local/share/tmux/iceberg-dark"
+  echo "[tmux theme]finish"
 fi
 
 # goenv

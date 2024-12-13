@@ -24,6 +24,7 @@ setopt globdots             # 明確なドットの指定なしで.から始ま�
 alias cat='bat'
 alias find='fd'
 alias grep='rg'
+alias ide='tmuxide'
 alias j='z'
 alias la='eza -a -F -l --git'
 alias lg='lazygit'
@@ -32,6 +33,7 @@ alias sd='cd_ghq_on_fzf'
 alias v='nvim'
 
 autoload -Uz cd_ghq_on_fzf
+autoload -Uz tmuxide
 autoload -Uz tmuxpopup
 
 # 移動した後は 'ls' する

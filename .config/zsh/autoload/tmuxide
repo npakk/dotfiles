@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+tmux split-pane -h
+tmux select-pane -t 0
+tmux split-pane -v
+tmux resize-pane -L 60
+tmux select-pane -t 2

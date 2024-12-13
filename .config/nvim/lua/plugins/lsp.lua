@@ -18,6 +18,7 @@ return {
           "lua_ls",
           "pyright",
           "ruff",
+          "rubocop",
         },
       })
 
@@ -114,7 +115,7 @@ return {
       local null_sources = {}
 
       for _, package in ipairs(mason_registry.get_installed_packages()) do
-        if package.name == "ruff" then
+        if package.name == "ruff" or package.name == "rubocop" then
           goto continue
         end
         local package_categories = package.spec.categories[1]
