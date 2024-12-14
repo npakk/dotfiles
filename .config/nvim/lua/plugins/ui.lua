@@ -6,11 +6,21 @@ return {
       vim.cmd([[colorscheme iceberg]])
     end,
   },
-  -- {
-  --   "hoob3rt/lualine.nvim",
-  --   event = "VimEnter",
-  --   opts = { options = { icons_enabled = false, theme = "iceberg_dark" } },
-  -- },
+  {
+    "hoob3rt/lualine.nvim",
+    event = "vimenter",
+    config = function()
+      require("lualine").setup({
+        options = {
+          icons_enabled = true,
+          globalstatus = true,
+          theme = "iceberg_dark",
+        },
+      })
+      vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+      vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
+    end,
+  },
   {
     "aserowy/tmux.nvim",
     keys = {
