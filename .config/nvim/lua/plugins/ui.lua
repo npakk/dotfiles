@@ -62,7 +62,6 @@ return {
     keys = {
       { "<leader>z", "<cmd>ZenMode<CR>", desc = "Zen Mode" },
     },
-    -- opts = { plugins = { tmux = true } },
     opts = { plugins = { gitsigns = true, tmux = true } },
   },
   {

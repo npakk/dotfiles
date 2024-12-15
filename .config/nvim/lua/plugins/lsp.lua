@@ -15,7 +15,6 @@ return {
       mason.setup()
       mason_lspconfig.setup({
         ensure_installed = {
-          "lua_ls",
           "pyright",
           "ruff",
           "rubocop",
@@ -132,18 +131,16 @@ return {
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       null_ls.setup({
         sources = null_sources,
-        -- on_attach = function(client, bufnr)
-        --   if client.supports_method("textDocument/formatting") then
-        --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-        --     vim.api.nvim_create_autocmd("BufWritePre", {
-        --       group = augroup,
-        --       buffer = bufnr,
-        --       callback = function()
-        --         vim.lsp.buf.format({ async = false })
-        --       end,
-        --     })
-        --   end
-        -- end,
+        on_attach = function(client, bufnr)
+          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format({ async = false })
+            end,
+          })
+        end,
       })
     end,
   },
