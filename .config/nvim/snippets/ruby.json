@@ -1,0 +1,9 @@
+{
+  "def": {
+    "prefix": "def",
+    "body": ["def ${1:foo}",
+      "  ${2:bar}",
+      "end"],
+    "description": "def"
+  }
+}
