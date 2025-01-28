@@ -16,6 +16,14 @@ return {
           globalstatus = true,
           theme = "iceberg_dark",
         },
+        sections = {
+          lualine_c = {
+            {
+              "filename",
+              path = 2,
+            },
+          },
+        },
       })
       vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
       vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
