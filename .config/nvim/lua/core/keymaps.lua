@@ -63,8 +63,9 @@ vim.keymap.set("i", "<C-h>", "<BS>", opts)
 -- Delete
 vim.keymap.set("i", "<C-d>", "<Delete>", opts)
 
--- Diagnotic open float
+-- LSP
 vim.keymap.set("n", "gre", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 
 -- Open netrw
 vim.keymap.set("n", "<leader>E", "<cmd>e .<CR>", opts)
