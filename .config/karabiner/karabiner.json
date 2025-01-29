@@ -4,6 +4,20 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Caps Lock to Esc and Ctrl",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "right_control" }],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Search to CTRL+f",
                         "manipulators": [
                             {
@@ -586,10 +600,6 @@
                         {
                             "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
                             "to": [{ "key_code": "left_option" }]
-                        },
-                        {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "left_control" }]
                         },
                         {
                             "from": { "key_code": "left_command" },
