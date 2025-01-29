@@ -180,16 +180,6 @@ rbenv() {
   $0 "$@"
 }
 
-# gem
-export GEM_HOME="$XDG_DATA_HOME/.gem"
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME/.gem"
-
-# bundler
-export BUNDLE_USER_HOME="$HOME/.bundle"
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/.bundle"
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/.bundle"
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/.bundle"
-
 # n
 export N_PREFIX="$XDG_DATA_HOME/n"
 export PATH="$N_PREFIX/bin:$PATH"
