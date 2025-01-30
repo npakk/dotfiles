@@ -3,6 +3,7 @@ command_timeout = 1000
 [gcloud]
 format = 'on [$symbol$account(\($region/$project\))]($style) '
 style = 'bold blue'
+disabled = true
 [gcloud.region_aliases]
 us-central1 = 'uc1'
 asia-northeast1 = 'an1'
