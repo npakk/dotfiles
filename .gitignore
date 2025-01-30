@@ -1,3 +1,4 @@
 lazy-lock.json
 .zcompcache
 .zsh_sessions
+.config/gcloud/*

@@ -11,6 +11,7 @@ brew "goenv", args: ["HEAD"]
 brew "jq"
 brew "lazygit"
 brew "n"
+brew "tree-sitter", args: ["HEAD"]
 brew "utf8proc", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
 brew "poetry"
@@ -30,6 +31,7 @@ cask "alfred"
 cask "alt-tab"
 cask "dropbox"
 cask "google-chrome"
+cask "google-cloud-sdk"
 cask "karabiner-elements"
 cask "obsidian"
 cask "the-unarchiver"
