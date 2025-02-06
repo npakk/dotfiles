@@ -1,5 +1,28 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp" },
+    },
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local lspconfig = require("lspconfig")
+      if vim.fn.executable("rubocop") == 1 then
+        lspconfig["rubocop"].setup({})
+      end
+      -- if vim.fn.executable("solargraph") == 1 then
+      --   lspconfig["solargraph"].setup({
+      --     settings = {
+      --       solargraph = {
+      --         diagnostics = false,
+      --       },
+      --     },
+      --     init_options = { formatting = false },
+      --   })
+      -- end
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     dependencies = {
       { "neovim/nvim-lspconfig" },
@@ -17,7 +40,7 @@ return {
         ensure_installed = {
           "pyright",
           "ruff",
-          "rubocop",
+          -- "rubocop",
           "solargraph",
         },
       })
@@ -115,7 +138,7 @@ return {
       local null_sources = {}
 
       for _, package in ipairs(mason_registry.get_installed_packages()) do
-        if package.name == "ruff" or package.name == "rubocop" then
+        if package.name == "ruff" then
           goto continue
         end
         local package_categories = package.spec.categories[1]
