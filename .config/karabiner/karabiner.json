@@ -631,6 +631,23 @@
                             "to": [{ "key_code": "right_command" }]
                         }
                     ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 24926,
+                        "vendor_id": 7504
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "display_brightness_decrement" },
+                            "to": [{ "key_code": "f14" }]
+                        },
+                        {
+                            "from": { "key_code": "display_brightness_increment" },
+                            "to": [{ "key_code": "f15" }]
+                        }
+                    ]
                 }
             ],
             "name": "npk",
