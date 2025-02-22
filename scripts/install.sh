@@ -3,11 +3,14 @@
 # don't show terminal last login message
 touch "$HOME/.hushlogin"
 
+ln -snf $HOME/dotfiles/.config $HOME/.config
+
 # zsh
 mkdir -p $HOME/.cache/zsh $HOME/.local/state/zsh $HOME/.local/share/zsh/completions
 ln -sf $HOME/dotfiles/.zshenv $HOME/.zshenv
+
+# git
 ln -sf $HOME/dotfiles/.gitconfig $HOME/.gitconfig
-ln -snf $HOME/dotfiles/.config $HOME/.config
 
 source $HOME/.zshenv
 source $HOME/.config/zsh/.zshrc
