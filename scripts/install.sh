@@ -132,4 +132,7 @@ if ! command -v git-cz &> /dev/null; then
   echo "[git-cz]finish"
 fi
 
+# doomemacs
+ln -sf $HOME/dotfiles/.config/doom/* $HOME/.doom.d
+
 echo "complete."
