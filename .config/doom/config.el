@@ -28,6 +28,11 @@
 (when (eq system-type 'darwin)
   (setq doom-font (font-spec :family "HackGen Console NF" :size 20 :weight 'regular)
         doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 21)))
+
+(setq default-frame-alist
+      (append (list
+               '(width . 100)
+               '(height . 50))))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
