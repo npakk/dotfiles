@@ -4,15 +4,55 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Caps Lock to Esc and Ctrl",
+                        "description": "Redo to CTRL+y",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$",
+                                            "^org\\.gnu\\.Emacs$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
+                                    "key_code": "y",
+                                    "modifiers": { "mandatory": "control" }
                                 },
-                                "to": [{ "key_code": "right_control" }],
-                                "to_if_alone": [{ "key_code": "escape" }],
+                                "to": [
+                                    {
+                                        "key_code": "z",
+                                        "modifiers": ["command", "shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Undo to CTRL+z",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$",
+                                            "^org\\.gnu\\.Emacs$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "z",
+                                    "modifiers": { "mandatory": "control" }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "z",
+                                        "modifiers": "command"
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -24,7 +64,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.alacritty"
+                                            "^org\\.alacritty$",
+                                            "^org\\.gnu\\.Emacs$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -50,7 +91,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.alacritty"
+                                            "^org\\.alacritty$",
+                                            "^org\\.gnu\\.Emacs$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -70,13 +112,41 @@
                         ]
                     },
                     {
+                        "description": "Paste to CTRL+v",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$",
+                                            "^org\\.gnu\\.Emacs$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": { "mandatory": "control" }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": "command"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Cut to CTRL+x",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.alacritty"
+                                            "^org\\.alacritty$",
+                                            "^org\\.gnu\\.Emacs$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -102,7 +172,8 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^org\\.alacritty"
+                                            "^org\\.alacritty$",
+                                            "^org\\.gnu\\.Emacs$"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -122,27 +193,15 @@
                         ]
                     },
                     {
-                        "description": "Paste to CTRL+v",
+                        "description": "Caps Lock to Esc and Ctrl",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^org\\.alacritty"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "v",
-                                    "modifiers": { "mandatory": "control" }
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "v",
-                                        "modifiers": "command"
-                                    }
-                                ],
+                                "to": [{ "key_code": "right_control" }],
+                                "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
                             }
                         ]
@@ -614,10 +673,6 @@
                         "vendor_id": 2131
                     },
                     "simple_modifications": [
-                        {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "left_control" }]
-                        },
                         {
                             "from": { "key_code": "left_control" },
                             "to": [{ "key_code": "left_option" }]

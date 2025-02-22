@@ -22,7 +22,8 @@
             {
               "type": "frontmost_application_unless",
               "bundle_identifiers": [
-                "^org\\.alacritty"
+                "^org\\.alacritty$",
+                "^org\\.gnu\\.Emacs$"
               ]
             }
           ]
@@ -50,7 +51,8 @@
             {
               "type": "frontmost_application_unless",
               "bundle_identifiers": [
-                "^org\\.alacritty"
+                "^org\\.alacritty$",
+                "^org\\.gnu\\.Emacs$"
               ]
             }
           ]
@@ -78,7 +80,8 @@
             {
               "type": "frontmost_application_unless",
               "bundle_identifiers": [
-                "^org\\.alacritty"
+                "^org\\.alacritty$",
+                "^org\\.gnu\\.Emacs$"
               ]
             }
           ]
@@ -106,7 +109,8 @@
             {
               "type": "frontmost_application_unless",
               "bundle_identifiers": [
-                "^org\\.alacritty"
+                "^org\\.alacritty$",
+                "^org\\.gnu\\.Emacs$"
               ]
             }
           ]
@@ -134,7 +138,69 @@
             {
               "type": "frontmost_application_unless",
               "bundle_identifiers": [
-                "^org\\.alacritty"
+                "^org\\.alacritty$",
+                "^org\\.gnu\\.Emacs$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Undo to CTRL+z",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "z",
+            "modifiers": {
+              "mandatory": "control"
+            }
+          },
+          "to": [
+            {
+              "key_code": "z",
+              "modifiers": "command"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^org\\.alacritty$",
+                "^org\\.gnu\\.Emacs$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Redo to CTRL+y",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": "control"
+            }
+          },
+          "to": [
+            {
+              "key_code": "z",
+              "modifiers": [
+                "command",
+                "shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^org\\.alacritty$",
+                "^org\\.gnu\\.Emacs$"
               ]
             }
           ]
