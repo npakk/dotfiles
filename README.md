@@ -28,6 +28,7 @@ cd $HOME/dotfiles
 task
 ```
 
+---
 [Doom](https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
 ```ps1
 git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d
@@ -35,6 +36,7 @@ cd $HOME/.emacs.d/bin
 ./doom install
 ```
 アイコンが文字化けしている場合は、`M-x nerd-icons-install-fonts`を実行してダウンロードされるttfファイルをインストール
+Macの場合は[ここ](https://github.com/railwaycat/homebrew-emacsmacport/blob/master/docs/emacs-start-helpers.md#helper-2)を参考にアプリケーションフォルダにEmacsアプリを作る
 
 ---
 以下のソフトウェアは手動でインストール
