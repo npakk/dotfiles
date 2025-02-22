@@ -1,0 +1,33 @@
+version: '3'
+
+silent: true
+
+tasks:
+  default:
+    - task: install
+
+  install:
+    vars:
+      PWSH_CMD:
+        sh: |
+          if type "pwsh" > /dev/null 2>&1; then
+            echo "pwsh"
+          else
+            echo "powershell"
+          fi
+    cmds:
+      - task: import
+      - "{{.PWSH_CMD}} ./scripts/powershell.ps1"
+      - "{{.PWSH_CMD}} ./scripts/autohotkey.ps1"
+      - "{{.PWSH_CMD}} ./scripts/alacritty.ps1"
+      - "{{.PWSH_CMD}} ./scripts/doom.ps1"
+
+  update:
+    - scoop update
+    - scoop update *
+
+  import:
+    - scoop import Scoopfile.json
+
+  export:
+    - scoop export > Scoopfile.json
