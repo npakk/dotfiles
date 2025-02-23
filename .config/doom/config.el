@@ -91,7 +91,7 @@
 (setq system-time-locale "C")
 
 ; org-capture
-(define-key global-map "\C-cc" 'org-capture)
+; (define-key global-map "\C-cc" 'org-capture)
 (after! org
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
