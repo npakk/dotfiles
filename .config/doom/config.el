@@ -37,7 +37,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-tokyo-night)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -86,6 +86,16 @@
                '(width . 100)
                '(height . 50))))
 
+; 行間
+(setq-default line-spacing 5)
+
+; 折り返し
+;; reference: https://zenn.dev/ebang/articles/231106_emacs-markdown
+;; 以下2つはword-wrap-modeを活かすために必要だが、デフォルトの動作が記述の通りなので指定する必要なし
+;; (auto-fill-mode -1)
+;; (global-visual-line-mode t)
+(global-word-wrap-whitespace-mode t)
+(add-to-list 'word-wrap-whitespace-characters ?\])
 
 ; 挿入する曜日表記を英語に
 (setq system-time-locale "C")
@@ -96,8 +106,8 @@
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
            "* TODO %?\n%i\n%a")
-        ;; '(("t" "Personal todo" entry (file+headline +org-capture-todo-file "Inbox")
-        ;;    "* [ ] %?\n%i\n%a" :prepend t)
+          ;; '(("t" "Personal todo" entry (file+headline +org-capture-todo-file "Inbox")
+          ;;    "* [ ] %?\n%i\n%a" :prepend t)
           ("n" "Notes" entry (file+headline +org-capture-notes-file "Inbox")
            "* %?\n%i\n%a" :prepend t)
           ("j" "Journal" entry (file+olp+datetree +org-capture-journal-file)
@@ -138,4 +148,17 @@
            "* %U %?\n %i\n %a"
            :heading "Changelog"
            :prepend t)))
+
+  ;; コードブロックのシンタックスハイライトが効かないときに試す
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages
+  ;;  '(
+  ;;    (shell . t)
+  ;;    )
+  ;;  )
+
+  ;; org-modern
+  (with-eval-after-load 'org (global-org-modern-mode))
+  (setq org-modern-fold-stars
+        '(("▶" . "▼") ("▷" . "▽") ("⏵" . "⏷") ("▹" . "▿") ("▸" . "▾")))
 )
