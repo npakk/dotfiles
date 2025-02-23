@@ -28,11 +28,6 @@
 (when (eq system-type 'darwin)
   (setq doom-font (font-spec :family "HackGen Console NF" :size 20 :weight 'regular)
         doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 21)))
-
-(setq default-frame-alist
-      (append (list
-               '(width . 100)
-               '(height . 50))))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -84,3 +79,63 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+; 起動時の画面サイズ
+(setq default-frame-alist
+      (append (list
+               '(width . 100)
+               '(height . 50))))
+
+
+; 挿入する曜日表記を英語に
+(setq system-time-locale "C")
+
+; org-capture
+(define-key global-map "\C-cc" 'org-capture)
+(after! org
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
+           "* TODO %?\n%i\n%a")
+        ;; '(("t" "Personal todo" entry (file+headline +org-capture-todo-file "Inbox")
+        ;;    "* [ ] %?\n%i\n%a" :prepend t)
+          ("n" "Notes" entry (file+headline +org-capture-notes-file "Inbox")
+           "* %?\n%i\n%a" :prepend t)
+          ("j" "Journal" entry (file+olp+datetree +org-capture-journal-file)
+           "* %U %?\n%i\n%a")
+
+          ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
+          ;; {todo,notes,changelog}.org file is found in a parent directory.
+          ;; Uses the basename from `+org-capture-todo-file',
+          ;; `+org-capture-changelog-file' and `+org-capture-notes-file'.
+          ("p" "Templates for projects")
+          ("pt" "Project-local todo" entry  ; {project-root}/todo.org
+           (file+headline +org-capture-project-todo-file "Inbox")
+           "* TODO %?\n%i\n%a" :prepend t)
+          ("pn" "Project-local notes" entry  ; {project-root}/notes.org
+           (file+headline +org-capture-project-notes-file "Inbox")
+           "* %U %?\n%i\n%a" :prepend t)
+          ("pc" "Project-local changelog" entry  ; {project-root}/changelog.org
+           (file+headline +org-capture-project-changelog-file "Unreleased")
+           "* %U %?\n%i\n%a" :prepend t)
+
+          ;; Will use {org-directory}/{+org-capture-projects-file} and store
+          ;; these under {ProjectName}/{Tasks,Notes,Changelog} headings. They
+          ;; support `:parents' to specify what headings to put them under, e.g.
+          ;; :parents ("Projects")
+          ("o" "Centralized templates for projects")
+          ("ot" "Project todo" entry
+           (function +org-capture-central-project-todo-file)
+           "* TODO %?\n %i\n %a"
+           :heading "Tasks"
+           :prepend nil)
+          ("on" "Project notes" entry
+           (function +org-capture-central-project-notes-file)
+           "* %U %?\n %i\n %a"
+           :heading "Notes"
+           :prepend t)
+          ("oc" "Project changelog" entry
+           (function +org-capture-central-project-changelog-file)
+           "* %U %?\n %i\n %a"
+           :heading "Changelog"
+           :prepend t)))
+)
