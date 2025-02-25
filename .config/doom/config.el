@@ -101,53 +101,99 @@
 (setq system-time-locale "C")
 
 ; org-capture
-; (define-key global-map "\C-cc" 'org-capture)
+(define-key global-map (kbd "C-c c") 'org-capture)
+(define-key global-map (kbd "C-c t")
+  (lambda () (interactive) (org-capture nil "t")))
+(define-key global-map (kbd "C-c s")
+  (lambda () (interactive) (org-capture nil "s")))
+(define-key global-map (kbd "C-c j")
+  (lambda () (interactive) (org-capture nil "j")))
 (after! org
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
-           "* TODO %?\n%i\n%a")
+           "* TODO %?\n%i")
+          ("s" "Scraps" entry (file+headline "scrap.org" "Inbox")
+           "* %?\n%i"
+           :prepend t
+           :refile-targets (("note.org" :maxlevel . 2)))
+          ("j" "Journal" entry (file+olp+datetree +org-capture-journal-file)
+           ;; (file "journal-template")
+           "* %U %?\n%i"
+           ;; "* %<%H:> %?\n%i"
+           ;; :clock-in t
+           ;; :clock-keep t
+           ;; :time-prompt t
+           ;; :immediate-finish t
+           :jump-to-captured t)
+
+          ("o" "Open")
+          ("ot" "Todo" plain (file+headline "inbox.org" "Inbox")
+           nil
+           :immediate-finish t
+           :jump-to-captured t)
+          ("os" "Scraps" plain (file+headline "scrap.org" "Inbox")
+           nil
+           :prepend t
+           :immediate-finish t
+           :jump-to-captured t)
+          ("on" "Notes" plain (file+headline +org-capture-notes-file "Inbox")
+           nil
+           :prepend t
+           :immediate-finish t
+           :jump-to-captured t)
+          ("oj" "Journal" plain (file+headline +org-capture-journal-file "Inbox")
+           nil
+           :prepend t
+           :immediate-finish t
+           :jump-to-captured t)
+          ))
           ;; '(("t" "Personal todo" entry (file+headline +org-capture-todo-file "Inbox")
           ;;    "* [ ] %?\n%i\n%a" :prepend t)
-          ("n" "Notes" entry (file+headline +org-capture-notes-file "Inbox")
-           "* %?\n%i\n%a" :prepend t)
-          ("j" "Journal" entry (file+olp+datetree +org-capture-journal-file)
-           "* %U %?\n%i\n%a")
+          ;; ("n" "Notes" entry (file+headline +org-capture-notes-file "Inbox")
+          ;;  "* %?\n%i\n%a" :prepend t)
+          ;; ("j" "Journal" entry (file+olp+datetree +org-capture-journal-file)
+          ;;  "* %U %?\n%i\n%a")
 
-          ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
-          ;; {todo,notes,changelog}.org file is found in a parent directory.
-          ;; Uses the basename from `+org-capture-todo-file',
-          ;; `+org-capture-changelog-file' and `+org-capture-notes-file'.
-          ("p" "Templates for projects")
-          ("pt" "Project-local todo" entry  ; {project-root}/todo.org
-           (file+headline +org-capture-project-todo-file "Inbox")
-           "* TODO %?\n%i\n%a" :prepend t)
-          ("pn" "Project-local notes" entry  ; {project-root}/notes.org
-           (file+headline +org-capture-project-notes-file "Inbox")
-           "* %U %?\n%i\n%a" :prepend t)
-          ("pc" "Project-local changelog" entry  ; {project-root}/changelog.org
-           (file+headline +org-capture-project-changelog-file "Unreleased")
-           "* %U %?\n%i\n%a" :prepend t)
+          ;; ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
+          ;; ;; {todo,notes,changelog}.org file is found in a parent directory.
+          ;; ;; Uses the basename from `+org-capture-todo-file',
+          ;; ;; `+org-capture-changelog-file' and `+org-capture-notes-file'.
+          ;; ("p" "Templates for projects")
+          ;; ("pt" "Project-local todo" entry  ; {project-root}/todo.org
+          ;;  (file+headline +org-capture-project-todo-file "Inbox")
+          ;;  "* TODO %?\n%i\n%a" :prepend t)
+          ;; ("pn" "Project-local notes" entry  ; {project-root}/notes.org
+          ;;  (file+headline +org-capture-project-notes-file "Inbox")
+          ;;  "* %U %?\n%i\n%a" :prepend t)
+          ;; ("pc" "Project-local changelog" entry  ; {project-root}/changelog.org
+          ;;  (file+headline +org-capture-project-changelog-file "Unreleased")
+          ;;  "* %U %?\n%i\n%a" :prepend t)
 
-          ;; Will use {org-directory}/{+org-capture-projects-file} and store
-          ;; these under {ProjectName}/{Tasks,Notes,Changelog} headings. They
-          ;; support `:parents' to specify what headings to put them under, e.g.
-          ;; :parents ("Projects")
-          ("o" "Centralized templates for projects")
-          ("ot" "Project todo" entry
-           (function +org-capture-central-project-todo-file)
-           "* TODO %?\n %i\n %a"
-           :heading "Tasks"
-           :prepend nil)
-          ("on" "Project notes" entry
-           (function +org-capture-central-project-notes-file)
-           "* %U %?\n %i\n %a"
-           :heading "Notes"
-           :prepend t)
-          ("oc" "Project changelog" entry
-           (function +org-capture-central-project-changelog-file)
-           "* %U %?\n %i\n %a"
-           :heading "Changelog"
-           :prepend t)))
+          ;; ;; Will use {org-directory}/{+org-capture-projects-file} and store
+          ;; ;; these under {ProjectName}/{Tasks,Notes,Changelog} headings. They
+          ;; ;; support `:parents' to specify what headings to put them under, e.g.
+          ;; ;; :parents ("Projects")
+          ;; ("o" "Centralized templates for projects")
+          ;; ("ot" "Project todo" entry
+          ;;  (function +org-capture-central-project-todo-file)
+          ;;  "* TODO %?\n %i\n %a"
+          ;;  :heading "Tasks"
+          ;;  :prepend nil)
+          ;; ("on" "Project notes" entry
+          ;;  (function +org-capture-central-project-notes-file)
+          ;;  "* %U %?\n %i\n %a"
+          ;;  :heading "Notes"
+          ;;  :prepend t)
+          ;; ("oc" "Project changelog" entry
+          ;;  (function +org-capture-central-project-changelog-file)
+          ;;  "* %U %?\n %i\n %a"
+          ;;  :heading "Changelog"
+          ;;  :prepend t)))
+
+  ; org-refile
+  (setq org-refile-targets '(("inbox.org" :maxlevel 2)
+                             ("notes.org" :maxlevel 2)
+                             ("journal.org" :maxlevel 2)))
 
   ;; コードブロックのシンタックスハイライトが効かないときに試す
   ;; (org-babel-do-load-languages
@@ -156,9 +202,4 @@
   ;;    (shell . t)
   ;;    )
   ;;  )
-
-  ;; org-modern
-  (with-eval-after-load 'org (global-org-modern-mode))
-  (setq org-modern-fold-stars
-        '(("▶" . "▼") ("▷" . "▽") ("⏵" . "⏷") ("▹" . "▿") ("▸" . "▾")))
 )
