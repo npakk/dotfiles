@@ -1,28 +1,14 @@
 {
-  "plugins": {
-    "@textlint/text": {
-      "extensions": [".org"]
-    }
-  },
   "filters": {
     "allowlist": {
       "allow": [
-        "/^\\*+\\s.*$/m",
-        "/:\\w+:/m",
-        "/~.+~/m",
-        "/^\\s*[-]+\\s.*$/m",
-        "/^\\s*\\d+[.]+\\s.*$/m",
-        "/^\\[\\[.+\\]\\]$/m",
-        "/^#\\+begin_(?:comment|src|quote)[\\s\\w]*$[^]*?^#\\+end_(?:comment|src|quote)$/m"
       ]
     }
   },
   "rules": {
     "preset-ja-technical-writing": {
-      "max-ten": { "max": 3 }
     },
     "preset-jtf-style": {
-      "3.1.1.全角文字と半角文字の間": false
     },
     "preset-ja-spacing": {
       "ja-space-between-half-and-full-width": {

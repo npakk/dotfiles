@@ -139,7 +139,7 @@ if ! command -v textlint &> /dev/null; then
   textlint-rule-preset-ja-spacing \
   textlint-rule-spellcheck-tech-word \
   textlint-rule-prh
-  npm install -g -D --no-fund @proofdict/textlint-rule-proofdict
+  npm install -g --no-fund @proofdict/textlint-rule-proofdict
   echo "[textlint]finish"
 fi
 
