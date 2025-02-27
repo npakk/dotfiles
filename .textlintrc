@@ -7,38 +7,37 @@
   "filters": {
     "allowlist": {
       "allow": [
-        "/^\\[.+\\]$[^]*?^\\[\\/.+\\]$/m",
-        "/^\\[\\[.+\\]\\]$/m",
+        "/^\\*+\\s.*$/m",
         "/:\\w+:/m",
-        "/^#\\+begin_(?:src|quote)[\\s\\w]*$[^]*?^#\\+end_(?:src|quote)$/m"
+        "/~.+~/m",
+        "/^\\s*[-]+\\s.*$/m",
+        "/^\\s*\\d+[.]+\\s.*$/m",
+        "/^\\[\\[.+\\]\\]$/m",
+        "/^#\\+begin_(?:comment|src|quote)[\\s\\w]*$[^]*?^#\\+end_(?:comment|src|quote)$/m"
       ]
     }
   },
   "rules": {
     "preset-ja-technical-writing": {
-      "ja-no-weak-phrase": false,
-      "ja-no-mixed-period": false,
-      "no-mix-dearu-desumasu": true,
-      "no-dropping-the-ra": true,
-      "no-exclamation-question-mark": false
+      "max-ten": { "max": 3 }
     },
     "preset-jtf-style": {
       "3.1.1.全角文字と半角文字の間": false
     },
+    "preset-ja-spacing": {
+      "ja-space-between-half-and-full-width": {
+        "space": "always"
+      }
+    },
+    "spellcheck-tech-word": true,
     "prh": {
       "rulePaths": [
         "~/.local/share/n/lib/node_modules/textlint-rule-prh/node_modules/prh/prh-rules/media/WEB+DB_PRESS.yml",
         "~/.local/share/n/lib/node_modules/textlint-rule-prh/node_modules/prh/prh-rules/media/techbooster.yml"
       ]
     },
-    "max-ten": {
-      "max": 3
-    },
-    "spellcheck-tech-word": true,
-    "preset-ja-spacing": {
-      "ja-space-between-half-and-full-width": {
-        "space": "always"
-      }
-    },
+    "@proofdict/proofdict": {
+      "dictURL": "https://npakk.github.io/proof-dictionary/"
+    }
   }
 }

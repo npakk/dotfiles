@@ -136,10 +136,10 @@ if ! command -v textlint &> /dev/null; then
   textlint-filter-rule-allowlist \
   textlint-rule-preset-ja-technical-writing \
   textlint-rule-preset-jtf-style \
-  textlint-rule-prh \
-  textlint-rule-max-ten \
+  textlint-rule-preset-ja-spacing \
   textlint-rule-spellcheck-tech-word \
-  textlint-rule-preset-ja-spacing
+  textlint-rule-prh
+  npm install -g -D --no-fund @proofdict/textlint-rule-proofdict
   echo "[textlint]finish"
 fi
 

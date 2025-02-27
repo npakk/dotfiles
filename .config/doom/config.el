@@ -101,7 +101,7 @@
 (setq system-time-locale "C")
 
 ; flycheckの許容エラー数
-(setq flycheck-checker-error-threshold 1000)
+;; (setq flycheck-checker-error-threshold 1000)
 
 ; org-capture
 (define-key global-map (kbd "C-c c") 'org-capture)
