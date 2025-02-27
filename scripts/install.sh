@@ -12,6 +12,9 @@ ln -sf $HOME/dotfiles/.zshenv $HOME/.zshenv
 # git
 ln -sf $HOME/dotfiles/.gitconfig $HOME/.gitconfig
 
+# textlint
+ln -sf $HOME/dotfiles/.textlintrc $HOME/.textlintrc
+
 source $HOME/.zshenv
 source $HOME/.config/zsh/.zshrc
 
@@ -123,6 +126,21 @@ if ! npm ls -g | grep -q "neovim"; then
   echo "[neovim provider - nodejs]start"
   npm install -g neovim
   echo "[neovim provider - nodejs]finish"
+fi
+
+# textlint
+if ! command -v textlint &> /dev/null; then
+  echo "[textlint]start"
+  npm install -g --no-fund textlint
+  npm install -g --no-fund \
+  textlint-filter-rule-allowlist \
+  textlint-rule-preset-ja-technical-writing \
+  textlint-rule-preset-jtf-style \
+  textlint-rule-prh \
+  textlint-rule-max-ten \
+  textlint-rule-spellcheck-tech-word \
+  textlint-rule-preset-ja-spacing
+  echo "[textlint]finish"
 fi
 
 # git-cz
