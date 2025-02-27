@@ -100,7 +100,7 @@
 ; 挿入する曜日表記を英語に
 (setq system-time-locale "C")
 
-; flycheckの許容エラー数
+; flycheck
 ;; (setq flycheck-checker-error-threshold 1000)
 
 ; org-capture
@@ -252,6 +252,9 @@
                              (+org-capture-notes-file :maxlevel 2)
                              (+org-capture-journal-file :maxlevel 2)))
 
+  ; textlintを止める
+  (global-flycheck-mode -1)
+
   ;; コードブロックのシンタックスハイライトが効かないときに試す
   ;; (org-babel-do-load-languages
   ;;  'org-babel-load-languages
@@ -259,4 +262,19 @@
   ;;    (shell . t)
   ;;    )
   ;;  )
+  ;;
+  (setq org-feed-alist
+        '(("Zenn"
+           "https://zenn.dev/feed"
+           "~/Dropbox/org/feeds.org" "Zenn Trend")
+          ("Qiita"
+           "https://qiita.com/popular-items/feed.atom"
+           "~/Dropbox/org/feeds.org" "Qiita Trend")
+          ("takeokunn"
+           "https://www.takeokunn.org/index.xml"
+           "~/Dropbox/org/feeds.org" "takeokunn")
+          ("gihyo"
+           "https://gihyo.jp/feed/rss2"
+           "~/Dropbox/org/feeds.org" "gihyo")
+          ))
 )
