@@ -109,6 +109,8 @@
   (lambda () (interactive) (org-capture nil "t")))
 (define-key global-map (kbd "C-c s")
   (lambda () (interactive) (org-capture nil "s")))
+(define-key global-map (kbd "C-c i")
+  (lambda () (interactive) (org-capture nil "i")))
 (define-key global-map (kbd "C-c j")
   (lambda () (interactive) (org-capture nil "j")))
 (define-key global-map (kbd "C-c l")
@@ -125,6 +127,36 @@
            "* %?\n%i"
            :prepend t
            :refile-targets ((+org-capture-notes-file :level . 1)))
+          ("i" "warikomi" entry (file+function +org-capture-journal-file
+                (lambda ()
+                  (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
+                  (let ((year (nth 2 (org-date-to-gregorian (org-today))))
+                        (month (car (org-date-to-gregorian (org-today))))
+                        (day (nth 1 (org-date-to-gregorian (org-today)))))
+                    (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
+                    (cond
+                     ((not match)
+                      (beginning-of-line 2)
+                      (insert "* ")
+                      (org-do-demote)
+                      (org-do-demote)
+                      (org-do-demote)
+                      (insert "Task\n")
+                      (insert "* ")
+                      (org-do-demote)
+                      (org-do-demote)
+                      (org-do-demote)
+                      (insert "Log")
+                      )
+                     (t
+                      nil)))
+                  (re-search-backward "^\\*.+ Task" nil t)
+                ))
+           "* DONE %?"
+           :clock-in t
+           :clock-resume t
+           ;; :time-prompt t
+           :jump-to-captured t)
           ("j" "Journal Tasks" entry (file+function +org-capture-journal-file
                 (lambda ()
                   (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
