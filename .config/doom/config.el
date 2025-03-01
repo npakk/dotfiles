@@ -214,28 +214,6 @@
                 ))
            "* %<%H:%M> %?")
 
-          ("o" "Open")
-          ("ot" "Todo" plain (file+headline "inbox.org" "Inbox")
-           nil
-           :immediate-finish t
-           :jump-to-captured t)
-          ("os" "Scraps" plain (file+headline "scrap.org" "Inbox")
-           nil
-           :prepend t
-           :immediate-finish t
-           :jump-to-captured t)
-          ("on" "Notes" plain (file+headline +org-capture-notes-file "Inbox")
-           nil
-           :prepend t
-           :immediate-finish t
-           :jump-to-captured t)
-          ("oj" "Journal" plain (file+headline +org-capture-journal-file "Inbox")
-           nil
-           :prepend t
-           :immediate-finish t
-           :jump-to-captured t)
-          ))
-
           ;; '(("t" "Personal todo" entry (file+headline +org-capture-todo-file "Inbox")
           ;;    "* [ ] %?\n%i\n%a" :prepend t)
           ;; ("n" "Notes" entry (file+headline +org-capture-notes-file "Inbox")
@@ -295,18 +273,4 @@
   ;;    )
   ;;  )
   ;;
-  (setq org-feed-alist
-        '(("Zenn"
-           "https://zenn.dev/feed"
-           "~/Dropbox/org/feeds.org" "Zenn Trend")
-          ("Qiita"
-           "https://qiita.com/popular-items/feed.atom"
-           "~/Dropbox/org/feeds.org" "Qiita Trend")
-          ("takeokunn"
-           "https://www.takeokunn.org/index.xml"
-           "~/Dropbox/org/feeds.org" "takeokunn")
-          ("gihyo"
-           "https://gihyo.jp/feed/rss2"
-           "~/Dropbox/org/feeds.org" "gihyo")
-          ))
 )
