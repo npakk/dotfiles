@@ -213,6 +213,7 @@
                   (re-search-forward "^\\*.+ Log" nil t)
                 ))
            "* %<%H:%M> %?")
+          ))
 
           ;; '(("t" "Personal todo" entry (file+headline +org-capture-todo-file "Inbox")
           ;;    "* [ ] %?\n%i\n%a" :prepend t)
