@@ -116,6 +116,9 @@
 (define-key global-map (kbd "C-c l")
   (lambda () (interactive) (org-capture nil "l")))
 (after! org
+  ; textlintを止める
+  (global-flycheck-mode -1)
+
   (setq org-capture-templates
         ; see References
         ; https://orgmode.org/manual/Template-elements.html
@@ -262,9 +265,6 @@
   (setq org-refile-targets '(("inbox.org" :maxlevel 2)
                              (+org-capture-notes-file :maxlevel 2)
                              (+org-capture-journal-file :maxlevel 2)))
-
-  ; textlintを止める
-  (global-flycheck-mode -1)
 
   ;; コードブロックのシンタックスハイライトが効かないときに試す
   ;; (org-babel-do-load-languages

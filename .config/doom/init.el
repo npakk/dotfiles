@@ -17,7 +17,7 @@
 (doom! :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
-       japanese
+       ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
@@ -152,7 +152,9 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org               ; organize your plain life in plain text
+       (org               ; organize your plain life in plain text
+        +journal
+        +roam2)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;graphviz          ; diagrams for confusing yourself even more
