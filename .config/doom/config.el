@@ -102,176 +102,152 @@
 
 ; flycheck
 ;; (setq flycheck-checker-error-threshold 1000)
-
-; org-capture
-(define-key global-map (kbd "C-c c") 'org-capture)
-(define-key global-map (kbd "C-c t")
-  (lambda () (interactive) (org-capture nil "t")))
-(define-key global-map (kbd "C-c s")
-  (lambda () (interactive) (org-capture nil "s")))
-(define-key global-map (kbd "C-c i")
-  (lambda () (interactive) (org-capture nil "i")))
-(define-key global-map (kbd "C-c j")
-  (lambda () (interactive) (org-capture nil "j")))
-(define-key global-map (kbd "C-c l")
-  (lambda () (interactive) (org-capture nil "l")))
 (after! org
   ; textlintを止める
   (global-flycheck-mode -1)
 
+
+; org-refile
+(setq org-refile-targets '(("inbox.org" :maxlevel 2)
+                           (+org-capture-notes-file :maxlevel 2)
+                           (+org-capture-journal-file :maxlevel 2))))
+
+(map!
+ :prefix "C-c"
+ "t" (lambda () (interactive) (org-capture nil "t"))
+ "s" (lambda () (interactive) (org-capture nil "s"))
+ "i" (lambda () (interactive) (org-capture nil "i"))
+ "j" (lambda () (interactive) (org-capture nil "j"))
+ "l" (lambda () (interactive) (org-capture nil "l"))
+ "n l" 'org-roam-buffer-toggle
+ "n f" 'org-roam-node-find
+ "n g" 'org-roam-graph
+ "n i" 'org-roam-node-insert
+ "n c" 'org-roam-capture
+ "c i" 'org-clock-in
+ "c o" 'org-clock-out
+ "c r" 'org-clock-report
+ )
+
+(after! org
+  ; org-capture
   (setq org-capture-templates
-        ; see References
-        ; https://orgmode.org/manual/Template-elements.html
-        ; https://doc.endlessparentheses.com/Var/org-refile-targets.html
-        '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
-           "* TODO %?\n%i"
-           :refile-targets ((+org-capture-journal-file :regexp . "Task")))
-          ("s" "Scraps" entry (file+headline "scrap.org" "Inbox")
-           "* %?\n%i"
-           :prepend t
-           :refile-targets ((+org-capture-notes-file :level . 1)))
-          ("i" "warikomi" entry (file+function +org-capture-journal-file
-                (lambda ()
-                  (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
-                  (let ((year (nth 2 (org-date-to-gregorian (org-today))))
-                        (month (car (org-date-to-gregorian (org-today))))
-                        (day (nth 1 (org-date-to-gregorian (org-today)))))
-                    (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
-                    (cond
-                     ((not match)
-                      (beginning-of-line 2)
-                      (insert "* ")
-                      (org-do-demote)
-                      (org-do-demote)
-                      (org-do-demote)
-                      (insert "Task\n")
-                      (insert "* ")
-                      (org-do-demote)
-                      (org-do-demote)
-                      (org-do-demote)
-                      (insert "Log")
-                      )
-                     (t
-                      nil)))
-                  (re-search-backward "^\\*.+ Task" nil t)
-                ))
-           "* DONE %?"
-           :clock-in t
-           :clock-resume t
-           ;; :time-prompt t
-           :jump-to-captured t)
-          ("j" "Journal Tasks" entry (file+function +org-capture-journal-file
-                (lambda ()
-                  (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
-                  (let ((year (nth 2 (org-date-to-gregorian (org-today))))
-                        (month (car (org-date-to-gregorian (org-today))))
-                        (day (nth 1 (org-date-to-gregorian (org-today)))))
-                    (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
-                    (cond
-                     ((not match)
-                      (beginning-of-line 2)
-                      (insert "* ")
-                      (org-do-demote)
-                      (org-do-demote)
-                      (org-do-demote)
-                      (insert "Task\n")
-                      (insert "* ")
-                      (org-do-demote)
-                      (org-do-demote)
-                      (org-do-demote)
-                      (insert "Log")
-                      )
-                     (t
-                      nil)))
-                  (re-search-backward "^\\*.+ Task" nil t)
-                ))
-           "* TODO %?"
-           :clock-in t
-           :clock-keep t
-           ;; :time-prompt t
-           :jump-to-captured t)
-          ("l" "Journal Logs" entry (file+function +org-capture-journal-file
-                (lambda ()
-                  (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
-                  (let ((year (nth 2 (org-date-to-gregorian (org-today))))
-                        (month (car (org-date-to-gregorian (org-today))))
-                        (day (nth 1 (org-date-to-gregorian (org-today)))))
-                    (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
-                    (cond
-                     ((not match)
-                      (beginning-of-line 2)
-                      (insert "* ")
-                      (org-do-demote)
-                      (org-do-demote)
-                      (org-do-demote)
-                      (insert "Task\n")
-                      (insert "* ")
-                      (org-do-demote)
-                      (org-do-demote)
-                      (org-do-demote)
-                      (insert "Log")
-                      )
-                     (t
-                      nil)))
-                  (re-search-forward "^\\*.+ Log" nil t)
-                ))
-           "* %<%H:%M> %?")
-          ))
+      ; see References
+      ; https://orgmode.org/manual/Template-elements.html
+      ; https://doc.endlessparentheses.com/Var/org-refile-targets.html
+      '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
+         "* TODO %?\n%i"
+        :refile-targets ((+org-capture-journal-file :regexp . "Task")))
+        ("s" "Scraps" entry (file+headline "scrap.org" "Inbox")
+        "* %?\n%i"
+        :prepend t
+        :refile-targets ((+org-capture-notes-file :level . 1)))
+        ("i" "warikomi" entry (file+function +org-capture-journal-file
+        (lambda ()
+                (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
+                (let ((year (nth 2 (org-date-to-gregorian (org-today))))
+                (month (car (org-date-to-gregorian (org-today))))
+                (day (nth 1 (org-date-to-gregorian (org-today)))))
+                (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
+                (cond
+                ((not match)
+                (beginning-of-line 2)
+                (insert "* ")
+                (org-do-demote)
+                (org-do-demote)
+                (org-do-demote)
+                (insert "Task\n")
+                (insert "* ")
+                (org-do-demote)
+                (org-do-demote)
+                (org-do-demote)
+                (insert "Log")) (t
+                nil)))
+                (re-search-backward "^\\*.+ Task" nil t)
+        ))
+        "* DONE %?"
+        :clock-in t
+        :clock-resume t
+        ;; :time-prompt t
+        :jump-to-captured t)
+        ("j" "Journal Tasks" entry (file+function +org-capture-journal-file
+        (lambda ()
+                (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
+                (let ((year (nth 2 (org-date-to-gregorian (org-today))))
+                (month (car (org-date-to-gregorian (org-today))))
+                (day (nth 1 (org-date-to-gregorian (org-today)))))
+                (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
+                (cond
+                ((not match)
+                (beginning-of-line 2)
+                (insert "* ")
+                (org-do-demote)
+                (org-do-demote)
+                (org-do-demote)
+                (insert "Task\n")
+                (insert "* ")
+                (org-do-demote)
+                (org-do-demote)
+                (org-do-demote)
+                (insert "Log")
+                )
+                (t
+                nil)))
+                (re-search-backward "^\\*.+ Task" nil t)
+        ))
+        "* TODO %?"
+        :clock-in t
+        :clock-keep t
+        ;; :time-prompt t
+        :jump-to-captured t)
+        ("l" "Journal Logs" entry (file+function +org-capture-journal-file
+        (lambda ()
+                (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
+                (let ((year (nth 2 (org-date-to-gregorian (org-today))))
+                (month (car (org-date-to-gregorian (org-today))))
+                (day (nth 1 (org-date-to-gregorian (org-today)))))
+                (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
+                (cond
+                ((not match)
+                (beginning-of-line 2)
+                (insert "* ")
+                (org-do-demote)
+                (org-do-demote)
+                (org-do-demote)
+                (insert "Task\n")
+                (insert "* ")
+                (org-do-demote)
+                (org-do-demote)
+                (org-do-demote)
+                (insert "Log")
+                )
+                (t
+                nil)))
+                (re-search-forward "^\\*.+ Log" nil t)
+        ))
+        "* %<%H:%M> %?"
+        :jump-to-captured t)
+        )))
 
-          ;; '(("t" "Personal todo" entry (file+headline +org-capture-todo-file "Inbox")
-          ;;    "* [ ] %?\n%i\n%a" :prepend t)
-          ;; ("n" "Notes" entry (file+headline +org-capture-notes-file "Inbox")
-          ;;  "* %?\n%i\n%a" :prepend t)
-          ;; ("j" "Journal" entry (file+olp+datetree +org-capture-journal-file)
-          ;;  "* %U %?\n%i\n%a")
 
-          ;; ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
-          ;; ;; {todo,notes,changelog}.org file is found in a parent directory.
-          ;; ;; Uses the basename from `+org-capture-todo-file',
-          ;; ;; `+org-capture-changelog-file' and `+org-capture-notes-file'.
-          ;; ("p" "Templates for projects")
-          ;; ("pt" "Project-local todo" entry  ; {project-root}/todo.org
-          ;;  (file+headline +org-capture-project-todo-file "Inbox")
-          ;;  "* TODO %?\n%i\n%a" :prepend t)
-          ;; ("pn" "Project-local notes" entry  ; {project-root}/notes.org
-          ;;  (file+headline +org-capture-project-notes-file "Inbox")
-          ;;  "* %U %?\n%i\n%a" :prepend t)
-          ;; ("pc" "Project-local changelog" entry  ; {project-root}/changelog.org
-          ;;  (file+headline +org-capture-project-changelog-file "Unreleased")
-          ;;  "* %U %?\n%i\n%a" :prepend t)
+;; コードブロックのシンタックスハイライトが効かないときに試す
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '(
+;;    (shell . t)
+;;    )
+;;  )
 
-          ;; ;; Will use {org-directory}/{+org-capture-projects-file} and store
-          ;; ;; these under {ProjectName}/{Tasks,Notes,Changelog} headings. They
-          ;; ;; support `:parents' to specify what headings to put them under, e.g.
-          ;; ;; :parents ("Projects")
-          ;; ("o" "Centralized templates for projects")
-          ;; ("ot" "Project todo" entry
-          ;;  (function +org-capture-central-project-todo-file)
-          ;;  "* TODO %?\n %i\n %a"
-          ;;  :heading "Tasks"
-          ;;  :prepend nil)
-          ;; ("on" "Project notes" entry
-          ;;  (function +org-capture-central-project-notes-file)
-          ;;  "* %U %?\n %i\n %a"
-          ;;  :heading "Notes"
-          ;;  :prepend t)
-          ;; ("oc" "Project changelog" entry
-          ;;  (function +org-capture-central-project-changelog-file)
-          ;;  "* %U %?\n %i\n %a"
-          ;;  :heading "Changelog"
-          ;;  :prepend t)))
+(use-package! org-roam
+  :config
+  (org-roam-db-autosync-mode)
+  (require 'org-roam-protocol))
 
-  ; org-refile
-  (setq org-refile-targets '(("inbox.org" :maxlevel 2)
-                             (+org-capture-notes-file :maxlevel 2)
-                             (+org-capture-journal-file :maxlevel 2)))
-
-  ;; コードブロックのシンタックスハイライトが効かないときに試す
-  ;; (org-babel-do-load-languages
-  ;;  'org-babel-load-languages
-  ;;  '(
-  ;;    (shell . t)
-  ;;    )
-  ;;  )
-  ;;
-)
+(use-package! org-roam-ui
+  :after org-roam
+  ;; :hook (org-roam-mode . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))

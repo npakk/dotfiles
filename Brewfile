@@ -9,6 +9,7 @@ brew "ghq"
 brew "git"
 brew "git-delta"
 brew "goenv", args: ["HEAD"]
+brew "graphviz"
 brew "jq"
 brew "lazygit"
 brew "n"
