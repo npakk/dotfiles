@@ -99,6 +99,7 @@
 ; 挿入する曜日表記を英語に
 (setq system-time-locale "C")
 
+; インラインコードなどの記号を非表示
 (setq org-hide-emphasis-markers t)
 
 ; flycheck
@@ -169,35 +170,10 @@
         :clock-resume t
         ;; :time-prompt t
         :jump-to-captured t)
-        ("j" "Journal Tasks" entry (file+function +org-capture-journal-file
-        (lambda ()
-                (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
-                (let ((year (nth 2 (org-date-to-gregorian (org-today))))
-                (month (car (org-date-to-gregorian (org-today))))
-                (day (nth 1 (org-date-to-gregorian (org-today)))))
-                (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
-                (cond
-                ((not match)
-                (beginning-of-line 2)
-                (insert "* ")
-                (org-do-demote)
-                (org-do-demote)
-                (org-do-demote)
-                (insert "Task\n")
-                (insert "* ")
-                (org-do-demote)
-                (org-do-demote)
-                (org-do-demote)
-                (insert "Log")
-                )
-                (t
-                nil)))
-                (re-search-backward "^\\*.+ Task" nil t)
-        ))
-        "* TODO %?"
-        :clock-in t
-        :clock-keep t
-        ;; :time-prompt t
+        ("j" "Journal" plain (file+datetree +org-capture-journal-file)
+        nil
+        :time-prompt t
+        :immediate-finish t
         :jump-to-captured t)
         ("l" "Journal Logs" entry (file+function +org-capture-journal-file
         (lambda ()
