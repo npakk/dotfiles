@@ -82,9 +82,8 @@
 
 ; 起動時の画面サイズ
 (setq default-frame-alist
-      (append (list
-               '(width . 100)
-               '(height . 50))))
+      '((width . 120)
+        (height . 50)))
 
 ; 行間
 (setq-default line-spacing 5)
