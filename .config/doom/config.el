@@ -99,17 +99,12 @@
 ; 挿入する曜日表記を英語に
 (setq system-time-locale "C")
 
+(setq org-hide-emphasis-markers t)
+
 ; flycheck
 ;; (setq flycheck-checker-error-threshold 1000)
-(after! org
-  ; textlintを止める
-  (global-flycheck-mode -1)
-
-
-; org-refile
-(setq org-refile-targets '(("inbox.org" :maxlevel 2)
-                           (+org-capture-notes-file :maxlevel 2)
-                           (+org-capture-journal-file :maxlevel 2))))
+; textlintを止める
+(setq flycheck-global-modes nil)
 
 (map!
  :prefix "C-c"
@@ -129,6 +124,11 @@
  )
 
 (after! org
+  ; org-refile
+  (setq org-refile-targets '(("inbox.org" :maxlevel 2)
+                        (+org-capture-notes-file :maxlevel 2)
+                        (+org-capture-journal-file :maxlevel 2)))
+
   ; org-capture
   (setq org-capture-templates
       ; see References
