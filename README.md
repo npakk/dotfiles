@@ -35,8 +35,11 @@ git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d
 cd $HOME/.emacs.d/bin
 ./doom install
 ```
-アイコンが文字化けしている場合は、`M-x nerd-icons-install-fonts`を実行してダウンロードされるttfファイルをインストール  
-Macの場合は[ここ](https://github.com/railwaycat/homebrew-emacsmacport/blob/master/docs/emacs-start-helpers.md#helper-2)を参考にアプリケーションフォルダにEmacsアプリを作る
+アイコンが文字化けしている場合は、`M-x nerd-icons-install-fonts`を実行してダウンロードされるttfファイルをインストール。  
+Macの場合はアプリケーションフォルダにEmacsアプリを追加する必要があるので、以下を実行する。
+```sh
+osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
+```
 
 ---
 以下のソフトウェアは手動でインストール
