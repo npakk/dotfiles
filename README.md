@@ -49,7 +49,6 @@ sudo rm -rf /var/lib/apt/lists/*
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # brewの警告に従い、以下を実行
-echo >> /home/npk/.config/zsh/.zshrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install gcc
 
