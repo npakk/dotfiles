@@ -28,7 +28,7 @@ cd $HOME/dotfiles
 task
 ```
 
-## WSL2(on Ubuntu)
+## Ubuntu on WSL2
 ```sh
 # 環境変数
 TZ=Asia/Tokyo
