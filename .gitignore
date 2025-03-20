@@ -1,5 +1,6 @@
 lazy-lock.json
 .zcompcache
+.zcompdump
 .zsh_sessions
 .config/gcloud/*
 .config/karabiner/automatic_backups/*

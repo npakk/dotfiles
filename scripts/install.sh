@@ -23,7 +23,11 @@ echo "[Homebrew]start"
 if ! type brew &> /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-/opt/homebrew/bin/brew bundle --file "$HOME/dotfiles/Brewfile"
+if [ "$(uname)" == "Darwin" ]; then
+  /opt/homebrew/bin/brew bundle --file "$HOME/dotfiles/Brewfile"
+else
+  /home/linuxbrew/.linuxbrew/bin/brew bundle --file "$HOME/dotfiles/Brewfile"
+fi
 echo "[Homebrew]finish"
 
 # tmux theme
