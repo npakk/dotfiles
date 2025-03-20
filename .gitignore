@@ -4,3 +4,4 @@ lazy-lock.json
 .zsh_sessions
 .config/gcloud/*
 .config/karabiner/automatic_backups/*
+.config/go/telemetry
