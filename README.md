@@ -40,7 +40,7 @@ export TZ LANG LANGUAGE LC_ALL SHELL
 
 # 各種ビルドに必要なパッケージを入手（Ubuntuのbrewで必要なもの https://docs.brew.sh/Homebrew-on-Linux#requirements）
 sudo sed -i.bak -r 's@http://(jp\.)?archive\.ubuntu\.com/ubuntu/?@https://ftp.udx.icscoe.jp/Linux/ubuntu/@g' /etc/apt/sources.list &&\
-sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential procps curl file git zsh locales tzdata &&\
+sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential procps curl file git zsh lua5.1 luarocks locales tzdata &&\
 sudo locale-gen ja_JP.UTF-8 en_US.UTF-8 &&\
 sudo apt-get clean &&\
 sudo rm -rf /var/lib/apt/lists/*
