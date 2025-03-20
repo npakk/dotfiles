@@ -1,4 +1,6 @@
-tap "d12frosted/emacs-plus"
+if system("uname | grep -q Darwin")
+  tap "d12frosted/emacs-plus"
+end
 brew "bat"
 brew "eza"
 brew "fd"
@@ -26,14 +28,16 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
-brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-native-comp"]
-cask "alacritty"
-cask "alfred"
-cask "alt-tab"
-cask "caffeine"
-cask "dropbox"
-cask "google-chrome"
-cask "google-cloud-sdk"
-cask "karabiner-elements"
-cask "the-unarchiver"
-cask "vivaldi"
+if system("uname | grep -q Darwin")
+  brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-native-comp"]
+  cask "alacritty"
+  cask "alfred"
+  cask "alt-tab"
+  cask "caffeine"
+  cask "dropbox"
+  cask "google-chrome"
+  cask "google-cloud-sdk"
+  cask "karabiner-elements"
+  cask "the-unarchiver"
+  cask "vivaldi"
+end
