@@ -45,11 +45,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(cond
- ((eq system-type 'gnu/linux)
-  (setq org-directory "/mnt/c/Users/Npakk/Dropbox/org/"))
- (t
-  (setq org-directory "~/Dropbox/org/")))
+(setq org-directory "~/Dropbox/org/")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
