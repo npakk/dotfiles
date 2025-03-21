@@ -21,14 +21,14 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(when (eq system-type 'windows-nt)
-  (setq doom-font (font-spec :family "HackGen Console NF" :size 30 :weight 'regular)
-        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 31)))
-
-(when (eq system-type 'darwin)
+(cond
+ ((eq system-type 'darwin)
   (setq doom-font (font-spec :family "HackGen Console NF" :size 20 :weight 'regular)
         doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 21)))
-;;
+ (t
+  (setq doom-font (font-spec :family "HackGen Console NF" :size 30 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 31))))
+
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
@@ -45,8 +45,11 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Dropbox/org/")
-
+(cond
+ ((eq system-type 'gnu/linux)
+  (setq org-directory "/mnt/c/Users/Npakk/Dropbox/org/"))
+ (t
+  (setq org-directory "~/Dropbox/org/")))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
