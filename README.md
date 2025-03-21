@@ -46,8 +46,6 @@ sudo apt-get install -y --no-install-recommends build-essential procps curl file
 sudo apt-get install -y --no-install-recommends lua5.1 luarocks && \ #for Neovim
 sudo apt-get install -y --no-install-recommends zlib1g-dev && \ #for rbenv
 sudo apt-get install -y --no-install-recommends build-essential libgccjit-10-dev gcc-10 libtree-sitter-dev libgtk-3-dev libgnutls28-dev libjpeg-dev libtiff5-dev libgif-dev libxpm-dev libncurses-dev texinfo libjansson-dev libharfbuzz-dev libtree-sitter-dev libwebp-dev libxml2-dev autoconf sqlite3 libsqlite3-dev && \
-# sudo apt-get install -y --no-install-recommends zlib1g-dev libncurses-dev libgtk-3-dev xorg-dev libjpeg-dev libgif-dev libtiff-dev libgnutls28-dev librsvg2-dev libcairo-5c-dev liblcms2-dev libgpm-dev libacl1-dev libxml2-dev libm17n-dev libotf-dev libsystemd-dev libjansson-dev libsqlite3-dev && \
-# sudo apt-get install -y --no-install-recommends autoconf make gcc texinfo libgtk-3-dev libxpm-dev libjpeg-dev libgif-dev libtiff5-dev libgnutls28-dev libncurses5-dev libjansson-dev libharfbuzz-dev libharfbuzz-bin imagemagick libmagickwand-dev libgccjit-10-dev libgccjit0 gcc-10 libjansson4 libjansson-dev xaw3dg-dev texinfo libx11-dev && \
 sudo locale-gen ja_JP.UTF-8 en_US.UTF-8 && \
 sudo apt-get clean && \
 sudo rm -rf /var/lib/apt/lists/*
