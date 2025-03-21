@@ -60,6 +60,9 @@ cd emacs &&\
 ./configure --with-native-compilation --with-json --with-tree-sitter --with-modules &&\
 make -j$(nproc) && sudo make install
 
+# ホストのorg-directoryをWSLとつなぐ
+ln -s /mnt/c/Users/Npakk/Dropbox ~/Dropbox
+
 # brewインストール
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
