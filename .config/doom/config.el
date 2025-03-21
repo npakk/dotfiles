@@ -87,6 +87,9 @@
 ; 行間
 (setq-default line-spacing 5)
 
+(add-to-list 'default-frame-alist '(undecorated . t))  ;; タイトルバー削除
+(add-to-list 'default-frame-alist '(border-width . 0)) ;; ボーダー削除
+
 ; 折り返し
 ;; reference: https://zenn.dev/ebang/articles/231106_emacs-markdown
 ;; 以下2つはword-wrap-modeを活かすために必要だが、デフォルトの動作が記述の通りなので指定する必要なし
