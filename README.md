@@ -39,41 +39,44 @@ SHELL=/usr/bin/zsh
 export TZ LANG LANGUAGE LC_ALL SHELL
 
 # 各種ビルドに必要なパッケージを入手（Ubuntuのbrewで必要なもの https://docs.brew.sh/Homebrew-on-Linux#requirements）
-sudo sed -i.bak -r 's@http://(jp\.)?archive\.ubuntu\.com/ubuntu/?@https://ftp.udx.icscoe.jp/Linux/ubuntu/@g' /etc/apt/sources.list &&\
-sudo apt-get update &&\
-sudo apt-get install -y --no-install-recommends zsh locales tzdata &&\
-sudo apt-get install -y --no-install-recommends build-essential procps curl file git &&\ #for Homebrew
-sudo apt-get install -y --no-install-recommends lua5.1 luarocks &&\ #for Neovim
-sudo apt-get install -y --no-install-recommends zlib1g-dev &&\ #for rbenv
-sudo apt-get install -y --no-install-recommends build-essential libgccjit-10-dev gcc-10 libtree-sitter-dev &&\ #for Emacs
-# autoconf make gcc texinfo libgtk-3-dev libxpm-dev libjpeg-dev libgif-dev libtiff5-dev libgnutls28-dev libncurses5-dev libjansson-dev libharfbuzz-dev libharfbuzz-bin magemagick libmagickwand-dev libgccjit-10-dev libgccjit0 gcc-10 libjansson4 libjansson-dev xaw3dg-dev texinfo libx11-dev && 
-sudo locale-gen ja_JP.UTF-8 en_US.UTF-8 &&\
-sudo apt-get clean &&\
+sudo sed -i.bak -r 's@http://(jp\.)?archive\.ubuntu\.com/ubuntu/?@https://ftp.udx.icscoe.jp/Linux/ubuntu/@g' /etc/apt/sources.list && \
+sudo apt-get update && \
+sudo apt-get install -y --no-install-recommends zsh locales tzdata && \
+sudo apt-get install -y --no-install-recommends build-essential procps curl file git && \ #for Homebrew
+sudo apt-get install -y --no-install-recommends lua5.1 luarocks && \ #for Neovim
+sudo apt-get install -y --no-install-recommends zlib1g-dev && \ #for rbenv
+sudo apt-get install -y --no-install-recommends build-essential libgccjit-10-dev gcc-10 libtree-sitter-dev libgtk-3-dev libgnutls28-dev libjpeg-dev libtiff5-dev libgif-dev libxpm-dev libncurses-dev texinfo libjansson-dev libharfbuzz-dev libtree-sitter-dev libwebp-dev libxml2-dev autoconf sqlite3 libsqlite3-dev && \
+# sudo apt-get install -y --no-install-recommends zlib1g-dev libncurses-dev libgtk-3-dev xorg-dev libjpeg-dev libgif-dev libtiff-dev libgnutls28-dev librsvg2-dev libcairo-5c-dev liblcms2-dev libgpm-dev libacl1-dev libxml2-dev libm17n-dev libotf-dev libsystemd-dev libjansson-dev libsqlite3-dev && \
+# sudo apt-get install -y --no-install-recommends autoconf make gcc texinfo libgtk-3-dev libxpm-dev libjpeg-dev libgif-dev libtiff5-dev libgnutls28-dev libncurses5-dev libjansson-dev libharfbuzz-dev libharfbuzz-bin imagemagick libmagickwand-dev libgccjit-10-dev libgccjit0 gcc-10 libjansson4 libjansson-dev xaw3dg-dev texinfo libx11-dev && \
+sudo locale-gen ja_JP.UTF-8 en_US.UTF-8 && \
+sudo apt-get clean && \
 sudo rm -rf /var/lib/apt/lists/*
+
+# Emacs
+# /home/.local/share/fontsに使用するフォントファイルを配置しておくこと
+export CC="gcc-10" && export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH &&\
+echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/tree-sitter.conf && sudo ldconfig &&\
+git clone --depth 1 --branch emacs-29.4 https://github.com/emacs-mirror/emacs.git emacs &&\
+cd emacs &&\
+./autogen.sh &&\
+./configure --with-native-compilation --with-json --with-tree-sitter --with-modules &&\
+make -j$(nproc) && sudo make install
 
 # brewインストール
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # brewの警告に従い、以下を実行
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install gcc
 
 # ログインシェルを/usr/bin/zshに
 chsh
 
-# Macと一緒
+# Macと一緒（graphviz用にulimitを変更）
+ulimit -n 65536
 git clone https://github.com/npakk/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 make
-
-# Emacs
-# /home/.local/share/fontsに使用するフォントファイルを配置しておくこと
-export CC="gcc-10" && export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH &&\
-echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/tree-sitter.conf && sudo ldconfig &&\
-git clone --depth 1 --branch emacs-29.4 git://git.sv.gnu.org/emacs.git emacs &&\
-cd emacs && ./autogen.sh &&\
-./configure --with-native-compilation --with-json --with-treesitter --with-modules &&\
-make -j$(nproc) && sudo make install
+ulimit -n 1024
 ```
 
 ---
