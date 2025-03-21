@@ -40,7 +40,13 @@ export TZ LANG LANGUAGE LC_ALL SHELL
 
 # 各種ビルドに必要なパッケージを入手（Ubuntuのbrewで必要なもの https://docs.brew.sh/Homebrew-on-Linux#requirements）
 sudo sed -i.bak -r 's@http://(jp\.)?archive\.ubuntu\.com/ubuntu/?@https://ftp.udx.icscoe.jp/Linux/ubuntu/@g' /etc/apt/sources.list &&\
-sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential procps curl file git zsh lua5.1 luarocks locales tzdata zlib1g-dev &&\
+sudo apt-get update &&\
+sudo apt-get install -y --no-install-recommends zsh locales tzdata &&\
+sudo apt-get install -y --no-install-recommends build-essential procps curl file git &&\ #for Homebrew
+sudo apt-get install -y --no-install-recommends lua5.1 luarocks &&\ #for Neovim
+sudo apt-get install -y --no-install-recommends zlib1g-dev &&\ #for rbenv
+sudo apt-get install -y --no-install-recommends build-essential libgccjit-10-dev gcc-10 libtree-sitter-dev &&\ #for Emacs
+# autoconf make gcc texinfo libgtk-3-dev libxpm-dev libjpeg-dev libgif-dev libtiff5-dev libgnutls28-dev libncurses5-dev libjansson-dev libharfbuzz-dev libharfbuzz-bin magemagick libmagickwand-dev libgccjit-10-dev libgccjit0 gcc-10 libjansson4 libjansson-dev xaw3dg-dev texinfo libx11-dev && 
 sudo locale-gen ja_JP.UTF-8 en_US.UTF-8 &&\
 sudo apt-get clean &&\
 sudo rm -rf /var/lib/apt/lists/*
@@ -52,9 +58,6 @@ sudo rm -rf /var/lib/apt/lists/*
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install gcc
 
-# brewの警告が出ないか確認しておく
-brew doctor
-
 # ログインシェルを/usr/bin/zshに
 chsh
 
@@ -62,6 +65,15 @@ chsh
 git clone https://github.com/npakk/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 make
+
+# Emacs
+# /home/.local/share/fontsに使用するフォントファイルを配置しておくこと
+export CC="gcc-10" && export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH &&\
+echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/tree-sitter.conf && sudo ldconfig &&\
+git clone --depth 1 --branch emacs-29.4 git://git.sv.gnu.org/emacs.git emacs &&\
+cd emacs && ./autogen.sh &&\
+./configure --with-native-compilation --with-json --with-treesitter --with-modules &&\
+make -j$(nproc) && sudo make install
 ```
 
 ---
