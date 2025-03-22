@@ -82,7 +82,7 @@ pacman -Syu
 pacman -Sy
 
 # 必要なパッケージをインストール
-pacman -Su mingw-w64-x86_64-libgccjit autoconf autogen automake automake-wrapper make git pkgconf texinfo mingw-w64-x86_64-gnutls mingw-w64-x86_64-imagemagick
+pacman -Su --noconfirm mingw-w64-x86_64-libgccjit autoconf autogen automake automake-wrapper make git pkgconf texinfo mingw-w64-x86_64-gnutls mingw-w64-x86_64-imagemagick
 
 # restart
 pacman -Su
