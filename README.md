@@ -32,9 +32,9 @@ task
 ```sh
 # 環境変数
 TZ=Asia/Tokyo
-LANG=ja_JP.UTF-8
-LANGUAGE=ja_JP:ja
-LC_ALL=ja_JP.UTF-8
+LANG=en_US.UTF-8
+LANGUAGE=en_US:en
+LC_ALL=en_US.UTF-8
 SHELL=/usr/bin/zsh
 export TZ LANG LANGUAGE LC_ALL SHELL
 
@@ -45,23 +45,9 @@ sudo apt-get install -y --no-install-recommends zsh locales tzdata && \
 sudo apt-get install -y --no-install-recommends build-essential procps curl file git && \ #for Homebrew
 sudo apt-get install -y --no-install-recommends lua5.1 luarocks && \ #for Neovim
 sudo apt-get install -y --no-install-recommends zlib1g-dev && \ #for rbenv
-sudo apt-get install -y --no-install-recommends build-essential libgccjit-10-dev gcc-10 libtree-sitter-dev libgtk-3-dev libgnutls28-dev libjpeg-dev libtiff5-dev libgif-dev libxpm-dev libncurses-dev texinfo libjansson-dev libharfbuzz-dev libtree-sitter-dev libwebp-dev libxml2-dev autoconf sqlite3 libsqlite3-dev && \
 sudo locale-gen ja_JP.UTF-8 en_US.UTF-8 && \
 sudo apt-get clean && \
 sudo rm -rf /var/lib/apt/lists/*
-
-# Emacs
-# /home/.local/share/fontsに使用するフォントファイルを配置しておくこと
-export CC="gcc-10" && export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH &&\
-echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/tree-sitter.conf && sudo ldconfig &&\
-git clone --depth 1 --branch emacs-29.4 https://github.com/emacs-mirror/emacs.git emacs &&\
-cd emacs &&\
-./autogen.sh &&\
-./configure --with-native-compilation --with-json --with-tree-sitter --with-modules &&\
-make -j$(nproc) && sudo make install
-
-# ホストのorg-directoryをWSLとつなぐ
-ln -s /mnt/c/Users/Npakk/Dropbox ~/Dropbox
 
 # brewインストール
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -81,12 +67,42 @@ ulimit -n 1024
 ```
 
 ---
-## Doom
-[Doom](https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
+## Build Emacs for Windows 64bit with Native Compilation
+references  
+[Build Emacs for Windows 64bit with Native Compilation.md](https://gist.github.com/nauhygon/f3b44f51b34e89bc54f8)  
+[How to Compile Emacs 29 From Source on Windows in 2022](https://readingworldmagazine.com/emacs/2022-02-24-compiling-emacs-29-from-source-on-windows/)  
+
+[MSYS2](https://www.msys2.org)をダウンロード  
+MSYS2 MINGW64を起動し以下を実行  
+```sh
+# pacmanアップデート
+pacman -Syu
+pacman -Sy
+
+# 必要なパッケージをインストール
+pacman -Su mingw-w64-x86_64-libgccjit autoconf autogen automake automake-wrapper make git pkgconf texinfo mingw-w64-x86_64-gnutls mingw-w64-x86_64-imagemagick
+
+# restart
+pacman -Su
+
+git clone --depth 1 --branch emacs-30.1 https://github.com/emacs-mirror/emacs.git build-emacs
+cd build-emacs
+git config core.autocrlf false
+./autogen.sh
+./configure --prefix=/c/emacs --with-native-compilation --with-imagemagick --without-dbus --without-pop
+make -j$(nproc)
+make install prefix=/c/emacs
+```
+PATHに `C:\msys64\mingw64\bin` を追加  
+PATHに `C:\emacs\bin` を追加
+
+## Doom Emacs
+[Doom Emacs](https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
 ```ps1
-git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d
+git clone --depth 1 https://github.com/doomemacs/doomemacs $HOME/.emacs.d
 cd $HOME/.emacs.d/bin
 ./doom install
+./doom sync
 ```
 アイコンが文字化けしている場合は、`M-x nerd-icons-install-fonts`を実行してダウンロードされるttfファイルをインストール。  
   
@@ -94,8 +110,6 @@ Macの場合はアプリケーションフォルダにEmacsアプリを追加す
 ```sh
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 ```
-
-WSLの場合は`wsl -d Ubuntu-24.04 emacs`を項目の場所とするショートカットを使うことでランチャーから起動可能。
 
 ---
 以下のソフトウェアは手動でインストール
