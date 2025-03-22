@@ -104,6 +104,9 @@ git config core.autocrlf false
 ./configure --prefix=/c/emacs --with-native-compilation --with-imagemagick --without-dbus --without-pop
 make -j$(nproc)
 make install prefix=/c/emacs
+
+cd ../
+rm -rf build-emacs
 ```
 PATHに `C:\msys64\mingw64\bin` を追加  
 PATHに `C:\emacs\bin` を追加
