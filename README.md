@@ -65,6 +65,8 @@ cd ~/dotfiles
 make
 ulimit -n 1024
 ```
+もし環境を初期化する場合は設定からディストリビューションの詳細 → リセットを行い、powershell上で`wsl --unregister Ubuntu`を実行。  
+その後ディストリビューションを実行して初期化が完了したら、powershell上で`wsl --set-default Ubuntu`を実行。 
 
 ---
 ## Build Emacs for Windows 64bit with Native Compilation
