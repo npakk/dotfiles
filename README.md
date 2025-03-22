@@ -50,7 +50,7 @@ sudo apt-get clean && \
 sudo rm -rf /var/lib/apt/lists/*
 
 # brewインストール
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # brewの警告に従い、以下を実行
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
