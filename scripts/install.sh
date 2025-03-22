@@ -48,7 +48,7 @@ fi
 # rustup
 if ! command -v rustup &> /dev/null; then
   echo "[rustup]start"
-  curl https://sh.rustup.rs -sSf | RUSTUP_INIT_SKIP_PATH_CHECK=yes sh
+  curl https://sh.rustup.rs -sSf | RUSTUP_INIT_SKIP_PATH_CHECK=yes sh -s -- -y
   rustup update stable
   echo "[rustup]finish"
 fi
