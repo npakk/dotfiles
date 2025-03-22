@@ -76,13 +76,6 @@
         },
         {
             "Info": "",
-            "Source": "extras",
-            "Name": "emacs",
-            "Version": "30.1",
-            "Updated": "\/Date(1742573780678)\/"
-        },
-        {
-            "Info": "",
             "Source": "main",
             "Name": "fd",
             "Version": "10.2.0",
