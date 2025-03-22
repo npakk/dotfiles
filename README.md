@@ -89,7 +89,8 @@ pacman -Sy --noconfirm
 # 必要なパッケージをインストール
 pacman -Su --noconfirm \
 autoconf autogen automake automake-wrapper make git pkgconf texinfo \
-mingw-w64-x86_64-libgccjit mingw-w64-x86_64-gnutls mingw-w64-x86_64-imagemagick
+mingw-w64-x86_64-libgccjit mingw-w64-x86_64-gnutls mingw-w64-x86_64-imagemagick \
+mingw-w64-x86_64-graphviz
 
 # Restart
 ```
