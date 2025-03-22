@@ -78,14 +78,14 @@ references
 MSYS2 MINGW64を起動し以下を実行  
 ```sh
 # pacmanアップデート
-pacman -Syu
-pacman -Sy
+pacman -Syu --noconfirm
+pacman -Sy --noconfirm
 
 # 必要なパッケージをインストール
 pacman -Su --noconfirm mingw-w64-x86_64-libgccjit autoconf autogen automake automake-wrapper make git pkgconf texinfo mingw-w64-x86_64-gnutls mingw-w64-x86_64-imagemagick
 
 # restart
-pacman -Su
+pacman -Su --noconfirm
 
 git clone --depth 1 --branch emacs-30.1 https://github.com/emacs-mirror/emacs.git build-emacs
 cd build-emacs
