@@ -7,7 +7,7 @@ make
 ```
 
 ## Win
-環境変数 `$HOME`と`$DOOMDIR`に`C:\Users\ユーザ名`を設定しておく
+環境変数 `$HOME`に`C:\Users\ユーザ名`、`$DOOMDIR`に`C:\Users\ユーザ名\.doom.d`を設定しておく
 
 [Scoop](https://scoop.sh/)
 ```ps1
