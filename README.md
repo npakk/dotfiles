@@ -111,7 +111,7 @@ PATHに `C:\emacs\bin` を追加
 ## Doom Emacs
 [Doom Emacs](https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
 ```ps1
-rm -rf $HOME/.emacs.d $HOME/.doom.d
+rm -rf $HOME/.emacs.d
 git clone --depth 1 https://github.com/doomemacs/doomemacs $HOME/.emacs.d
 cd $HOME/.emacs.d/bin
 ./doom install
