@@ -64,6 +64,9 @@ git clone https://github.com/npakk/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 make
 ulimit -n 1024
+
+# ホストのDropboxへのシンボリックリンクを貼る
+ln -s "/mnt/c/Users/$(powershell.exe '$env:USERNAME' | tr -d '\r')/Dropbox/" ~/Dropbox
 ```
 もし環境を初期化する場合は設定 → アプリ → ディストリビューションの詳細オプション → リセット を行い、powershell上で`wsl --unregister Ubuntu`を実行。  
 その後ディストリビューションを実行して初期化が完了したら、powershell上で`wsl --set-default Ubuntu`を実行。 
