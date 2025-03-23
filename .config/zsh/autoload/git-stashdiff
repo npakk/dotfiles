@@ -1,0 +1,16 @@
+#!/bin/zsh
+git diff > ~/Dropbox/patch.diff
+
+git ls-files --others --exclude-standard | grep -v patch.diff | while read file; do
+ {
+ echo "diff --git a/$file b/$file"
+ echo "new file mode 100644"
+ echo "index 0000000..$(git hash-object "$file")"
+ echo "--- /dev/null"
+ echo "+++ b/$file"
+ line_count=$(wc -l < "$file" | tr -d '[:space:]')
+ echo "@@ -0,0 +1,$line_count @@"
+ sed 's/^/+/' "$file"
+ echo
+ }
+done > ~/Dropbox/patch.diff
