@@ -146,7 +146,7 @@ bindkey '^j' accept-line-or-down-pane
 export PATH="/opt/homebrew/bin:$PATH"
 
 # git
-export PATH="$HOME/.config/git/scripts/git-stashdiff"
+export PATH="$HOME/.config/git/scripts:$PATH"
 
 # goenv
 export GOPATH=$HOME/go
