@@ -149,7 +149,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.config/git/scripts:$PATH"
 
 # goenv
-export GOPATH=$HOME/go
+export GOPATH="$HOME/go"
 export GOENV_ROOT="$XDG_DATA_HOME/goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 export PATH="$GOENV_ROOT/shims:$PATH"
