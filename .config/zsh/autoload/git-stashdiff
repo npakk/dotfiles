@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 git diff > ~/Dropbox/patch.diff
 
 git ls-files --others --exclude-standard | grep -v patch.diff | while read file; do
