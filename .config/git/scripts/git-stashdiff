@@ -14,4 +14,4 @@ git ls-files --others --exclude-standard | grep -v patch.diff | while read file;
  sed 's/^/+/' "$file"
  echo
  }
-done > ~/Dropbox/stashdiff.diff
+done >> ~/Dropbox/stashdiff.diff
