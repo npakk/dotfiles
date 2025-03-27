@@ -145,6 +145,9 @@ bindkey '^j' accept-line-or-down-pane
 # Homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
+# git
+export PATH="$HOME/.config/git/scripts:$PATH"
+
 # goenv
 export GOPATH="$HOME/go"
 export GOENV_ROOT="$XDG_DATA_HOME/goenv"
