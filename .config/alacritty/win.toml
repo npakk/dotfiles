@@ -2,4 +2,4 @@
 size = 14
 
 [terminal.shell]
-program = "powershell"
+program = "pwsh"
