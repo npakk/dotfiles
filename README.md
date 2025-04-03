@@ -125,7 +125,7 @@ cd $HOME/.emacs.d/bin
 ./doom sync
 ```
 アイコンが文字化けしている場合は、`M-x nerd-icons-install-fonts`を実行してダウンロードされるttfファイルをインストール。  
-  
+Winの場合は`doom upgrade`時に`pwsh`(powershell6以上)を求められるので、[リリースページ](https://github.com/PowerShell/PowerShell)からインストールする。  
 Macの場合はアプリケーションフォルダにEmacsアプリを追加する必要があるので、以下を実行する。
 ```sh
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@29/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
