@@ -5,3 +5,4 @@ lazy-lock.json
 .config/gcloud/*
 .config/karabiner/automatic_backups/*
 .config/go/telemetry
+.config/chromium
