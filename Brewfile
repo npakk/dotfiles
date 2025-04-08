@@ -35,9 +35,7 @@ if system("uname | grep -q Darwin")
   cask "alt-tab"
   cask "caffeine"
   cask "dropbox"
-  cask "google-chrome"
   cask "google-cloud-sdk"
   cask "karabiner-elements"
   cask "the-unarchiver"
-  cask "vivaldi"
 end
