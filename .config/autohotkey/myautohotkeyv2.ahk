@@ -1,12 +1,10 @@
 /* 文字列削除 */
-#HotIf !WinActive("ahk_exe WindowsTerminal.exe", ) and !WinActive("ahk_exe alacritty.exe", )
+#HotIf !WinActive("ahk_exe WindowsTerminal.exe", ) and !WinActive("ahk_exe alacritty.exe", ) and !WinActive("ahk_exe emacs.exe", )
 LCtrl & h::Send ("{BackSpace}")
-/* Doom Emacsとかぶるためコメントアウト
 LCtrl & d::Send ("{Delete}")
 LCtrl & u::{
 	Send ("+{Home}{Delete}")
 }
-*/
 #HotIf
 
 /* ATOKの後変換とかぶるためコメントアウト
