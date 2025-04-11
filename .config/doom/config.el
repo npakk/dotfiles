@@ -106,14 +106,6 @@
 ; textlintを止める
 (setq flycheck-global-modes nil)
 
-;; Ctrl+hjklでウィンドウ移動
-(map! :g "M-h" #'help-command) ;; globalで M-h に help-command
-(map! :n "C-q" #'delete-window
-      :n "C-h" #'evil-window-left
-      :n "C-j" #'evil-window-down
-      :n "C-k" #'evil-window-up
-      :n "C-l" #'evil-window-right)
-
 (map!
  :prefix "C-c"
  "t" (lambda () (interactive) (org-capture nil "t"))
