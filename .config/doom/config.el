@@ -215,8 +215,10 @@
 (use-package! org-roam
   :config
   (org-roam-db-autosync-mode)
-  (require 'org-roam-protocol))
-
+  (require 'org-roam-protocol)
+  (when (eq system-type 'windows-nt)
+    (setq org-roam-graph-viewer "C:/Users/Npakk/scoop/apps/vivaldi/current/Application/vivaldi.exe")))
+  
 (use-package! org-roam-ui
   :after org-roam
   ;; :hook (org-roam-mode . org-roam-ui-mode)
