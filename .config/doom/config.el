@@ -115,7 +115,7 @@
  "l" (lambda () (interactive) (org-capture nil "l"))
  "n l" 'org-roam-buffer-toggle
  "n f" 'org-roam-node-find
- "n g" 'org-roam-graph
+ "n g" 'org-roam-ui-mode
  "n i" 'org-roam-node-insert
  "n c" 'org-roam-capture
  "c i" 'org-clock-in
