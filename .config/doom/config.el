@@ -137,7 +137,7 @@
       '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
          "* TODO %?\n%i"
         :refile-targets ((+org-capture-journal-file :regexp . "Task")))
-        ("s" "Scraps" entry (file+headline "scrap.org" "Inbox")
+        ("s" "Scraps" entry (file+headline "roam/20250415103234-scrap.org" "Inbox")
         "* %?\n%i"
         :prepend t
         :refile-targets ((+org-capture-notes-file :level . 1)))
