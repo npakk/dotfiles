@@ -230,5 +230,4 @@
   :after ox
   :config
   (require 'ox-zenn)
-
   (add-to-list 'org-export-backends 'zenn))
