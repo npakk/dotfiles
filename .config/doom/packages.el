@@ -51,4 +51,3 @@
 (unpin! org-roam)
 (package! org-roam-ui)
 (package! org-web-tools)
-(package! ox-zenn :recipe (:host github :repo "conao3/ox-zenn.el"))
