@@ -1,143 +1,150 @@
 {
+    "apps": [
+        {
+            "Source": "main",
+            "Updated": "2024-12-16T21:40:39.6971223+09:00",
+            "Name": "7zip",
+            "Version": "24.09",
+            "Info": ""
+        },
+        {
+            "Source": "extras",
+            "Updated": "2025-02-20T16:17:32.8228093+09:00",
+            "Name": "alacritty",
+            "Version": "0.15.1",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2024-12-16T21:40:37.0977257+09:00",
+            "Name": "aria2",
+            "Version": "1.37.0-1",
+            "Info": ""
+        },
+        {
+            "Source": "extras",
+            "Updated": "2025-02-20T16:17:36.1207953+09:00",
+            "Name": "autohotkey",
+            "Version": "2.0.19",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2025-02-20T16:17:36.8161977+09:00",
+            "Name": "dark",
+            "Version": "3.14",
+            "Info": ""
+        },
+        {
+            "Source": "nonportable",
+            "Updated": "2025-02-20T16:18:32.8800756+09:00",
+            "Name": "dropbox-np",
+            "Version": "nightly-20250220",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2025-02-20T15:45:05.1906983+09:00",
+            "Name": "fd",
+            "Version": "10.2.0",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2025-02-20T16:16:29.4899824+09:00",
+            "Name": "git",
+            "Version": "2.48.1",
+            "Info": ""
+        },
+        {
+            "Source": "extras",
+            "Updated": "2025-02-20T16:18:38.7952466+09:00",
+            "Name": "googlechrome",
+            "Version": "133.0.6943.127",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2025-02-20T16:18:43.0438957+09:00",
+            "Name": "innounp",
+            "Version": "2.64.1",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2025-02-20T15:45:23.7373821+09:00",
+            "Name": "llvm",
+            "Version": "19.1.7",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2025-02-20T16:18:47.4308649+09:00",
+            "Name": "neovim",
+            "Version": "0.10.4",
+            "Info": ""
+        },
+        {
+            "Source": "extras",
+            "Updated": "2025-02-20T16:19:22.1840189+09:00",
+            "Name": "powertoys",
+            "Version": "0.88.0",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2025-02-20T15:45:03.7053227+09:00",
+            "Name": "ripgrep",
+            "Version": "14.1.1",
+            "Info": ""
+        },
+        {
+            "Source": "extras",
+            "Updated": "2025-05-08T12:01:14.5928031+09:00",
+            "Name": "sharex",
+            "Version": "17.0.0",
+            "Info": ""
+        },
+        {
+            "Source": "main",
+            "Updated": "2024-12-16T21:40:49.1672787+09:00",
+            "Name": "task",
+            "Version": "3.40.1",
+            "Info": ""
+        },
+        {
+            "Source": "extras",
+            "Updated": "2025-02-20T15:48:11.0615703+09:00",
+            "Name": "vcredist2022",
+            "Version": "14.42.34438.0",
+            "Info": ""
+        },
+        {
+            "Source": "extras",
+            "Updated": "2025-02-20T16:19:29.3669693+09:00",
+            "Name": "vivaldi",
+            "Version": "7.1.3570.54",
+            "Info": ""
+        }
+    ],
     "buckets": [
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2025-04-17T18:10:44+09:00",
-            "Manifests": 1387
+            "Updated": "2025-05-08T09:39:37+09:00",
+            "Manifests": 1385
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2025-04-17T18:47:52+09:00",
-            "Manifests": 2151
+            "Updated": "2025-05-08T09:40:40+09:00",
+            "Manifests": 2164
         },
         {
             "Name": "nonportable",
             "Source": "https://github.com/ScoopInstaller/Nonportable",
-            "Updated": "2025-04-17T17:42:25+09:00",
+            "Updated": "2025-05-08T11:18:38+09:00",
             "Manifests": 127
-        }
-    ],
-    "apps": [
-        {
-            "Source": "main",
-            "Version": "24.09",
-            "Updated": "2024-12-16T21:40:39.6971223+09:00",
-            "Info": "",
-            "Name": "7zip"
-        },
-        {
-            "Source": "extras",
-            "Version": "0.15.1",
-            "Updated": "2025-02-20T16:17:32.8228093+09:00",
-            "Info": "",
-            "Name": "alacritty"
-        },
-        {
-            "Source": "main",
-            "Version": "1.37.0-1",
-            "Updated": "2024-12-16T21:40:37.0977257+09:00",
-            "Info": "",
-            "Name": "aria2"
-        },
-        {
-            "Source": "extras",
-            "Version": "2.0.19",
-            "Updated": "2025-02-20T16:17:36.1207953+09:00",
-            "Info": "",
-            "Name": "autohotkey"
-        },
-        {
-            "Source": "main",
-            "Version": "3.14",
-            "Updated": "2025-02-20T16:17:36.8161977+09:00",
-            "Info": "",
-            "Name": "dark"
-        },
-        {
-            "Source": "nonportable",
-            "Version": "nightly-20250220",
-            "Updated": "2025-02-20T16:18:32.8800756+09:00",
-            "Info": "",
-            "Name": "dropbox-np"
-        },
-        {
-            "Source": "main",
-            "Version": "10.2.0",
-            "Updated": "2025-02-20T15:45:05.1906983+09:00",
-            "Info": "",
-            "Name": "fd"
-        },
-        {
-            "Source": "main",
-            "Version": "2.48.1",
-            "Updated": "2025-02-20T16:16:29.4899824+09:00",
-            "Info": "",
-            "Name": "git"
-        },
-        {
-            "Source": "extras",
-            "Version": "133.0.6943.127",
-            "Updated": "2025-02-20T16:18:38.7952466+09:00",
-            "Info": "",
-            "Name": "googlechrome"
-        },
-        {
-            "Source": "main",
-            "Version": "2.64.1",
-            "Updated": "2025-02-20T16:18:43.0438957+09:00",
-            "Info": "",
-            "Name": "innounp"
-        },
-        {
-            "Source": "main",
-            "Version": "19.1.7",
-            "Updated": "2025-02-20T15:45:23.7373821+09:00",
-            "Info": "",
-            "Name": "llvm"
-        },
-        {
-            "Source": "main",
-            "Version": "0.10.4",
-            "Updated": "2025-02-20T16:18:47.4308649+09:00",
-            "Info": "",
-            "Name": "neovim"
-        },
-        {
-            "Source": "extras",
-            "Version": "0.88.0",
-            "Updated": "2025-02-20T16:19:22.1840189+09:00",
-            "Info": "",
-            "Name": "powertoys"
-        },
-        {
-            "Source": "main",
-            "Version": "14.1.1",
-            "Updated": "2025-02-20T15:45:03.7053227+09:00",
-            "Info": "",
-            "Name": "ripgrep"
-        },
-        {
-            "Source": "main",
-            "Version": "3.40.1",
-            "Updated": "2024-12-16T21:40:49.1672787+09:00",
-            "Info": "",
-            "Name": "task"
-        },
-        {
-            "Source": "extras",
-            "Version": "14.42.34438.0",
-            "Updated": "2025-02-20T15:48:11.0615703+09:00",
-            "Info": "",
-            "Name": "vcredist2022"
-        },
-        {
-            "Source": "extras",
-            "Version": "7.1.3570.54",
-            "Updated": "2025-02-20T16:19:29.3669693+09:00",
-            "Info": "",
-            "Name": "vivaldi"
         }
     ]
 }
