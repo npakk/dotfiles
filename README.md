@@ -92,7 +92,7 @@ pacman -Sy --noconfirm
 pacman -Su --noconfirm \
 autoconf autogen automake automake-wrapper make git pkgconf texinfo \
 mingw-w64-x86_64-libgccjit mingw-w64-x86_64-gnutls mingw-w64-x86_64-imagemagick \
-mingw-w64-x86_64-graphviz
+mingw-w64-x86_64-graphviz mingw-w64-x86_64-libtree-sitter
 
 # Restart
 ```
@@ -100,11 +100,11 @@ mingw-w64-x86_64-graphviz
 ```sh
 pacman -Su --noconfirm
 
-git clone --depth 1 --branch emacs-30.1 https://github.com/emacs-mirror/emacs.git build-emacs
+git clone https://github.com/emacs-mirror/emacs.git build-emacs
 cd build-emacs
 git config core.autocrlf false
 ./autogen.sh
-./configure --prefix=/c/emacs --with-native-compilation --with-imagemagick --without-dbus --without-pop
+./configure --prefix=/c/emacs --with-native-compilation --with-imagemagick --with-tree-sitter --without-dbus --without-pop
 make -j$(nproc)
 make install prefix=/c/emacs
 
