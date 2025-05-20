@@ -136,6 +136,8 @@ osascript -e 'tell application "Finder" to make alias file to posix file "/opt/h
 - ATOK
 - Docker
 
+tmuxのプレフィックス`Ctrl+\`が1Passwordの自動入力と衝突するため、1Passwordの設定から自動入力のショートカットを削除する。
+
 Dockerのデタッチキーと衝突して`Ctrl+p`の入力が吸われるときは、`~/.docker/config.json`を以下のように修正  
 Winの場合は`%USERPROFILE%\.docker\config.json`、WSL環境なら`~/.docker/config.json`も
 ```json
