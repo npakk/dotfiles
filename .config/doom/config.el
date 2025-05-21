@@ -174,7 +174,7 @@
         :time-prompt t
         :immediate-finish t
         :jump-to-captured t)
-        ("l" "Journal Logs" entry (file+function +org-capture-journal-file
+        ("l" "Journal Logs" plain (file+function +org-capture-journal-file
         (lambda ()
                 (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
                 (let ((year (nth 2 (org-date-to-gregorian (org-today))))
@@ -198,8 +198,10 @@
                 (t
                 nil)))
                 (re-search-forward "^\\*.+ Log" nil t)
+                (org-end-of-subtree t t)
+                (newline)
         ))
-        "* %<%H:%M> %?"
+        "%<%H:%M:%S> %?"
         :jump-to-captured t)
         )))
 
