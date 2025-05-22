@@ -201,7 +201,7 @@
                 (org-end-of-subtree t t)
                 (newline)
         ))
-        "%<%H:%M:%S> %?"
+        "%<%H:%M> %?"
         :jump-to-captured t)
         )))
 
