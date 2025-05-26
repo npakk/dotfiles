@@ -202,7 +202,7 @@
                 (newline)
         ))
         "%<%H:%M> %?"
-        :jump-to-captured t)
+        :jump-to-captured nil)
         )))
 
 
