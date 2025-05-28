@@ -228,6 +228,13 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
 
+(use-package! org-download
+  :after org
+  :config
+  (setq-default org-download-image-dir "./images"
+        org-download-heading-lvl nil
+        org-download-screenshot-method "magick clipboard: %s"))
+
 (use-package! ox-zenn
   :after ox
   :config
