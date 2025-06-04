@@ -13,4 +13,4 @@ customCommands:
     command: 'git cz commit'
     context: 'files'
     loadingText: 'opening git-cz commit tool'
-    subprocess: true
+    output: terminal
