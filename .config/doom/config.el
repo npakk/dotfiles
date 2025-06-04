@@ -201,7 +201,7 @@
                 (org-end-of-subtree t t)
                 (newline)
         ))
-        "%<%H:%M> %?"
+        "%<[%Y-%m-%d %a %H:%M]> %?"
         :jump-to-captured nil)
         )))
 
