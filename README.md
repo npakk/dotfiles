@@ -62,7 +62,6 @@ ulimit -n 65536
 git clone https://github.com/npakk/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 make
-ulimit -n 1024
 
 # ホストのDropboxへのシンボリックリンクを貼る
 ln -s "/mnt/c/Users/$(powershell.exe '$env:USERNAME' | tr -d '\r')/Dropbox/" ~/Dropbox
