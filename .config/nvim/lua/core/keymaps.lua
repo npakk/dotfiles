@@ -55,7 +55,12 @@ vim.keymap.set("x", "J", ":move '>+1<CR>gv", opts)
 vim.keymap.set("x", "K", ":move '<-2<CR>gv", opts)
 
 -- Confirm quit
-vim.keymap.set("n", "<leader>q", "<cmd>confirm qa<CR>", { noremap = true, silent = true, desc = "Confirm Quit" })
+vim.keymap.set("n", "<leader>q", function()
+  pcall(vim.cmd, "DapTerminate")
+  pcall(vim.cmd, "DapDisconnect")
+  vim.cmd("confirm qa")
+end, { noremap = true, silent = true, desc = "Confirm Quit" })
+-- vim.keymap.set("n", "<leader>q", "<cmd>confirm qa<CR>", { noremap = true, silent = true, desc = "Confirm Quit" })
 
 -- Backspace
 vim.keymap.set("i", "<C-h>", "<BS>", opts)
