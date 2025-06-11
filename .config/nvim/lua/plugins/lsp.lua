@@ -7,19 +7,29 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lspconfig = require("lspconfig")
-      if vim.fn.executable("rubocop") == 1 then
-        lspconfig["rubocop"].setup({})
+      lspconfig["ruby_lsp"].setup({
+        cmd = { "bundle", "exec", "ruby-lsp" },
+        cmd_env = { BUNDLE_GEMFILE = "Gemfile.local" },
+        init_options = {
+          enabledFeatures = {
+            diagnostics = false,
+            formatting = false,
+          },
+          addonSettings = {
+            ["Ruby LSP Rails"] = {
+              enablePendingMigrationsPrompt = false,
+            },
+          },
+        },
+      })
+      local version_output = vim.fn.system("bundle exec rubocop -V")
+      local version = version_output:match("rubocop (%d+%.%d+)")
+      -- バージョンが1.53以上なら
+      if version and tonumber(version) >= 1.53 then
+        lspconfig.rubocop.setup({
+          cmd = { "bundle", "exec", "rubocop", "--lsp" },
+        })
       end
-      -- if vim.fn.executable("solargraph") == 1 then
-      --   lspconfig["solargraph"].setup({
-      --     settings = {
-      --       solargraph = {
-      --         diagnostics = false,
-      --       },
-      --     },
-      --     init_options = { formatting = false },
-      --   })
-      -- end
     end,
   },
   {
@@ -38,10 +48,9 @@ return {
       mason.setup()
       mason_lspconfig.setup({
         ensure_installed = {
+          "lua_ls",
           "pyright",
           "ruff",
-          -- "rubocop",
-          "solargraph",
         },
       })
 
