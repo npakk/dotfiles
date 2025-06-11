@@ -1,0 +1,20 @@
+cp Gemfile Gemfile.local
+cp Gemfile.lock Gemfile.local.lock
+
+cat <<EOF >> Gemfile.local
+
+# --- local development tools ---
+group :development do
+  gem "ruby-lsp"
+  gem "ruby-lsp-rails"
+end
+EOF
+
+BUNDLE_GEMFILE=Gemfile.local bundle install
+
+echo "✅ Bundler has installed using Gemfile.local"
+echo "このターミナル内では次のように Bundler を使ってください："
+echo ""
+echo "  BUNDLE_GEMFILE=Gemfile.local nvim"
+echo ""
+echo "終了後、Gemfile.local は削除して構いません。"

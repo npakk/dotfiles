@@ -37,6 +37,7 @@ autoload -Uz cd_ghq_on_fzf
 autoload -Uz tmuxide
 autoload -Uz tmuxpopup
 autoload -Uz rubydebug
+autoload -Uz rubylsp
 
 # 移動した後は 'ls' する
 function chpwd() { eza -a -F }
