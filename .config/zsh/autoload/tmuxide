@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 tmux split-pane -h
 tmux select-pane -t 0
 tmux split-pane -v
