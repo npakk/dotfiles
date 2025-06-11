@@ -2,4 +2,4 @@
 size = 14
 
 [terminal.shell]
-program = "pwsh"
+program = "/Windows/System32/wsl.exe ~ -d Ubuntu-24.04"
