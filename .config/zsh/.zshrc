@@ -29,14 +29,14 @@ alias j='z'
 alias la='eza -a -F -l --git'
 alias lg='lazygit'
 alias ls='eza -a -F'
-alias rd='rdebug'
+alias rd='rubydebug'
 alias sd='cd_ghq_on_fzf'
 alias v='nvim'
 
 autoload -Uz cd_ghq_on_fzf
 autoload -Uz tmuxide
 autoload -Uz tmuxpopup
-autoload -Uz rdebug
+autoload -Uz rubydebug
 
 # 移動した後は 'ls' する
 function chpwd() { eza -a -F }
