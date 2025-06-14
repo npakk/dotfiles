@@ -51,14 +51,14 @@ return {
       { "<F10>", "<cmd>DapStepOver<CR>", desc = "dap stepover" },
       { "<F11>", "<cmd>DapStepInto<CR>", desc = "dap stepinto" },
       { "<F12>", "<cmd>DapStepOut<CR>", desc = "dap stepout" },
-      { "<leader>b", "<cmd>DapToggleBreakpoint<CR>", desc = "dap breakpoint" },
+      { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "dap breakpoint" },
       {
-        "<leader>B",
+        "<leader>dB",
         "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '), nil, nil) <CR>",
         desc = "dap breakpoint condition",
       },
       {
-        "<leader>L",
+        "<leader>dL",
         "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
         desc = "dap logpoint",
       },
