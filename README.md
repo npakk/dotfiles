@@ -129,6 +129,24 @@ Macの場合はアプリケーションフォルダにEmacsアプリを追加す
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@30/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
 ```
 
+## textlint on Win
+```sh
+nvm install lts
+nvm use lts
+# Restart
+```
+```sh
+npm install -g --no-fund `
+  textlint `
+  textlint-filter-rule-allowlist `
+  textlint-rule-preset-ja-technical-writing `
+  textlint-rule-preset-jtf-style `
+  textlint-rule-preset-ja-spacing `
+  textlint-rule-spellcheck-tech-word `
+  textlint-rule-prh `
+  @proofdict/textlint-rule-proofdict
+```
+
 ---
 以下のソフトウェアは手動でインストール
 - 1Password
