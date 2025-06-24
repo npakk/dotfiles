@@ -133,9 +133,7 @@ osascript -e 'tell application "Finder" to make alias file to posix file "/opt/h
 ```sh
 nvm install lts
 nvm use lts
-# Restart
-```
-```sh
+
 npm install -g --no-fund `
   textlint `
   textlint-filter-rule-allowlist `
