@@ -114,6 +114,7 @@
       (expand-file-name
        "scoop/apps/nvm/current/nodejs/nodejs/textlint.cmd"
        (getenv "HOME")))
+(setq flycheck-textlint-config "~/Dropbox/org/.textlintrc.js")
 
 (map!
  :prefix "C-c"
