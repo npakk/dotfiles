@@ -81,7 +81,7 @@
 
 ; orgファイルのtextlintのために追加
 (set-language-environment "Japanese")
-(setq coding-system-for-read 'utf-8); projectileのキャッシュファイル文字化けに対応
+(setq-default coding-system-for-read 'utf-8); projectileのキャッシュファイル文字化けに対応
 
 ; 起動時の画面サイズ
 (setq default-frame-alist
