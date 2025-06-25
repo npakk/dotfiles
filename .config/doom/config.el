@@ -79,6 +79,10 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+; orgファイルのtextlintのために追加
+(set-language-environment "Japanese")
+(setq coding-system-for-read 'utf-8); projectileのキャッシュファイル文字化けに対応
+
 ; 起動時の画面サイズ
 (setq default-frame-alist
       '((width . 120)
@@ -102,9 +106,14 @@
 (setq org-hide-emphasis-markers t)
 
 ; flycheck
-;; (setq flycheck-checker-error-threshold 1000)
+(setq flycheck-checker-error-threshold 2000)
 ; textlintを止める
 (setq flycheck-global-modes nil)
+; textlintの実行パス
+(setq flycheck-textlint-executable
+      (expand-file-name
+       "scoop/apps/nvm/current/nodejs/nodejs/textlint.cmd"
+       (getenv "HOME")))
 
 (map!
  :prefix "C-c"
