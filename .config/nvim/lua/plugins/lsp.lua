@@ -6,10 +6,14 @@ return {
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.workspace = { didChangeWatchedFiles = { dynamicRegistration = true } }
+
       local lspconfig = require("lspconfig")
       lspconfig["ruby_lsp"].setup({
         cmd = { "bundle", "exec", "ruby-lsp" },
         cmd_env = { BUNDLE_GEMFILE = "Gemfile.local" },
+        capabilities = capabilities,
         init_options = {
           enabledFeatures = {
             diagnostics = false,

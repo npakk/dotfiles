@@ -43,6 +43,7 @@ sudo apt-get update && \
 sudo apt-get install -y --no-install-recommends zsh locales tzdata && \
 sudo apt-get install -y --no-install-recommends build-essential procps curl file git && \ #for Homebrew
 sudo apt-get install -y --no-install-recommends lua5.1 luarocks && \ #for Neovim
+sudo apt-get install -y --no-install-recommends inotify-tools && \ #for Neovim LSP
 sudo apt-get install -y --no-install-recommends zlib1g-dev && \ #for rbenv
 sudo locale-gen ja_JP.UTF-8 en_US.UTF-8 && \
 sudo apt-get clean && \
