@@ -87,7 +87,10 @@
 
 ; orgファイルのtextlintのために追加
 (set-language-environment "Japanese")
-(setq-default coding-system-for-read 'utf-8); projectileのキャッシュファイル文字化けに対応
+;; (setq-default coding-system-for-read 'utf-8); projectileのキャッシュファイル文字化けに対応
+
+; org繰り返すタスクの完了ログを無効
+(setq org-log-repeat nil)
 
 ; 起動時の画面サイズ
 (setq default-frame-alist
@@ -219,7 +222,29 @@
         ))
         "%<[%H:%M]> %?"
         :jump-to-captured nil)
-        )))
+        ))
+
+  (defun my/org-insert-today-clocktable ()
+    "Insert a clocktable for today's subtree, with no indent."
+    (interactive)
+    (let ((org-clocktable-indent-string ""))
+      (save-excursion
+        ;; Move to heading start (in case point is mid-subtree)
+        (org-back-to-heading t)
+        ;; Insert clocktable block
+        (insert "#+BEGIN: clocktable :scope (\"inbox.org\" \"journal.org\") :maxlevel 6 :compact t :block today\n")
+        (insert (format "#+CAPTION: Clock summary at [%s], for %s.\n"
+                        (format-time-string "%Y-%m-%d %a %H:%M")
+                        (format-time-string "%A, %B %d, %Y")))
+        (insert "#+END:\n")
+        ;; Generate the report
+        (forward-line -3) ; move cursor to the BEGIN line
+        (org-dblock-update))))
+
+  ;; キーバインドを C-c r に割り当て（org-mode 限定）
+  (map! :map org-mode-map
+        "C-c r" #'my/org-insert-today-clocktable)
+)
 
 
 ;; コードブロックのシンタックスハイライトが効かないときに試す
