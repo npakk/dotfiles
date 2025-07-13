@@ -274,7 +274,8 @@
   :config
   (setq-default org-download-image-dir "./images"
         org-download-heading-lvl nil
-        org-download-screenshot-method "magick clipboard: %s"))
+        org-download-screenshot-method "magick clipboard: %s"
+        org-download-annotate-function (lambda (_) "")))
 
 (use-package! ox-zenn
   :after ox
