@@ -87,7 +87,7 @@
 
 ; orgファイルのtextlintのために追加
 (set-language-environment "Japanese")
-;; (setq-default coding-system-for-read 'utf-8); projectileのキャッシュファイル文字化けに対応
+(setq-default coding-system-for-read 'utf-8); projectileのキャッシュファイル文字化けに対応
 
 ; org繰り返すタスクの完了ログを無効
 (setq org-log-repeat nil)
