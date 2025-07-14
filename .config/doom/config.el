@@ -87,6 +87,10 @@
 
 ; orgファイルのtextlintのために追加
 (set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
+(setq locale-coding-system 'utf-8)
+(setq-default buffer-file-coding-system 'utf-8)
+(setq-default coding-system-for-write 'utf-8)
 (setq-default coding-system-for-read 'utf-8); projectileのキャッシュファイル文字化けに対応
 
 ; org繰り返すタスクの完了ログを無効
@@ -124,6 +128,13 @@
        "scoop/apps/nvm/current/nodejs/nodejs/textlint.cmd"
        (getenv "HOME")))
 (setq flycheck-textlint-config "~/Dropbox/org/.textlintrc.js")
+; flycheckのテンポラリファイルの文字化け対応（日本語をアンダーバーに置換）
+(after! flycheck
+  (advice-add 'flycheck-temp-file-system :around
+              (lambda (orig filename)
+                (let* ((base (file-name-nondirectory filename))
+                       (safe-base (replace-regexp-in-string "[^[:ascii:]]" "_" base)))
+                  (funcall orig safe-base)))))
 
 (map!
  :prefix "C-c"
