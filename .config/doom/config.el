@@ -269,6 +269,7 @@
 (use-package! org-roam
   :config
   (org-roam-db-autosync-mode)
+  (setq org-roam-completion-everywhere nil)
   (require 'org-roam-protocol))
 
 (use-package! org-roam-ui
