@@ -139,7 +139,6 @@
 (map!
  :prefix "C-c"
  "t" (lambda () (interactive) (org-capture nil "t"))
- "s" (lambda () (interactive) (org-capture nil "s"))
  "i" (lambda () (interactive) (org-capture nil "i"))
  "j" (lambda () (interactive) (org-capture nil "j"))
  "l" (lambda () (interactive) (org-capture nil "l"))
@@ -156,21 +155,13 @@
 (after! org
   ; org-refile
   (setq org-refile-targets '(("inbox.org" :maxlevel 2)
-                        (+org-capture-notes-file :maxlevel 2)
                         (+org-capture-journal-file :maxlevel 2)))
 
   ; org-capture
   (setq org-capture-templates
-      ; see References
-      ; https://orgmode.org/manual/Template-elements.html
-      ; https://doc.endlessparentheses.com/Var/org-refile-targets.html
       '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
          "* TODO %?\n%i"
         :refile-targets ((+org-capture-journal-file :regexp . "Task")))
-        ("s" "Scraps" entry (file+headline "scrap.org" "Inbox")
-        "* %?\n%i"
-        :prepend t
-        :refile-targets ((+org-capture-notes-file :level . 1)))
         ("i" "warikomi" entry (file+function +org-capture-journal-file
         (lambda ()
                 (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
@@ -270,6 +261,22 @@
   :config
   (org-roam-db-autosync-mode)
   (setq org-roam-completion-everywhere nil)
+  (setq org-roam-capture-templates
+      '(("f" "Fleeting(一時メモ)" plain "%?"
+         :target (file+head "fleeting/%<%Y%m%d%H%M%S>-${slug}.org" "#+TITLE: ${title}\n")
+         :unnarrowed t)
+        ("l" "Literature(文献)" plain "%?"
+         :target (file+head "literature/%<%Y%m%d%H%M%S>-${slug}.org" "#+TITLE: ${title}\n")
+         :unnarrowed t)
+        ("p" "Permanent(記事)" plain "%?"
+         :target (file+head "permanent/%<%Y%m%d%H%M%S>-${slug}.org" "#+TITLE: ${title}\n")
+         :unnarrowed t)
+        ("s" "Structure(まとめ)" plain "%?"
+         :target (file+head "structure/%<%Y%m%d%H%M%S>-${slug}.org" "#+TITLE: ${title}\n")
+         :unnarrowed t)
+        ("b" "Blog(ブログ)" plain "%?"
+         :target (file+head "blog/%<%Y%m%d%H%M%S>-${slug}.org" "#+TITLE: ${title}\n")
+         :unnarrowed t)))
   (require 'org-roam-protocol))
 
 (use-package! org-roam-ui
