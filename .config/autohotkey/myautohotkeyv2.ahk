@@ -22,7 +22,7 @@ RCtrl & z::{
 		Send ("{Blind}^z")
 }
 
-/* カーソル移動 */
+/* カーソル移動
 F24 & sc01A::{
 	if GetKeyState("RCtrl", "P")
 		Send ("{Blind}{Home}")
@@ -44,7 +44,7 @@ F24 & sc027::{
 		Send ("{Blind}{RCtrl Up}{Home}{RCtrl Down}")
 	else if GetKeyState("LCtrl", "P") and GetKeyState("LAlt", "P")
 		Send ("{LWin Down}{Left}{LWin Up}")
-	else if GetKeyState("LShift", "P") and GetKeyState("LAlt")
+	else if GetKeyState("LShift", "P") and GetKeyState("LAlt", "P")
 		Send ("{Shift Down}{Ctrl Down}{Left}{Ctrl Up}{Shift Up}")
 	else if GetKeyState("LAlt", "P")
 		Send ("{Ctrl Down}{Left}{Ctrl Up}")
@@ -56,13 +56,14 @@ F24 & sc028::{
 		Send ("{Blind}{RCtrl Up}{End}{RCtrl Down}")
 	else if GetKeyState("LCtrl", "P") and GetKeyState("LAlt", "P")
 		Send ("{LWin Down}{Right}{LWin Up}")
-	else if GetKeyState("LShift", "P") and GetKeyState("LAlt")
+	else if GetKeyState("LShift", "P") and GetKeyState("LAlt", "P")
 		Send ("{Shift Down}{Ctrl Down}{Right}{Ctrl Up}{Shift Up}")
 	else if GetKeyState("LAlt", "P")
 		Send ("{Ctrl Down}{Right}{Ctrl Up}")
 	else
 		Send ("{Blind}{Right}")
 }
+*/
 
 /* アプリ切り替え */
 #HotIf (AltTabMenu := true)
