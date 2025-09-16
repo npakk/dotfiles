@@ -136,6 +136,23 @@
                        (safe-base (replace-regexp-in-string "[^[:ascii:]]" "_" base)))
                   (funcall orig safe-base)))))
 
+(map! :map override
+      :n "C-h" #'evil-window-left
+      ; C-hはSPC hで代用可能
+      :n "C-j" #'evil-window-down
+      :n "C-k" #'evil-window-up
+      :n "C-l" #'evil-window-right
+      :n "C-q" #'evil-window-delete
+      :n "S-<left>" #'evil-window-decrease-width
+      :n "S-<right>" #'evil-window-increase-width
+      :n "S-<up>" #'evil-window-decrease-height
+      :n "S-<down>" #'evil-window-increase-height)
+
+(map!
+ :leader
+ :desc "Toggle Treemacs"
+ "e" #'treemacs)
+
 (map!
  :prefix "C-c"
  "t" (lambda () (interactive) (org-capture nil "t"))
@@ -244,8 +261,30 @@
   ;; キーバインドを C-c r に割り当て（org-mode 限定）
   (map! :map org-mode-map
         "C-c r" #'my/org-insert-today-clocktable)
+
+  (defun my/org-open-at-point-horizontal ()
+    "必ず左右分割で別ウィンドウに開く。"
+    (interactive)
+    (unless (window-in-direction 'right)
+      (split-window-right))
+    (other-window 1)
+    (org-open-at-point))
+
+  ;; 例: S-Enter を左右分割に
+  (map! :map org-mode-map
+        :n "S-<return>" #'my/org-open-at-point-horizontal)
 )
 
+(after! evil
+  ;; Evilの角括弧プレフィックスを無効化
+  (define-key evil-motion-state-map (kbd "[") nil)
+  (define-key evil-motion-state-map (kbd "]") nil))
+
+(after! org
+  ;; Orgで単体バインド
+  (evil-define-key 'normal org-mode-map
+    (kbd "[") #'org-previous-visible-heading
+    (kbd "]") #'org-next-visible-heading))
 
 ;; コードブロックのシンタックスハイライトが効かないときに試す
 ;; (org-babel-do-load-languages
@@ -299,3 +338,25 @@
   :config
   (require 'ox-zenn)
   (add-to-list 'org-export-backends 'zenn))
+
+;; org-sidebar は遅延ロードでOK
+(use-package! org-sidebar
+  :commands (org-sidebar-tree-toggle org-sidebar-toggle)
+  :config
+  (setq org-sidebar-tree-jump-fn #'org-sidebar-tree-jump-source)
+  (setq org-sidebar-tree-side 'right))
+
+;; SPC o で見出しツリーをサイドバー表示/非表示
+(map! :leader
+      :desc "Org Sidebar (headings)"
+      "o" #'org-sidebar-tree-toggle)
+
+;; Treemacs がロードされた後にペイン移動のショートカットが消える問題への対処
+(after! treemacs
+  (map! :map treemacs-mode-map
+        "C-h" #'evil-window-left
+        "C-j" #'evil-window-down
+        "C-k" #'evil-window-up
+        "C-l" #'evil-window-right
+        "C-q" #'evil-window-delete
+        "S-<return>" #'treemacs-visit-node-horizontal-split))
