@@ -118,6 +118,9 @@
 ; インラインコードなどの記号を非表示
 (setq org-hide-emphasis-markers t)
 
+; org-clockの計測中ファイルの場所を定義
+(setq org-clock-persist-file "~/Dropbox/org/org-clock-save.el")
+
 ; flycheck
 (setq flycheck-checker-error-threshold 2000)
 ; textlintを止める
