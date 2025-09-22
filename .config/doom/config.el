@@ -118,12 +118,6 @@
 ; インラインコードなどの記号を非表示
 (setq org-hide-emphasis-markers t)
 
-; org-clockの計測中ファイルの場所を定義
-(setq org-clock-persist-file "~/Dropbox/org/org-clock-save.el")
-(setq org-clock-persist 'history
-      org-clock-persist-query-resume t) ; 起動時に自動再開を確認
-(org-clock-persistence-insinuate)
-
 ; flycheck
 (setq flycheck-checker-error-threshold 2000)
 ; textlintを止める
