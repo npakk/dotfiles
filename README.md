@@ -114,6 +114,9 @@ rm -rf build-emacs
 PATHに `C:\msys64\mingw64\bin` を追加  
 PATHに `C:\emacs\bin` を追加
 
+org-pomodoroを使う場合は以下を参考にburnttoastをインストール  
+https://github.com/Windos/BurntToast
+
 ## Doom Emacs
 [Doom Emacs](https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
 ```sh
