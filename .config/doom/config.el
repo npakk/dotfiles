@@ -118,6 +118,9 @@
 ; インラインコードなどの記号を非表示
 (setq org-hide-emphasis-markers t)
 
+; org-clockのステータスラインでの経過時間を当日集計にする
+(setq org-clock-mode-line-total 'today)
+
 ; flycheck
 (setq flycheck-checker-error-threshold 2000)
 ; textlintを止める
