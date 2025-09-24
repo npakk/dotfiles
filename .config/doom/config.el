@@ -96,19 +96,10 @@
 ; org繰り返すタスクの完了ログを無効
 (setq org-log-repeat nil)
 
-; 起動時の画面サイズ
-(setq default-frame-alist
-      '((width . 120)
-        (height . 50)))
-
 ; 行間
 (setq-default line-spacing 5)
 
 ; 折り返し
-;; reference: https://zenn.dev/ebang/articles/231106_emacs-markdown
-;; 以下2つはword-wrap-modeを活かすために必要だが、デフォルトの動作が記述の通りなので指定する必要なし
-;; (auto-fill-mode -1)
-;; (global-visual-line-mode t)
 (global-word-wrap-whitespace-mode t)
 (add-to-list 'word-wrap-whitespace-characters ?\])
 
@@ -364,6 +355,113 @@
         "C-q" #'evil-window-delete
         "S-<return>" #'treemacs-visit-node-horizontal-split))
 
+;; ポモドーロ
+;; ---- Windows通知----
+(defvar my/w32-last-notify-id nil)
+(defun my/w32-notify (title body icon &rest _)
+  (when (eq system-type 'windows-nt)
+    (when my/w32-last-notify-id
+      (ignore-errors (w32-notification-close my/w32-last-notify-id)))
+    (setq my/w32-last-notify-id
+          (w32-notification-notify :title title :body body :icon icon))
+    my/w32-last-notify-id))
+
+;; ---- 資源パス（ユーザー名直書きなし）----
+(defconst my/home (or (getenv "USERPROFILE") (getenv "HOME")))
+(defconst my/pomo-res
+  (expand-file-name "Dropbox/org/pomodoro_resources" my/home))
+
 (use-package! org-pomodoro
   :custom
-  (org-pomodoro-length 1))
+  (org-pomodoro-length 25)
+  (org-pomodoro-short-break-length 5)
+  (org-pomodoro-long-break-length 30)
+  (org-pomodoro-long-break-frequency 4)
+  (org-pomodoro-start-sound-p t)
+  (org-pomodoro-overtime-sound-p nil)
+  (org-pomodoro-short-break-sound-p nil)
+  (org-pomodoro-long-break-sound-p nil)
+  (org-pomodoro-start-sound   (expand-file-name "start.wav" my/pomo-res))
+  (org-pomodoro-finished-sound   (expand-file-name "break.wav" my/pomo-res))
+  (org-pomodoro-format "%s")
+  (org-pomodoro-short-break-format "%s")
+  (org-pomodoro-long-break-format  "%s")
+  :custom-face
+  (org-pomodoro-mode-line ((t (:foreground "#ff5555"))))
+  (org-pomodoro-mode-line-break ((t (:foreground "#50a05b"))))
+  :hook
+  (org-pomodoro-started . (lambda () (my/w32-notify
+                                      "org-pomodoro"
+                                      (format "Let's focus for %d minutes!" org-pomodoro-length)
+                                      (expand-file-name "tomato.ico" my/pomo-res)
+                                      )))
+  (org-pomodoro-finished . (lambda () (my/w32-notify
+                                      "org-pomodoro"
+                                      "Well done! Take a break."
+                                      (expand-file-name "coffee.ico" my/pomo-res)
+                                      )))
+  )
+
+;; 1) 初期化を固定値から nil に
+(defvar my/pomo-last nil)
+
+(defun my/org-pomodoro-quick (&optional mins short long freq)
+  (interactive)
+  (require 'org-pomodoro)
+  (require 'subr-x)
+
+  ;; 先に停止だけ確認（Yes → 停止して終了）
+  (when (org-pomodoro-active-p)
+    (when (y-or-n-p "A pomodoro is running. Stop it and start new? (y=stop only) ")
+      (org-pomodoro-kill)
+      (user-error "Stopped current pomodoro.")))
+
+  ;; 引数が未指定なら 1 行入力（空なら現設定）
+  (let* ((d1 org-pomodoro-length)
+         (d2 org-pomodoro-short-break-length)
+         (d3 org-pomodoro-long-break-length)
+         (d4 org-pomodoro-long-break-frequency))
+    (unless (and mins short long freq)
+      (let* ((inp (string-trim
+                   (read-from-minibuffer
+                    (format "mins short long freq (default %s %s %s %s): " d1 d2 d3 d4))))
+             (nums (and (not (string-empty-p inp))
+                        (mapcar #'string-to-number
+                                (split-string inp "[^0-9.]+" t)))))
+        (setq mins  (or (and nums (nth 0 nums)) d1)
+              short (or (and nums (nth 1 nums)) d2)
+              long  (or (and nums (nth 2 nums)) d3)
+              freq  (or (and nums (nth 3 nums)) d4))))
+
+    ;; 反映して開始 & 次回のために保存
+    (setq org-pomodoro-length               mins
+          org-pomodoro-short-break-length   short
+          org-pomodoro-long-break-length    long
+          org-pomodoro-long-break-frequency freq
+          my/pomo-last (list mins short long freq))
+    (let ((current-prefix-arg nil))
+      (org-pomodoro))))
+
+;; ---- 休憩明けは直近設定で自動再開（安全に元位置へ戻す）----
+(add-hook 'org-pomodoro-break-finished-hook
+  (lambda ()
+    (save-window-excursion
+      (save-excursion
+        (org-clock-goto)
+        ;; my/pomo-last が無ければ現行値を使うフォールバック
+        (pcase-let* ((defaults (list org-pomodoro-length
+                                     org-pomodoro-short-break-length
+                                     org-pomodoro-long-break-length
+                                     org-pomodoro-long-break-frequency))
+                     (`(,m ,s ,l ,f) (or my/pomo-last defaults)))
+          (setq org-pomodoro-length               m
+                org-pomodoro-short-break-length   s
+                org-pomodoro-long-break-length    l
+                org-pomodoro-long-break-frequency f
+                my/pomo-last (list m s l f))
+          (let ((current-prefix-arg nil))
+            (org-pomodoro)))))))
+
+;; ---- キーバインド：SPC n p で一行入力起動 ----
+(map! :leader (:prefix ("n" . "notes")
+               :desc "Pomodoro (quick)" "p" #'my/org-pomodoro-quick))
