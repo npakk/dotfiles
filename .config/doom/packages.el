@@ -54,3 +54,4 @@
 (package! org-download)
 (package! ox-zenn :recipe (:host github :repo "conao3/ox-zenn.el"))
 (package! org-sidebar)
+(package! org-pomodoro)

@@ -363,3 +363,7 @@
         "C-l" #'evil-window-right
         "C-q" #'evil-window-delete
         "S-<return>" #'treemacs-visit-node-horizontal-split))
+
+(use-package! org-pomodoro
+  :custom
+  (org-pomodoro-length 1))
