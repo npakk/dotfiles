@@ -235,6 +235,7 @@
         :jump-to-captured nil)
         ))
 
+  ;; clocktable挿入（org-mode 限定）
   (defun my/org-insert-today-clocktable ()
     "Insert a clocktable for today's subtree, with no indent."
     (interactive)
@@ -252,19 +253,17 @@
         (forward-line -3) ; move cursor to the BEGIN line
         (org-dblock-update))))
 
-  ;; キーバインドを C-c r に割り当て（org-mode 限定）
   (map! :map org-mode-map
         "C-c r" #'my/org-insert-today-clocktable)
 
+  ;; S-Enter で左右分割
   (defun my/org-open-at-point-horizontal ()
-    "必ず左右分割で別ウィンドウに開く。"
     (interactive)
     (unless (window-in-direction 'right)
       (split-window-right))
     (other-window 1)
     (org-open-at-point))
 
-  ;; 例: S-Enter を左右分割に
   (map! :map org-mode-map
         :n "S-<return>" #'my/org-open-at-point-horizontal)
 )

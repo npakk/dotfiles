@@ -17,6 +17,7 @@ tasks:
           fi
     cmds:
       - task: import
+      - "{{.PWSH_CMD}} ./scripts/wsl.ps1"
       - "{{.PWSH_CMD}} ./scripts/powershell.ps1"
       - "{{.PWSH_CMD}} ./scripts/autohotkey.ps1"
       - "{{.PWSH_CMD}} ./scripts/alacritty.ps1"
