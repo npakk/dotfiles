@@ -158,9 +158,6 @@
  "n g" 'org-roam-ui-mode
  "n i" 'org-roam-node-insert
  "n c" 'org-roam-capture
- "c i" 'org-clock-in
- "c o" 'org-clock-out
- "c r" 'org-clock-report
  )
 
 (after! org
