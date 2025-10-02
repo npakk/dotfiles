@@ -26,8 +26,8 @@
   (setq doom-font (font-spec :family "HackGen Console NF" :size 20 :weight 'regular)
         doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 21)))
  (t
-  (setq doom-font (font-spec :family "HackGen Console NF" :size 27 :weight 'regular)
-        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 28))))
+  (setq doom-font (font-spec :family "HackGen Console NF" :size 24 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 25))))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -169,14 +169,14 @@
   (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "inbox.org" "Inbox")
          "* TODO %?\n%i"
-        :refile-targets ((+org-capture-journal-file :regexp . "Task")))
+        :refile-targets ((+org-capture-journal-file :regexp . "Done")))
         ("i" "warikomi" entry (file+function +org-capture-journal-file
         (lambda ()
                 (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
                 (let ((year (nth 2 (org-date-to-gregorian (org-today))))
                 (month (car (org-date-to-gregorian (org-today))))
                 (day (nth 1 (org-date-to-gregorian (org-today)))))
-                (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
+                (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Done$" year month day) nil t))
                 (cond
                 ((not match)
                 (beginning-of-line 2)
@@ -184,16 +184,16 @@
                 (org-do-demote)
                 (org-do-demote)
                 (org-do-demote)
-                (insert "Task\n")
+                (insert "Done\n")
                 (insert "* ")
                 (org-do-demote)
                 (org-do-demote)
                 (org-do-demote)
                 (insert "Log")) (t
                 nil)))
-                (re-search-backward "^\\*.+ Task" nil t)
+                (re-search-backward "^\\*.+ Done" nil t)
         ))
-        "* DONE %?"
+        "* %?"
         :clock-in t
         :clock-resume t
         ;; :time-prompt t
@@ -209,7 +209,7 @@
                 (let ((year (nth 2 (org-date-to-gregorian (org-today))))
                 (month (car (org-date-to-gregorian (org-today))))
                 (day (nth 1 (org-date-to-gregorian (org-today)))))
-                (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Task$" year month day) nil t))
+                (setq match (re-search-forward (format "^\\*+[ \t]+%d-%02d-%02d \\w+\n\\*+[ \t]+Done$" year month day) nil t))
                 (cond
                 ((not match)
                 (beginning-of-line 2)
@@ -217,7 +217,7 @@
                 (org-do-demote)
                 (org-do-demote)
                 (org-do-demote)
-                (insert "Task\n")
+                (insert "Done\n")
                 (insert "* ")
                 (org-do-demote)
                 (org-do-demote)
@@ -241,7 +241,7 @@
         ;; Move to heading start (in case point is mid-subtree)
         (org-back-to-heading t)
         ;; Insert clocktable block
-        (insert "#+BEGIN: clocktable :scope (\"inbox.org\" \"journal.org\") :maxlevel 6 :compact t :block today\n")
+        (insert "#+BEGIN: clocktable :maxlevel 6 :compact t :block today\n")
         (insert (format "#+CAPTION: Clock summary at [%s], for %s.\n"
                         (format-time-string "%Y-%m-%d %a %H:%M")
                         (format-time-string "%A, %B %d, %Y")))
