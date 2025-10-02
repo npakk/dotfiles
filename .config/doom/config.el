@@ -371,13 +371,15 @@
   :custom
   (org-pomodoro-length 25)
   (org-pomodoro-short-break-length 5)
-  (org-pomodoro-long-break-length 30)
+  (org-pomodoro-long-break-length 15)
   (org-pomodoro-long-break-frequency 4)
+  (org-pomodoro-manual-break t)
   (org-pomodoro-start-sound-p t)
-  (org-pomodoro-overtime-sound-p nil)
+  (org-pomodoro-overtime-sound-p t)
   (org-pomodoro-short-break-sound-p nil)
   (org-pomodoro-long-break-sound-p nil)
   (org-pomodoro-start-sound   (expand-file-name "start.wav" my/pomo-res))
+  (org-pomodoro-overtime-sound   (expand-file-name "break.wav" my/pomo-res))
   (org-pomodoro-finished-sound   (expand-file-name "break.wav" my/pomo-res))
   (org-pomodoro-format "%s")
   (org-pomodoro-short-break-format "%s")
@@ -401,42 +403,42 @@
 ;; 1) 初期化を固定値から nil に
 (defvar my/pomo-last nil)
 
-(defun my/org-pomodoro-quick (&optional mins short long freq)
+(defun my/org-pomodoro-quick (&optional m s l f)
+  "実行中なら org-pomodoro をそのまま実行。
+未実行なら長さ入力→開始。余計な確認は一切しない。"
   (interactive)
   (require 'org-pomodoro)
   (require 'subr-x)
 
-  ;; 先に停止だけ確認（Yes → 停止して終了）
+  ;; すでに org-pomodoro が動作中なら、無条件で本体を呼ぶ
+  ;; （残業中なら即休憩開始、通常作業中ならパッケージ側が必要に応じて確認）
   (when (org-pomodoro-active-p)
-    (when (y-or-n-p "A pomodoro is running. Stop it and start new? (y=stop only) ")
-      (org-pomodoro-kill)
-      (user-error "Stopped current pomodoro.")))
+    (org-pomodoro)
+    (cl-return-from my/org-pomodoro-quick nil))  ;; cl-lib が嫌ならこの行は削除してOK
 
-  ;; 引数が未指定なら 1 行入力（空なら現設定）
+  ;; --- ここから新規開始（値入力→反映） ---
   (let* ((d1 org-pomodoro-length)
          (d2 org-pomodoro-short-break-length)
          (d3 org-pomodoro-long-break-length)
          (d4 org-pomodoro-long-break-frequency))
-    (unless (and mins short long freq)
+    (unless (and m s l f)
       (let* ((inp (string-trim
                    (read-from-minibuffer
-                    (format "mins short long freq (default %s %s %s %s): " d1 d2 d3 d4))))
+                    (format "mins short long freq (default %g %g %g %d): "
+                            d1 d2 d3 d4))))
              (nums (and (not (string-empty-p inp))
                         (mapcar #'string-to-number
                                 (split-string inp "[^0-9.]+" t)))))
-        (setq mins  (or (and nums (nth 0 nums)) d1)
-              short (or (and nums (nth 1 nums)) d2)
-              long  (or (and nums (nth 2 nums)) d3)
-              freq  (or (and nums (nth 3 nums)) d4))))
-
-    ;; 反映して開始 & 次回のために保存
-    (setq org-pomodoro-length               mins
-          org-pomodoro-short-break-length   short
-          org-pomodoro-long-break-length    long
-          org-pomodoro-long-break-frequency freq
-          my/pomo-last (list mins short long freq))
-    (let ((current-prefix-arg nil))
-      (org-pomodoro))))
+        (setq m (or (and nums (nth 0 nums)) d1)
+              s (or (and nums (nth 1 nums)) d2)
+              l (or (and nums (nth 2 nums)) d3)
+              f (or (and nums (nth 3 nums)) d4))))
+    (setq org-pomodoro-length               m
+          org-pomodoro-short-break-length   s
+          org-pomodoro-long-break-length    l
+          org-pomodoro-long-break-frequency f
+          my/pomo-last (list m s l f))
+    (org-pomodoro)))
 
 ;; ---- 休憩明けは直近設定で自動再開（安全に元位置へ戻す）----
 (add-hook 'org-pomodoro-break-finished-hook
@@ -444,19 +446,21 @@
     (save-window-excursion
       (save-excursion
         (org-clock-goto)
-        ;; my/pomo-last が無ければ現行値を使うフォールバック
+        ;; 直前の設定があればそれを使い、なければ現行値を使う
         (pcase-let* ((defaults (list org-pomodoro-length
                                      org-pomodoro-short-break-length
                                      org-pomodoro-long-break-length
                                      org-pomodoro-long-break-frequency))
                      (`(,m ,s ,l ,f) (or my/pomo-last defaults)))
-          (setq org-pomodoro-length               m
-                org-pomodoro-short-break-length   s
-                org-pomodoro-long-break-length    l
-                org-pomodoro-long-break-frequency f
-                my/pomo-last (list m s l f))
-          (let ((current-prefix-arg nil))
-            (org-pomodoro)))))))
+          (when (y-or-n-p (format "Start next pomodoro (%g min)? " m))
+            ;; 承諾されたら設定を反映して開始
+            (setq org-pomodoro-length               m
+                  org-pomodoro-short-break-length   s
+                  org-pomodoro-long-break-length    l
+                  org-pomodoro-long-break-frequency f
+                  my/pomo-last (list m s l f))
+            (let ((current-prefix-arg nil))
+              (org-pomodoro))))))))
 
 ;; ---- キーバインド：SPC n p で一行入力起動 ----
 (map! :leader (:prefix ("n" . "notes")
