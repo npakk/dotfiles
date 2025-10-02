@@ -37,13 +37,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-opera-light)
-(add-hook 'doom-load-theme-hook
-  (lambda ()
-    (set-face-attribute 'org-link nil
-      :foreground "gray59"
-      :underline t
-      :weight 'normal)))
+(setq doom-theme 'doom-one)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -203,7 +197,7 @@
         :time-prompt t
         :immediate-finish t
         :jump-to-captured t)
-        ("l" "Journal Logs" entry (file+function +org-capture-journal-file
+        ("l" "Journal Logs" plain (file+function +org-capture-journal-file
         (lambda ()
                 (org-datetree-find-date-create (org-date-to-gregorian (org-today)) t)
                 (let ((year (nth 2 (org-date-to-gregorian (org-today))))
@@ -227,8 +221,10 @@
                 (t
                 nil)))
                 (re-search-forward "^\\*.+ Log" nil t)
+                (org-end-of-subtree t t)
+                (newline)
         ))
-        "* %<[%H:%M]> %?"
+        "- %<[%H:%M]> %?"
         :jump-to-captured nil)
         ))
 
@@ -245,7 +241,7 @@
         (insert (format "#+CAPTION: Clock summary at [%s], for %s.\n"
                         (format-time-string "%Y-%m-%d %a %H:%M")
                         (format-time-string "%A, %B %d, %Y")))
-        (insert "#+END:\n")
+        (insert "#+END:\n\n")
         ;; Generate the report
         (forward-line -3) ; move cursor to the BEGIN line
         (org-dblock-update))))
