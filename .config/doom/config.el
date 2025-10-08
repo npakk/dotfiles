@@ -81,7 +81,6 @@
 
 ; orgファイルのtextlintのために追加
 (set-language-environment "Japanese")
-(prefer-coding-system 'utf-8)
 (setq locale-coding-system 'utf-8)
 (setq-default buffer-file-coding-system 'utf-8)
 (setq-default coding-system-for-write 'utf-8)
@@ -152,6 +151,7 @@
  "n g" 'org-roam-ui-mode
  "n i" 'org-roam-node-insert
  "n c" 'org-roam-capture
+ "n C" #'cfw:open-org-calendar
  )
 
 (after! org
@@ -461,3 +461,18 @@
 ;; ---- キーバインド：SPC n p で一行入力起動 ----
 (map! :leader (:prefix ("n" . "notes")
                :desc "Pomodoro (quick)" "p" #'my/org-pomodoro-quick))
+
+;; calfw
+(use-package! calfw
+  :config
+  (use-package! calfw-org))
+
+(defun my/open-org-calendar ()
+  (interactive)
+  (cfw:open-org-calendar))
+
+(use-package! japanese-holidays
+  :after calfw
+  :config
+  (setq calendar-holidays (append japanese-holidays))
+  (setq calendar-mark-holidays-flag t))

@@ -56,3 +56,6 @@
 (package! org-sidebar)
 (package! sound-wav)
 (package! org-pomodoro)
+(package! calfw)
+(package! calfw-org)
+(package! japanese-holidays)
