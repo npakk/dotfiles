@@ -29,7 +29,7 @@ RCtrl & Tab::AltTab
 ; Ctrl+' → Shift+Ctrl+6		=>	全角無変換(後)変換（入力中、変換中、次候補、全候補、文節区切り）
 
 /* 日本語入力 */
-; RShift::Send ("{vk1C}") ; 変換
+RShift::Send ("{vk1C}") ; 変換
 <+RShift::Send ("{vk1D}") ; 無変換
 
 /* Ctrl-[でESCと無変換送信 */
