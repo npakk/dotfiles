@@ -348,16 +348,6 @@
         "S-<return>" #'treemacs-visit-node-horizontal-split))
 
 ;; ポモドーロ
-;; ---- Windows通知----
-(defvar my/w32-last-notify-id nil)
-(defun my/w32-notify (title body icon &rest _)
-  (when (eq system-type 'windows-nt)
-    (when my/w32-last-notify-id
-      (ignore-errors (w32-notification-close my/w32-last-notify-id)))
-    (setq my/w32-last-notify-id
-          (w32-notification-notify :title title :body body :icon icon))
-    my/w32-last-notify-id))
-
 ;; ---- 資源パス（ユーザー名直書きなし）----
 (defconst my/home (or (getenv "USERPROFILE") (getenv "HOME")))
 (defconst my/pomo-res
@@ -383,17 +373,6 @@
   :custom-face
   (org-pomodoro-mode-line ((t (:foreground "#ff5555"))))
   (org-pomodoro-mode-line-break ((t (:foreground "#50a05b"))))
-  :hook
-  (org-pomodoro-started . (lambda () (my/w32-notify
-                                      "org-pomodoro"
-                                      (format "Let's focus for %d minutes!" org-pomodoro-length)
-                                      (expand-file-name "tomato.ico" my/pomo-res)
-                                      )))
-  (org-pomodoro-finished . (lambda () (my/w32-notify
-                                      "org-pomodoro"
-                                      "Well done! Take a break."
-                                      (expand-file-name "coffee.ico" my/pomo-res)
-                                      )))
   )
 
 ;; 1) 初期化を固定値から nil に
