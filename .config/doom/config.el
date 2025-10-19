@@ -26,8 +26,8 @@
   (setq doom-font (font-spec :family "HackGen Console NF" :size 20 :weight 'regular)
         doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 21)))
  (t
-  (setq doom-font (font-spec :family "HackGen Console NF" :size 24 :weight 'regular)
-        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 25))))
+  (setq doom-font (font-spec :family "HackGen Console NF" :size 25 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 36))))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -37,11 +37,20 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-spacegrey)
+(after! doom-themes
+  (set-face-attribute 'org-level-1 nil :height 1.2 :weight 'bold)
+  (set-face-attribute 'org-level-2 nil :height 1.05 :weight 'bold)
+  (set-face-attribute 'org-level-3 nil :weight 'bold)
+  (set-face-attribute 'org-block nil :background "#191d23"))
+(setq evil-normal-state-cursor  '(box "white")
+      evil-insert-state-cursor  '(bar "white")
+      evil-visual-state-cursor '(hollow "white")
+      evil-replace-state-cursor '(hbar "white"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -90,7 +99,7 @@
 (setq org-log-repeat nil)
 
 ; 行間
-(setq-default line-spacing 5)
+(setq-default line-spacing 0.3)
 
 ; 折り返し
 (global-word-wrap-whitespace-mode t)
@@ -455,3 +464,9 @@
   :config
   (setq calendar-holidays (append japanese-holidays))
   (setq calendar-mark-holidays-flag t))
+
+(after! org
+   (global-org-modern-mode t))
+(use-package! org-modern-indent
+  :after org-modern
+  :hook (org-mode . org-modern-indent-mode))

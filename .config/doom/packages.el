@@ -59,3 +59,6 @@
 (package! calfw)
 (package! calfw-org)
 (package! japanese-holidays)
+(package! org-modern)
+(package! org-modern-indent
+  :recipe (:host github :repo "jdtsmith/org-modern-indent"))
