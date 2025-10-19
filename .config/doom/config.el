@@ -26,8 +26,8 @@
   (setq doom-font (font-spec :family "HackGen Console NF" :size 20 :weight 'regular)
         doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 21)))
  (t
-  (setq doom-font (font-spec :family "HackGen Console NF" :size 25 :weight 'regular)
-        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 36))))
+  (setq doom-font (font-spec :family "HackGen Console NF" :size 24 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 25))))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -37,10 +37,10 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-spacegrey)
+(setq doom-theme 'doom-opera)
 (after! doom-themes
-  (set-face-attribute 'org-level-1 nil :height 1.2 :weight 'bold)
-  (set-face-attribute 'org-level-2 nil :height 1.05 :weight 'bold)
+  (set-face-attribute 'org-level-1 nil :height 1.02 :weight 'bold)
+  (set-face-attribute 'org-level-2 nil :weight 'bold)
   (set-face-attribute 'org-level-3 nil :weight 'bold)
   (set-face-attribute 'org-block nil :background "#191d23"))
 (setq evil-normal-state-cursor  '(box "white")
