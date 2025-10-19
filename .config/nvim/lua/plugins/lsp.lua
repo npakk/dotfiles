@@ -6,14 +6,13 @@ return {
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.workspace = { didChangeWatchedFiles = { dynamicRegistration = true } }
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
 
-      local lspconfig = require("lspconfig")
-      lspconfig.ruby_lsp.setup({
+      vim.lsp.config("ruby-lsp", {
         cmd = { "bundle", "exec", "ruby-lsp" },
         cmd_env = { BUNDLE_GEMFILE = "Gemfile.local" },
-        capabilities = capabilities,
         init_options = {
           enabledFeatures = {
             diagnostics = false,
@@ -26,75 +25,40 @@ return {
           },
         },
       })
+      vim.lsp.enable({ "ruby-lsp" })
+
       local version_output = vim.fn.system("bundle exec rubocop -V")
       local version = version_output:match("rubocop (%d+%.%d+)")
       -- バージョンが1.53以上なら
       if version and tonumber(version) >= 1.53 then
-        lspconfig.rubocop.setup({
+        vim.lsp.config("rubocop", {
           cmd = { "bundle", "exec", "rubocop", "--lsp" },
         })
+        vim.lsp.enable({ "rubocop" })
       end
-    end,
-  },
-  {
-    "williamboman/mason.nvim",
-    dependencies = {
-      { "neovim/nvim-lspconfig" },
-      { "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
-      { "hrsh7th/cmp-nvim-lsp" },
-    },
-    version = "^1.0.0",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      local mason = require("mason")
-      local lspconfig = require("lspconfig")
-      local mason_lspconfig = require("mason-lspconfig")
 
-      mason.setup()
-      mason_lspconfig.setup({
-        ensure_installed = {
-          "lua_ls",
-          "pyright",
-          "ruff",
+      vim.lsp.config("lua_ls", {
+        on_attach = function(client, bufnr)
+          client.server_capabilities.documentFormattingProvider = false
+          client.handlers["textDocument/publishDiagnostics"] = function() end
+        end,
+      })
+      vim.lsp.enable({ "lua_ls" })
+
+      vim.lsp.config("pyright", {
+        settings = {
+          pyright = { disableOrganizeImports = true },
+          python = { analysis = { ignore = { "*" } } },
         },
       })
+      vim.lsp.enable({ "pyright" })
 
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          lspconfig[server_name].setup({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
-          })
-        end,
-        ["lua_ls"] = function()
-          lspconfig.lua_ls.setup({
-            handlers = {
-              ["textDocument/publishDiagnostics"] = function() end,
-              ["textDocument/formatting"] = function() end,
-            },
-          })
-        end,
-        ["pyright"] = function()
-          lspconfig.pyright.setup({
-            settings = {
-              pyright = {
-                disableOrganizeImports = true,
-              },
-              python = {
-                analysis = {
-                  ignore = { "*" },
-                },
-              },
-            },
-          })
-        end,
-        ["ruff"] = function()
-          lspconfig.ruff.setup({
-            on_attach = function(client, bufnr)
-              client.server_capabilities.hoverProvider = false
-            end,
-          })
+      vim.lsp.config("ruff", {
+        on_attach = function(client, bufnr)
+          client.server_capabilities.hoverProvider = false
         end,
       })
+      vim.lsp.enable({ "ruff" })
 
       -- diagnotics format
       vim.diagnostic.config({
@@ -130,9 +94,32 @@ return {
     end,
   },
   {
+    "mason-org/mason.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "lua_ls",
+          "pyright",
+          "ruff",
+        },
+        automatic_installation = false,
+        automatic_setup = false,
+        automatic_enable = false,
+        handlers = nil,
+      })
+    end,
+  },
+  {
     "jay-babu/mason-null-ls.nvim",
     dependencies = {
-      { "williamboman/mason.nvim" },
+      { "mason-org/mason.nvim" },
       { "nvimtools/none-ls.nvim" },
     },
     event = { "BufReadPre", "BufNewFile" },
