@@ -23,8 +23,8 @@
 ;;
 (cond
  ((eq system-type 'darwin)
-  (setq doom-font (font-spec :family "HackGen Console NF" :size 20 :weight 'regular)
-        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 21)))
+  (setq doom-font (font-spec :family "HackGen Console NF" :size 19 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 20)))
  (t
   (setq doom-font (font-spec :family "HackGen Console NF" :size 24 :weight 'regular)
         doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 25))))
@@ -466,7 +466,8 @@
   (setq calendar-mark-holidays-flag t))
 
 (after! org
-   (global-org-modern-mode t))
+  (setq org-modern-fold-stars '(("▶" . "▼") ("▷" . "▽") ("▶" . "▼") ("▹" . "▿") ("▸" . "▾")))
+  (global-org-modern-mode t))
 (use-package! org-modern-indent
   :after org-modern
   :hook (org-mode . org-modern-indent-mode))
