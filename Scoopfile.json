@@ -133,13 +133,6 @@
             "Info": ""
         },
         {
-            "Version": "3.3.0",
-            "Updated": "2025-06-25T18:38:55.7808777+09:00",
-            "Name": "station",
-            "Source": "extras",
-            "Info": ""
-        },
-        {
             "Version": "3.40.1",
             "Updated": "2024-12-16T21:40:49.1672787+09:00",
             "Name": "task",

@@ -477,3 +477,9 @@
 (use-package! org-modern-indent
   :after org-modern
   :hook (org-mode . org-modern-indent-mode))
+
+;; sticky-header
+(use-package org-sticky-header
+  :hook (org-mode . org-sticky-header-mode)
+  :config
+  (setq org-sticky-header-full-path 'full))  ;; 階層全体を表示
