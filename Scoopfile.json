@@ -2,7 +2,7 @@
     "buckets": [
         {
             "Name": "main",
-            "Source": "~\\scoop\\buckets\\main",
+            "Source": "https://github.com/ScoopInstaller/Main",
             "Updated": "2025-12-07T21:13:29.1301218+09:00",
             "Manifests": 1413
         },
