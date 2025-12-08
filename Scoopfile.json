@@ -21,136 +21,136 @@
     ],
     "apps": [
         {
-            "Name": "7zip",
-            "Version": "25.01",
             "Updated": "2025-12-07T21:13:48.7924333+09:00",
+            "Name": "7zip",
             "Info": "",
+            "Version": "25.01",
             "Source": "main"
         },
         {
-            "Name": "alacritty",
-            "Version": "0.16.1",
             "Updated": "2025-12-07T21:14:31.3873116+09:00",
+            "Name": "alacritty",
             "Info": "",
+            "Version": "0.16.1",
             "Source": "extras"
         },
         {
-            "Name": "aria2",
-            "Version": "1.37.0-1",
             "Updated": "2025-12-07T21:13:45.1521647+09:00",
+            "Name": "aria2",
             "Info": "",
+            "Version": "1.37.0-1",
             "Source": "main"
         },
         {
-            "Name": "autohotkey",
-            "Version": "2.0.19",
             "Updated": "2025-12-07T21:14:34.6748075+09:00",
+            "Name": "autohotkey",
             "Info": "",
+            "Version": "2.0.19",
             "Source": "extras"
         },
         {
-            "Name": "dark",
-            "Version": "3.14.1",
             "Updated": "2025-12-07T21:14:35.370937+09:00",
+            "Name": "dark",
             "Info": "",
+            "Version": "3.14.1",
             "Source": "main"
         },
         {
-            "Name": "dropbox-np",
-            "Version": "nightly-20251207",
             "Updated": "2025-12-07T21:15:14.7133061+09:00",
+            "Name": "dropbox-np",
             "Info": "",
+            "Version": "nightly-20251207",
             "Source": "nonportable"
         },
         {
-            "Name": "fd",
-            "Version": "10.3.0",
             "Updated": "2025-12-07T21:15:15.9058088+09:00",
+            "Name": "fd",
             "Info": "",
+            "Version": "10.3.0",
             "Source": "main"
         },
         {
-            "Name": "git",
-            "Version": "2.52.0",
             "Updated": "2025-12-07T21:14:00.420403+09:00",
+            "Name": "git",
             "Info": "",
+            "Version": "2.52.0",
             "Source": "main"
         },
         {
-            "Name": "googlechrome",
-            "Version": "143.0.7499.41",
             "Updated": "2025-12-07T21:15:27.9345791+09:00",
+            "Name": "googlechrome",
             "Info": "",
+            "Version": "143.0.7499.41",
             "Source": "extras"
         },
         {
-            "Name": "innounp",
-            "Version": "2.66.1",
             "Updated": "2025-12-07T21:15:28.5448442+09:00",
+            "Name": "innounp",
             "Info": "",
+            "Version": "2.66.1",
             "Source": "main"
         },
         {
-            "Name": "llvm",
-            "Version": "21.1.7",
             "Updated": "2025-12-07T21:15:47.6306159+09:00",
+            "Name": "llvm",
             "Info": "",
+            "Version": "21.1.7",
             "Source": "main"
         },
         {
-            "Name": "neovim",
-            "Version": "0.11.5",
             "Updated": "2025-12-07T21:15:52.2528827+09:00",
+            "Name": "neovim",
             "Info": "",
+            "Version": "0.11.5",
             "Source": "main"
         },
         {
-            "Name": "nvm",
-            "Version": "1.2.2",
             "Updated": "2025-12-07T21:15:53.5970103+09:00",
+            "Name": "nvm",
             "Info": "",
+            "Version": "1.2.2",
             "Source": "main"
         },
         {
-            "Name": "powertoys",
-            "Version": "0.96.1",
             "Updated": "2025-12-07T21:16:13.3689307+09:00",
+            "Name": "powertoys",
             "Info": "",
+            "Version": "0.96.1",
             "Source": "extras"
         },
         {
-            "Name": "ripgrep",
-            "Version": "15.1.0",
             "Updated": "2025-12-07T21:16:14.4552446+09:00",
+            "Name": "ripgrep",
             "Info": "",
+            "Version": "15.1.0",
             "Source": "main"
         },
         {
-            "Name": "sharex",
-            "Version": "18.0.1",
             "Updated": "2025-12-07T21:16:20.8938162+09:00",
+            "Name": "sharex",
             "Info": "",
+            "Version": "18.0.1",
             "Source": "extras"
         },
         {
-            "Name": "task",
-            "Version": "3.45.5",
             "Updated": "2025-12-07T21:14:02.180516+09:00",
+            "Name": "task",
             "Info": "",
+            "Version": "3.45.5",
             "Source": "main"
         },
         {
-            "Name": "vcredist2022",
-            "Version": "14.44.35211.0",
             "Updated": "2025-12-07T21:16:39.4895733+09:00",
+            "Name": "vcredist2022",
             "Info": "",
+            "Version": "14.44.35211.0",
             "Source": "extras"
         },
         {
-            "Name": "vivaldi",
-            "Version": "7.7.3851.58",
             "Updated": "2025-12-07T21:16:47.7556459+09:00",
+            "Name": "vivaldi",
             "Info": "",
+            "Version": "7.7.3851.58",
             "Source": "extras"
         }
     ]
