@@ -4,9 +4,3 @@ size = 14
 [terminal.shell]
 program = "/Windows/System32/wsl.exe"
 args = ["~", "-d", "Ubuntu-24.04", "--exec", "tmux"]
-
-[keyboard]
-bindings = [
-  { key = "V", mods = "Control", action = "Paste" },
-  { key = "C", mods = "Control", action = "Copy" }
-]
