@@ -2,9 +2,9 @@ gui:
   showFileTree: false
 git:
   branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --'
-  paging:
-    colorArg: always
-    pager: delta --dark --syntax-theme='Solarized (dark)' --paging=never
+  pagers:
+    - pager: delta --dark --syntax-theme='Solarized (dark)' --paging=never
+      colorArg: always 
 os:
   editPreset: 'nvim'
 promptToReturnFromSubprocess: false
