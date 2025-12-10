@@ -1,3 +1,14 @@
+/* Alacrittyにペーストすると改行が増える問題対応 */
+/* READ: https://github.com/alacritty/alacritty/issues/2324 */
+#HotIf WinActive("Alacritty")
+$^+v::
+{
+    A_Clipboard := StrReplace(A_Clipboard, "`r`n", "`n")
+    Send("^+v")
+}
+return
+#HotIf
+
 /* 文字列削除 */
 #HotIf WinActive("ahk_exe Notepad.exe", ) or WinActive("ahk_exe vivaldi.exe", ) or WinActive("ahk_exe EXCEL.EXE", )
 LCtrl & h::Send ("{BackSpace}")

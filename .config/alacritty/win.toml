@@ -4,3 +4,7 @@ size = 14
 [terminal.shell]
 program = "/Windows/System32/wsl.exe"
 args = ["~", "-d", "Ubuntu-24.04", "--exec", "tmux"]
+
+[window]
+title = "Alacritty"
+dynamic_title = false
