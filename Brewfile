@@ -29,7 +29,7 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 if system("uname | grep -q Darwin")
-  brew "d12frosted/emacs-plus/emacs-plus@30"
+  cask "d12frosted/emacs-plus/emacs-plus-app"
   cask "alacritty"
   cask "alfred"
   cask "alt-tab"
