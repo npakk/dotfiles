@@ -151,6 +151,7 @@ npm install -g --no-fund `
 - 1Password
 - ATOK
 - Docker
+- Alacritty（Macのみ。Homebrewでdeprecatedとなったため）
 
 tmuxのプレフィックス`Ctrl+\`が1Passwordの自動入力と衝突するため、1Passwordの設定から自動入力のショートカットを削除する。
 

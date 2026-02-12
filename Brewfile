@@ -15,6 +15,7 @@ brew "jq"
 brew "lazygit"
 brew "n"
 brew "tree-sitter", args: ["HEAD"]
+brew "tree-sitter-cli"
 brew "utf8proc", args: ["HEAD"]
 brew "neovim", args: ["HEAD"]
 brew "pyenv"
@@ -30,7 +31,6 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 if system("uname | grep -q Darwin")
   cask "d12frosted/emacs-plus/emacs-plus-app"
-  cask "alacritty"
   cask "alfred"
   cask "alt-tab"
   cask "caffeine"

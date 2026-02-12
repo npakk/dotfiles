@@ -87,19 +87,20 @@ fi
 # lua5.1 luarocks
 if ! type lua &> /dev/null; then
   echo "[lua5.1 luarocks]start"
+  PREFIX="$HOME/.local"
   curl -LO https://www.lua.org/ftp/lua-5.1.5.tar.gz
-  curl -LO https://luarocks.github.io/luarocks/releases/luarocks-3.11.1.tar.gz
+  curl -LO https://luarocks.github.io/luarocks/releases/luarocks-3.13.0.tar.gz
   tar -zxf lua-5.1.5.tar.gz
-  tar -zxf luarocks-3.11.1.tar.gz
+  tar -zxf luarocks-3.13.0.tar.gz
   cd lua-5.1.5
   make macosx
-  sudo make install
-  cd ../luarocks-3.11.1
-  ./configure --with-lua-include=/usr/local/include --with-lua-bin=/usr/local/bin/
+  make INSTALL_TOP="$PREFIX" install
+  cd ../luarocks-3.13.0
+  ./configure --prefix="$PREFIX" --with-lua-include="$PREFIX/include" --with-lua-bin="$PREFIX/bin/"
   make
-  sudo make install
+  make install
   cd ../
-  rm -rf lua-5.1.5.tar.gz lua-5.1.5 luarocks-3.11.1.tar.gz luarocks-3.11.1
+  rm -rf lua-5.1.5.tar.gz lua-5.1.5 luarocks-3.13.0.tar.gz luarocks-3.13.0
   echo "[lua5.1 luarocks]finish"
 fi
 

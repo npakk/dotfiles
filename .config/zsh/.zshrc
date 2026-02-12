@@ -190,6 +190,9 @@ rbenv() {
 export N_PREFIX="$XDG_DATA_HOME/n"
 export PATH="$N_PREFIX/bin:$PATH"
 
+# lua5.1
+export PATH="$HOME/.local/bin:$PATH"
+
 # rustup
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$HOME/.cargo"
