@@ -23,8 +23,8 @@
 ;;
 (cond
  ((eq system-type 'darwin)
-  (setq doom-font (font-spec :family "HackGen Console NF" :size 19 :weight 'regular)
-        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 20)))
+  (setq doom-font (font-spec :family "HackGen Console NF" :size 18 :weight 'regular)
+        doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 19)))
  ((eq system-type 'windows-nt)
   (setq doom-font (font-spec :family "HackGen Console NF" :size 24 :weight 'regular)
         doom-variable-pitch-font (font-spec :family "HackGen Console NF" :size 25))
