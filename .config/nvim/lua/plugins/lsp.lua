@@ -10,7 +10,7 @@ return {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
-      vim.lsp.config("ruby-lsp", {
+      vim.lsp.config("ruby_lsp", {
         cmd = { "bundle", "exec", "ruby-lsp" },
         cmd_env = { BUNDLE_GEMFILE = "Gemfile.local" },
         init_options = {
@@ -25,7 +25,7 @@ return {
           },
         },
       })
-      vim.lsp.enable({ "ruby-lsp" })
+      vim.lsp.enable("ruby_lsp")
 
       local version_output = vim.fn.system("bundle exec rubocop -V")
       local version = version_output:match("rubocop (%d+%.%d+)")
@@ -34,7 +34,7 @@ return {
         vim.lsp.config("rubocop", {
           cmd = { "bundle", "exec", "rubocop", "--lsp" },
         })
-        vim.lsp.enable({ "rubocop" })
+        vim.lsp.enable("rubocop")
       end
 
       vim.lsp.config("lua_ls", {
@@ -42,8 +42,15 @@ return {
           client.server_capabilities.documentFormattingProvider = false
           client.handlers["textDocument/publishDiagnostics"] = function() end
         end,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
       })
-      vim.lsp.enable({ "lua_ls" })
+      vim.lsp.enable("lua_ls")
 
       vim.lsp.config("pyright", {
         settings = {
@@ -51,14 +58,14 @@ return {
           python = { analysis = { ignore = { "*" } } },
         },
       })
-      vim.lsp.enable({ "pyright" })
+      vim.lsp.enable("pyright")
 
       vim.lsp.config("ruff", {
         on_attach = function(client, bufnr)
           client.server_capabilities.hoverProvider = false
         end,
       })
-      vim.lsp.enable({ "ruff" })
+      vim.lsp.enable("ruff")
 
       -- diagnotics format
       vim.diagnostic.config({
@@ -94,27 +101,19 @@ return {
     end,
   },
   {
-    "mason-org/mason.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
     "mason-org/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "pyright",
-          "ruff",
-        },
-        automatic_installation = false,
-        automatic_setup = false,
-        automatic_enable = false,
-        handlers = nil,
-      })
-    end,
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      { "neovim/nvim-lspconfig" },
+    },
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "pyright",
+        "ruff",
+      },
+    },
   },
   {
     "jay-babu/mason-null-ls.nvim",
@@ -139,17 +138,15 @@ return {
       local null_sources = {}
 
       for _, package in ipairs(mason_registry.get_installed_packages()) do
-        if package.name == "ruff" then
-          goto continue
+        if package.name ~= "ruff" then
+          local package_categories = package.spec.categories[1]
+          if package_categories == mason_package.Cat.Formatter then
+            table.insert(null_sources, null_ls.builtins.formatting[package.name])
+          end
+          if package_categories == mason_package.Cat.Linter then
+            table.insert(null_sources, null_ls.builtins.diagnostics[package.name])
+          end
         end
-        local package_categories = package.spec.categories[1]
-        if package_categories == mason_package.Cat.Formatter then
-          table.insert(null_sources, null_ls.builtins.formatting[package.name])
-        end
-        if package_categories == mason_package.Cat.Linter then
-          table.insert(null_sources, null_ls.builtins.diagnostics[package.name])
-        end
-        ::continue::
       end
 
       -- format on save

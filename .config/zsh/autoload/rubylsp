@@ -13,8 +13,11 @@ EOF
 BUNDLE_GEMFILE=Gemfile.local bundle install
 
 echo "✅ Bundler has installed using Gemfile.local"
-echo "このターミナル内では次のように Bundler を使ってください："
+echo "以下のコマンドを実行して ruby_lsp を含めて bundle インストールしてください："
+echo ""
+echo "  BUNDLE_GEMFILE=Gemfile.local bundle"
+echo ""
+echo "このシェル内では次のように BUNDLE_GEMFILE 環境変数のあとにコマンドを使ってください："
 echo ""
 echo "  BUNDLE_GEMFILE=Gemfile.local nvim"
 echo ""
-echo "終了後、Gemfile.local は削除して構いません。"
