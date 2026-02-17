@@ -10,14 +10,16 @@ return {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
-      vim.lsp.config("ruby_lsp", {
-        cmd = { "bundle", "exec", "ruby-lsp" },
+      vim.lsp.config("ruby-lsp", {
         cmd_env = { BUNDLE_GEMFILE = "Gemfile.local" },
+        cmd = { "bundle", "exec", "ruby-lsp" },
+        filetypes = { "ruby", "eruby" },
+        -- root_markers = { "Gemfile", ".git" },
         init_options = {
-          enabledFeatures = {
-            diagnostics = false,
-            formatting = false,
-          },
+          -- enabledFeatures = {
+          --   diagnostics = false,
+          --   formatting = false,
+          -- },
           addonSettings = {
             ["Ruby LSP Rails"] = {
               enablePendingMigrationsPrompt = false,
@@ -25,47 +27,62 @@ return {
           },
         },
       })
-      vim.lsp.enable("ruby_lsp")
+      vim.lsp.enable("ruby-lsp")
 
-      local version_output = vim.fn.system("bundle exec rubocop -V")
-      local version = version_output:match("rubocop (%d+%.%d+)")
-      -- バージョンが1.53以上なら
-      if version and tonumber(version) >= 1.53 then
-        vim.lsp.config("rubocop", {
-          cmd = { "bundle", "exec", "rubocop", "--lsp" },
-        })
-        vim.lsp.enable("rubocop")
-      end
+      -- local version_output = vim.fn.system("bundle exec rubocop -V")
+      -- local version = version_output:match("rubocop (%d+%.%d+)")
+      -- -- バージョンが1.53以上なら
+      -- if version and tonumber(version) >= 1.53 then
+      --   vim.lsp.config("rubocop", {
+      --     cmd = { "bundle", "exec", "rubocop", "--lsp" },
+      --   })
+      --   vim.lsp.enable("rubocop")
+      -- end
 
       vim.lsp.config("lua_ls", {
-        on_attach = function(client, bufnr)
-          client.server_capabilities.documentFormattingProvider = false
-          client.handlers["textDocument/publishDiagnostics"] = function() end
-        end,
+        -- on_attach = function(client, bufnr)
+        --   client.server_capabilities.documentFormattingProvider = false
+        --   client.handlers["textDocument/publishDiagnostics"] = function() end
+        -- end,
         settings = {
           Lua = {
             diagnostics = {
+              enable = false,
               globals = { "vim" },
+            },
+            format = {
+              enable = false,
             },
           },
         },
       })
-      vim.lsp.enable("lua_ls")
+      -- vim.lsp.enable("lua_ls")
 
       vim.lsp.config("pyright", {
         settings = {
-          pyright = { disableOrganizeImports = true },
-          python = { analysis = { ignore = { "*" } } },
+          pyright = {
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              ignore = { "*" },
+            },
+          },
         },
       })
-      vim.lsp.enable("pyright")
+      -- vim.lsp.enable("pyright")
 
       vim.lsp.config("ruff", {
-        on_attach = function(client, bufnr)
+        capabilities = {
+          general = {
+            positionEncodings = { "utf-16" },
+          },
+        },
+        on_attach = function(client, _)
           client.server_capabilities.hoverProvider = false
         end,
       })
-      vim.lsp.enable("ruff")
+      -- vim.lsp.enable("ruff")
 
       -- diagnotics format
       vim.diagnostic.config({
@@ -153,7 +170,7 @@ return {
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       null_ls.setup({
         sources = null_sources,
-        on_attach = function(client, bufnr)
+        on_attach = function(_, bufnr)
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
