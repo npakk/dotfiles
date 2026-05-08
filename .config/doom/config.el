@@ -145,6 +145,11 @@
       :n "C-k" #'evil-window-up
       :n "C-l" #'evil-window-right
       :n "C-q" #'evil-window-delete
+      ; 行頭/行末
+      :n "H" #'evil-first-non-blank
+      :n "L" #'evil-last-non-blank
+      :v "H" #'evil-first-non-blank
+      :v "L" #'evil-last-non-blank
       :n "S-<left>" #'evil-window-decrease-width
       :n "S-<right>" #'evil-window-increase-width
       :n "S-<up>" #'evil-window-decrease-height
@@ -252,7 +257,7 @@
         ;; Move to heading start (in case point is mid-subtree)
         (org-back-to-heading t)
         ;; Insert clocktable block
-        (insert "#+BEGIN: clocktable :maxlevel 6 :compact t :block today\n")
+        (insert "#+BEGIN: clocktable :scope (\"inbox.org\") :maxlevel 6 :compact t :block today\n")
         (insert (format "#+CAPTION: Clock summary at [%s], for %s.\n"
                         (format-time-string "%Y-%m-%d %a %H:%M")
                         (format-time-string "%A, %B %d, %Y")))
