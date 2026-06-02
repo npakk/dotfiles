@@ -19,6 +19,6 @@
 [interactive]
 	diffFilter = delta --color-only
 [ghq]
-	root = ~/ghq
+	root = ~/Projects/src
 [credential]
 	helper = /mnt/c/Users/Npakk/scoop/apps/git/current/mingw64/bin/git-credential-manager.exe
