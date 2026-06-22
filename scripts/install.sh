@@ -31,14 +31,14 @@ fi
 echo "[Homebrew]finish"
 
 # tmux theme
-if ! [ -e ~/.local/share/tmux/plugins/iceberg-dark ]; then
+if ! [ -e "$HOME/.local/share/tmux/iceberg-dark" ]; then
   echo "[tmux theme]start"
   git clone https://github.com/gkeep/iceberg-dark.git "$HOME/.local/share/tmux/iceberg-dark"
   echo "[tmux theme]finish"
 fi
 
 # goenv
-if [ -z "$(echo $(goenv versions | sed "/system/d"))" ]; then
+if [ -z "$(goenv list)" ]; then
   echo "[goenv]start"
   goenv install $(goenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
   goenv global $(goenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
