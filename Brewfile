@@ -1,12 +1,14 @@
 if system("uname | grep -q Darwin")
   tap "d12frosted/emacs-plus"
 end
+tap "d-kuro/tap"
 brew "bat"
 brew "eza"
 brew "fd"
 brew "fzf"
 brew "gh"
 brew "ghq"
+brew "gwq"
 brew "git"
 brew "git-delta"
 brew "goenv", args: ["HEAD"]
