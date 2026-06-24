@@ -31,6 +31,8 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
+cask "claude-code"
+cask "codex"
 if system("uname | grep -q Darwin")
   cask "d12frosted/emacs-plus/emacs-plus-app"
   cask "alfred"
