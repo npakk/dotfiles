@@ -69,7 +69,13 @@ return {
       { "<leader>hb", "<cmd>lua require('gitsigns').blame_line({ full = true })<CR>", desc = "Blame Line" },
       { "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>", desc = "Diff This" },
     },
-    opts = {},
+  },
+  {
+    "kevinhwang91/nvim-hlslens",
+    event = "BufReadPre",
+    config = function()
+      require("hlslens").setup()
+    end,
   },
   {
     "folke/zen-mode.nvim",
@@ -86,7 +92,6 @@ return {
       { "<leader>o", "<cmd>Trouble symbols toggle focus=true<CR>", desc = "Trouble symbols" },
       { "<leader>r", "<cmd>Trouble lsp toggle focus=true<CR>", desc = "Trouble lsp" },
     },
-    opts = {},
   },
   {
     "folke/todo-comments.nvim",
@@ -96,6 +101,32 @@ return {
     keys = {
       { "<leader>T", "<cmd>TodoTrouble focus=true<CR>", desc = "Todo" },
     },
-    opts = {},
+  },
+  {
+    "petertriho/nvim-scrollbar",
+    event = "BufReadPre",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+      "kevinhwang91/nvim-hlslens",
+    },
+    config = function()
+      require("scrollbar").setup({
+        handle = {
+          text = " ",
+          color = "#4f5b78",
+        },
+        marks = {
+          Search = {
+            color = "#e4aa81",
+          },
+        },
+        handlers = {
+          gitsigns = true,
+          search = true,
+        },
+      })
+      require("scrollbar.handlers.gitsigns").setup()
+      require("scrollbar.handlers.search").setup()
+    end,
   },
 }

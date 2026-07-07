@@ -25,7 +25,7 @@ end
 
 --[[ window-local ]]
 
-vim.opt.number = false
+vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.cursorline = true
 vim.opt.list = true
