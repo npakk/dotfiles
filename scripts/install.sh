@@ -155,11 +155,4 @@ if ! command -v git-cz &> /dev/null; then
   echo "[git-cz]finish"
 fi
 
-# gemini cli
-if ! command -v gemini &> /dev/null; then
-  echo "[gemini]start"
-  npm install -g @google/gemini-cli
-  echo "[gemini]finish"
-fi
-
 echo "complete."

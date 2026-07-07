@@ -31,6 +31,7 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
+cask "antigravity-cli"
 cask "claude-code"
 cask "codex"
 if system("uname | grep -q Darwin")
