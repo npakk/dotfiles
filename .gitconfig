@@ -6,7 +6,7 @@
 [init]
 	defaultBranch = main
 [diff]
-	alogorithm = histogram
+	algorithm = histogram
 [color]
 	ui = auto
 [delta]
@@ -20,5 +20,3 @@
 	diffFilter = delta --color-only
 [ghq]
 	root = ~/Projects
-[credential]
-	helper = /mnt/c/Users/Npakk/scoop/apps/git/current/mingw64/bin/git-credential-manager.exe

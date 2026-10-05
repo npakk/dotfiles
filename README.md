@@ -21,7 +21,6 @@ scoop config aria2-warning-enabled false
 # 最低限必要なソフトウェアのインストール
 scoop install aria2 git task
 
-# 管理者権限のあるPowerShellで以下を実行（scripts/powershell.ps1のエラー回避）
 git clone https://github.com/npakk/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 task

@@ -2,7 +2,7 @@
 $path_1 = (Convert-Path .) + "\.config\alacritty\win_alacritty.toml"
 $path_2 = (Convert-Path .) + "\.config\alacritty\common.toml"
 $path_3 = (Convert-Path .) + "\.config\alacritty\win.toml"
-$configPath = [Environment]::GetFolderPath("App") + "\alacritty"
+$configPath = Join-Path $env:APPDATA "alacritty"
 New-Item $configPath -ItemType Directory -ErrorAction SilentlyContinue
 $destination_1 = $configPath + "\alacritty.toml"
 $destination_2 = $configPath + "\common.toml"

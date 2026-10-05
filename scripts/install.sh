@@ -56,14 +56,10 @@ fi
 # pyenv
 if [ -z "$(echo $(pyenv versions | sed "/system/d"))" ]; then
   echo "[pyenv]start"
-  pyenv install $(pyenv install --list | grep "^\s*[2][0-9.]*[0-9]\s*$" | tail -1)
   pyenv install $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
-  pyenv virtualenv $(pyenv install --list | grep "^\s*[2][0-9.]*[0-9]\s*$" | tail -1) py2
   pyenv virtualenv $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1) py3
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
-  pyenv activate py2
-  pip install --upgrade pip
   pyenv activate py3
   pip install --upgrade pip
   echo "[pyenv]finish"
@@ -109,14 +105,6 @@ if ! gem list | grep -q "neovim"; then
   echo "[neovim provider - ruby]start"
   gem install neovim
   echo "[neovim provider - ruby]finish"
-fi
-
-pyenv activate py2
-if ! pip list 2> /dev/null | grep -q "neovim"; then
-  echo "[neovim provider - python2]start"
-  pyenv activate py2
-  pip install neovim
-  echo "[neovim provider - python2]finish"
 fi
 
 pyenv activate py3
