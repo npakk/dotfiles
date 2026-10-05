@@ -75,8 +75,9 @@ ln -s "/mnt/c/Users/$(powershell.exe '$env:USERNAME' | tr -d '\r')/Dropbox/" ~/D
 [Doom Emacs](https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
 ```sh
 git clone --depth 1 https://github.com/doomemacs/core $HOME/.config/emacs
-$HOME/.config/emacs/bin/doom install
-$HOME/.config/emacs/bin/doom sync
+cd $HOME/.config/emacs/bin
+./doom install
+./doom sync
 ```
 アイコンが文字化けしている場合は、`M-x nerd-icons-install-fonts`を実行してダウンロードされるttfファイルをインストール。  
 Winの場合は`doom upgrade`時に`pwsh`(powershell6以上)を求められるので、[リリースページ](https://github.com/PowerShell/PowerShell)からインストールする。  
