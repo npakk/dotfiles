@@ -38,7 +38,7 @@ if ! [ -e "$HOME/.local/share/tmux/iceberg-dark" ]; then
 fi
 
 # goenv
-if [ -z "$(goenv list)" ]; then
+if [ -z "$(goenv versions | grep -v system)" ]; then
   echo "[goenv]start"
   goenv install $(goenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
   goenv global $(goenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
