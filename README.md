@@ -73,6 +73,7 @@ ln -s "/mnt/c/Users/$(powershell.exe '$env:USERNAME' | tr -d '\r')/Dropbox/" ~/D
 ---
 ## Doom Emacs
 [Doom Emacs](https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
+PATH に `[ユーザーディレクトリ]/.config/emacs/bin` を追加。
 ```sh
 git clone --depth 1 https://github.com/doomemacs/core $HOME/.config/emacs
 cd $HOME/.config/emacs/bin
