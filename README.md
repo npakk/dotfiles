@@ -7,7 +7,7 @@ make
 ```
 
 ## Win
-ユーザー環境変数 `$HOME`に`C:\Users\ユーザ名`、`$DOOMDIR`に`C:\Users\ユーザ名\.doom.d`を設定しておく
+ユーザー環境変数 `$HOME`に`C:\Users\ユーザ名`を設定しておく
 
 [Scoop](https://scoop.sh/)
 ```ps1
@@ -71,57 +71,12 @@ ln -s "/mnt/c/Users/$(powershell.exe '$env:USERNAME' | tr -d '\r')/Dropbox/" ~/D
 その後ディストリビューションを実行して初期化が完了したら、powershell上で`wsl --set-default Ubuntu`を実行。 
 
 ---
-## Build Emacs for Windows 64bit with Native Compilation
-references  
-[Build Emacs for Windows 64bit with Native Compilation.md](https://gist.github.com/nauhygon/f3b44f51b34e89bc54f8)  
-[How to Compile Emacs 29 From Source on Windows in 2022](https://readingworldmagazine.com/emacs/2022-02-24-compiling-emacs-29-from-source-on-windows/)  
-
-[MSYS2](https://www.msys2.org)をダウンロード  
-MSYS2 MINGW64を起動し以下を実行  
-```sh
-# アップデート
-pacman -Syu --noconfirm
-
-# Restart
-```
-
-```sh
-pacman -Sy --noconfirm
-
-# 必要なパッケージをインストール
-pacman -Su --noconfirm \
-autoconf autogen automake automake-wrapper make git pkgconf texinfo \
-mingw-w64-x86_64-libgccjit mingw-w64-x86_64-gnutls mingw-w64-x86_64-imagemagick \
-mingw-w64-x86_64-graphviz mingw-w64-x86_64-libtree-sitter
-
-# Restart
-```
-
-```sh
-pacman -Su --noconfirm
-
-git clone https://github.com/emacs-mirror/emacs.git build-emacs
-cd build-emacs
-git config core.autocrlf false
-./autogen.sh
-./configure --prefix=/c/emacs --with-native-compilation --with-imagemagick --with-tree-sitter --without-dbus --without-pop
-make -j$(nproc)
-make install prefix=/c/emacs
-
-cd ../
-rm -rf build-emacs
-```
-PATHに `C:\msys64\mingw64\bin` を追加  
-PATHに `C:\emacs\bin` を追加
-
 ## Doom Emacs
 [Doom Emacs](https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org)
 ```sh
-# .emacs.dフォルダは事前に削除しておく
-git clone --depth 1 https://github.com/doomemacs/doomemacs $HOME/.emacs.d
-cd $HOME/.emacs.d/bin
-./doom install
-./doom sync
+git clone --depth 1 https://github.com/doomemacs/core $HOME/.config/emacs
+$HOME/.config/emacs/bin/doom install
+$HOME/.config/emacs/bin/doom sync
 ```
 アイコンが文字化けしている場合は、`M-x nerd-icons-install-fonts`を実行してダウンロードされるttfファイルをインストール。  
 Winの場合は`doom upgrade`時に`pwsh`(powershell6以上)を求められるので、[リリースページ](https://github.com/PowerShell/PowerShell)からインストールする。  
