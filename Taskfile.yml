@@ -21,6 +21,7 @@ tasks:
       - "{{.PWSH_CMD}} ./scripts/powershell.ps1"
       - "{{.PWSH_CMD}} ./scripts/autohotkey.ps1"
       - "{{.PWSH_CMD}} ./scripts/alacritty.ps1"
+      - "{{.PWSH_CMD}} ./scripts/zed.ps1"
       - "{{.PWSH_CMD}} ./scripts/doom.ps1"
 
   update:
