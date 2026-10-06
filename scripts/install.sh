@@ -143,4 +143,18 @@ if ! command -v git-cz &> /dev/null; then
   echo "[git-cz]finish"
 fi
 
+# Codex Desktop on WSL
+# See. https://github.com/openai/codex/issues/13762
+if grep -qi microsoft /proc/version 2>/dev/null; then
+  echo "[Codex Desktop on WSL]start"
+  mkdir -p "$HOME/.codex-app"/{sessions,tmp,worktrees}
+
+  cat > "$HOME/.profile" <<'EOF'
+if [ "${CODEX_INTERNAL_ORIGINATOR_OVERRIDE:-}" = "Codex Desktop" ]; then
+  export CODEX_HOME="$HOME/.codex-app"
+fi
+  echo "[Codex Desktop on WSL]finish"
+EOF
+fi
+
 echo "complete."
