@@ -3,6 +3,7 @@ if system("uname | grep -q Darwin")
 end
 tap "d-kuro/tap"
 brew "bat"
+brew "bubblewrap"
 brew "eza"
 brew "fd"
 brew "fzf"
