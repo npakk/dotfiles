@@ -153,8 +153,8 @@ if grep -qi microsoft /proc/version 2>/dev/null; then
 if [ "${CODEX_INTERNAL_ORIGINATOR_OVERRIDE:-}" = "Codex Desktop" ]; then
   export CODEX_HOME="$HOME/.codex-app"
 fi
-  echo "[Codex Desktop on WSL]finish"
 EOF
+  echo "[Codex Desktop on WSL]finish"
 fi
 
 echo "complete."
