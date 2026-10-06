@@ -43,4 +43,5 @@ if system("uname | grep -q Darwin")
   cask "dropbox"
   cask "karabiner-elements"
   cask "the-unarchiver"
+  cask "zed"
 end
