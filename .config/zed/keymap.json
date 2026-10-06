@@ -1,0 +1,8 @@
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space p": "markdown::OpenPreviewToTheSide"
+    }
+  }
+]

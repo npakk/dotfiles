@@ -1,4 +1,3 @@
-#$applicationPath = [Environment]::GetFolderPath("App")
 $path_1 = (Convert-Path .) + "\.config\alacritty\win_alacritty.toml"
 $path_2 = (Convert-Path .) + "\.config\alacritty\common.toml"
 $path_3 = (Convert-Path .) + "\.config\alacritty\win.toml"
