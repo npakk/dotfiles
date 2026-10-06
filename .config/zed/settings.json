@@ -1,4 +1,3 @@
-// MAC
 // Zed settings
 //
 // For information on how to configure Zed, see the Zed
@@ -29,5 +28,10 @@
     "mode": "dark",
     "light": "One Light",
     "dark": "Ayu Dark",
+  },
+  "languages": {
+    "Markdown": {
+      "remove_trailing_whitespace_on_save": false
+    }
   },
 }
