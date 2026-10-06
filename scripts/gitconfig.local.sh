@@ -21,7 +21,7 @@ EOF
     cat << EOF >> "$GIT_CONFIG_LOCAL"
 
 [credential]
-	helper = /mnt/c/Users/$WIN_USER/scoop/apps/git/current/mingw64/bin/git-credential-manager.exe
+    helper = /mnt/c/Users/$WIN_USER/scoop/apps/git/current/ucrt64/bin/git-credential-manager.exe
 EOF
   fi
 fi
