@@ -27,6 +27,13 @@
     ],
     "apps": [
         {
+            "Name": "1password-cli",
+            "Version": "2.41.0",
+            "Source": "main",
+            "Updated": "2026-10-17T00:55:24.6935692+09:00",
+            "Info": ""
+        },
+        {
             "Name": "7zip",
             "Version": "26.03",
             "Source": "main",
