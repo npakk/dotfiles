@@ -3,20 +3,26 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2026-10-06T01:36:48+09:00",
-            "Manifests": 1668
+            "Updated": "2026-10-16T21:48:06+09:00",
+            "Manifests": 1690
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2026-10-06T01:36:37+09:00",
-            "Manifests": 2405
+            "Updated": "2026-10-16T21:44:08+09:00",
+            "Manifests": 2425
         },
         {
             "Name": "nonportable",
             "Source": "https://github.com/ScoopInstaller/Nonportable",
-            "Updated": "2026-10-06T02:16:01+09:00",
+            "Updated": "2026-10-16T13:43:33+09:00",
             "Manifests": 134
+        },
+        {
+            "Name": "mo-san",
+            "Source": "https://github.com/mo-san/scoop-bucket",
+            "Updated": "2026-10-16T13:34:15+09:00",
+            "Manifests": 133
         }
     ],
     "apps": [
@@ -46,6 +52,13 @@
             "Version": "2.0.29",
             "Source": "extras",
             "Updated": "2026-10-06T05:26:12.8351669+09:00",
+            "Info": ""
+        },
+        {
+            "Name": "clibor",
+            "Version": "2.3.5",
+            "Source": "mo-san",
+            "Updated": "2026-10-16T23:48:11.7190105+09:00",
             "Info": ""
         },
         {
