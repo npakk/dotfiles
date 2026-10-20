@@ -40,8 +40,8 @@ if system("uname | grep -q Darwin")
   cask "alfred"
   cask "alt-tab"
   cask "caffeine"
+  cask "google-chrome"
   cask "dropbox"
   cask "karabiner-elements"
   cask "the-unarchiver"
-  cask "zed"
 end
