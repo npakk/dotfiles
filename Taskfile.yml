@@ -27,6 +27,8 @@ tasks:
   update:
     - scoop update
     - scoop update --all
+    - scoop cache rm *
+    - scoop cleanup *
 
   import:
     - scoop import Scoopfile.json
