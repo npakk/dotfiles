@@ -1,10 +1,11 @@
 trust.json.lock
-lazy-lock.json
 .zcompcache
 .zcompdump
 .zsh_sessions
-.config/gcloud/*
-.config/karabiner/automatic_backups/*
-.config/go/telemetry
-.config/chromium
-.config/configstore
+
+/.config/gcloud/
+/.config/gh/hosts.yml
+/.config/karabiner/automatic_backups/
+/.config/go/telemetry/
+/.config/chromium/
+/.config/configstore/
