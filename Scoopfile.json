@@ -3,19 +3,19 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2026-10-20T13:33:39+09:00",
-            "Manifests": 1694
+            "Updated": "2026-10-23T05:30:42+09:00",
+            "Manifests": 1698
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2026-10-20T13:34:19+09:00",
-            "Manifests": 2431
+            "Updated": "2026-10-23T05:33:10+09:00",
+            "Manifests": 2444
         },
         {
             "Name": "nonportable",
             "Source": "https://github.com/ScoopInstaller/Nonportable",
-            "Updated": "2026-10-20T06:09:50+09:00",
+            "Updated": "2026-10-23T05:13:48+09:00",
             "Manifests": 134
         },
         {
@@ -35,9 +35,9 @@
         },
         {
             "Name": "7zip",
-            "Version": "26.03",
+            "Version": "26.05",
             "Source": "main",
-            "Updated": "2026-10-06T05:19:42.3991798+09:00",
+            "Updated": "2026-10-22T07:58:51.8579001+09:00",
             "Info": ""
         },
         {
@@ -56,9 +56,9 @@
         },
         {
             "Name": "autohotkey",
-            "Version": "2.0.29",
+            "Version": "2.0.30",
             "Source": "extras",
-            "Updated": "2026-10-06T05:26:12.8351669+09:00",
+            "Updated": "2026-10-22T08:02:12.78946+09:00",
             "Info": ""
         },
         {
@@ -98,37 +98,37 @@
         },
         {
             "Name": "git",
-            "Version": "2.56.0",
+            "Version": "2.56.0.2",
             "Source": "main",
-            "Updated": "2026-10-06T05:19:57.4009872+09:00",
+            "Updated": "2026-10-22T07:59:05.2956764+09:00",
             "Info": ""
         },
         {
             "Name": "googlechrome",
-            "Version": "154.0.8037.98",
+            "Version": "156.0.8078.48",
             "Source": "extras",
-            "Updated": "2026-10-06T05:20:06.5868046+09:00",
+            "Updated": "2026-10-22T08:02:43.0149895+09:00",
             "Info": ""
         },
         {
             "Name": "innounp",
-            "Version": "2.71.1",
+            "Version": "2.71.2",
             "Source": "main",
-            "Updated": "2026-10-06T05:20:07.0817854+09:00",
+            "Updated": "2026-10-22T07:59:05.9406691+09:00",
             "Info": ""
         },
         {
             "Name": "llvm",
-            "Version": "23.1.2",
+            "Version": "23.1.4",
             "Source": "main",
-            "Updated": "2026-10-06T05:20:40.5015196+09:00",
+            "Updated": "2026-10-22T07:59:38.6511803+09:00",
             "Info": ""
         },
         {
             "Name": "neovim",
-            "Version": "0.12.5",
+            "Version": "0.12.6",
             "Source": "main",
-            "Updated": "2026-10-06T05:20:46.7206517+09:00",
+            "Updated": "2026-10-22T07:59:44.2366556+09:00",
             "Info": ""
         },
         {
@@ -140,9 +140,9 @@
         },
         {
             "Name": "powertoys",
-            "Version": "0.101.2362.0",
+            "Version": "0.102.2933.0",
             "Source": "extras",
-            "Updated": "2026-10-06T05:26:39.563983+09:00",
+            "Updated": "2026-10-22T08:00:12.988844+09:00",
             "Info": ""
         },
         {
@@ -171,6 +171,13 @@
             "Version": "14.51.36247.0",
             "Source": "extras",
             "Updated": "2026-06-19T09:07:00.0158003+09:00",
+            "Info": ""
+        },
+        {
+            "Name": "vivaldi",
+            "Version": "8.2.4133.91",
+            "Source": "extras",
+            "Updated": "2026-10-23T09:58:39.6419509+09:00",
             "Info": ""
         }
     ]
