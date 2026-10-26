@@ -3,19 +3,19 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2026-10-23T05:30:42+09:00",
-            "Manifests": 1698
+            "Updated": "2026-10-27T05:32:43+09:00",
+            "Manifests": 1701
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2026-10-23T05:33:10+09:00",
-            "Manifests": 2444
+            "Updated": "2026-10-27T05:33:48+09:00",
+            "Manifests": 2448
         },
         {
             "Name": "nonportable",
             "Source": "https://github.com/ScoopInstaller/Nonportable",
-            "Updated": "2026-10-23T05:13:48+09:00",
+            "Updated": "2026-10-27T06:05:36+09:00",
             "Manifests": 134
         },
         {
@@ -23,6 +23,12 @@
             "Source": "https://github.com/mo-san/scoop-bucket",
             "Updated": "2026-10-18T13:36:22+09:00",
             "Manifests": 133
+        },
+        {
+            "Name": "r-bucket",
+            "Source": "https://github.com/cderv/r-bucket",
+            "Updated": "2026-10-27T04:49:53+09:00",
+            "Manifests": 93
         }
     ],
     "apps": [
@@ -136,6 +142,13 @@
             "Version": "2.0.1",
             "Source": "main",
             "Updated": "2026-10-06T05:20:49.6374708+09:00",
+            "Info": ""
+        },
+        {
+            "Name": "octarine",
+            "Version": "0.55.0",
+            "Source": "r-bucket",
+            "Updated": "2026-10-27T06:08:21.7610123+09:00",
             "Info": ""
         },
         {

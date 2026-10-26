@@ -43,5 +43,6 @@ if system("uname | grep -q Darwin")
   cask "google-chrome"
   cask "dropbox"
   cask "karabiner-elements"
+  cask "octarine"
   cask "the-unarchiver"
 end
