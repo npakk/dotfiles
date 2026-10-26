@@ -22,6 +22,7 @@ tasks:
       - "{{.PWSH_CMD}} ./scripts/autohotkey.ps1"
       - "{{.PWSH_CMD}} ./scripts/alacritty.ps1"
       - "{{.PWSH_CMD}} ./scripts/doom.ps1"
+      - "{{.PWSH_CMD}} ./scripts/claude.ps1"
 
   update:
     - scoop update
