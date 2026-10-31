@@ -3,19 +3,19 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2026-10-27T05:32:43+09:00",
-            "Manifests": 1701
+            "Updated": "2026-10-31T09:40:40+09:00",
+            "Manifests": 1703
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2026-10-27T05:33:48+09:00",
-            "Manifests": 2448
+            "Updated": "2026-10-31T09:41:37+09:00",
+            "Manifests": 2449
         },
         {
             "Name": "nonportable",
             "Source": "https://github.com/ScoopInstaller/Nonportable",
-            "Updated": "2026-10-27T06:05:36+09:00",
+            "Updated": "2026-10-30T18:31:57+09:00",
             "Manifests": 134
         },
         {
@@ -27,8 +27,8 @@
         {
             "Name": "r-bucket",
             "Source": "https://github.com/cderv/r-bucket",
-            "Updated": "2026-10-27T04:49:53+09:00",
-            "Manifests": 93
+            "Updated": "2026-10-31T04:07:08+09:00",
+            "Manifests": 94
         }
     ],
     "apps": [
@@ -191,6 +191,13 @@
             "Version": "8.2.4133.91",
             "Source": "extras",
             "Updated": "2026-10-23T09:58:39.6419509+09:00",
+            "Info": ""
+        },
+        {
+            "Name": "zed",
+            "Version": "1.26.2",
+            "Source": "extras",
+            "Updated": "2026-10-31T10:20:24.9038368+09:00",
             "Info": ""
         }
     ]
