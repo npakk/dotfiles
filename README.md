@@ -57,8 +57,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # ログインシェルを/usr/bin/zshに
 chsh
 
-# Macと一緒（graphviz用にulimitを変更）
-ulimit -n 65536
+# Macと一緒
 git clone https://github.com/npakk/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 make
