@@ -8,9 +8,3 @@ git:
 os:
   editPreset: 'nvim'
 promptToReturnFromSubprocess: false
-customCommands:
-  - key: 'C'
-    command: 'git cz commit'
-    context: 'files'
-    loadingText: 'opening git-cz commit tool'
-    output: terminal
