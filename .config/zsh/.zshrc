@@ -1,6 +1,8 @@
 typeset -gU PATH            # PATHの重複回避
 export LANG=ja_JP.UTF-8
 
+export PATH="/opt/homebrew/bin:$HOME/.local/bin:$HOME/.config/git/scripts:$PATH"
+
 setopt list_packed          # 補完候補を詰めて表示
 setopt correct              # コマンドのスペルチェックをする
 setopt menu_complete        # 補完の可能性があるものを列挙し、最初にマッチしたものをすぐに挿入
@@ -47,8 +49,8 @@ export HISTFILE="$XDG_STATE_HOME/zsh/.zsh_history"
 export HISTSIZE=1000
 export SAVEHIST=100000
 
-# z
-. "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
+# zoxide
+eval "$(zoxide init zsh)"
 
 # zsh-autosuggestions
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
@@ -145,58 +147,8 @@ bindkey '^l' clear-screen-or-right-pane
 bindkey '^h' backspace-or-left-pane
 bindkey '^j' accept-line-or-down-pane
 
-# Homebrew
-export PATH="/opt/homebrew/bin:$PATH"
-
-# git
-export PATH="$HOME/.config/git/scripts:$PATH"
-
-# goenv
-export GOPATH="$HOME/go"
-export GOENV_ROOT="$XDG_DATA_HOME/goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-export PATH="$GOENV_ROOT/shims:$PATH"
-goenv() {
-  unfunction "$0"
-  eval "$(goenv init -)"
-  $0 "$@"
-}
-
-# pyenv
-export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$PYENV_ROOT/shims:${PATH}"
-pyenv() {
-  unfunction "$0"
-  eval "$(pyenv init --path)"
-  if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-  fi
-  $0 "$@"
-}
-
-# rbenv
-export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-export PATH="$RBENV_ROOT/shims:${PATH}"
-rbenv() {
-  unfunction "$0"
-  eval "$(rbenv init -)"
-  $0 "$@"
-}
-
-# n
-export N_PREFIX="$XDG_DATA_HOME/n"
-export PATH="$N_PREFIX/bin:$PATH"
-
-# lua5.1
-export PATH="$HOME/.local/bin:$PATH"
-
-# rustup
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export CARGO_HOME="$HOME/.cargo"
-export PATH="$CARGO_HOME/bin:$PATH"
+# mise
+eval "$(mise activate zsh)"
 
 # fzf
 source <(fzf --zsh)

@@ -1,0 +1,15 @@
+[settings]
+python.uv_venv_auto = "create|source"
+
+[tools]
+go = "latest"
+node = "lts"
+python = "latest"
+ruby = "latest"
+rust = "latest"
+uv = "latest"
+
+"pipx:pynvim" = "latest"
+"gem:neovim" = "latest"
+"npm:neovim" = "latest"
+"npm:git-cz" = "latest"

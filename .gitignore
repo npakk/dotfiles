@@ -1,4 +1,4 @@
-trust.json.lock
+trust.json*
 .zcompcache
 .zcompdump
 .zsh_sessions

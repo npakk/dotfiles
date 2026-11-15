@@ -15,13 +15,7 @@ ln -sf $HOME/dotfiles/.gitconfig $HOME/.gitconfig
 # textlint
 ln -sf $HOME/dotfiles/.textlintrc $HOME/.textlintrc
 
-# claude
-mkdir -p $HOME/.claude
-ln -sf $HOME/dotfiles/ai/AGENTS.md $HOME/.claude/CLAUDE.md
-ln -sf $HOME/dotfiles/ai/.claude/settings.json $HOME/.claude/settings.json
-
 source $HOME/.zshenv
-source $HOME/.config/zsh/.zshrc
 
 # Homebrew
 echo "[Homebrew]start"
@@ -29,9 +23,11 @@ if ! type brew &> /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 if [ "$(uname)" = "Darwin" ]; then
-  /opt/homebrew/bin/brew bundle --file "$HOME/dotfiles/Brewfile"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  brew bundle --file "$HOME/dotfiles/Brewfile"
 else
-  /home/linuxbrew/.linuxbrew/bin/brew bundle --file "$HOME/dotfiles/Brewfile"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  brew bundle --file "$HOME/dotfiles/Brewfile"
 fi
 echo "[Homebrew]finish"
 
@@ -42,47 +38,27 @@ if ! [ -e "$HOME/.local/share/tmux/iceberg-dark" ]; then
   echo "[tmux theme]finish"
 fi
 
-# goenv
-if [ -z "$(goenv list | grep -v system)" ]; then
-  echo "[goenv]start"
-  goenv install $(goenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
-  goenv global $(goenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
-  echo "[goenv]finish"
+# mise
+if command -v mise &> /dev/null; then
+  echo "[mise]start"
+  mise install
+  eval "$(mise activate zsh)"
+  echo "[mise]finish"
 fi
 
-# rustup
-if ! command -v rustup &> /dev/null; then
-  echo "[rustup]start"
-  curl https://sh.rustup.rs -sSf | RUSTUP_INIT_SKIP_PATH_CHECK=yes sh -s -- -y
-  rustup update stable
-  echo "[rustup]finish"
-fi
-
-# pyenv
-if [ -z "$(echo $(pyenv versions | sed "/system/d"))" ]; then
-  echo "[pyenv]start"
-  pyenv install $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
-  pyenv virtualenv $(pyenv install --list | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1) py3
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-  pyenv activate py3
-  pip install --upgrade pip
-  echo "[pyenv]finish"
-fi
-
-# rbenv
-if [ -z "$(echo $(rbenv versions | sed "/system/d"))" ]; then
-  echo "[rbenv]start"
-  rbenv install $(rbenv install --list-all | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
-  rbenv global $(rbenv install --list-all | grep "^\s*[0-9][0-9.]*[0-9]\s*$" | tail -1)
-  echo "[rbenv]finish"
-fi
-
-# n
-if [ -z "$(echo $(n ls))" ]; then
-  echo "[n]start"
-  n latest
-  echo "[n]finish"
+# textlint
+if ! command -v textlint &> /dev/null; then
+  echo "[textlint]start"
+  npm install -g --no-fund \
+    textlint \
+    textlint-filter-rule-allowlist \
+    textlint-rule-preset-ja-technical-writing \
+    textlint-rule-preset-jtf-style \
+    textlint-rule-preset-ja-spacing \
+    textlint-rule-spellcheck-tech-word \
+    textlint-rule-prh \
+    @proofdict/textlint-rule-proofdict
+  echo "[textlint]finish"
 fi
 
 # lua5.1 luarocks
@@ -105,47 +81,5 @@ if ! type lua &> /dev/null; then
   echo "[lua5.1 luarocks]finish"
 fi
 
-# neovim provider
-if ! gem list | grep -q "neovim"; then
-  echo "[neovim provider - ruby]start"
-  gem install neovim
-  echo "[neovim provider - ruby]finish"
-fi
-
-pyenv activate py3
-if ! pip list 2> /dev/null | grep -q "neovim"; then
-  echo "[neovim provider - python3]start"
-  pyenv activate py3
-  pip install neovim
-  echo "[neovim provider - python3]finish"
-fi
-
-if ! npm ls -g | grep -q "neovim"; then
-  echo "[neovim provider - nodejs]start"
-  npm install -g neovim
-  echo "[neovim provider - nodejs]finish"
-fi
-
-# textlint
-if ! command -v textlint &> /dev/null; then
-  echo "[textlint]start"
-  npm install -g --no-fund textlint
-  npm install -g --no-fund \
-  textlint-filter-rule-allowlist \
-  textlint-rule-preset-ja-technical-writing \
-  textlint-rule-preset-jtf-style \
-  textlint-rule-preset-ja-spacing \
-  textlint-rule-spellcheck-tech-word \
-  textlint-rule-prh
-  npm install -g --no-fund @proofdict/textlint-rule-proofdict
-  echo "[textlint]finish"
-fi
-
-# git-cz
-if ! command -v git-cz &> /dev/null; then
-  echo "[git-cz]start"
-  npm install -g git-cz
-  echo "[git-cz]finish"
-fi
-
+source $HOME/.config/zsh/.zshrc
 echo "complete."

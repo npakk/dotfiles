@@ -9,4 +9,3 @@ export FPATH="$XDG_DATA_HOME/zsh/completions:${FPATH}"
 # zsh-completions
 export FPATH="$HOMEBREW_PREFIX/share/zsh-completions:${FPATH}"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-. "$HOME/.cargo/env"
