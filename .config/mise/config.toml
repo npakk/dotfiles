@@ -11,3 +11,4 @@ uv = "latest"
 
 "pipx:pynvim" = "latest"
 "gem:neovim" = "latest"
+"npm:git-cz" = "latest"
