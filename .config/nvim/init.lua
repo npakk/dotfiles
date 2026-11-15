@@ -1,38 +1,5 @@
 vim.loader.enable()
 
---[[ Provider ]]
-
--- Python2
-if vim.fn.executable(vim.env.PYENV_ROOT .. "/versions/py2/bin/python") == 1 then
-  vim.g.python_host_prog = vim.env.PYENV_ROOT .. "/versions/py2/bin/python"
-else
-  vim.g.loaded_python_provider = 0
-end
-
--- Python3
-if vim.fn.executable(vim.env.PYENV_ROOT .. "/versions/py3/bin/python") == 1 then
-  vim.g.python3_host_prog = vim.env.PYENV_ROOT .. "/versions/py3/bin/python"
-else
-  vim.g.loaded_python3_provider = 0
-end
-
--- Ruby
-if vim.fn.executable(vim.env.RBENV_ROOT .. "/shims/neovim-ruby-host") == 1 then
-  vim.g.ruby_host_prog = vim.env.RBENV_ROOT .. "/shims/neovim-ruby-host"
-else
-  vim.g.loaded_ruby_provider = 0
-end
-
--- Node.js
-if vim.fn.executable(vim.env.N_PREFIX .. "/bin/neovim-node-host") == 1 then
-  vim.g.node_host_prog = vim.env.N_PREFIX .. "/bin/neovim-node-host"
-else
-  vim.g.loaded_node_provider = 0
-end
-
--- Perl
-vim.g.loaded_perl_provider = 0
-
 --[[ Commands ]]
 
 vim.api.nvim_create_augroup("MyAutoCmd", { clear = true })

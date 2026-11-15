@@ -46,21 +46,6 @@ if command -v mise &> /dev/null; then
   echo "[mise]finish"
 fi
 
-# textlint
-if ! command -v textlint &> /dev/null; then
-  echo "[textlint]start"
-  npm install -g --no-fund \
-    textlint \
-    textlint-filter-rule-allowlist \
-    textlint-rule-preset-ja-technical-writing \
-    textlint-rule-preset-jtf-style \
-    textlint-rule-preset-ja-spacing \
-    textlint-rule-spellcheck-tech-word \
-    textlint-rule-prh \
-    @proofdict/textlint-rule-proofdict
-  echo "[textlint]finish"
-fi
-
 # lua5.1 luarocks
 if ! type lua &> /dev/null; then
   echo "[lua5.1 luarocks]start"
