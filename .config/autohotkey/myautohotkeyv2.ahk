@@ -1,3 +1,6 @@
+RShiftDownAt := 0
+RShiftOffAt := 0
+
 /* Alacrittyにペーストすると改行が増える問題対応 */
 /* READ: https://github.com/alacritty/alacritty/issues/2324 */
 #HotIf WinActive("Alacritty")
@@ -32,23 +35,43 @@ RCtrl & z::{
 #HotIf
 RCtrl & Tab::AltTab
 
-/* 日本語サポート（ATOK設定必須） */
-; RShift	 → 変換 	=>	入力文字種全角ひらがな（文字未入力、入力中、変換中、次候補、全候補、文節区切り、半角入力）
-; LShift+RShift	 → 無変換	=>	日本語入力OFF（文字未入力、入力中、変換中、次候補、全候補、文節区切り、半角入力、記号入力）
-; Ctrl+[ → Escape + 無変換	=>	日本語入力OFF（文字未入力、入力中、変換中、次候補、全候補、文節区切り、半角入力、記号入力）
+/* 日本語サポート（ATOKつかうなら設定必須） */
 ; Ctrl+; → Shift+Ctrl+2		=>	半角無変換(後)変換（入力中、変換中、次候補、全候補、文節区切り）
 ; Ctrl+' → Shift+Ctrl+6		=>	全角無変換(後)変換（入力中、変換中、次候補、全候補、文節区切り）
 
 /* 日本語入力 */
-RShift::Send ("{vk1C}") ; 変換
-<+RShift::Send ("{vk1D}") ; 無変換
+#HotIf !WinActive("GLKVM - Google Chrome")
+*RShift:: {
+    global RShiftDownAt, RShiftOffAt
+    if (RShiftDownAt && A_TickCount - RShiftDownAt < 3000)
+        return  ; 同じ押下のリピートは無視
+    RShiftDownAt := A_TickCount
+    if GetKeyState("LShift", "P") {
+        Send("{vk1A}")  ; オフ
+        RShiftOffAt := A_TickCount
+    } else {
+        RShiftOffAt := 0
+    }
+}
 
-/* Ctrl-[でESCと無変換送信 */
-^[::Send ("{Escape}{vk1D}") ; Esc,無変換
+*RShift Up:: {
+    global RShiftDownAt, RShiftOffAt
+    if !RShiftDownAt
+        return
+    offJustNow := RShiftOffAt && (A_TickCount - RShiftOffAt < 400 || GetKeyState("LShift", "P"))
+    RShiftDownAt := 0
+    RShiftOffAt := 0
+    if !offJustNow
+        Send("{vk16}")  ; オン
+}
+#HotIf
+
+/* Ctrl-[でESCとIMEオフ送信 */
+^[::Send ("{Escape}{vk1A}") ; Esc,IMEオフ
 
 /* 後変換 */
-LCtrl & sc027::^+2
-^sc028::^+6
+; LCtrl & sc027::^+2
+; ^sc028::^+6
 
 ; /* 通常配列のキーボード用の設定（F23、F24を使用）*/
 ; /* カーソル移動 */
