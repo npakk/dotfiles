@@ -5,6 +5,7 @@ trust.json*
 
 /.config/gcloud/
 /.config/gh/hosts.yml
+/.config/nvim/lazy-lock.json
 /.config/karabiner/automatic_backups/
 /.config/go/telemetry/
 /.config/chromium/
