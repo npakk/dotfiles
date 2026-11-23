@@ -44,23 +44,26 @@ RCtrl & Tab::AltTab
   RShift単体 → IMEオン / LShift+RShift → IMEオフ（操作側・操作される側で共通）
 
   GLKVM（Comet X）は左右Shiftを同時に受け取るとShiftが押されたままになる不具合があるため、
-  GLKVMのウィンドウではRShiftをKVMに送らず、代わりにF13(オン)/F14(オフ)を送る。
-  操作される側では、KVMから届いたF13/F14でIMEを切り替える。
+  GLKVMのウィンドウではRShiftをKVMに送らず、代わりに変換キーを送る。
+    変換       → 操作される側でIMEオン
+    Shift+変換 → 操作される側でIMEオフ
+  （F13と無変換はKVMを通らなかった。操作される側は英語配列のため、変換キーは
+    vkFF / sc079 として届くので、スキャンコードで受け取る）
 */
 IsGlkvm() => WinActive("GLKVM - Google Chrome")
 
 ImeOn() {
     if IsGlkvm()
-        Send("{vk1C}")   ; 操作される側へ
+        Send("{vk1C}")   ; 変換 → 操作される側でオン
     else
-        Send("{vk16}")  ; このPCのIMEをオン
+        Send("{vk16}")   ; このPCのIMEをオン
 }
 
 ImeOff() {
     if IsGlkvm()
-        Send("{vk1D}")   ; 操作される側へ
+        Send("+{vk1C}")  ; Shift+変換 → 操作される側でオフ（Ctrl-[のCtrlは自動で離される）
     else
-        Send("{vk1A}")  ; このPCのIMEをオフ
+        Send("{vk1A}")   ; このPCのIMEをオフ
 }
 
 ; RShiftを押している間にLShiftが押されていれば（押す順番はどちらでも）オフ、
@@ -78,9 +81,13 @@ ImeOff() {
         ImeOn()
 }
 
-; 操作される側：KVMから届いたF13/F14でIMEを切り替える
-*vk1C::Send("{vk16}")  ; オン
-*vk1D::Send("{vk1A}")  ; オフ
+; 操作される側：KVMから届いた変換キー（sc079）でIMEを切り替える
+*sc079:: {
+    if GetKeyState("Shift")
+        Send("{vk1A}")  ; Shift+変換 → オフ
+    else
+        Send("{vk16}")  ; 変換 → オン
+}
 
 /* Ctrl-[でESCとIMEオフ送信 */
 ^[::{
