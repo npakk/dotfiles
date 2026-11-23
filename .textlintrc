@@ -18,8 +18,8 @@
     "spellcheck-tech-word": true,
     "prh": {
       "rulePaths": [
-        "~/.local/share/n/lib/node_modules/textlint-rule-prh/node_modules/prh/prh-rules/media/WEB+DB_PRESS.yml",
-        "~/.local/share/n/lib/node_modules/textlint-rule-prh/node_modules/prh/prh-rules/media/techbooster.yml"
+        "~/.local/share/mise/installs/node/lts/lib/node_modules/textlint-rule-prh/node_modules/prh/prh-rules/media/WEB+DB_PRESS.yml",
+        "~/.local/share/mise/installs/node/lts/lib/node_modules/textlint-rule-prh/node_modules/prh/prh-rules/media/techbooster.yml"
       ]
     },
     "@proofdict/proofdict": {

@@ -3,31 +3,31 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2026-11-14T05:23:32+09:00",
-            "Manifests": 1713
+            "Updated": "2026-11-23T09:46:04+09:00",
+            "Manifests": 1719
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2026-11-14T05:23:39+09:00",
-            "Manifests": 2468
+            "Updated": "2026-11-23T09:50:44+09:00",
+            "Manifests": 2477
         },
         {
             "Name": "nonportable",
             "Source": "https://github.com/ScoopInstaller/Nonportable",
-            "Updated": "2026-11-13T01:54:01+09:00",
-            "Manifests": 134
+            "Updated": "2026-11-22T06:43:28+09:00",
+            "Manifests": 135
         },
         {
             "Name": "mo-san",
             "Source": "https://github.com/mo-san/scoop-bucket",
-            "Updated": "2026-11-06T15:50:27+09:00",
+            "Updated": "2026-11-19T05:33:15+09:00",
             "Manifests": 133
         },
         {
             "Name": "r-bucket",
             "Source": "https://github.com/cderv/r-bucket",
-            "Updated": "2026-11-14T02:37:19+09:00",
+            "Updated": "2026-11-22T21:26:27+09:00",
             "Manifests": 95
         }
     ],
@@ -36,161 +36,161 @@
             "Name": "1password-cli",
             "Version": "2.42.0",
             "Source": "main",
-            "Updated": "2026-11-07T06:58:57.2134477+09:00",
+            "Updated": "2026-11-23T08:14:19.3984811+09:00",
             "Info": ""
         },
         {
             "Name": "7zip",
             "Version": "26.06",
             "Source": "main",
-            "Updated": "2026-11-13T06:22:29.6051999+09:00",
+            "Updated": "2026-11-23T08:13:10.0296903+09:00",
             "Info": ""
         },
         {
             "Name": "alacritty",
             "Version": "0.17.0",
             "Source": "extras",
-            "Updated": "2026-04-15T08:21:50.3819015+09:00",
+            "Updated": "2026-11-23T08:14:21.6770986+09:00",
             "Info": ""
         },
         {
             "Name": "aria2",
             "Version": "1.37.0-1",
             "Source": "main",
-            "Updated": "2025-12-11T20:22:38.8874764+09:00",
+            "Updated": "2026-11-23T08:13:04.1125592+09:00",
             "Info": ""
         },
         {
             "Name": "autohotkey",
-            "Version": "2.0.31",
+            "Version": "2.0.32",
             "Source": "extras",
-            "Updated": "2026-11-07T07:01:28.7796564+09:00",
+            "Updated": "2026-11-23T08:14:29.2862893+09:00",
             "Info": ""
         },
         {
             "Name": "clibor",
             "Version": "2.3.5",
             "Source": "mo-san",
-            "Updated": "2026-10-16T23:48:11.7190105+09:00",
+            "Updated": "2026-11-23T08:14:42.027381+09:00",
             "Info": ""
         },
         {
             "Name": "dark",
             "Version": "3.14.1",
             "Source": "main",
-            "Updated": "2025-12-11T20:23:22.6925169+09:00",
+            "Updated": "2026-11-23T08:14:43.1205156+09:00",
+            "Info": ""
+        },
+        {
+            "Name": "delta",
+            "Version": "0.21.2",
+            "Source": "main",
+            "Updated": "2026-11-23T11:32:08.9220556+09:00",
             "Info": ""
         },
         {
             "Name": "dropbox-np",
-            "Version": "nightly-20251211",
+            "Version": "nightly-20261123",
             "Source": "nonportable",
-            "Updated": "2025-12-11T20:24:40.1429167+09:00",
-            "Info": ""
-        },
-        {
-            "Name": "emacs",
-            "Version": "31.1",
-            "Source": "extras",
-            "Updated": "2026-10-06T06:29:01.2166726+09:00",
+            "Updated": "2026-11-23T08:16:09.8891957+09:00",
             "Info": ""
         },
         {
             "Name": "fd",
             "Version": "10.5.2",
             "Source": "main",
-            "Updated": "2026-11-13T06:22:30.7660263+09:00",
+            "Updated": "2026-11-23T08:17:03.7959723+09:00",
             "Info": ""
         },
         {
             "Name": "git",
             "Version": "2.56.1",
             "Source": "main",
-            "Updated": "2026-11-13T06:22:52.0220653+09:00",
+            "Updated": "2026-11-23T08:13:28.3918844+09:00",
             "Info": ""
         },
         {
             "Name": "googlechrome",
-            "Version": "157.0.8103.39",
+            "Version": "158.0.8127.37",
             "Source": "extras",
-            "Updated": "2026-11-07T07:02:17.852359+09:00",
+            "Updated": "2026-11-23T08:17:17.1211491+09:00",
             "Info": ""
         },
         {
             "Name": "innounp",
-            "Version": "2.71.3",
+            "Version": "2.71.4",
             "Source": "main",
-            "Updated": "2026-11-07T06:59:16.2602868+09:00",
+            "Updated": "2026-11-23T08:17:17.8765435+09:00",
             "Info": ""
         },
         {
             "Name": "llvm",
-            "Version": "23.1.5",
+            "Version": "23.1.6",
             "Source": "main",
-            "Updated": "2026-11-07T06:59:49.871295+09:00",
+            "Updated": "2026-11-23T08:19:08.3753005+09:00",
             "Info": ""
         },
         {
             "Name": "neovim",
             "Version": "0.12.6",
             "Source": "main",
-            "Updated": "2026-10-22T07:59:44.2366556+09:00",
+            "Updated": "2026-11-23T08:19:19.7266954+09:00",
             "Info": ""
         },
         {
             "Name": "nvm",
             "Version": "2.0.1",
             "Source": "main",
-            "Updated": "2026-10-06T05:20:49.6374708+09:00",
+            "Updated": "2026-11-23T08:19:24.3732719+09:00",
             "Info": ""
         },
         {
             "Name": "octarine",
-            "Version": "0.57.0",
+            "Version": "0.58.0",
             "Source": "r-bucket",
-            "Updated": "2026-11-14T08:08:32.589825+09:00",
+            "Updated": "2026-11-23T08:19:31.1292566+09:00",
             "Info": ""
         },
         {
             "Name": "powertoys",
             "Version": "0.102.3101.0",
             "Source": "extras",
-            "Updated": "2026-11-07T07:17:47.4796486+09:00",
+            "Updated": "2026-11-23T08:20:47.2195283+09:00",
             "Info": ""
         },
         {
             "Name": "ripgrep",
             "Version": "15.2.0",
             "Source": "main",
-            "Updated": "2026-10-06T05:20:50.5705828+09:00",
+            "Updated": "2026-11-23T08:20:48.80211+09:00",
             "Info": ""
         },
         {
             "Name": "sharex",
-            "Version": "22.2.0",
+            "Version": "22.4.0",
             "Source": "extras",
-            "Updated": "2026-11-07T07:00:41.3210933+09:00",
+            "Updated": "2026-11-23T08:20:55.6574156+09:00",
             "Info": ""
         },
         {
             "Name": "task",
             "Version": "3.54.0",
             "Source": "main",
-            "Updated": "2026-10-06T05:25:57.7270798+09:00",
+            "Updated": "2026-11-23T08:13:29.9337793+09:00",
             "Info": ""
         },
         {
             "Name": "vcredist2022",
-            "Version": "14.51.36247.0",
+            "Version": "14.52.37029.0",
             "Source": "extras",
-            "Updated": "2026-06-19T09:07:00.0158003+09:00",
+            "Updated": "2026-11-23T08:21:20.8031564+09:00",
             "Info": ""
         },
         {
             "Name": "vivaldi",
-            "Version": "8.3.4191.30",
+            "Version": "8.3.4191.47",
             "Source": "extras",
-            "Updated": "2026-11-07T07:00:53.0301873+09:00",
+            "Updated": "2026-11-23T08:21:34.2357819+09:00",
             "Info": ""
         }
     ]

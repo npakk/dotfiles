@@ -4,11 +4,10 @@
 git clone https://github.com/npakk/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 make
+
 ```
 
 ## Win
-ユーザー環境変数 `$HOME`に`C:\Users\ユーザ名`を設定しておく
-
 [Scoop](https://scoop.sh/)
 ```ps1
 # Scoopインストール
@@ -24,9 +23,16 @@ scoop install aria2 git task
 git clone https://github.com/npakk/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 task
+
 ```
 
 ## Ubuntu on WSL2
+```sh
+wsl --install -d Ubuntu-24.04
+wsl --set-default Ubuntu-24.04
+
+```
+
 ```sh
 # 環境変数
 TZ=Asia/Tokyo
@@ -63,9 +69,9 @@ make
 
 # ホストのDropboxへのシンボリックリンクを貼る
 ln -s "/mnt/c/Users/$(powershell.exe '$env:USERNAME' | tr -d '\r')/Dropbox/" ~/Dropbox
+
 ```
-もし環境を初期化する場合は設定 → アプリ → ディストリビューションの詳細オプション → リセット を行い、powershell上で`wsl --unregister Ubuntu`を実行。  
-その後ディストリビューションを実行して初期化が完了したら、powershell上で`wsl --set-default Ubuntu`を実行。 
+環境を初期化する場合は`wsl --unregister Ubuntu-24.04`を実行。  
 
 ---
 ## Doom Emacs
@@ -75,42 +81,26 @@ git clone --depth 1 https://github.com/doomemacs/core $HOME/.config/emacs
 cd $HOME/.config/emacs/bin
 ./doom install
 ./doom sync
+
 ```
 アイコンが文字化けしている場合は、`M-x nerd-icons-install-fonts`を実行してダウンロードされるttfファイルをインストール。  
 Winの場合は`doom upgrade`時に`pwsh`(powershell6以上)を求められるので、[リリースページ](https://github.com/PowerShell/PowerShell)からインストールする。  
 また、PATH に `[ユーザーディレクトリ]/.config/emacs/bin` を追加。  
-Macの場合はアプリケーションフォルダにEmacsアプリを追加する必要があるので、以下を実行する。
+Macの場合はアプリケーションフォルダにEmacsアプリを追加するため、以下を実行する。
 ```sh
 osascript -e 'tell application "Finder" to make alias file to posix file "/opt/homebrew/opt/emacs-plus@30/Emacs.app" at posix file "/Applications" with properties {name:"Emacs.app"}'
-```
 
-## textlint on Win
-```sh
-nvm install lts
-nvm use lts
-
-npm install -g --no-fund `
-  textlint `
-  textlint-filter-rule-allowlist `
-  textlint-rule-preset-ja-technical-writing `
-  textlint-rule-preset-jtf-style `
-  textlint-rule-preset-ja-spacing `
-  textlint-rule-spellcheck-tech-word `
-  textlint-rule-prh `
-  @proofdict/textlint-rule-proofdict
 ```
 
 ---
 以下のソフトウェアは手動でインストール
 - 1Password
-- ATOK
 - Docker
 - Alacritty（Macのみ。Homebrewでdeprecatedとなったため）
 
-tmuxのプレフィックス`Ctrl+\`が1Passwordの自動入力と衝突するため、1Passwordの設定から自動入力のショートカットを削除する。
+tmuxのprefix`Ctrl+\`が1Passwordと衝突するため、設定から自動入力のショートカットを削除する。
 
-Dockerのデタッチキーと衝突して`Ctrl+p`の入力が吸われるときは、`~/.docker/config.json`を以下のように修正  
-Winの場合は`%USERPROFILE%\.docker\config.json`、WSL環境なら`~/.docker/config.json`も
+`Ctrl+p`がDockerのデタッチキーと衝突するため、`~/.docker/config.json`を以下のように修正する。  
 ```json
 {
     "detachKeys": "ctrl-_"

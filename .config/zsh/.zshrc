@@ -28,9 +28,9 @@ alias find='fd'
 alias grep='rg'
 alias ide='tmuxide'
 alias j='z'
-alias la='eza -a -F -l --git'
+alias la='eza -a --classify=auto -l --git'
 alias lg='lazygit'
-alias ls='eza -a -F'
+alias ls='eza -a --classify=auto'
 alias rd='rubydebug'
 alias sd='cd_ghq_on_fzf'
 alias v='nvim'
@@ -42,7 +42,7 @@ autoload -Uz rubydebug
 autoload -Uz rubylsp
 
 # 移動した後は 'ls' する
-function chpwd() { eza -a -F }
+function chpwd() { eza -a --classify=auto }
 
 # history
 export HISTFILE="$XDG_STATE_HOME/zsh/.zsh_history"
