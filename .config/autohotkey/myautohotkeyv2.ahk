@@ -51,14 +51,14 @@ IsGlkvm() => WinActive("GLKVM - Google Chrome")
 
 ImeOn() {
     if IsGlkvm()
-        Send("{F13}")   ; 操作される側へ
+        Send("{vk1C}")   ; 操作される側へ
     else
         Send("{vk16}")  ; このPCのIMEをオン
 }
 
 ImeOff() {
     if IsGlkvm()
-        Send("{F14}")   ; 操作される側へ
+        Send("{vk1D}")   ; 操作される側へ
     else
         Send("{vk1A}")  ; このPCのIMEをオフ
 }
@@ -79,8 +79,8 @@ ImeOff() {
 }
 
 ; 操作される側：KVMから届いたF13/F14でIMEを切り替える
-*F13::Send("{vk16}")  ; オン
-*F14::Send("{vk1A}")  ; オフ
+*vk1C::Send("{vk16}")  ; オン
+*vk1D::Send("{vk1A}")  ; オフ
 
 /* Ctrl-[でESCとIMEオフ送信 */
 ^[::{
