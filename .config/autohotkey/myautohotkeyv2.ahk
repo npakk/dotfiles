@@ -30,7 +30,7 @@ RCtrl & z::{
 }
 
 /* アプリ切り替え */
-#HotIf (AltTabMenu := true)
+#HotIf WinExist("ahk_group AltTabWindow")  ; Alt-Tabメニュー表示中だけ有効
 	LShift::ShiftAltTab
 #HotIf
 RCtrl & Tab::AltTab
@@ -39,40 +39,59 @@ RCtrl & Tab::AltTab
 ; Ctrl+; → Shift+Ctrl+2		=>	半角無変換(後)変換（入力中、変換中、次候補、全候補、文節区切り）
 ; Ctrl+' → Shift+Ctrl+6		=>	全角無変換(後)変換（入力中、変換中、次候補、全候補、文節区切り）
 
-/* 日本語入力 */
-#HotIf !WinActive("GLKVM - Google Chrome")
-*RShift:: {
-    global RShiftDownAt, RShiftOffAt
-    if (RShiftDownAt && A_TickCount - RShiftDownAt < 3000)
-        return  ; 同じ押下のリピートは無視
-    RShiftDownAt := A_TickCount
-    if GetKeyState("LShift", "P") {
-        Send("{vk1A}")  ; オフ
-        RShiftOffAt := A_TickCount
-    } else {
-        RShiftOffAt := 0
-    }
+/*
+  日本語入力
+  RShift単体 → IMEオン / LShift+RShift → IMEオフ（操作側・操作される側で共通）
+
+  GLKVM（Comet X）は左右Shiftを同時に受け取るとShiftが押されたままになる不具合があるため、
+  GLKVMのウィンドウではRShiftをKVMに送らず、代わりにF13(オン)/F14(オフ)を送る。
+  操作される側では、KVMから届いたF13/F14でIMEを切り替える。
+*/
+IsGlkvm() => WinActive("GLKVM - Google Chrome")
+
+ImeOn() {
+    if IsGlkvm()
+        Send("{F13}")   ; 操作される側へ
+    else
+        Send("{vk16}")  ; このPCのIMEをオン
 }
 
-*RShift Up:: {
-    global RShiftDownAt, RShiftOffAt
-    if !RShiftDownAt
-        return
-    offJustNow := RShiftOffAt && (A_TickCount - RShiftOffAt < 400 || GetKeyState("LShift", "P"))
-    RShiftDownAt := 0
-    RShiftOffAt := 0
-    if !offJustNow
-        Send("{vk16}")  ; オン
+ImeOff() {
+    if IsGlkvm()
+        Send("{F14}")   ; 操作される側へ
+    else
+        Send("{vk1A}")  ; このPCのIMEをオフ
 }
-#HotIf
+
+; RShiftを押している間にLShiftが押されていれば（押す順番はどちらでも）オフ、
+; 押されないまま離せばオン。押下中のキーリピートは、このスレッドが動いている間は無視される。
+*RShift:: {
+    offSent := false
+    while GetKeyState("RShift", "P") {
+        if !offSent && GetKeyState("LShift", "P") {
+            ImeOff()
+            offSent := true
+        }
+        Sleep(10)
+    }
+    if !offSent
+        ImeOn()
+}
+
+; 操作される側：KVMから届いたF13/F14でIMEを切り替える
+*F13::Send("{vk16}")  ; オン
+*F14::Send("{vk1A}")  ; オフ
 
 /* Ctrl-[でESCとIMEオフ送信 */
-^[::Send ("{Escape}{vk1A}") ; Esc,IMEオフ
+^[::{
+    Send("{Escape}")
+    ImeOff()
+}
 
-/* 後変換 */
-LCtrl & sc027::^+2
-^sc028::^+6
-
+; /* 後変換 */
+; LCtrl & sc027::^+2
+; ^sc028::^+6
+;
 ; /* 通常配列のキーボード用の設定（F23、F24を使用）*/
 ; /* カーソル移動 */
 ; F24 & sc01A::{

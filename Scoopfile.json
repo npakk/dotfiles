@@ -3,13 +3,13 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2026-11-23T09:46:04+09:00",
+            "Updated": "2026-11-23T17:29:37+09:00",
             "Manifests": 1719
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2026-11-23T09:50:44+09:00",
+            "Updated": "2026-11-23T17:30:11+09:00",
             "Manifests": 2477
         },
         {
@@ -27,7 +27,7 @@
         {
             "Name": "r-bucket",
             "Source": "https://github.com/cderv/r-bucket",
-            "Updated": "2026-11-22T21:26:27+09:00",
+            "Updated": "2026-11-23T11:27:12+09:00",
             "Manifests": 95
         }
     ],
