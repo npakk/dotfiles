@@ -25,6 +25,7 @@ if OS.mac?
   cask "alfred"
   cask "dropbox"
   cask "google-chrome"
+  cask "hammerspoon"
   cask "karabiner-elements"
   cask "octarine"
   cask "the-unarchiver"

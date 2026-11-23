@@ -4,6 +4,38 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "(hammerspoon用変数有り)右シフトを単体で押したときにかな、左右シフトを押したときに英数を切り替える。- Customize",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "glkvm_active",
+                                        "type": "variable_unless",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": { "mandatory": ["left_shift"] }
+                                },
+                                "to": { "key_code": "japanese_eisuu" },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "glkvm_active",
+                                        "type": "variable_unless",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "right_shift" },
+                                "to": { "key_code": "japanese_kana" },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Caps Lock to Ctrl",
                         "manipulators": [
                             {
@@ -606,6 +638,7 @@
                     },
                     {
                         "description": "右シフトを単体で押したときにかな、左右シフトを押したときに英数を切り替える。- Customize",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

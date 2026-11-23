@@ -38,6 +38,11 @@ if ! [ -e "$HOME/.local/share/tmux/iceberg-dark" ]; then
   echo "[tmux theme]finish"
 fi
 
+# Hammerspoon（設定ファイルを ~/.config/hammerspoon/init.lua に変更）
+if [ "$(uname)" = "Darwin" ]; then
+  defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
+fi
+
 # mise
 if command -v mise &> /dev/null; then
   echo "[mise]start"
