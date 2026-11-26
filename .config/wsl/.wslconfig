@@ -1,2 +1,8 @@
 [wsl2]
+networkingMode=mirrored
 guiApplications=false
+memory=6GB
+swap=0GB
+
+[experimental]
+autoMemoryReclaim=dropCache
