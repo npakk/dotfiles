@@ -93,6 +93,32 @@ osascript -e 'tell application "Finder" to make alias file to posix file "/opt/h
 ```
 
 ---
+## GLKVM（Macのみ）
+GL.iNet KVM の Web UI を、Chrome の UI を省いた専用ウィンドウで開くアプリを作成する。  
+KVM 用に分けた Chrome プロファイル（`~/Library/Application Support/GLKVM-Chrome`）を使い、自己署名証明書の警告は無視する。  
+以下は初回のみ実行。以降は`/Applications`に作成されたアプリから起動する。
+
+LAN 内から接続する（`glkvm.local`）
+```sh
+osacompile -o "/Applications/GLKVM.app" -e 'do shell script "open -na \"Google Chrome\" --args --user-data-dir=\"$HOME/Library/Application Support/GLKVM-Chrome\" --ignore-certificate-errors --app=https://glkvm.local"'
+
+```
+
+Tailscale 経由で接続する（`100.x.x.x`は KVM の Tailscale IP に置き換える）
+```sh
+osacompile -o "/Applications/GLKVM (Tailscale).app" -e 'do shell script "open -na \"Google Chrome\" --args --user-data-dir=\"$HOME/Library/Application Support/GLKVM-Chrome\" --ignore-certificate-errors --app=https://100.x.x.x"'
+
+```
+Tailscale 経由の場合は、Mac 側でも Tailscale に接続しておく。  
+初回起動時に KVM の管理者パスワードでログインする。  
+このプロファイルでは証明書の検証が無効になっているため、KVM 以外のサイトは開かない。  
+プロファイルを削除する場合は、アプリを `⌘Q` で終了してから以下を実行する。
+```sh
+rm -rf "$HOME/Library/Application Support/GLKVM-Chrome"
+
+```
+
+---
 以下のソフトウェアは手動でインストール
 - 1Password
 - Docker
