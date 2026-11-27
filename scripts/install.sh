@@ -17,7 +17,7 @@ ln -sf $HOME/dotfiles/.textlintrc $HOME/.textlintrc
 
 # claude
 mkdir -p $HOME/.claude
-ln -sf $HOME/dotfiles/agents/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
+ln -sf $HOME/dotfiles/agents/AGENTS.md $HOME/.claude/CLAUDE.md
 ln -sf $HOME/dotfiles/agents/claude/settings.json $HOME/.claude/settings.json
 
 source $HOME/.zshenv
