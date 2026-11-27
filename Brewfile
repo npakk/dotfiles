@@ -21,6 +21,7 @@ brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
+cask "claude-code"
 if OS.mac?
   cask "alfred"
   cask "dropbox"
