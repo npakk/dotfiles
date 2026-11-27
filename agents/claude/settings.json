@@ -1,6 +1,17 @@
 {
   "permissions": {
-    "defaultMode": "plan"
+    "defaultMode": "plan",
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.local)",
+      "Read(**/.env.*.local)",
+      "Read(**/.env.development)",
+      "Read(**/.env.staging)",
+      "Read(**/.env.production)",
+      "Read(**/.env.test)",
+      "Read(**/*.pem)",
+      "Read(~/.ssh/**)"
+    ]
   },
   "language": "日本語",
   "theme": "dark"
